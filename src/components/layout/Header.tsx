@@ -4,7 +4,7 @@ import styled from "styled-components";
 const menu = [
   {
     href: "/plan",
-    text: "코스 등록",
+    text: "여행일정",
   },
   {
     href: "/login",
