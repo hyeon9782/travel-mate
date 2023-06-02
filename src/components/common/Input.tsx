@@ -1,5 +1,8 @@
+import styled from "styled-components";
 const Input = () => {
-  return <div></div>;
+  return <InputBlock></InputBlock>;
 };
+
+const InputBlock = styled.input``;
 
 export default Input;

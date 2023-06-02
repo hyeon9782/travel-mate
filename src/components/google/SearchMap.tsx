@@ -2,6 +2,7 @@ import Map from "./Map";
 import { useRecoilValue } from "recoil";
 import { searchState } from "../../store/searchState";
 import { InfoWindow } from "@react-google-maps/api";
+import Auto from "./Auto";
 
 const SearchMap = () => {
   const searchResult = useRecoilValue(searchState);

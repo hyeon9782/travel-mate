@@ -1,4 +1,4 @@
-import { LoadScript, GoogleMap } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 
 type Props = {
   children: React.ReactNode;
@@ -15,12 +15,18 @@ const center = {
 };
 
 const Map = ({ children }: Props) => {
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: import.meta.env.VITE_APP_GOOGLE_API_KEY,
+  });
+
+  if (!isLoaded) {
+    return null;
+  }
+
   return (
-    <LoadScript googleMapsApiKey={import.meta.env.VITE_APP_GOOGLE_API_KEY}>
-      <GoogleMap zoom={14} mapContainerStyle={containerStyle} center={center}>
-        {children}
-      </GoogleMap>
-    </LoadScript>
+    <GoogleMap zoom={14} mapContainerStyle={containerStyle} center={center}>
+      {children}
+    </GoogleMap>
   );
 };
 
