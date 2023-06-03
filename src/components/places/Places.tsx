@@ -10,7 +10,7 @@ const Places = () => {
     <PlacesBlock>
       {places.map((item, index, self) => (
         <>
-          <Place />
+          <Place key={index} />
           {index !== self.length - 1 && <Arrow />}
         </>
       ))}
@@ -21,7 +21,7 @@ const Places = () => {
 const PlacesBlock = styled.article`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
   width: 300px;
 `;
 

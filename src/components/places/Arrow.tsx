@@ -1,31 +1,41 @@
 import styled from "styled-components";
 import { ArrowDownIcon } from "../common/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Arrow = () => {
-  const [isAnimating, setIsAnimating] = useState(false);
   const [isUp, setIsUp] = useState(false);
 
-  const handleArrowClick = () => {
-    setIsAnimating(true);
-    setIsUp(!isUp);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsUp((prevIsUp) => !prevIsUp);
+    }, 1000);
 
-    setTimeout(() => {
-      setIsAnimating(false);
-    }, 1000); // 애니메이션 시간 (1초)
-  };
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
   return (
-    <div className="arrow-container">
-      <ArrowBlock onClick={handleArrowClick}>
+    <ArrowContainer className="arrow-container">
+      <ArrowBlock className={`arrow-block ${isUp ? "up" : ""}`}>
         <ArrowDownIcon />
       </ArrowBlock>
-    </div>
+    </ArrowContainer>
   );
 };
 
 const ArrowBlock = styled.div`
   font-size: 32px;
   text-align: center;
+`;
+
+const ArrowContainer = styled.div`
+  .arrow-block {
+    transition: transform 1s ease;
+  }
+
+  .arrow-block.up {
+    transform: translateY(-10px);
+  }
 `;
 
 export default Arrow;
