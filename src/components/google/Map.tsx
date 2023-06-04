@@ -4,6 +4,7 @@ type Props = {
   children: React.ReactNode;
   size: object;
 };
+
 const center = {
   lat: -3.745,
   lng: -38.523,
