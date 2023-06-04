@@ -1,5 +1,11 @@
+import Wrapper from "../components/layout/Wrapper";
+
 const HomePage = () => {
-  return <>Home</>;
+  return (
+    <Wrapper>
+      <>dsadsadasd</>
+    </Wrapper>
+  );
 };
 
 export default HomePage;

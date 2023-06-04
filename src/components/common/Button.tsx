@@ -3,10 +3,15 @@ import styled from "styled-components";
 type Props = {
   text: string;
   color?: string;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-const Button = ({ text, color }: Props) => {
-  return <ButtonBlock color={color}>{text}</ButtonBlock>;
+const Button = ({ text, color, onClick }: Props) => {
+  return (
+    <ButtonBlock color={color} onClick={onClick}>
+      {text}
+    </ButtonBlock>
+  );
 };
 
 const ButtonBlock = styled.button<{ color?: string }>`

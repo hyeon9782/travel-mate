@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import Step from "./Step";
 import { useState } from "react";
+import Button from "../common/Button";
 type Props = {
-  steps: [];
+  steps: string[];
 };
 const Steps = ({ steps = [] }: Props) => {
   const [activeStep, setActiveStep] = useState(1);
   const handleClick = (type: string) => {
     if (type === "next" && steps.length === activeStep) return;
     if (type === "prev" && 0 === activeStep - 1) return;
-
     setActiveStep((prev) => (type === "next" ? prev + 1 : prev - 1));
   };
   return (
@@ -24,8 +24,16 @@ const Steps = ({ steps = [] }: Props) => {
         ))}
       </StepsBlock>
       <ButtonBlock>
-        <button onClick={() => handleClick("prev")}>Prev Step</button>
-        <button onClick={() => handleClick("next")}>Next Step</button>
+        <Button
+          text="Prev Step"
+          color="black"
+          onClick={() => handleClick("prev")}
+        />
+        <Button
+          text="Next Step"
+          color="black"
+          onClick={() => handleClick("next")}
+        />
       </ButtonBlock>
     </>
   );
