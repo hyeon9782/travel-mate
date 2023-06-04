@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import Step from "./Step";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import Button from "../common/Button";
 type Props = {
   steps: string[];
+  children: React.ReactElement;
+  activeStep: number;
+  setActiveStep: Dispatch<SetStateAction<number>>;
 };
-const Steps = ({ steps = [] }: Props) => {
-  const [activeStep, setActiveStep] = useState(1);
+const Steps = ({ steps = [], children, activeStep, setActiveStep }: Props) => {
   const handleClick = (type: string) => {
     if (type === "next" && steps.length === activeStep) return;
     if (type === "prev" && 0 === activeStep - 1) return;
@@ -23,6 +25,7 @@ const Steps = ({ steps = [] }: Props) => {
           />
         ))}
       </StepsBlock>
+      {children}
       <ButtonBlock>
         <Button
           text="Prev Step"
@@ -41,6 +44,8 @@ const Steps = ({ steps = [] }: Props) => {
 
 const StepsBlock = styled.div`
   display: flex;
+  justify-content: space-between;
+  padding: 0 30px;
 `;
 
 const ButtonBlock = styled.div`

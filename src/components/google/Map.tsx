@@ -2,19 +2,14 @@ import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 
 type Props = {
   children: React.ReactNode;
+  size: object;
 };
-
-const containerStyle = {
-  width: "400px",
-  height: "400px",
-};
-
 const center = {
   lat: -3.745,
   lng: -38.523,
 };
 
-const Map = ({ children }: Props) => {
+const Map = ({ children, size = { width: "100%", height: "100%" } }: Props) => {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: import.meta.env.VITE_APP_GOOGLE_API_KEY,
   });
@@ -24,7 +19,7 @@ const Map = ({ children }: Props) => {
   }
 
   return (
-    <GoogleMap zoom={14} mapContainerStyle={containerStyle} center={center}>
+    <GoogleMap zoom={14} mapContainerStyle={size} center={center}>
       {children}
     </GoogleMap>
   );
