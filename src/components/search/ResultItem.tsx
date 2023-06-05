@@ -1,11 +1,30 @@
 import styled from "styled-components";
 import Button from "../common/Button";
+import { useSetRecoilState } from "recoil";
+import { selectPlacesState } from "../../store/selectPlacesState";
 
 type Props = {
-  item: object;
+  item: Item;
 };
 
-const ResultItem = ({ item: { name, user_ratings_total, rating } }: Props) => {
+type Item = {
+  name: string;
+  user_ratings_total: string;
+  rating: string;
+};
+
+const ResultItem = ({ item }: Props) => {
+  const setSelectPlaces = useSetRecoilState(selectPlacesState);
+
+  const { name, user_ratings_total, rating } = item;
+
+  const addPlace = (item: Item) => {
+    setSelectPlaces((prev) => [...prev, item]);
+  };
+
+  const removePlace = (item: Item) => {
+    setSelectPlaces((prev) => prev.filter((v) => v.place_id !== item.place_id));
+  };
   return (
     <ResultItemBlock>
       <div className="name-box">{name}</div>
@@ -14,8 +33,8 @@ const ResultItem = ({ item: { name, user_ratings_total, rating } }: Props) => {
         <div>평균 평점 : {rating}점</div>
       </div>
       <div className="btn-box">
-        <Button text="추가" color="black" />
-        <Button text="제거" color="black" />
+        <Button text="추가" color="black" onClick={() => addPlace(item)} />
+        <Button text="제거" color="black" onClick={() => removePlace(item)} />
       </div>
     </ResultItemBlock>
   );

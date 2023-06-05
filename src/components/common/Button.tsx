@@ -3,7 +3,7 @@ import styled from "styled-components";
 type Props = {
   text: string;
   color?: string;
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick: (args?: any) => void;
 };
 
 const Button = ({ text, color, onClick }: Props) => {

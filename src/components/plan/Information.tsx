@@ -4,11 +4,15 @@ import AppCalender from "../days/AppCalender";
 import Text from "../common/Text";
 import { CITIES } from "../../constants/cities";
 import { useState } from "react";
+import { useSetRecoilState } from "recoil";
+import { searchState } from "../../store/searchState";
 
 const Information = () => {
   const [inputValue, setInputValue] = useState("");
   const [cities, setCities] = useState([]);
   const [activeIndex, setActiveIndex] = useState(-1);
+  const setSearchState = useSetRecoilState(searchState);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const value = e.currentTarget.value;
@@ -19,8 +23,6 @@ const Information = () => {
 
     setInputValue(value);
     setCities(newArr);
-
-    console.log(newArr);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
@@ -35,6 +37,10 @@ const Information = () => {
       setInputValue(cities[activeIndex].name);
       setCities([]);
       setActiveIndex(-1);
+      setSearchState({
+        cityName: cities[activeIndex].name,
+        cityLocation: cities[activeIndex].location,
+      });
     }
   };
   return (

@@ -2,17 +2,17 @@ export const CITIES = [
   {
     name: "서울",
     country: "한국",
-    location: { lat: "37.5502", lng: "126.9931" },
+    location: { lat: 37.5502, lng: 126.9931 },
   },
   {
     name: "부산",
     country: "한국",
-    location: { lat: "35.2092", lng: "129.0695" },
+    location: { lat: 35.2092, lng: 129.0695 },
   },
   {
     name: "제주",
     country: "한국",
-    location: { lat: "33.4825", lng: "126.5311" },
+    location: { lat: 33.4825, lng: 126.5311 },
   },
   {
     name: "도쿄",

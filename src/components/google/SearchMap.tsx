@@ -1,17 +1,17 @@
 import Map from "./Map";
 import { useRecoilValue } from "recoil";
-import { searchState } from "../../store/searchState";
 import { Marker } from "@react-google-maps/api";
+import { searchState } from "../../store/searchState";
+import { selectPlacesState } from "../../store/selectPlacesState";
 
 const SearchMap = () => {
-  const searchResult = useRecoilValue(searchState);
+  const selectPlaces = useRecoilValue(selectPlacesState);
+  const searchData = useRecoilValue(searchState);
+
   return (
-    <Map>
-      {searchResult.length > 0 &&
-        searchResult.map((item) => (
-          // <InfoWindow key={item.place_id} position={item.geometry.location}>
-          //   <div>{item.place_id}</div>
-          // </InfoWindow>
+    <Map position={searchData}>
+      {selectPlaces.length > 0 &&
+        selectPlaces.map((item) => (
           <Marker key={item.place_id} position={item.geometry.location} />
         ))}
     </Map>

@@ -1,10 +1,10 @@
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { searchState } from "../../store/searchState";
 import ResultItem from "./ResultItem";
+import { placesState } from "../../store/placesState";
 
 const ResultList = () => {
-  const searchResult = useRecoilValue(searchState);
+  const searchResult = useRecoilValue(placesState);
   return (
     <ResultListBlock>
       {searchResult.length > 0 &&
