@@ -2,11 +2,25 @@ import styled from "styled-components";
 type Props = {
   size?: string;
   onSubmit: React.FormEventHandler<HTMLFormElement>;
+  onChange?: React.ChangeEvent;
+  onKeyDown: (e: React.KeyboardEvent) => void; // 함수를 넘기고 있어서 그럼
+  value: string;
 };
-const Input = ({ size = "small", onSubmit }: Props) => {
+const Input = ({
+  size = "small",
+  onSubmit,
+  onChange,
+  value,
+  onKeyDown,
+}: Props) => {
   return (
     <form onSubmit={(e) => onSubmit(e)}>
-      <InputBlock size={size}></InputBlock>
+      <InputBlock
+        size={size}
+        onChange={onChange}
+        value={value}
+        onKeyDown={onKeyDown}
+      ></InputBlock>
     </form>
   );
 };

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Input from "../common/Input";
-import SearchDetail from "./SearchDetail";
+import ResultList from "./ResultList";
 import SearchMap from "../google/SearchMap";
 import axios from "axios";
 import { useSetRecoilState } from "recoil";
@@ -24,7 +24,7 @@ const SearchPlaces = () => {
     <SearchPlacesBlock>
       <div className="search-block">
         <Input onSubmit={handleSubmit} />
-        <SearchDetail />
+        <ResultList />
       </div>
       <div className="map-block">
         <SearchMap />

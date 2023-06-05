@@ -1,7 +1,31 @@
-import React from "react";
+import styled from "styled-components";
+import Days from "../days/Days";
+import RenderMap from "../google/RenderMap";
+import Places from "../places/Places";
 
 const Plan = () => {
-  return <div>Plan</div>;
+  return (
+    <PlanBlock>
+      <div className="schedule-block">
+        <Days />
+        <Places />
+      </div>
+      <div className="map-block">
+        <RenderMap />
+      </div>
+    </PlanBlock>
+  );
 };
+
+const PlanBlock = styled.div`
+  display: flex;
+  .schedule-block {
+    width: 50%;
+  }
+  .map-block {
+    width: 50%;
+    height: 300px;
+  }
+`;
 
 export default Plan;
