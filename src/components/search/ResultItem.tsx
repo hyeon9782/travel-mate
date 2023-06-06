@@ -2,24 +2,19 @@ import styled from "styled-components";
 import Button from "../common/Button";
 import { useSetRecoilState } from "recoil";
 import { selectPlacesState } from "../../store/selectPlacesState";
+import { Place } from "../../types";
 
 type Props = {
-  item: Item;
+  place: Place;
 };
 
-type Item = {
-  name: string;
-  user_ratings_total: string;
-  rating: string;
-};
-
-const ResultItem = ({ item }: Props) => {
+const ResultItem = ({ place }: Props) => {
   const setSelectPlaces = useSetRecoilState(selectPlacesState);
 
-  const { name, user_ratings_total, rating } = item;
+  const { name, user_ratings_total, rating } = place;
 
-  const addPlace = (item: Item) => {
-    setSelectPlaces((prev) => [...prev, item]);
+  const addPlace = (place: Item) => {
+    setSelectPlaces((prev) => [...prev, place]);
   };
 
   const removePlace = (item: Item) => {
