@@ -26,7 +26,7 @@ const Map = ({
 
   return (
     <GoogleMap
-      zoom={14}
+      zoom={10}
       mapContainerStyle={size}
       center={position?.cityLocation ? position.cityLocation : center}
     >

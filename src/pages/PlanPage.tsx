@@ -7,6 +7,7 @@ import PlanArea from "../components/plan/PlanArea";
 import Preview from "../components/plan/Preview";
 import CityArea from "../components/cities/CityArea";
 import DateArea from "../components/date/DateArea";
+import PlacesArea from "../components/places/PlacesArea";
 
 const STEPS = ["도시 선택", "날짜 선택", "장소 검색", "일정 계획", "미리 보기"];
 
@@ -22,7 +23,7 @@ const PlanPage = () => {
         component = <DateArea />;
         break;
       case "장소 검색":
-        component = <SearchPlaces />;
+        component = <PlacesArea />;
         break;
       case "일정 계획":
         component = <PlanArea />;
@@ -51,7 +52,7 @@ const PlanPage = () => {
 const PlanPageBlock = styled.section``;
 
 const PlanBlock = styled.article`
-  min-height: 800px; // 나중에 수정
+  height: 800px; // 나중에 수정
 `;
 
 export default PlanPage;
