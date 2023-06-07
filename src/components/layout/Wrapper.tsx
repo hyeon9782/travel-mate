@@ -7,10 +7,13 @@ const Wrapper = ({ children }: Props) => {
 };
 
 const WrapperBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   box-sizing: border-box;
   margin: 0px auto;
   width: 1200px;
-  padding: 30px 20px;
+  padding: 0px 20px;
   height: calc(100vh - 52px);
 `;
 

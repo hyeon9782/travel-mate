@@ -4,7 +4,8 @@ import RenderMap from "../google/RenderMap";
 import Places from "../places/Places";
 import { useRecoilState } from "recoil";
 import { selectPlacesState } from "../../store/selectPlacesState";
-import AppSwiper from "../../lib/AppSwiper";
+import AppSwiper from "../../libs/AppSwiper";
+import SelectPlace from "../places/SelectPlace";
 
 const Plan = () => {
   const [selectPlaces, setSelectPlaces] = useRecoilState(selectPlacesState);

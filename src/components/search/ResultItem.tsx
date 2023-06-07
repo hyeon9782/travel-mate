@@ -3,6 +3,7 @@ import Button from "../common/Button";
 import { useSetRecoilState } from "recoil";
 import { selectPlacesState } from "../../store/selectPlacesState";
 import { Place } from "../../types";
+import { placesState } from "../../store/selectPlacesState";
 
 type Props = {
   place: Place;
@@ -28,8 +29,8 @@ const ResultItem = ({ place }: Props) => {
         <div>평균 평점 : {rating}점</div>
       </div>
       <div className="btn-box">
-        <Button text="추가" color="black" onClick={() => addPlace(item)} />
-        <Button text="제거" color="black" onClick={() => removePlace(item)} />
+        <Button text="추가" color="black" onClick={() => addPlace(place)} />
+        <Button text="제거" color="black" onClick={() => removePlace(place)} />
       </div>
     </ResultItemBlock>
   );

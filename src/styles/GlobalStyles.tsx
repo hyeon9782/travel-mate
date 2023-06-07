@@ -9,6 +9,11 @@ a {
   color: black;
 }
 
+/* body, html, #root {
+  width: 100%;
+  height: 100%;
+} */
+
 /* body {
   font-family: 'Cabin', sans-serif;
 }
@@ -35,10 +40,7 @@ html {
     }
 }
 
-body, html, #root {
-  width: 100%;
-  height: 100%;
-}
+
 
 a, a:visited {
   text-decoration: none;  

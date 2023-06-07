@@ -2,15 +2,14 @@ import styled from "styled-components";
 import Input from "../common/Input";
 import ResultList from "./ResultList";
 import SearchMap from "../google/SearchMap";
-import axios from "axios";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { placesState } from "../../store/placesState";
 import { searchState } from "../../store/searchState";
+import { searchPlacesState } from "../../store/searchPlacesState";
+import axios from "axios";
 
 const SearchPlaces = () => {
-  const setPlaces = useSetRecoilState(placesState);
+  const setSearchPlaces = useSetRecoilState(searchPlacesState);
   const searchData = useRecoilValue(searchState);
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(e.currentTarget.value);
@@ -25,8 +24,27 @@ const SearchPlaces = () => {
     );
     console.log(res);
     console.log(res.data);
-    setPlaces(res.data);
+
+    const cols = [
+      "geometry",
+      "name",
+      "place_id",
+      "ratings",
+      "types",
+      "user_ratings_total",
+    ];
+
+    const arr = res.data.filter((item) => {
+      console.log(Object.keys(item));
+      console.log(Object.keys(item)[0]);
+      return cols.includes(Object.keys(item)[0]);
+    });
+
+    console.log(arr);
+
+    setSearchPlaces(arr);
   };
+
   return (
     <SearchPlacesBlock>
       <div className="search-block">

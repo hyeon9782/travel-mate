@@ -2,14 +2,14 @@ import styled from "styled-components";
 import { useRecoilValue } from "recoil";
 import Place from "./Place";
 import Arrow from "./Arrow";
-import { placesState } from "../../store/placesState";
+import { selectPlacesState } from "../../store/selectPlacesState";
 
 const Places = () => {
-  const placesData = useRecoilValue(placesState);
+  const selectPlaces = useRecoilValue(selectPlacesState);
   return (
     <PlacesBlock>
-      {placesData &&
-        placesData.map((item, index, self) => (
+      {selectPlaces &&
+        selectPlaces.map((item, index, self) => (
           <>
             <Place key={index} />
             {index !== self.length - 1 && <Arrow />}
