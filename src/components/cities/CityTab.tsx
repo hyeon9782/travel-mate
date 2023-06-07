@@ -4,19 +4,47 @@ import { CITIES } from "../../constants/cities";
 import { useState } from "react";
 import CityCarousel from "./CityCarousel";
 import { City } from "../../types";
+import CitySearchInput from "./CitySearchInput";
 
 const CityTab = () => {
+  const [inputValue, setInputValue] = useState("");
   const [isDomestic, setIsDomestic] = useState(true);
+  const [cities, setCities] = useState(
+    CITIES.filter((city) => city.isDomestic === isDomestic)
+  );
+
   const [selectCities, setSelectCities] = useState([]);
-  const cities = CITIES.filter((city) => city.isDomestic === isDomestic);
+  // const cities = CITIES.filter((city) => city.isDomestic === isDomestic);
   const handleClick = (city: City) => {
     setSelectCities((prev) => [...prev, city]);
   };
+
+  const toggle = (boolean: boolean) => {
+    setIsDomestic(boolean);
+    setCities(CITIES.filter((city) => city.isDomestic === boolean));
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const value = e.currentTarget.value;
+    let newArr = [];
+
+    if (value) {
+      newArr = CITIES.filter(
+        (city) => city.city.includes(value) && city.isDomestic === isDomestic
+      );
+    } else {
+      newArr = CITIES.filter((city) => city.isDomestic === isDomestic);
+    }
+
+    setInputValue(value);
+    setCities(newArr);
+  };
   return (
     <CityTabBlock>
-      <CityTabButton onClick={() => setIsDomestic(true)}>국내</CityTabButton>
-      <CityTabButton onClick={() => setIsDomestic(false)}>해외</CityTabButton>
-
+      <CityTabButton onClick={() => toggle(true)}>국내</CityTabButton>
+      <CityTabButton onClick={() => toggle(false)}>해외</CityTabButton>
+      <CitySearchInput handleChange={handleChange} />
       <Cities cities={cities} handleClick={handleClick} />
       <CityCarousel selectCities={selectCities} />
     </CityTabBlock>
