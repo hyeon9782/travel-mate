@@ -3,9 +3,10 @@ import Steps from "../components/plan/Steps";
 import Wrapper from "../components/layout/Wrapper";
 import { useState } from "react";
 import SearchPlaces from "../components/search/SearchPlaces";
-import Information from "../components/plan/Information";
-import Plan from "../components/plan/Plan";
+import PlanArea from "../components/plan/PlanArea";
 import Preview from "../components/plan/Preview";
+import CityArea from "../components/cities/CityArea";
+import DateArea from "../components/date/DateArea";
 
 const STEPS = ["도시 선택", "날짜 선택", "장소 검색", "일정 계획", "미리 보기"];
 
@@ -15,16 +16,16 @@ const PlanPage = () => {
     let component = <></>;
     switch (STEPS[activeStep - 1]) {
       case "도시 선택":
-        component = <Information />;
+        component = <CityArea />;
         break;
       case "날짜 선택":
-        component = <Information />;
+        component = <DateArea />;
         break;
       case "장소 검색":
         component = <SearchPlaces />;
         break;
       case "일정 계획":
-        component = <Plan />;
+        component = <PlanArea />;
         break;
       case "미리 보기":
         component = <Preview />;
@@ -50,7 +51,7 @@ const PlanPage = () => {
 const PlanPageBlock = styled.section``;
 
 const PlanBlock = styled.article`
-  min-height: 300px; // 나중에 수정
+  min-height: 600px; // 나중에 수정
 `;
 
 export default PlanPage;

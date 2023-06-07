@@ -47,6 +47,7 @@ const Steps = ({ steps = [], children, activeStep, setActiveStep }: Props) => {
 const StepsBlock = styled.div`
   display: flex;
   justify-content: space-between;
+  padding-bottom: 30px;
 `;
 
 const ButtonBlock = styled.div`
@@ -54,7 +55,6 @@ const ButtonBlock = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 30px 0;
-  /* gap: 10px; */
 `;
 
 export default Steps;

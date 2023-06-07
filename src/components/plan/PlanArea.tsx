@@ -7,7 +7,7 @@ import { selectPlacesState } from "../../store/selectPlacesState";
 import AppSwiper from "../../libs/AppSwiper";
 import SelectPlace from "../places/SelectPlace";
 
-const Plan = () => {
+const PlanArea = () => {
   const [selectPlaces, setSelectPlaces] = useRecoilState(selectPlacesState);
   return (
     <PlanBlock>
@@ -34,4 +34,4 @@ const PlanBlock = styled.div`
   }
 `;
 
-export default Plan;
+export default PlanArea;

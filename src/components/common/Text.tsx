@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 type Props = {
-  title: "";
-  subTitle: "";
+  size?: string;
+  subTitle?: string;
+  children: React.ReactNode;
 };
 
-const Text = ({ children }: { children: string }) => {
+const Text = ({ children }: Props) => {
   return <TextBlock>{children}</TextBlock>;
 };
 

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Input from "../common/Input";
-import AppCalender from "../days/AppCalender";
+import AppCalender from "../common/AppCalender";
 import Text from "../common/Text";
 import { CITIES } from "../../constants/cities";
 import { useState } from "react";

@@ -1,14 +1,27 @@
 import styled from "styled-components";
-
-const Cities = () => {
+import CityItem from "./CityItem";
+import { City } from "../../types";
+type Props = {
+  cities: [];
+  handleClick: (city: City) => void;
+};
+const Cities = ({ cities = [], handleClick }: Props) => {
   return (
     <CitiesBlock>
-      <div></div>
-      <div></div>
+      {cities.map((city, index) => (
+        <CityItem
+          key={index}
+          city={city}
+          handleClick={() => handleClick(city)}
+        />
+      ))}
     </CitiesBlock>
   );
 };
 
-const CitiesBlock = styled.section``;
+const CitiesBlock = styled.div`
+  height: 500px;
+  overflow: auto;
+`;
 
 export default Cities;

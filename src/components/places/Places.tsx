@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { useRecoilValue } from "recoil";
 import Place from "./Place";
-import Arrow from "./Arrow";
 import { selectPlacesState } from "../../store/selectPlacesState";
 
 const Places = () => {
@@ -9,12 +8,7 @@ const Places = () => {
   return (
     <PlacesBlock>
       {selectPlaces &&
-        selectPlaces.map((item, index, self) => (
-          <>
-            <Place key={index} />
-            {index !== self.length - 1 && <Arrow />}
-          </>
-        ))}
+        selectPlaces.map((item, index, self) => <Place key={index} />)}
     </PlacesBlock>
   );
 };
