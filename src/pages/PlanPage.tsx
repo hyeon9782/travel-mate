@@ -51,7 +51,7 @@ const PlanPage = () => {
 const PlanPageBlock = styled.section``;
 
 const PlanBlock = styled.article`
-  min-height: 600px; // 나중에 수정
+  min-height: 720px; // 나중에 수정
 `;
 
 export default PlanPage;

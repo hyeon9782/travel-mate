@@ -16,6 +16,7 @@ const CityTab = () => {
     <CityTabBlock>
       <CityTabButton onClick={() => setIsDomestic(true)}>국내</CityTabButton>
       <CityTabButton onClick={() => setIsDomestic(false)}>해외</CityTabButton>
+
       <Cities cities={cities} handleClick={handleClick} />
       <CityCarousel selectCities={selectCities} />
     </CityTabBlock>
