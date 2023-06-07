@@ -19,17 +19,16 @@ const activeAnimation = keyframes`
 `;
 
 const StepBlock = styled.div<{ isActive?: boolean }>`
-  border-radius: 50%;
-  border: 1px solid gray;
+  border-radius: 20px;
+  font-size: 1.5rem;
   background-color: ${(props) => (props.isActive ? "black" : "lightgray")};
   color: ${(props) => (props.isActive ? "white" : "black")};
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80px;
-  width: 80px;
+  height: 100px;
+  width: 200px;
   font-weight: bold;
-  margin: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 

@@ -20,6 +20,7 @@ const Input = ({
         onChange={onChange}
         value={value}
         onKeyDown={onKeyDown}
+        placeholder="여행 지역을 입력해주세요!"
       ></InputBlock>
     </form>
   );
@@ -27,6 +28,11 @@ const Input = ({
 
 const InputBlock = styled.input<{ size?: string }>`
   width: 100%;
+  border: none;
+  border-bottom: 1px solid gray;
+  font-size: 1.5rem;
+  /* &&:focus: none; 포커스 했을 때도 none
+  display: */
   height: ${(props) => (props.size === "big" ? "50px" : "30px")};
 `;
 

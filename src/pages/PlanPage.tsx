@@ -7,14 +7,17 @@ import Information from "../components/plan/Information";
 import Plan from "../components/plan/Plan";
 import Preview from "../components/plan/Preview";
 
-const STEPS = ["정보 입력", "장소 검색", "일정 계획", "미리 보기"];
+const STEPS = ["도시 선택", "날짜 선택", "장소 검색", "일정 계획", "미리 보기"];
 
 const PlanPage = () => {
   const [activeStep, setActiveStep] = useState(1);
   const move = () => {
     let component = <></>;
     switch (STEPS[activeStep - 1]) {
-      case "정보 입력":
+      case "도시 선택":
+        component = <Information />;
+        break;
+      case "날짜 선택":
         component = <Information />;
         break;
       case "장소 검색":

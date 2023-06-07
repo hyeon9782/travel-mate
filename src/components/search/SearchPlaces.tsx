@@ -25,24 +25,7 @@ const SearchPlaces = () => {
     console.log(res);
     console.log(res.data);
 
-    const cols = [
-      "geometry",
-      "name",
-      "place_id",
-      "ratings",
-      "types",
-      "user_ratings_total",
-    ];
-
-    const arr = res.data.filter((item) => {
-      console.log(Object.keys(item));
-      console.log(Object.keys(item)[0]);
-      return cols.includes(Object.keys(item)[0]);
-    });
-
-    console.log(arr);
-
-    setSearchPlaces(arr);
+    setSearchPlaces(res.data);
   };
 
   return (

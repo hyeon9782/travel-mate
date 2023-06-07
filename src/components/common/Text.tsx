@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+type Props = {
+  title: "";
+  subTitle: "";
+};
+
 const Text = ({ children }: { children: string }) => {
   return <TextBlock>{children}</TextBlock>;
 };

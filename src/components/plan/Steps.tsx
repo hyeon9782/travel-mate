@@ -16,6 +16,20 @@ const Steps = ({ steps = [], children, activeStep, setActiveStep }: Props) => {
   };
   return (
     <>
+      <ButtonBlock>
+        <Button
+          text="이전"
+          color="black"
+          size="big"
+          onClick={() => handleClick("prev")}
+        />
+        <Button
+          text="다음"
+          color="black"
+          size="big"
+          onClick={() => handleClick("next")}
+        />
+      </ButtonBlock>
       <StepsBlock>
         {steps.map((item, index) => (
           <Step
@@ -26,18 +40,6 @@ const Steps = ({ steps = [], children, activeStep, setActiveStep }: Props) => {
         ))}
       </StepsBlock>
       {children}
-      <ButtonBlock>
-        <Button
-          text="Prev Step"
-          color="black"
-          onClick={() => handleClick("prev")}
-        />
-        <Button
-          text="Next Step"
-          color="black"
-          onClick={() => handleClick("next")}
-        />
-      </ButtonBlock>
     </>
   );
 };
@@ -45,11 +47,14 @@ const Steps = ({ steps = [], children, activeStep, setActiveStep }: Props) => {
 const StepsBlock = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 30px;
 `;
 
 const ButtonBlock = styled.div`
+  // 별도의 컴포넌트로 분리하자
   display: flex;
+  justify-content: space-between;
+  padding: 30px 0;
+  /* gap: 10px; */
 `;
 
 export default Steps;
