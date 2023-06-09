@@ -2,36 +2,41 @@ import styled from "styled-components";
 import Days from "../days/Days";
 import RenderMap from "../google/RenderMap";
 import Places from "../places/Places";
-import { useRecoilState } from "recoil";
-import { selectPlacesState } from "../../store/selectPlacesState";
-import AppSwiper from "../../libs/AppSwiper";
-import SelectPlace from "../places/SelectPlace";
+import PlacesTab from "../places/PlacesTab";
 
 const PlanArea = () => {
-  const [selectPlaces, setSelectPlaces] = useRecoilState(selectPlacesState);
   return (
     <PlanBlock>
-      <AppSwiper list={selectPlaces}></AppSwiper>
-      <div className="schedule-block">
-        <Days />
-        <Places />
-      </div>
-      <div className="map-block">
-        <RenderMap />
-      </div>
+      <PlacesTab />
+      <ScheduleBlock>
+        <ScheduleBox>
+          <Days />
+          <Places />
+        </ScheduleBox>
+        <MapBox>
+          <RenderMap />
+        </MapBox>
+      </ScheduleBlock>
     </PlanBlock>
   );
 };
 
 const PlanBlock = styled.div`
+  height: 100%;
+`;
+
+const ScheduleBlock = styled.article`
+  height: 80%;
   display: flex;
-  .schedule-block {
-    width: 50%;
-  }
-  .map-block {
-    width: 50%;
-    height: 300px;
-  }
+`;
+
+const ScheduleBox = styled.div`
+  width: 50%;
+`;
+
+const MapBox = styled.div`
+  width: 50%;
+  /* height: 300px; */
 `;
 
 export default PlanArea;

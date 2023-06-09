@@ -42,9 +42,9 @@ const CityTab = () => {
   };
   return (
     <CityTabBlock>
+      <CitySearchInput handleChange={handleChange} />
       <CityTabButton onClick={() => toggle(true)}>국내</CityTabButton>
       <CityTabButton onClick={() => toggle(false)}>해외</CityTabButton>
-      <CitySearchInput handleChange={handleChange} />
       <Cities cities={cities} handleClick={handleClick} />
       <CityCarousel selectCities={selectCities} />
     </CityTabBlock>

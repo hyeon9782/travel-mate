@@ -5,6 +5,7 @@ import { searchState } from "../../store/searchState";
 import Input from "../common/Input";
 import ResultList from "../search/ResultList";
 import { searchPlacesState } from "../../store/searchPlacesState";
+import PlacesTab from "./PlacesTab";
 
 const PlacesArea = () => {
   const setSearchPlaces = useSetRecoilState(searchPlacesState);
@@ -28,29 +29,34 @@ const PlacesArea = () => {
   };
   return (
     <PlacesAreaBlock>
+      <PlacesTab />
       <SearchBlock>
-        <Input onSubmit={handleSubmit} />
-        <ResultList />
+        <SearchBox>
+          <Input onSubmit={handleSubmit} />
+          <ResultList />
+        </SearchBox>
+        <MapBox>
+          <SearchMap />
+        </MapBox>
       </SearchBlock>
-      <MapBlock>
-        <SearchMap />
-      </MapBlock>
     </PlacesAreaBlock>
   );
 };
 
 const PlacesAreaBlock = styled.article`
-  display: flex;
-  background-color: lightgray;
   height: 100%;
 `;
 
-const SearchBlock = styled.div`
+const SearchBlock = styled.article`
+  display: flex;
+`;
+
+const SearchBox = styled.div`
   width: 50%;
   padding: 10px;
 `;
 
-const MapBlock = styled.div`
+const MapBox = styled.div`
   width: 50%;
 `;
 
