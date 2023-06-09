@@ -14,12 +14,14 @@ const ResultItem = ({ place }: Props) => {
 
   const { name, user_ratings_total, rating } = place;
 
-  const addPlace = (place: Item) => {
+  const addPlace = (place: Place) => {
     setSelectPlaces((prev) => [...prev, place]);
   };
 
-  const removePlace = (item: Item) => {
-    setSelectPlaces((prev) => prev.filter((v) => v.place_id !== item.place_id));
+  const removePlace = (place: Place) => {
+    setSelectPlaces((prev) =>
+      prev.filter((v) => v.place_id !== place.place_id)
+    );
   };
   return (
     <ResultItemBlock>

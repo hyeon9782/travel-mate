@@ -2,21 +2,43 @@ import styled from "styled-components";
 import Places from "./Places";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { selectPlacesState } from "../../store/selectPlacesState";
-import { useState } from "react";
-const CATEGORIES = ["맛집", "명소", "숙소"];
+import { useState, useEffect } from "react";
+const CATEGORIES = [
+  {
+    ko: "맛집",
+    en: "food",
+  },
+  {
+    ko: "명소",
+    en: "food",
+  },
+  {
+    ko: "숙소",
+    en: "food",
+  },
+];
 const PlacesTab = () => {
   const [places, setPlaces] = useRecoilState(selectPlacesState);
-  const [filterPlaces, setFilterPlaces] = useState([]);
-  const handleClick = (category: string) => {
-    const newPlaces = places.filter((place) => place.type.includes(category));
+  const [filterPlaces, setFilterPlaces] = useState(
+    places.filter((place) => place.types.includes("food"))
+  );
+  const handleClick = (category: any) => {
+    const newPlaces = places.filter((place) =>
+      place.types.includes(category.en)
+    );
+
     setFilterPlaces(newPlaces);
   };
+
+  useEffect(() => {
+    handleClick({ en: "food" });
+  }, [places]);
   return (
     <PlacesTabBlock>
       <Categories>
         {CATEGORIES.map((category, index) => (
           <Category key={index} onClick={() => handleClick(category)}>
-            {category}
+            {category.ko}
           </Category>
         ))}
       </Categories>

@@ -42,12 +42,6 @@ export const CITIES = [
     location: { lat: 37.5502, lng: 126.9931 },
   },
   {
-    city: "서울",
-    country: "한국",
-    isDomestic: true,
-    location: { lat: 37.5502, lng: 126.9931 },
-  },
-  {
     city: "부산",
     country: "한국",
     isDomestic: true,

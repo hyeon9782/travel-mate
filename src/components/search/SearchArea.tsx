@@ -33,7 +33,9 @@ const PlacesArea = () => {
       <PlacesTab />
       <SearchBlock>
         <SearchBox>
-          <Input onSubmit={handleSubmit} />
+          <InputBox>
+            <Input onSubmit={handleSubmit} />
+          </InputBox>
           <ResultList />
         </SearchBox>
         <MapBox>
@@ -53,8 +55,13 @@ const SearchBlock = styled.article`
   height: 80%;
 `;
 
+const InputBox = styled.div`
+  padding: 10px;
+`;
+
 const SearchBox = styled.div`
   width: 50%;
+  height: 100%;
   padding: 10px;
 `;
 
