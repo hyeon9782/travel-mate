@@ -14,8 +14,10 @@ const PlacesTab = () => {
   return (
     <PlacesTabBlock>
       <Categories>
-        {CATEGORIES.map((category) => (
-          <Category onClick={() => handleClick(category)}>{category}</Category>
+        {CATEGORIES.map((category, index) => (
+          <Category key={index} onClick={() => handleClick(category)}>
+            {category}
+          </Category>
         ))}
       </Categories>
       <Places places={filterPlaces} />

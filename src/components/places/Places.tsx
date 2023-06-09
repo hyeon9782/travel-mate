@@ -1,14 +1,14 @@
 import styled from "styled-components";
-import { useRecoilValue } from "recoil";
 import Place from "./Place";
-import { selectPlacesState } from "../../store/selectPlacesState";
-
-const Places = () => {
-  const selectPlaces = useRecoilValue(selectPlacesState);
+type Props = {
+  places: [];
+};
+const Places = ({ places = [] }: Props) => {
   return (
     <PlacesBlock>
-      {selectPlaces &&
-        selectPlaces.map((item, index, self) => <Place key={index} />)}
+      {places.map((place, index) => (
+        <Place key={index} place={place} />
+      ))}
     </PlacesBlock>
   );
 };

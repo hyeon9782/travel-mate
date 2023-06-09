@@ -5,9 +5,12 @@ import { useState } from "react";
 import CityCarousel from "./CityCarousel";
 import { City } from "../../types";
 import CitySearchInput from "./CitySearchInput";
+import { useSetRecoilState } from "recoil";
+import { searchState } from "../../store/searchState";
 
 const CityTab = () => {
   const [inputValue, setInputValue] = useState("");
+  const setSearchData = useSetRecoilState(searchState);
   const [isDomestic, setIsDomestic] = useState(true);
   const [cities, setCities] = useState(
     CITIES.filter((city) => city.isDomestic === isDomestic)
@@ -17,6 +20,10 @@ const CityTab = () => {
   // const cities = CITIES.filter((city) => city.isDomestic === isDomestic);
   const handleClick = (city: City) => {
     setSelectCities((prev) => [...prev, city]);
+    setSearchData((prev) => ({
+      ...prev,
+      location: city.location,
+    }));
   };
 
   const toggle = (boolean: boolean) => {

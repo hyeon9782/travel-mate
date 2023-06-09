@@ -5,7 +5,7 @@ type Props = {
   place: Place;
 };
 const Place = ({ place }: Props) => {
-  return <PlaceBlock>1</PlaceBlock>;
+  return <PlaceBlock>{place.name}</PlaceBlock>;
 };
 
 const PlaceBlock = styled.div`
