@@ -3,9 +3,9 @@ import SearchMap from "../google/SearchMap";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { searchState } from "../../store/searchState";
 import Input from "../common/Input";
-import ResultList from "../search/ResultList";
+import ResultList from "./ResultList";
 import { searchPlacesState } from "../../store/searchPlacesState";
-import PlacesTab from "./PlacesTab";
+import PlacesTab from "../places/PlacesTab";
 
 const PlacesArea = () => {
   const setSearchPlaces = useSetRecoilState(searchPlacesState);
@@ -49,6 +49,7 @@ const PlacesAreaBlock = styled.article`
 
 const SearchBlock = styled.article`
   display: flex;
+  height: 80%;
 `;
 
 const SearchBox = styled.div`

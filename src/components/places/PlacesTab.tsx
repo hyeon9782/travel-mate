@@ -1,13 +1,24 @@
 import styled from "styled-components";
-
+import Places from "./Places";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { selectPlacesState } from "../../store/selectPlacesState";
+import { useState } from "react";
+const CATEGORIES = ["맛집", "명소", "숙소"];
 const PlacesTab = () => {
+  const [places, setPlaces] = useRecoilState(selectPlacesState);
+  const [filterPlaces, setFilterPlaces] = useState([]);
+  const handleClick = (category: string) => {
+    const newPlaces = places.filter((place) => place.type.includes(category));
+    setFilterPlaces(newPlaces);
+  };
   return (
     <PlacesTabBlock>
       <Categories>
-        <div>맛집</div>
-        <div>명소</div>
-        <div>숙소</div>
+        {CATEGORIES.map((category) => (
+          <Category onClick={() => handleClick(category)}>{category}</Category>
+        ))}
       </Categories>
+      <Places places={filterPlaces} />
     </PlacesTabBlock>
   );
 };
@@ -18,6 +29,12 @@ const PlacesTabBlock = styled.article`
 
 const Categories = styled.div`
   display: flex;
+`;
+
+const Category = styled.div`
+  font-size: 1.3rem;
+  padding: 10px;
+  background-color: lightgray;
 `;
 
 export default PlacesTab;
