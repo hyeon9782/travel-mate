@@ -10,11 +10,11 @@ const CATEGORIES = [
   },
   {
     ko: "명소",
-    en: "food",
+    en: "natural_feature",
   },
   {
     ko: "숙소",
-    en: "food",
+    en: "lodging",
   },
 ];
 const PlacesTab = () => {

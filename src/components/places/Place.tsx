@@ -5,12 +5,13 @@ type Props = {
   place: Place;
 };
 const Place = ({ place }: Props) => {
-  return <PlaceBlock>{place.name}dd</PlaceBlock>;
+  return <PlaceBlock>{place.name}</PlaceBlock>;
 };
 
 const PlaceBlock = styled.div`
   border-radius: 50%;
   border: 1px solid lightgray;
+  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;

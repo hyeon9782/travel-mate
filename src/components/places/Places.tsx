@@ -14,6 +14,7 @@ const Places = ({ places }: Props) => {
 
 const PlacesBlock = styled.article`
   display: flex;
+  background-color: lightgray;
   gap: 15px;
   padding: 10px 0;
   width: 100%;
