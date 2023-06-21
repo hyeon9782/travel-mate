@@ -1,9 +1,10 @@
 import Wrapper from "../components/layout/Wrapper";
+import KakaoMap from "../libs/KakaoMap";
 
 const HomePage = () => {
   return (
     <Wrapper>
-      <>dsadsadasd</>
+      <KakaoMap />
     </Wrapper>
   );
 };
