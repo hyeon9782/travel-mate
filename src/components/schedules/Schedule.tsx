@@ -5,7 +5,7 @@ type Props = {
   place: Place;
 };
 const Schedule = ({ place }: Props) => {
-  return <ScheduleBlock>장소</ScheduleBlock>;
+  return <ScheduleBlock>{place.name}</ScheduleBlock>;
 };
 
 const ScheduleBlock = styled.div`

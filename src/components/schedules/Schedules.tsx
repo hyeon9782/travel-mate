@@ -21,7 +21,9 @@ const SchedulesBlock = styled.article`
   display: flex;
   flex-direction: column;
   gap: 15px;
-  width: 300px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
 `;
 
 export default Schedules;

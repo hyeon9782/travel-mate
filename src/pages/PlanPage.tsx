@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Steps from "../components/plan/Steps";
+import Steps from "../components/steps/Steps";
 import Wrapper from "../components/layout/Wrapper";
 import { useState } from "react";
 import PlanArea from "../components/plan/PlanArea";
@@ -7,6 +7,7 @@ import Preview from "../components/plan/Preview";
 import CityArea from "../components/cities/CityArea";
 import DateArea from "../components/date/DateArea";
 import SearchArea from "../components/search/SearchArea";
+import StepButton from "../components/steps/StepButton";
 
 const STEPS = ["도시 선택", "날짜 선택", "장소 검색", "일정 계획", "미리 보기"];
 
