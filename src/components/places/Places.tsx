@@ -2,12 +2,15 @@ import styled from "styled-components";
 import Place from "./Place";
 type Props = {
   places: [];
+  handleClick: (place: Place) => void;
 };
-const Places = ({ places }: Props) => {
+const Places = ({ places, handleClick }: Props) => {
   return (
     <PlacesBlock>
       {places &&
-        places.map((place, index) => <Place key={index} place={place} />)}
+        places.map((place, index) => (
+          <Place key={index} place={place} handleClick={handleClick} />
+        ))}
     </PlacesBlock>
   );
 };

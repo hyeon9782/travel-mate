@@ -3,9 +3,12 @@ import { Place } from "../../types";
 
 type Props = {
   place: Place;
+  handleClick: (place: Place) => void;
 };
-const Place = ({ place }: Props) => {
-  return <PlaceBlock>{place.name}</PlaceBlock>;
+const Place = ({ place, handleClick }: Props) => {
+  return (
+    <PlaceBlock onClick={() => handleClick(place)}>{place.name}</PlaceBlock>
+  );
 };
 
 const PlaceBlock = styled.div`

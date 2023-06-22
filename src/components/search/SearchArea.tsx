@@ -7,6 +7,7 @@ import ResultList from "./ResultList";
 import { searchPlacesState } from "../../store/searchPlacesState";
 import PlacesTab from "../places/PlacesTab";
 import axios from "axios";
+import { Place } from "../../types";
 
 const PlacesArea = () => {
   const setSearchPlaces = useSetRecoilState(searchPlacesState);
@@ -28,9 +29,14 @@ const PlacesArea = () => {
 
     setSearchPlaces(res.data);
   };
+
+  const handleClick = (place: Place) => {
+    console.log("Search");
+    console.log(place);
+  };
   return (
     <PlacesAreaBlock>
-      <PlacesTab />
+      <PlacesTab selectPlace={handleClick} />
       <SearchBlock>
         <SearchBox>
           <InputBox>

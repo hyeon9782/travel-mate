@@ -1,8 +1,9 @@
-import styled from "styled-components";
+import styled, { StyledComponent } from "styled-components";
 import Places from "./Places";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { selectPlacesState } from "../../store/selectPlacesState";
 import { useState, useEffect } from "react";
+import { Place } from "../../types";
 const CATEGORIES = [
   {
     ko: "맛집",
@@ -17,7 +18,11 @@ const CATEGORIES = [
     en: "lodging",
   },
 ];
-const PlacesTab = () => {
+
+type Props = {
+  selectPlace: (place: Place) => void;
+};
+const PlacesTab = ({ selectPlace }): Props => {
   const [places, setPlaces] = useRecoilState(selectPlacesState);
   const [filterPlaces, setFilterPlaces] = useState(
     places.filter((place) => place.types.includes("food"))
@@ -33,6 +38,7 @@ const PlacesTab = () => {
   useEffect(() => {
     handleClick({ en: "food" });
   }, [places]);
+
   return (
     <PlacesTabBlock>
       <Categories>
@@ -42,7 +48,7 @@ const PlacesTab = () => {
           </Category>
         ))}
       </Categories>
-      <Places places={filterPlaces} />
+      <Places places={filterPlaces} handleClick={selectPlace} />
     </PlacesTabBlock>
   );
 };

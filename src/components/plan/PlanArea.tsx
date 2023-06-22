@@ -1,17 +1,32 @@
 import styled from "styled-components";
 import Days from "../days/Days";
 import RenderMap from "../google/RenderMap";
-import Places from "../places/Places";
 import PlacesTab from "../places/PlacesTab";
+import { Place } from "../../types";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { currentDayState } from "../../store/currentDayState";
+import { scheduleState } from "../../store/scheduleState";
+import Schedules from "../schedules/Schedules";
 
 const PlanArea = () => {
+  const currentDay = useRecoilValue(currentDayState);
+  const setSchedule = useSetRecoilState(scheduleState);
+
+  const selectPlaces = (place: Place) => {
+    setSchedule((prev) => {
+      const newSchedule = [...prev];
+      newSchedule[currentDay].push(place);
+      return newSchedule;
+    });
+  };
+
   return (
     <PlanBlock>
-      <PlacesTab />
+      <PlacesTab selectPlace={selectPlaces} />
       <ScheduleBlock>
         <ScheduleBox>
           <Days />
-          <Places />
+          <Schedules />
         </ScheduleBox>
         <MapBox>
           <RenderMap />
