@@ -18,8 +18,8 @@ const SearchPlaces = () => {
     const res = await axios.get(
       `http://localhost:4000/api/search?keyword=${
         inputElement.value
-      }&radius=${5000}&latitude=${searchData.cityLocation.lat}&longitude=${
-        searchData.cityLocation.lng
+      }&radius=${5000}&latitude=${searchData.location.lat}&longitude=${
+        searchData.location.lng
       }`
     );
     console.log(res);

@@ -8,6 +8,7 @@ const SearchMap = () => {
   const selectPlaces = useRecoilValue(selectPlacesState);
   const searchData = useRecoilValue(searchState);
   console.log(selectPlaces);
+  console.log(searchData);
   return (
     <Map position={searchData}>
       {selectPlaces &&
