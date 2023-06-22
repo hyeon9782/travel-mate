@@ -1,18 +1,23 @@
 import styled from "styled-components";
 import Button from "../common/Button";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { selectPlacesState } from "../../store/selectPlacesState";
 import { Place } from "../../types";
-import { placesState } from "../../store/selectPlacesState";
+import { useEffect, useState } from "react";
 
 type Props = {
   place: Place;
 };
 
 const ResultItem = ({ place }: Props) => {
-  const setSelectPlaces = useSetRecoilState(selectPlacesState);
+  const [selectPlaces, setSelectPlaces] = useRecoilState(selectPlacesState);
+  const [isSelect, setIsSelect] = useState(false);
 
   const { name, user_ratings_total, rating } = place;
+
+  const checkPlace = () => {
+    setIsSelect(selectPlaces.includes(place));
+  };
 
   const addPlace = (place: Place) => {
     setSelectPlaces((prev) => [...prev, place]);
@@ -23,22 +28,34 @@ const ResultItem = ({ place }: Props) => {
       prev.filter((v) => v.place_id !== place.place_id)
     );
   };
+
+  useEffect(() => {
+    checkPlace();
+  }, [selectPlaces]);
+
   return (
-    <ResultItemBlock>
+    <ResultItemBlock isSelect={isSelect}>
       <div className="name-box">{name}</div>
       <div className="rating-box">
         <div>리뷰 개수 : {user_ratings_total}개</div>
         <div>평균 평점 : {rating}점</div>
       </div>
       <div className="btn-box">
-        <Button text="추가" color="black" onClick={() => addPlace(place)} />
-        <Button text="제거" color="black" onClick={() => removePlace(place)} />
+        {!isSelect ? (
+          <Button text="추가" color="black" onClick={() => addPlace(place)} />
+        ) : (
+          <Button
+            text="제거"
+            color="black"
+            onClick={() => removePlace(place)}
+          />
+        )}
       </div>
     </ResultItemBlock>
   );
 };
 
-const ResultItemBlock = styled.div`
+const ResultItemBlock = styled.div<{ isSelect: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -47,6 +64,7 @@ const ResultItemBlock = styled.div`
   border-radius: 10px;
   padding: 10px;
   font-weight: bold;
+  background-color: ${(props) => (props.isSelect ? "lightgray" : "white")};
   .name-box {
   }
 
