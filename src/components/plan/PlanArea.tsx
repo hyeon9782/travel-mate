@@ -15,6 +15,7 @@ const PlanArea = () => {
   const selectPlaces = (place: Place) => {
     setSchedule((prev) => {
       const newSchedule = [...prev];
+      newSchedule[currentDay] = [...prev[currentDay]];
       newSchedule[currentDay].push(place);
       return newSchedule;
     });

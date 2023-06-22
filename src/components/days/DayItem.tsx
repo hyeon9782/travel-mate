@@ -8,6 +8,7 @@ type Props = {
 
 const DayItem = ({ day }: Props) => {
   const [currentDay, setCurrentDay] = useRecoilState(currentDayState);
+
   const handleClick = () => {
     setCurrentDay(day);
   };

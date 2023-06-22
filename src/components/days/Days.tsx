@@ -1,14 +1,14 @@
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { daysState } from "../../store/daysState";
 import DayCreater from "./DayCreater";
 import DayItem from "./DayItem";
+import { scheduleState } from "../../store/scheduleState";
 
 const Days = () => {
-  const days = useRecoilValue(daysState);
+  const schedules = useRecoilValue(scheduleState);
   return (
     <DaysBlock>
-      {days.map((_, i) => (
+      {schedules.map((_, i) => (
         <DayItem key={i} day={i} />
       ))}
       <DayCreater />

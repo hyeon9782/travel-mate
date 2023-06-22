@@ -1,12 +1,20 @@
 import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import { daysState } from "../../store/daysState";
 import { PlusIcon } from "../common/icons";
+import { scheduleState } from "../../store/scheduleState";
 
 const DayCreater = () => {
-  const setDays = useSetRecoilState(daysState);
+  const setSchedule = useSetRecoilState(scheduleState);
+
+  const handleClick = () => {
+    setSchedule((prev) => {
+      const newSchedule = [...prev];
+      newSchedule[newSchedule.length] = [];
+      return newSchedule;
+    });
+  };
   return (
-    <DayCreaterBlock onClick={() => setDays((prev) => [...prev, "1"])}>
+    <DayCreaterBlock onClick={() => handleClick()}>
       <PlusIcon />
       <div>날짜추가</div>
     </DayCreaterBlock>

@@ -1,14 +1,17 @@
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { scheduleState } from "../../store/scheduleState";
+import Schedule from "./Schedule";
+import { currentDayState } from "../../store/currentDayState";
 
 const Schedules = () => {
   const schedules = useRecoilValue(scheduleState);
+  const currentDay = useRecoilValue(currentDayState);
   return (
     <SchedulesBlock>
-      {schedules &&
-        schedules.map((place, index) => (
-          <Schedules key={index} place={place} />
+      {schedules[currentDay] &&
+        schedules[currentDay].map((place, index) => (
+          <Schedule key={index} place={place} />
         ))}
     </SchedulesBlock>
   );

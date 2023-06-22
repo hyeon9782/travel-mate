@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Steps from "../components/plan/Steps";
 import Wrapper from "../components/layout/Wrapper";
 import { useState } from "react";
-import SearchPlaces from "../components/search/SearchPlaces";
 import PlanArea from "../components/plan/PlanArea";
 import Preview from "../components/plan/Preview";
 import CityArea from "../components/cities/CityArea";
