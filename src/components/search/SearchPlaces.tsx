@@ -44,7 +44,6 @@ const SearchPlaces = () => {
 const SearchPlacesBlock = styled.div`
   display: flex;
   .search-block {
-    /* box-sizing: border-box; */
     width: 50%;
     padding: 10px;
   }
