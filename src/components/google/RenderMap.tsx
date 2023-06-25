@@ -94,7 +94,7 @@ const RenderMap = () => {
   return (
     <>
       <button onClick={handleClick}>길찾기</button>
-      <Map position={searchData}>
+      <Map position={schedules[currentDay].at(-1)}>
         {schedules[currentDay] &&
           schedules[currentDay].map((schedule) => (
             <Marker

@@ -8,9 +8,10 @@ const SearchMap = () => {
   const selectPlaces = useRecoilValue(selectPlacesState);
   const searchData = useRecoilValue(searchState);
   console.log(selectPlaces);
+  console.log(selectPlaces.at(-1));
   console.log(searchData);
   return (
-    <Map position={searchData}>
+    <Map position={selectPlaces.at(-1)}>
       {selectPlaces &&
         selectPlaces.map((item) => (
           <Marker key={item.place_id} position={item.geometry.location} />
