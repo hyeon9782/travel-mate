@@ -45,7 +45,6 @@ const options = {
 };
 
 const RenderMap = () => {
-  const searchData = useRecoilValue(searchState);
   const schedules = useRecoilValue(scheduleState);
   const currentDay = useRecoilValue(currentDayState);
   const [markerPositions, setMarkerPositions] = useState([
