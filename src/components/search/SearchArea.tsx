@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import SearchMap from "../google/SearchMap";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { searchState } from "../../store/searchState";
 import Input from "../common/Input";
 import ResultList from "./ResultList";
@@ -8,9 +8,11 @@ import { searchPlacesState } from "../../store/searchPlacesState";
 import PlacesTab from "../places/PlacesTab";
 import axios from "axios";
 import { Place } from "../../types";
+import { selectPlacesState } from "../../store/selectPlacesState";
 
 const PlacesArea = () => {
   const setSearchPlaces = useSetRecoilState(searchPlacesState);
+  const [selectPlaces, setSelectPlaces] = useRecoilState(selectPlacesState);
   const searchData = useRecoilValue(searchState);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -30,9 +32,12 @@ const PlacesArea = () => {
     setSearchPlaces(res.data);
   };
 
+  // 클릭 시 장소 선택 취소
   const handleClick = (place: Place) => {
-    console.log("Search");
-    console.log(place);
+    const newSelectPlaces = selectPlaces.filter(
+      (selectPlace) => selectPlace.place_id !== place.place_id
+    );
+    setSelectPlaces(newSelectPlaces);
   };
   return (
     <PlacesAreaBlock>
