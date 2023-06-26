@@ -3,7 +3,6 @@ import Map from "./Map";
 import { scheduleState } from "../../store/scheduleState";
 import { currentDayState } from "../../store/currentDayState";
 import { Marker, Polyline } from "@react-google-maps/api";
-import { searchState } from "../../store/searchState";
 import { useState, useEffect } from "react";
 
 const center = {
@@ -93,7 +92,7 @@ const RenderMap = () => {
   return (
     <>
       <button onClick={handleClick}>길찾기</button>
-      <Map position={schedules[currentDay].at(-1)}>
+      <Map position={schedules[currentDay]?.at(-1)}>
         {schedules[currentDay] &&
           schedules[currentDay].map((schedule) => (
             <Marker

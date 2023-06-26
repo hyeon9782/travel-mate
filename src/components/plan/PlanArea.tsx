@@ -7,18 +7,20 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { currentDayState } from "../../store/currentDayState";
 import { scheduleState } from "../../store/scheduleState";
 import Schedules from "../schedules/Schedules";
+import { selectPlacesState } from "../../store/selectPlacesState";
 
 const PlanArea = () => {
   const currentDay = useRecoilValue(currentDayState);
   const setSchedule = useSetRecoilState(scheduleState);
+  const selectedPlaces = useSetRecoilState(selectPlacesState);
 
-  // schedule이라는 state를 없애고
-  // selectPlaces라는 state 하나로 관리 가능할 거 같아
-  // day라는 프로퍼티를 하나 추가하고
-  // 검색 화면에서 장소를 선택했을 때는 day : 0
-  // 일정 화면에서 n일차로 계획에 넣었을 때는 day : n 이런식으로
-  // schedule 컴포넌트에서는 selectPlaces라는 state를
   const selectPlaces = (place: Place) => {
+    selectedPlaces((prev) => {
+      const newSelectedPlaces = [...prev];
+      return newSelectedPlaces.filter(
+        (selectedPlace) => selectedPlace.place_id !== place.place_id
+      );
+    });
     setSchedule((prev) => {
       const newSchedule = [...prev];
       newSchedule[currentDay] = [...prev[currentDay]];
