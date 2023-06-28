@@ -4,6 +4,7 @@ import { scheduleState } from "../../store/scheduleState";
 import Schedule from "./Schedule";
 import { currentDayState } from "../../store/currentDayState";
 import { selectPlacesState } from "../../store/selectPlacesState";
+import Directions from "./Directions";
 
 const Schedules = () => {
   const currentDay = useRecoilValue(currentDayState);
@@ -21,15 +22,22 @@ const Schedules = () => {
   };
   return (
     <SchedulesBlock>
-      {schedules[currentDay] &&
-        schedules[currentDay].map((place, index) => (
-          <Schedule key={index} place={place} handleClick={handleClick} />
-        ))}
+      <Directions />
+      <PlaceBlock>
+        {schedules[currentDay] &&
+          schedules[currentDay].map((place, index) => (
+            <Schedule key={index} place={place} handleClick={handleClick} />
+          ))}
+      </PlaceBlock>
     </SchedulesBlock>
   );
 };
 
 const SchedulesBlock = styled.article`
+  display: flex;
+`;
+
+const PlaceBlock = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
