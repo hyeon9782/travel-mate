@@ -26,13 +26,13 @@ const DirectionsBlock = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 33px;
+  gap: 50px;
   padding: 10px;
 `;
 
 const Line = styled.div`
   position: absolute;
-  z-index: 3;
+  z-index: 1;
   left: 25px;
   border-right: 1px solid black;
   height: 100%;

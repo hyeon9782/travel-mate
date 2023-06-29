@@ -45,7 +45,10 @@ const PlacesArea = () => {
       <SearchBlock>
         <SearchBox>
           <InputBox>
-            <Input onSubmit={handleSubmit} />
+            <Input
+              onSubmit={handleSubmit}
+              holder="가고 싶은 장소를 검색해보세요!"
+            />
           </InputBox>
           <ResultList />
         </SearchBox>

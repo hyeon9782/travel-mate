@@ -26,40 +26,13 @@ const options = {
   editable: false,
   visible: true,
   radius: 30000,
-  paths: [
-    {
-      lat: 33.5244524,
-      lng: 126.5841316,
-    },
-    {
-      lat: 33.5120564,
-      lng: 126.5615703,
-    },
-    {
-      lat: 33.5022995,
-      lng: 126.5132295,
-    },
-  ],
   zIndex: 1,
 };
 
 const RenderMap = () => {
   const schedules = useRecoilValue(scheduleState);
   const currentDay = useRecoilValue(currentDayState);
-  const [markerPositions, setMarkerPositions] = useState([
-    {
-      lat: 33.5244524,
-      lng: 126.5841316,
-    },
-    {
-      lat: 33.5120564,
-      lng: 126.5615703,
-    },
-    {
-      lat: 33.5022995,
-      lng: 126.5132295,
-    },
-  ]);
+  const [markerPositions, setMarkerPositions] = useState([]);
 
   useEffect(() => {
     const position = schedules[currentDay].map(
@@ -100,7 +73,9 @@ const RenderMap = () => {
               position={schedule.geometry.location}
             />
           ))}
-        <Polyline path={markerPositions} options={options} />
+        {markerPositions.length > 0 && (
+          <Polyline path={markerPositions} options={options} />
+        )}
       </Map>
     </>
   );

@@ -12,8 +12,10 @@ const DirectionItemBlock = styled.div`
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 1px solid black;
-  z-index: 1;
+
+  z-index: 2;
+  background-color: gray;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;

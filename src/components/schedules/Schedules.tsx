@@ -40,7 +40,7 @@ const SchedulesBlock = styled.article`
 const PlaceBlock = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 30px;
   width: 100%;
   padding: 10px;
   box-sizing: border-box;

@@ -6,7 +6,10 @@ type Props = {
 const CitySearchInput = ({ handleChange }: Props) => {
   return (
     <CitySearchInputBlock>
-      <Input onChange={handleChange} />
+      <Input
+        onChange={handleChange}
+        holder="여행을 떠날 도시를 검색해보세요!"
+      />
     </CitySearchInputBlock>
   );
 };
