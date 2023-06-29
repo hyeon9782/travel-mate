@@ -17,8 +17,8 @@ const destination = {
 
 const options = {
   strokeColor: "#FF0000",
-  strokeOpacity: 0.8,
-  strokeWeight: 2,
+  strokeOpacity: 0.4,
+  strokeWeight: 3,
   fillColor: "#FF0000",
   fillOpacity: 0.35,
   clickable: false,
@@ -64,7 +64,7 @@ const RenderMap = () => {
   console.log(schedules[currentDay]);
   return (
     <>
-      <button onClick={handleClick}>길찾기</button>
+      {/* <button onClick={handleClick}>길찾기</button> */}
       <Map position={schedules[currentDay]?.at(-1)}>
         {schedules[currentDay] &&
           schedules[currentDay].map((schedule) => (

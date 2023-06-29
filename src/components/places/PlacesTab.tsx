@@ -65,11 +65,12 @@ const PlacesTab = ({ selectPlace }): Props => {
 };
 
 const PlacesTabBlock = styled.article`
-  height: 20%;
+  /* height: 20%; */
+  margin-bottom: 30px;
 `;
 
 const PlacesBlock = styled.div`
-  min-height: 100px;
+  min-height: 122px;
   background-color: lightgray;
 `;
 

@@ -19,6 +19,7 @@ const Days = () => {
 const DaysBlock = styled.div`
   display: flex;
   gap: 5px;
+  padding-bottom: 10px;
 `;
 
 export default Days;

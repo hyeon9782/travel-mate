@@ -18,7 +18,7 @@ const Places = ({ places, handleClick }: Props) => {
 const PlacesBlock = styled.article`
   display: flex;
   gap: 15px;
-  padding: 10px 0;
+  padding: 10px;
   width: 100%;
 `;
 

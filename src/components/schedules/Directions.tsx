@@ -33,8 +33,8 @@ const DirectionsBlock = styled.div`
 const Line = styled.div`
   position: absolute;
   z-index: 1;
-  left: 25px;
-  border-right: 1px solid black;
+  left: 24px;
+  border-right: 3px solid gray;
   height: 100%;
 `;
 
