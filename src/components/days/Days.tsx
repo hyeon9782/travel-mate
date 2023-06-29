@@ -6,6 +6,7 @@ import { scheduleState } from "../../store/scheduleState";
 
 const Days = () => {
   const schedules = useRecoilValue(scheduleState);
+
   return (
     <DaysBlock>
       {schedules.map((_, i) => (
@@ -19,7 +20,7 @@ const Days = () => {
 const DaysBlock = styled.div`
   display: flex;
   gap: 5px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 `;
 
 export default Days;

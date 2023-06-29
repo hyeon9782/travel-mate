@@ -5,17 +5,7 @@ import { currentDayState } from "../../store/currentDayState";
 import { Marker, Polyline } from "@react-google-maps/api";
 import { useState, useEffect } from "react";
 
-const center = {
-  lat: 37.7749, // 시작 위치의 위도
-  lng: -122.4194, // 시작 위치의 경도
-};
-
-const destination = {
-  lat: 34.0522, // 목적지의 위도
-  lng: -118.2437, // 목적지의 경도
-};
-
-const options = {
+const OPTIONS = {
   strokeColor: "#FF0000",
   strokeOpacity: 0.4,
   strokeWeight: 3,
@@ -38,46 +28,23 @@ const RenderMap = () => {
     const position = schedules[currentDay].map(
       (schedule) => schedule.geometry.location
     );
-    console.log(position);
+
     setMarkerPositions(position);
   }, [schedules[currentDay]]);
 
-  const handleClick = () => {
-    const directionsService = new window.google.maps.DirectionsService();
-    directionsService.route(
-      {
-        origin: center,
-        destination: destination,
-        travelMode: "DRIVING",
-      },
-      (result, status) => {
-        if (status === window.google.maps.DirectionsStatus.OK) {
-          console.log("성공");
-          console.log(result);
-        } else {
-          console.error("Directions request failed:", status);
-        }
-      }
-    );
-  };
-
-  console.log(schedules[currentDay]);
   return (
-    <>
-      {/* <button onClick={handleClick}>길찾기</button> */}
-      <Map position={schedules[currentDay]?.at(-1)}>
-        {schedules[currentDay] &&
-          schedules[currentDay].map((schedule) => (
-            <Marker
-              key={schedule.place_id}
-              position={schedule.geometry.location}
-            />
-          ))}
-        {markerPositions.length > 0 && (
-          <Polyline path={markerPositions} options={options} />
-        )}
-      </Map>
-    </>
+    <Map position={schedules[currentDay]?.at(-1)}>
+      {schedules[currentDay] &&
+        schedules[currentDay].map((schedule) => (
+          <Marker
+            key={schedule.place_id}
+            position={schedule.geometry.location}
+          />
+        ))}
+      {markerPositions.length > 0 && (
+        <Polyline path={markerPositions} options={OPTIONS} />
+      )}
+    </Map>
   );
 };
 
