@@ -33,6 +33,7 @@ const PlanPage = () => {
     }
     return component;
   };
+
   return (
     <Wrapper>
       <PlanPageBlock>
