@@ -9,6 +9,7 @@ import PlacesTab from "../places/PlacesTab";
 import axios from "axios";
 import { Place } from "../../types";
 import { selectPlacesState } from "../../store/selectPlacesState";
+import DoneButton from "../plan/DoneButton";
 
 const PlacesArea = ({ moveStep }) => {
   const setSearchPlaces = useSetRecoilState(searchPlacesState);
@@ -56,7 +57,7 @@ const PlacesArea = ({ moveStep }) => {
           <ResultList />
         </SearchBox>
       </SearchBlock>
-      <DoneButton onClick={() => moveStep(1)}>장소 선택 완료</DoneButton>
+      <DoneButton moveStep={moveStep}>장소 선택 완료</DoneButton>
     </PlacesAreaBlock>
   );
 };
@@ -71,30 +72,17 @@ const SearchBlock = styled.article`
 `;
 
 const InputBox = styled.div`
-  padding: 10px 0;
+  padding: 10px;
 `;
 
 const SearchBox = styled.div`
   width: 100%;
   height: 100%;
-  // padding: 10px;
 `;
 
 const MapBox = styled.div`
-  width: 100%;
-  height: 100px;
+  height: 200px;
   background-color: gray;
-`;
-
-const DoneButton = styled.button`
-  text-align: center;
-  width: 100%;
-  border-radius: 5px;
-  border: none;
-  background-color: blue;
-  color: white;
-  padding: 15px;
-  margin-top: 20px;
 `;
 
 export default PlacesArea;

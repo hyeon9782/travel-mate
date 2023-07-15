@@ -59,13 +59,12 @@ const ResultItemBlock = styled.div<{ isSelect: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
-  border: 1px solid lightgray;
-  border-radius: 10px;
-  padding: 10px;
-  font-weight: bold;
-  background-color: ${(props) => (props.isSelect ? "lightgray" : "white")};
+
+  padding: 5px 0;
+  border-bottom: 1px solid lightgray;
+  background-color: #faf9fc;
   .name-box {
+    font-weight: bold;
   }
 
   .rating-box {

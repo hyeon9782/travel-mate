@@ -10,7 +10,9 @@ const DateArea = (props) => {
           일정에 따른 날씨예보, 여행 정보를 알려드립니다.
         </div>
       </DateAreaTitle>
-      <AppCalender {...props} />
+      <CalenderBox>
+        <AppCalender {...props} />
+      </CalenderBox>
     </DateAreaBlock>
   );
 };
@@ -18,10 +20,16 @@ const DateArea = (props) => {
 const DateAreaBlock = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+`;
+
+const CalenderBox = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 const DateAreaTitle = styled.div`
+  padding: 0px 15px;
+
   .main {
     font-size: 1.5rem;
     font-weight: bold;
@@ -31,7 +39,7 @@ const DateAreaTitle = styled.div`
   .sub {
     color: gray;
   }
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   border-bottom: 1px solid gray;
 `;
 

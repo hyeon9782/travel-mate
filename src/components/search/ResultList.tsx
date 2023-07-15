@@ -26,7 +26,7 @@ const ResultListBlock = styled.div`
   padding: 10px;
   overflow: auto;
   min-height: 200px;
-  background-color: lightgray;
+  background-color: #faf9fc;
 `;
 
 export default ResultList;

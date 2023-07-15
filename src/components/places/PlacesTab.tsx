@@ -65,8 +65,7 @@ const PlacesTab = ({ selectPlace }): Props => {
 };
 
 const PlacesTabBlock = styled.article`
-  /* height: 20%; */
-  margin-bottom: 10px;
+  padding: 10px;
 `;
 
 const PlacesBlock = styled.div`
@@ -75,13 +74,16 @@ const PlacesBlock = styled.div`
 
 const Categories = styled.div`
   display: flex;
+  gap: 10px;
 `;
 
 const Category = styled.div<{ isActive?: boolean }>`
   font-size: 0.8rem;
   padding: 10px;
-  background-color: ${(props) => (props.isActive ? "black" : "lightgray")};
-  color: ${(props) => (props.isActive ? "white" : "black")};
+  border-radius: 10px;
+  border: 1px solid blue;
+  background-color: ${(props) => (props.isActive ? "blue" : "white")};
+  color: ${(props) => (props.isActive ? "white" : "blue")};
 `;
 
 export default PlacesTab;
