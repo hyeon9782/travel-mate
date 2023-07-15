@@ -29,13 +29,12 @@ const Input = ({
 };
 
 const InputBlock = styled.input<{ size?: string }>`
-  width: 100%;
-  border: 1px solid gray;
-  border-radius: 10px;
-  font-size: ${(props) => (props.size === "big" ? "1.5rem" : "1.1rem")};
-  padding: 10px;
+  width: 300px;
+  border: none;
+  outline: none;
+  font-size: ${(props) => (props.size === "big" ? "1.5rem" : "1rem")};
   box-sizing: border-box;
-  height: ${(props) => (props.size === "big" ? "80px" : "45px")};
+  height: ${(props) => (props.size === "big" ? "80px" : "30px")};
 `;
 
 export default Input;

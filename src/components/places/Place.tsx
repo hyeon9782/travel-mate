@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Place } from "../../types";
+import { truncateTextOverflow } from "../../utils/utils";
 
 type Props = {
   place: Place;
@@ -7,19 +8,24 @@ type Props = {
 };
 const Place = ({ place, handleClick }: Props) => {
   return (
-    <PlaceBlock onClick={() => handleClick(place)}>{place.name}</PlaceBlock>
+    <PlaceBlock onClick={() => handleClick(place)}>
+      <PlaceImage></PlaceImage>
+      <PlaceName>{truncateTextOverflow(place.name)}</PlaceName>
+    </PlaceBlock>
   );
 };
 
-const PlaceBlock = styled.div`
+const PlaceBlock = styled.div``;
+
+const PlaceImage = styled.div`
   border-radius: 50%;
-  border: 1px solid lightgray;
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
+  background-color: lightgray;
+`;
+
+const PlaceName = styled.div`
+  padding: 5px 0;
 `;
 
 export default Place;

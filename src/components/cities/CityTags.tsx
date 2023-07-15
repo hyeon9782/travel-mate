@@ -1,21 +1,21 @@
 import styled from "styled-components";
 import CityTag from "./CityTag";
 
-const CitiesTag = ({ tags }) => {
+const CityTags = ({ tags }: any) => {
   return (
-    <CitiesTagBlock>
+    <CityTagsBlock>
       {tags.map((tag, index) => (
         <CityTag key={index} tag={tag} />
       ))}
-    </CitiesTagBlock>
+    </CityTagsBlock>
   );
 };
 
-const CitiesTagBlock = styled.div`
+const CityTagsBlock = styled.div`
   display: flex;
   gap: 10px;
-  background-color: lightgray;
+  background-color: #faf9fc;
   padding: 10px;
 `;
 
-export default CitiesTag;
+export default CityTags;

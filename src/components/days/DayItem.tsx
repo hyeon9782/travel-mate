@@ -20,7 +20,7 @@ const DayItem = ({ day }: Props) => {
 };
 
 const DayItemBlock = styled.div`
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: bold;
   border-radius: 5px;
   border: 1px solid gray;

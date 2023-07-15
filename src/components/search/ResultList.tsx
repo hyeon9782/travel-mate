@@ -22,8 +22,7 @@ const ResultListBlock = styled.div`
   flex-direction: column;
   gap: 10px;
   box-sizing: border-box;
-  width: 100%;
-  height: 90%;
+  height: 300px;
   padding: 10px;
   overflow: auto;
   min-height: 200px;

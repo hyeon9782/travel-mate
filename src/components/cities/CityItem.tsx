@@ -1,16 +1,26 @@
 import styled from "styled-components";
 import { City } from "../../types";
+import { useState } from "react";
 
 type Props = {
   city: City;
   handleClick: (city: City) => void;
 };
 const CityItem = ({ city, handleClick }: Props) => {
+  const [isSelect, setIsSelect] = useState(false);
+
+  // const checkCity = () => {
+  //   setIsSelect(selectPlaces.includes(place));
+  // };
   return (
-    <CityBlock onClick={() => handleClick(city)}>
+    <CityBlock>
       <ImageBox></ImageBox>
       <div>{city.city}</div>
-      <SelectButton>선택</SelectButton>
+      {!isSelect ? (
+        <SelectButton onClick={() => handleClick(city)}>선택</SelectButton>
+      ) : (
+        <CancleButton>취소</CancleButton>
+      )}
     </CityBlock>
   );
 };
@@ -35,6 +45,15 @@ const SelectButton = styled.button`
   border: none;
   padding: 5px 10px;
   font-weight: bold;
+`;
+
+const CancleButton = styled.button`
+  border-radius: 15px;
+  border: 1px solid blue;
+  padding: 5px 10px;
+  font-weight: bold;
+  color: blue;
+  background-color: white;
 `;
 
 export default CityItem;

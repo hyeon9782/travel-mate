@@ -16,4 +16,7 @@ export type Place = {
       lng: number;
     };
   };
+  isSelect: boolean;
+  day: number;
+  order: number;
 };

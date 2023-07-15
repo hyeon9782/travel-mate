@@ -45,14 +45,14 @@ const PlanPage = () => {
 
   return (
     <PlanPageBlock>
-      <PrevStep moveStep={moveStep} />
+      <PrevStep moveStep={moveStep} activeStep={activeStep} />
       {move()}
     </PlanPageBlock>
   );
 };
 
 const PlanPageBlock = styled.section`
-  padding: 10px;
+  padding: 10px 0;
 `;
 
 const PlanBlock = styled.article``;

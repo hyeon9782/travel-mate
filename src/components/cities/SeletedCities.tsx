@@ -15,10 +15,8 @@ const SeletedCities = ({ selectCities = [] }: Props) => {
 
 const SeletedCitiesBlock = styled.div`
   display: flex;
-  border-top: 1px solid lightgray;
   gap: 30px;
-  padding: 10px 0;
-  margin: 10px 0px;
+  padding: 10px;
 `;
 
 export default SeletedCities;
