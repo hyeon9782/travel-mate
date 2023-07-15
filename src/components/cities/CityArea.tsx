@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import CityTab from "./CityTab";
 
-const CityArea = () => {
+const CityArea = (props) => {
   return (
     <CityAreaBlock>
-      <CityTab />
+      <CityTab {...props} />
     </CityAreaBlock>
   );
 };

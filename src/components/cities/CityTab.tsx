@@ -9,7 +9,7 @@ import { useSetRecoilState } from "recoil";
 import { searchState } from "../../store/searchState";
 import CitiesTag from "./CitiesTag";
 
-const CityTab = () => {
+const CityTab = ({ moveStep }: (direction: number) => void) => {
   const [inputValue, setInputValue] = useState("");
   const setSearchData = useSetRecoilState(searchState);
   const [isDomestic, setIsDomestic] = useState(false);
@@ -49,9 +49,6 @@ const CityTab = () => {
     setCities(newArr);
   };
 
-  const nextStep = () => {
-    console.log("dd");
-  };
   return (
     <CityTabBlock>
       <CitySearchInput handleChange={handleChange} />
@@ -71,7 +68,7 @@ const CityTab = () => {
       <Cities cities={cities} handleClick={handleClick} />
       <SeletedCities selectCities={selectCities} />
       <DoneButton
-        onClick={() => nextStep()}
+        onClick={() => moveStep(1)}
         disabled={selectCities.length === 0 ? true : false}
       >
         {selectCities.length > 0
