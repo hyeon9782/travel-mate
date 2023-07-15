@@ -66,14 +66,13 @@ const CityTab = ({ moveStep }: (direction: number) => void) => {
           국내도시
         </CityTabButton>
       </ButtonBox>
-      {!isDomestic && <CitiesTag tags={["전체", "일본", "유럽"]} />}
-
+      {!isDomestic && (
+        <CitiesTag
+          tags={["전체", "일본", "동남아시아", "유럽", "미주", "중남미"]}
+        />
+      )}
       <Cities cities={cities} handleClick={handleClick} />
-
-      <SeletedBox
-      // onClick={() => moveStep(1)}
-      // disabled={selectCities.length === 0 ? true : false}
-      >
+      <SeletedBox>
         {selectCities.length !== 0 && (
           <SeletedCities selectCities={selectCities} />
         )}

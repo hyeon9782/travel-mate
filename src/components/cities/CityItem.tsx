@@ -14,8 +14,13 @@ const CityItem = ({ city, handleClick }: Props) => {
   // };
   return (
     <CityBlock>
-      <ImageBox></ImageBox>
-      <div>{city.city}</div>
+      <div className="city-box">
+        <ImageBox></ImageBox>
+        <CityContent>
+          <div className="city">{city.city}</div>
+          <div className="related">{city.related.join(", ")}</div>
+        </CityContent>
+      </div>
       {!isSelect ? (
         <SelectButton onClick={() => handleClick(city)}>선택</SelectButton>
       ) : (
@@ -31,6 +36,10 @@ const CityBlock = styled.div`
   justify-content: space-between;
   align-items: center;
   font-size: 1.2rem;
+
+  .city-box {
+    display: flex;
+  }
 `;
 
 const ImageBox = styled.div`
@@ -43,7 +52,7 @@ const ImageBox = styled.div`
 const SelectButton = styled.button`
   border-radius: 15px;
   border: none;
-  padding: 5px 10px;
+  padding: 7px 15px;
   font-weight: bold;
 `;
 
@@ -54,6 +63,24 @@ const CancleButton = styled.button`
   font-weight: bold;
   color: blue;
   background-color: white;
+`;
+
+const CityContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding-left: 10px;
+
+  .city {
+    font-size: 1.1rem;
+    padding-bottom: 5px;
+    font-weight: bold;
+  }
+
+  .related {
+    font-size: 0.9rem;
+    color: gray;
+  }
 `;
 
 export default CityItem;

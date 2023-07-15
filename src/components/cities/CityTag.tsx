@@ -1,12 +1,13 @@
 import styled from "styled-components";
 type Props = {
-  tag: string;
+  children: any;
 };
-const CityTag = ({ tag }: Props) => {
-  return <CityTagBlock>{tag}</CityTagBlock>;
+const CityTag = ({ children }: Props) => {
+  return <CityTagBlock>{children}</CityTagBlock>;
 };
 
 const CityTagBlock = styled.div`
+  width: 70px;
   border-radius: 15px;
   background-color: white;
   font-weight: 400;
