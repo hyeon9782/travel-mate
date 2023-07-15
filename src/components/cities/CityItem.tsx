@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { City } from "../../types";
 import { useState } from "react";
+import { appendCity } from "../../service/city";
 
 type Props = {
   city: City;
@@ -9,9 +10,6 @@ type Props = {
 const CityItem = ({ city, handleClick }: Props) => {
   const [isSelect, setIsSelect] = useState(false);
 
-  // const checkCity = () => {
-  //   setIsSelect(selectPlaces.includes(place));
-  // };
   return (
     <CityBlock>
       <div className="city-box">
@@ -22,7 +20,7 @@ const CityItem = ({ city, handleClick }: Props) => {
         </CityContent>
       </div>
       {!isSelect ? (
-        <SelectButton onClick={() => handleClick(city)}>선택</SelectButton>
+        <SelectButton onClick={() => appendCity(city)}>선택</SelectButton>
       ) : (
         <CancleButton>취소</CancleButton>
       )}

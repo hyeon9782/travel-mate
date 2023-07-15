@@ -5,15 +5,11 @@ type Props = {
   cities: [];
   handleClick: (city: City) => void;
 };
-const Cities = ({ cities = [], handleClick }: Props) => {
+const Cities = ({ cities = [] }: Props) => {
   return (
     <CitiesBlock>
       {cities.map((city, index) => (
-        <CityItem
-          key={index}
-          city={city}
-          handleClick={() => handleClick(city)}
-        />
+        <CityItem key={index} city={city} />
       ))}
     </CitiesBlock>
   );

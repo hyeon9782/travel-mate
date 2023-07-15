@@ -1,3 +1,4 @@
+import { searchCity } from "../../service/city";
 import Input from "../common/Input";
 import { ArrowLeftIcon, SearchIcon } from "../common/icons";
 import styled from "styled-components";
@@ -15,7 +16,7 @@ const PrevStep = ({ moveStep, handleChange, activeStep }: Props) => {
       {activeStep === 1 && (
         <SearchBox>
           <Input
-            onChange={handleChange}
+            onChange={searchCity}
             holder="여행을 떠날 도시를 검색해보세요!"
           />
           <SearchIcon className="icon" />
