@@ -97,11 +97,13 @@ const CityTabButton = styled.button`
 `;
 
 const DoneButton = styled.button`
+  text-align: center;
   width: 100%;
-  padding: 10px;
   border-radius: 5px;
-  background-color: lightgray;
   border: none;
+  background-color: blue;
+  color: white;
+  padding: 15px;
 `;
 
 export default CityTab;
