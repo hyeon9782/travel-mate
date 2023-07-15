@@ -33,13 +33,13 @@ const PlanArea = () => {
     <PlanBlock>
       <PlacesTab selectPlace={selectPlaces} />
       <ScheduleBlock>
+        <MapBox>
+          <RenderMap />
+        </MapBox>
         <ScheduleBox>
           <Days />
           <Schedules />
         </ScheduleBox>
-        <MapBox>
-          <RenderMap />
-        </MapBox>
       </ScheduleBlock>
     </PlanBlock>
   );
@@ -52,14 +52,16 @@ const PlanBlock = styled.div`
 const ScheduleBlock = styled.article`
   height: 80%;
   display: flex;
+  flex-direction: column;
 `;
 
 const ScheduleBox = styled.div`
-  width: 50%;
+  width: 100%;
 `;
 
 const MapBox = styled.div`
-  width: 50%;
+  width: 100%;
+  height: 300px;
   /* height: 300px; */
 `;
 

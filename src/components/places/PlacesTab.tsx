@@ -66,12 +66,11 @@ const PlacesTab = ({ selectPlace }): Props => {
 
 const PlacesTabBlock = styled.article`
   /* height: 20%; */
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 `;
 
 const PlacesBlock = styled.div`
-  min-height: 122px;
-  background-color: lightgray;
+  min-height: 100px;
 `;
 
 const Categories = styled.div`
@@ -79,7 +78,7 @@ const Categories = styled.div`
 `;
 
 const Category = styled.div<{ isActive?: boolean }>`
-  font-size: 1.3rem;
+  font-size: 0.8rem;
   padding: 10px;
   background-color: ${(props) => (props.isActive ? "black" : "lightgray")};
   color: ${(props) => (props.isActive ? "white" : "black")};

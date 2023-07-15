@@ -15,10 +15,11 @@ const PlanPage = () => {
   const navigate = useNavigate();
   const [activeStep, setActiveStep] = useState(1);
   const moveStep = (direction: number) => {
-    if (activeStep === 1) {
+    if (activeStep === 1 && direction === -1) {
       navigate(-1);
+    } else {
+      setActiveStep(activeStep + direction);
     }
-    setActiveStep(activeStep + direction);
   };
   const move = () => {
     let component = <></>;
@@ -30,10 +31,10 @@ const PlanPage = () => {
         component = <DateArea moveStep={moveStep} />;
         break;
       case "장소 검색":
-        component = <SearchArea />;
+        component = <SearchArea moveStep={moveStep} />;
         break;
       case "일정 계획":
-        component = <PlanArea />;
+        component = <PlanArea moveStep={moveStep} />;
         break;
       case "미리 보기":
         component = <PreviewArea />;
@@ -43,16 +44,16 @@ const PlanPage = () => {
   };
 
   return (
-    <Wrapper>
-      <PlanPageBlock>
-        <PrevStep moveStep={moveStep} />
-        {move()}
-      </PlanPageBlock>
-    </Wrapper>
+    <PlanPageBlock>
+      <PrevStep moveStep={moveStep} />
+      {move()}
+    </PlanPageBlock>
   );
 };
 
-const PlanPageBlock = styled.section``;
+const PlanPageBlock = styled.section`
+  padding: 10px;
+`;
 
 const PlanBlock = styled.article``;
 

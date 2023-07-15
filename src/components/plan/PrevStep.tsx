@@ -11,7 +11,7 @@ const PrevStep = ({ moveStep }: Props) => {
   );
 };
 
-const PrevStepBox = styled.div`
+const PrevStepBox = styled.span`
   font-size: 1.8rem;
 `;
 

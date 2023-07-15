@@ -10,7 +10,7 @@ import axios from "axios";
 import { Place } from "../../types";
 import { selectPlacesState } from "../../store/selectPlacesState";
 
-const PlacesArea = () => {
+const PlacesArea = ({ moveStep }) => {
   const setSearchPlaces = useSetRecoilState(searchPlacesState);
   const [selectPlaces, setSelectPlaces] = useRecoilState(selectPlacesState);
   const searchData = useRecoilValue(searchState);
@@ -43,6 +43,9 @@ const PlacesArea = () => {
     <PlacesAreaBlock>
       <PlacesTab selectPlace={handleClick} />
       <SearchBlock>
+        <MapBox>
+          <SearchMap />
+        </MapBox>
         <SearchBox>
           <InputBox>
             <Input
@@ -52,10 +55,8 @@ const PlacesArea = () => {
           </InputBox>
           <ResultList />
         </SearchBox>
-        <MapBox>
-          <SearchMap />
-        </MapBox>
       </SearchBlock>
+      <DoneButton onClick={() => moveStep(1)}>장소 선택 완료</DoneButton>
     </PlacesAreaBlock>
   );
 };
@@ -66,21 +67,34 @@ const PlacesAreaBlock = styled.article`
 
 const SearchBlock = styled.article`
   display: flex;
-  height: 80%;
+  flex-direction: column;
 `;
 
 const InputBox = styled.div`
-  padding: 10px;
+  padding: 10px 0;
 `;
 
 const SearchBox = styled.div`
-  width: 50%;
+  width: 100%;
   height: 100%;
-  padding: 10px;
+  // padding: 10px;
 `;
 
 const MapBox = styled.div`
-  width: 50%;
+  width: 100%;
+  height: 100px;
+  background-color: gray;
+`;
+
+const DoneButton = styled.button`
+  text-align: center;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  background-color: blue;
+  color: white;
+  padding: 15px;
+  margin-top: 20px;
 `;
 
 export default PlacesArea;
