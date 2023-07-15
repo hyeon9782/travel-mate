@@ -20,7 +20,7 @@ const Cities = ({ cities = [], handleClick }: Props) => {
 };
 
 const CitiesBlock = styled.div`
-  height: 500px;
+  height: 300px;
   overflow: auto;
 `;
 

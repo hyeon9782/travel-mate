@@ -10,7 +10,7 @@ const NotFoundBlock = styled.div`
   justify-content: center;
   align-items: center;
   height: calc(100vh - 70px);
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: bold;
 `;
 

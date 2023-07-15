@@ -6,21 +6,35 @@ type Props = {
   handleClick: (city: City) => void;
 };
 const CityItem = ({ city, handleClick }: Props) => {
-  return <CityBlock onClick={() => handleClick(city)}>{city.city}</CityBlock>;
+  return (
+    <CityBlock onClick={() => handleClick(city)}>
+      <ImageBox></ImageBox>
+      <div>{city.city}</div>
+      <SelectButton>선택</SelectButton>
+    </CityBlock>
+  );
 };
 
 const CityBlock = styled.div`
-  height: 70px;
-  border-bottom: 1px solid gray;
+  padding: 10px 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  font-size: 1.5rem;
-  background-color: lightgray;
+  font-size: 1.2rem;
+`;
 
-  &:hover {
-    background-color: gray;
-  }
+const ImageBox = styled.div`
+  border-radius: 50%;
+  background-color: lightgray;
+  height: 40px;
+  width: 40px;
+`;
+
+const SelectButton = styled.button`
+  border-radius: 15px;
+  border: none;
+  padding: 5px 10px;
+  font-weight: bold;
 `;
 
 export default CityItem;

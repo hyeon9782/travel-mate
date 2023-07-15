@@ -2,16 +2,17 @@ import styled from "styled-components";
 import Cities from "./Cities";
 import { CITIES } from "../../constants/cities";
 import { useState } from "react";
-import CityCarousel from "./CityCarousel";
+import SeletedCities from "./SeletedCities";
 import { City } from "../../types";
 import CitySearchInput from "./CitySearchInput";
 import { useSetRecoilState } from "recoil";
 import { searchState } from "../../store/searchState";
+import CitiesTag from "./CitiesTag";
 
 const CityTab = () => {
   const [inputValue, setInputValue] = useState("");
   const setSearchData = useSetRecoilState(searchState);
-  const [isDomestic, setIsDomestic] = useState(true);
+  const [isDomestic, setIsDomestic] = useState(false);
   const [cities, setCities] = useState(
     CITIES.filter((city) => city.isDomestic === isDomestic)
   );
@@ -47,13 +48,36 @@ const CityTab = () => {
     setInputValue(value);
     setCities(newArr);
   };
+
+  const nextStep = () => {
+    console.log("dd");
+  };
   return (
     <CityTabBlock>
       <CitySearchInput handleChange={handleChange} />
-      <CityTabButton onClick={() => toggle(true)}>국내</CityTabButton>
-      <CityTabButton onClick={() => toggle(false)}>해외</CityTabButton>
+      <CityTabButton
+        onClick={() => toggle(false)}
+        className={!isDomestic ? "active" : ""}
+      >
+        해외도시
+      </CityTabButton>
+      <CityTabButton
+        onClick={() => toggle(true)}
+        className={isDomestic ? "active" : ""}
+      >
+        국내도시
+      </CityTabButton>
+      <CitiesTag tags={["전체", "일본", "유럽"]} />
       <Cities cities={cities} handleClick={handleClick} />
-      <CityCarousel selectCities={selectCities} />
+      <SeletedCities selectCities={selectCities} />
+      <DoneButton
+        onClick={() => nextStep()}
+        disabled={selectCities.length === 0 ? true : false}
+      >
+        {selectCities.length > 0
+          ? `${selectCities[0].city} 외 ${selectCities.length}개 선택 완료`
+          : "최소 1개 도시 선택"}
+      </DoneButton>
     </CityTabBlock>
   );
 };
@@ -62,8 +86,25 @@ const CityTabBlock = styled.div``;
 
 const CityTabButton = styled.button`
   width: 50%;
-  height: 70px;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  padding: 10px;
+  font-weight: bold;
+  color: gray;
+  background-color: white;
+  border: none;
+  border-top: 1px solid lightgray;
+  &.active {
+    color: black;
+    border-bottom: 2px solid blue;
+  }
+`;
+
+const DoneButton = styled.button`
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: lightgray;
+  border: none;
 `;
 
 export default CityTab;

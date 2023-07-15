@@ -33,19 +33,18 @@ const HeaderBlock = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 30px;
+  padding: 10px 20px;
   border-bottom: 2px solid lightgray;
-  height: 50px;
   font-weight: bold;
 `;
 
 const Logo = styled.div`
-  font-size: 2rem;
+  font-size: 1.2rem;
 `;
 
 const Nav = styled.ul`
   display: flex;
-  font-size: 1.2rem;
+  font-size: 1rem;
 
   li {
     padding-left: 5px;

@@ -11,7 +11,7 @@ const HomePage = () => {
 
 const HomePageBlock = styled.div`
   text-align: center;
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: bold;
 `;
 

@@ -37,13 +37,14 @@ const PlanPage = () => {
   return (
     <Wrapper>
       <PlanPageBlock>
-        <Steps
+        {/* <Steps
           steps={STEPS}
           activeStep={activeStep}
           setActiveStep={setActiveStep}
         >
           <PlanBlock>{move()}</PlanBlock>
-        </Steps>
+        </Steps> */}
+        {move()}
       </PlanPageBlock>
     </Wrapper>
   );
@@ -51,8 +52,6 @@ const PlanPage = () => {
 
 const PlanPageBlock = styled.section``;
 
-const PlanBlock = styled.article`
-  height: 800px; // 나중에 수정
-`;
+const PlanBlock = styled.article``;
 
 export default PlanPage;
