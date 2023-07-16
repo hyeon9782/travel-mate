@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import { filteringCity } from "../../service/city";
-import { useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { citiesState } from "../../store/citiesState";
+import { isDomesticState } from "../../store/isDomesticState";
 type Props = {
   children: any;
 };
 const CityTag = ({ children }: Props) => {
   const setCities = useSetRecoilState(citiesState);
+
   return (
     <CityTagBlock onClick={() => filteringCity(children, setCities)}>
       {children}

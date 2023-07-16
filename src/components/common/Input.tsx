@@ -1,4 +1,7 @@
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
+import { citiesState } from "../../store/citiesState";
+import { isDomesticState } from "../../store/isDomesticState";
 type Props = {
   size?: string;
   holder?: string;
@@ -15,11 +18,13 @@ const Input = ({
   value,
   onKeyDown,
 }: Props) => {
+  const setCities = useSetRecoilState(citiesState);
+  const isDomestic = useRecoilValue(isDomesticState);
   return (
     <form onSubmit={onSubmit}>
       <InputBlock
         size={size}
-        onChange={onChange}
+        onChange={(e) => onChange(e, setCities, isDomestic)}
         value={value}
         onKeyDown={onKeyDown}
         placeholder={holder}

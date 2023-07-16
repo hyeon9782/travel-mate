@@ -1,14 +1,22 @@
 import styled from "styled-components";
 import { City } from "../../types";
-import { useState } from "react";
-import { appendCity } from "../../service/city";
+import { useState, useEffect } from "react";
+import { appendCity, checkSelect, removeCity } from "../../service/city";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { selectedCitiesState } from "../../store/seletedCitiesState";
 
 type Props = {
   city: City;
   handleClick: (city: City) => void;
 };
 const CityItem = ({ city, handleClick }: Props) => {
-  const [isSelect, setIsSelect] = useState(false);
+  const [isSelect, setIsSelect] = useState(true);
+  const [selectedCities, setSelectedCities] =
+    useRecoilState(selectedCitiesState);
+
+  useEffect(() => {
+    checkSelect(city, selectedCities, setIsSelect);
+  }, [selectedCities]);
 
   return (
     <CityBlock>
@@ -19,10 +27,14 @@ const CityItem = ({ city, handleClick }: Props) => {
           <div className="related">{city.related.join(", ")}</div>
         </CityContent>
       </div>
-      {!isSelect ? (
-        <SelectButton onClick={() => appendCity(city)}>선택</SelectButton>
+      {isSelect ? (
+        <CancleButton onClick={() => removeCity(city, setSelectedCities)}>
+          취소
+        </CancleButton>
       ) : (
-        <CancleButton>취소</CancleButton>
+        <SelectButton onClick={() => appendCity(city, setSelectedCities)}>
+          선택
+        </SelectButton>
       )}
     </CityBlock>
   );
@@ -57,7 +69,7 @@ const SelectButton = styled.button`
 const CancleButton = styled.button`
   border-radius: 15px;
   border: 1px solid blue;
-  padding: 5px 10px;
+  padding: 7px 15px;
   font-weight: bold;
   color: blue;
   background-color: white;

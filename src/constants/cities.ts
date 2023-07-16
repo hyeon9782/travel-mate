@@ -6,6 +6,7 @@ export const CITIES = [
     region: "한국",
     location: { lat: 37.5502, lng: 126.9931 },
     related: ["가평", "양평"],
+    isSelect: false,
   },
   {
     city: "강릉, 속초",
@@ -14,6 +15,7 @@ export const CITIES = [
     region: "한국",
     location: { lat: 37.5502, lng: 126.9931 },
     related: ["강릉", "속초", "양양"],
+    isSelect: false,
   },
   {
     city: "경주",
@@ -22,6 +24,7 @@ export const CITIES = [
     region: "한국",
     location: { lat: 37.5502, lng: 126.9931 },
     related: ["경주"],
+    isSelect: false,
   },
   {
     city: "부산",
@@ -30,6 +33,7 @@ export const CITIES = [
     region: "한국",
     location: { lat: 35.2092, lng: 129.0695 },
     related: ["부산"],
+    isSelect: false,
   },
   {
     city: "여수",
@@ -38,6 +42,7 @@ export const CITIES = [
     region: "한국",
     location: { lat: 37.5502, lng: 126.9931 },
     related: ["여수"],
+    isSelect: false,
   },
   {
     city: "인천",
@@ -46,6 +51,7 @@ export const CITIES = [
     region: "한국",
     location: { lat: 37.5502, lng: 126.9931 },
     related: ["인천", "강화도"],
+    isSelect: false,
   },
   {
     city: "전주",
@@ -54,6 +60,7 @@ export const CITIES = [
     region: "한국",
     location: { lat: 37.5502, lng: 126.9931 },
     related: ["전주", "군산"],
+    isSelect: false,
   },
   {
     city: "제주",
@@ -62,6 +69,7 @@ export const CITIES = [
     region: "한국",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["제주", "서귀포"],
+    isSelect: false,
   },
   {
     city: "춘천, 홍천",
@@ -70,6 +78,7 @@ export const CITIES = [
     region: "한국",
     location: { lat: 37.5502, lng: 126.9931 },
     related: ["춘천", "홍천"],
+    isSelect: false,
   },
   {
     city: "태안",
@@ -78,6 +87,7 @@ export const CITIES = [
     region: "한국",
     location: { lat: 37.5502, lng: 126.9931 },
     related: ["태안", "당진", "서산"],
+    isSelect: false,
   },
   {
     city: "통영, 거제, 남해",
@@ -86,6 +96,7 @@ export const CITIES = [
     region: "한국",
     location: { lat: 37.5502, lng: 126.9931 },
     related: ["통영", "거제", "남해"],
+    isSelect: false,
   },
   {
     city: "포항, 안동",
@@ -94,6 +105,7 @@ export const CITIES = [
     region: "한국",
     location: { lat: 37.5502, lng: 126.9931 },
     related: ["포항", "안동"],
+    isSelect: false,
   },
   {
     city: "도쿄",
@@ -102,6 +114,7 @@ export const CITIES = [
     region: "일본",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["도쿄", "하코네", "요코하마, 가마쿠라"],
+    isSelect: false,
   },
   {
     city: "오사카",
@@ -110,6 +123,7 @@ export const CITIES = [
     region: "일본",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["오사카", "교토", "고베", "나라"],
+    isSelect: false,
   },
   {
     city: "후쿠오카",
@@ -118,6 +132,7 @@ export const CITIES = [
     region: "일본",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["후쿠오카", "유후인", "벳푸", "기타큐슈"],
+    isSelect: false,
   },
   {
     city: "나가사키",
@@ -126,6 +141,7 @@ export const CITIES = [
     region: "일본",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["나가사키", "사가", "사세보", "운젠"],
+    isSelect: false,
   },
   {
     city: "오키나와",
@@ -134,6 +150,7 @@ export const CITIES = [
     region: "일본",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["오키나와"],
+    isSelect: false,
   },
   {
     city: "뉴욕",
@@ -142,6 +159,7 @@ export const CITIES = [
     region: "미주",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["뉴욕"],
+    isSelect: false,
   },
   {
     city: "로스앤젤레스",
@@ -150,6 +168,7 @@ export const CITIES = [
     region: "미주",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["로스앤젤레스", "라스베가스"],
+    isSelect: false,
   },
   {
     city: "하와이",
@@ -158,6 +177,7 @@ export const CITIES = [
     region: "미주",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["하와이"],
+    isSelect: false,
   },
   {
     city: "토론토",
@@ -166,6 +186,7 @@ export const CITIES = [
     region: "미주",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["토론토", "나이아가라", "킹스턴", "블루 마운틴"],
+    isSelect: false,
   },
   {
     city: "시애틀",
@@ -174,6 +195,7 @@ export const CITIES = [
     region: "미주",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["시애틀"],
+    isSelect: false,
   },
   {
     city: "샌프란시스코",
@@ -182,6 +204,7 @@ export const CITIES = [
     region: "미주",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["샌프란시스코", "산호세", "나파 밸리"],
+    isSelect: false,
   },
   {
     city: "벤쿠버",
@@ -190,6 +213,7 @@ export const CITIES = [
     region: "미주",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["벤쿠버", "빅토리아", "휘슬러"],
+    isSelect: false,
   },
   {
     city: "나트랑",
@@ -198,6 +222,7 @@ export const CITIES = [
     region: "동남아시아",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["나트랑"],
+    isSelect: false,
   },
   {
     city: "마닐라",
@@ -206,6 +231,7 @@ export const CITIES = [
     region: "동남아시아",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["마닐라", "바탕가스"],
+    isSelect: false,
   },
   {
     city: "치앙마이",
@@ -214,6 +240,7 @@ export const CITIES = [
     region: "동남아시아",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["치앙마이", "치앙라이", "빠이"],
+    isSelect: false,
   },
   {
     city: "라오스",
@@ -222,6 +249,7 @@ export const CITIES = [
     region: "동남아시아",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["비엔티안", "방비엥", "루앙프라방"],
+    isSelect: false,
   },
   {
     city: "괌",
@@ -230,6 +258,7 @@ export const CITIES = [
     region: "남태평양",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["괌"],
+    isSelect: false,
   },
   {
     city: "사이판",
@@ -238,6 +267,7 @@ export const CITIES = [
     region: "남태평양",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["사이판"],
+    isSelect: false,
   },
   {
     city: "시드니",
@@ -246,6 +276,7 @@ export const CITIES = [
     region: "남태평양",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["시드니", "블루마운틴", "울릉공", "뉴캐슬"],
+    isSelect: false,
   },
   {
     city: "런던",
@@ -254,6 +285,7 @@ export const CITIES = [
     region: "유럽",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["런던", "옥스퍼드", "브라이튼", "이튼"],
+    isSelect: false,
   },
   {
     city: "파리",
@@ -262,6 +294,7 @@ export const CITIES = [
     region: "유럽",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["파리", "베르사유", "몽생미셀", "스트라스부르"],
+    isSelect: false,
   },
   {
     city: "두바이",
@@ -270,6 +303,7 @@ export const CITIES = [
     region: "서아시아",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["두바이", "아부다비", "알 아인"],
+    isSelect: false,
   },
   {
     city: "이스탄불",
@@ -278,6 +312,7 @@ export const CITIES = [
     region: "서아시아",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["이스탄불", "부르사", "아즈닉"],
+    isSelect: false,
   },
   {
     city: "카파도키아",
@@ -286,6 +321,7 @@ export const CITIES = [
     region: "서아시아",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["카파도키아", "코니아"],
+    isSelect: false,
   },
   {
     city: "홍콩",
@@ -294,6 +330,7 @@ export const CITIES = [
     region: "중화/중국",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["홍콩", "마카오"],
+    isSelect: false,
   },
   {
     city: "베이징",
@@ -302,6 +339,7 @@ export const CITIES = [
     region: "중화/중국",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["베이징"],
+    isSelect: false,
   },
   {
     city: "타이베이",
@@ -310,5 +348,6 @@ export const CITIES = [
     region: "중화/중국",
     location: { lat: 33.4825, lng: 126.5311 },
     related: ["타이베이", "이란"],
+    isSelect: false,
   },
 ];

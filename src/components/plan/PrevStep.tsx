@@ -7,7 +7,7 @@ type Props = {
   handleChange: () => void;
   activeStep: number;
 };
-const PrevStep = ({ moveStep, handleChange, activeStep }: Props) => {
+const PrevStep = ({ moveStep, activeStep }: Props) => {
   return (
     <PrevStepBlock>
       <PrevStepBox onClick={() => moveStep(-1)} className="test123">

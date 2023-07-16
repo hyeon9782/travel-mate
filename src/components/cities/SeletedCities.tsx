@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import SelectedCity from "./SeletedCity";
 type Props = {
-  selectCities: [];
+  selectedCities: [];
 };
-const SeletedCities = ({ selectCities = [] }: Props) => {
+const SeletedCities = ({ selectedCities = [] }: Props) => {
   return (
     <SeletedCitiesBlock>
-      {selectCities.map((city, index) => (
+      {selectedCities.map((city, index) => (
         <SelectedCity key={index} city={city} />
       ))}
     </SeletedCitiesBlock>

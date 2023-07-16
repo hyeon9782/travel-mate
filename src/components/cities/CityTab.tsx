@@ -1,33 +1,26 @@
 import styled from "styled-components";
 import Cities from "./Cities";
-import { CITIES } from "../../constants/cities";
 import { useEffect, useState } from "react";
 import SeletedCities from "./SeletedCities";
-import { City } from "../../types";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { searchState } from "../../store/searchState";
 import CitiesTag from "./CityTags";
 import DoneButton from "../plan/DoneButton";
 import { citiesState } from "../../store/citiesState";
 import { toggle } from "../../service/city";
+import { selectedCitiesState } from "../../store/seletedCitiesState";
+import { isDomesticState } from "../../store/isDomesticState";
 
 const CityTab = ({ moveStep }: (direction: number) => void) => {
   const setSearchData = useSetRecoilState(searchState);
-  const [isDomestic, setIsDomestic] = useState(false);
+  const [isDomestic, setIsDomestic] = useRecoilState(isDomesticState);
   const [cities, setCities] = useRecoilState(citiesState);
-  const [selectCities, setSelectCities] = useState([]);
+  // const [selectCities, setSelectCities] = useState([]);
+  const selectedCities = useRecoilValue(selectedCitiesState);
 
   useEffect(() => {
     setCities((prev) => prev.filter((v) => v.isDomestic === isDomestic));
   }, []);
-
-  // const handleClick = (city: City, ) => {
-  //   setSelectCities((prev) => [...prev, city]);
-  //   setSearchData((prev) => ({
-  //     ...prev,
-  //     location: city.location,
-  //   }));
-  // };
 
   return (
     <CityTabBlock>
@@ -52,19 +45,19 @@ const CityTab = ({ moveStep }: (direction: number) => void) => {
       )}
       <Cities cities={cities} />
       <SeletedBox>
-        {selectCities.length !== 0 && (
-          <SeletedCities selectCities={selectCities} />
+        {selectedCities.length !== 0 && (
+          <SeletedCities selectedCities={selectedCities} />
         )}
         <div className="done-btn-box">
           <DoneButton
             moveStep={moveStep}
-            disabled={selectCities.length === 0 ? true : false}
+            disabled={selectedCities.length === 0 ? true : false}
           >
-            {selectCities.length > 0
-              ? selectCities.length !== 1
-                ? `${selectCities[0].city} 외 ${selectCities.length}개 선택 완료`
-                : `${selectCities[0].city} 선택 완료`
-              : selectCities.length !== 1 && "최소 1개 이상의 도시 선택"}
+            {selectedCities.length > 0
+              ? selectedCities.length !== 1
+                ? `${selectedCities[0].city} 외 ${selectedCities.length}개 선택 완료`
+                : `${selectedCities[0].city} 선택 완료`
+              : selectedCities.length !== 1 && "최소 1개 이상의 도시 선택"}
           </DoneButton>
         </div>
       </SeletedBox>
