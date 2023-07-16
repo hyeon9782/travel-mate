@@ -9,19 +9,17 @@ import { selectedPlacesState } from "../../store/selectedPlacesState";
 import DoneButton from "../plan/DoneButton";
 import { removePlace, searchPlaces } from "../../service/place";
 
-const PlacesArea = ({ moveStep }) => {
+const SearchArea = ({ moveStep }) => {
   const [selectPlaces, setSelectPlaces] = useRecoilState(selectedPlacesState);
 
   // 클릭 시 장소 선택 취소
   const handleClick = (place: Place) => {
-    const newSelectPlaces = selectPlaces.filter(
-      (selectPlace) => selectPlace.place_id !== place.place_id
-    );
-    setSelectPlaces(newSelectPlaces);
+    removePlace(place, setSelectPlaces);
   };
+
   return (
-    <PlacesAreaBlock>
-      <PlacesTab />
+    <SearchAreaBlock>
+      <PlacesTab handleClick={handleClick} />
       <SearchBlock>
         <MapBox>
           <SearchMap />
@@ -37,11 +35,11 @@ const PlacesArea = ({ moveStep }) => {
         </SearchBox>
       </SearchBlock>
       <DoneButton moveStep={moveStep}>장소 선택 완료</DoneButton>
-    </PlacesAreaBlock>
+    </SearchAreaBlock>
   );
 };
 
-const PlacesAreaBlock = styled.article`
+const SearchAreaBlock = styled.article`
   height: 100%;
 `;
 
@@ -64,4 +62,4 @@ const MapBox = styled.div`
   background-color: gray;
 `;
 
-export default PlacesArea;
+export default SearchArea;

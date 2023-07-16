@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Place from "./Place";
 type Props = {
   places: [];
-  handleClick: (place: Place) => void;
+  handleClick: (place: any) => void;
 };
 const Places = ({ places, handleClick }: Props) => {
   return (

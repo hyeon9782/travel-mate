@@ -31,7 +31,7 @@ const PlanArea = () => {
 
   return (
     <PlanBlock>
-      <PlacesTab selectPlace={selectPlaces} />
+      <PlacesTab handleClick={selectPlaces} />
       <ScheduleBlock>
         <MapBox>
           <RenderMap />
@@ -61,7 +61,7 @@ const ScheduleBox = styled.div`
 
 const MapBox = styled.div`
   width: 100%;
-  height: 300px;
+  height: 200px;
   /* height: 300px; */
 `;
 

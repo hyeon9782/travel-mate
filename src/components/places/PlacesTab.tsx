@@ -3,6 +3,8 @@ import Places from "./Places";
 import { useRecoilState } from "recoil";
 import { selectedPlacesState } from "../../store/selectedPlacesState";
 import { useState, useEffect } from "react";
+import { changeTab } from "../../service/place";
+import { Place } from "../../types";
 
 const CATEGORIES = [
   {
@@ -19,27 +21,26 @@ const CATEGORIES = [
   },
 ];
 
-const PlacesTab = () => {
-  const [places, setPlaces] = useRecoilState(selectedPlacesState);
+const PlacesTab = (props) => {
+  console.log("탭");
+  console.log(props);
+  const [selectedPlaces, setSelectedPlaces] =
+    useRecoilState(selectedPlacesState);
   const [currentCategory, setCurrentCategory] = useState(0);
 
   const [filterPlaces, setFilterPlaces] = useState(
-    places.filter((place) => place.types.includes("food"))
+    selectedPlaces.filter((place) => place.types.includes("food"))
   );
 
-  const handleClick = (category: any, index: number) => {
-    const newPlaces = places.filter((place) =>
-      place.types.includes(category.en)
-    );
-
-    setFilterPlaces(newPlaces);
-
-    setCurrentCategory(index);
-  };
-
   useEffect(() => {
-    handleClick({ en: "food" }, 0);
-  }, [places]);
+    changeTab(
+      { en: "food" },
+      0,
+      selectedPlaces,
+      setFilterPlaces,
+      setCurrentCategory
+    );
+  }, [selectedPlaces]);
 
   return (
     <PlacesTabBlock>
@@ -47,7 +48,15 @@ const PlacesTab = () => {
         {CATEGORIES.map((category, index) => (
           <Category
             key={index}
-            onClick={() => handleClick(category, index)}
+            onClick={() =>
+              changeTab(
+                category,
+                index,
+                selectedPlaces,
+                setFilterPlaces,
+                setCurrentCategory
+              )
+            }
             isActive={index === currentCategory}
           >
             {category.ko}
@@ -55,7 +64,7 @@ const PlacesTab = () => {
         ))}
       </Categories>
       <PlacesBlock>
-        <Places places={filterPlaces} />
+        <Places places={filterPlaces} {...props} />
       </PlacesBlock>
     </PlacesTabBlock>
   );

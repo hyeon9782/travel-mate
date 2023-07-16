@@ -35,8 +35,6 @@ function appendPlace(place: Place, setSelectedPlaces: any) {
 
 // 장바구니에 제거하기
 function removePlace(place: Place, setSelectedPlaces: any) {
-  console.log(place);
-
   setSelectedPlaces((prev) => {
     console.log(prev);
     return prev.filter(
@@ -52,6 +50,23 @@ function checkPlace(place: Place, selectedPlaces: [], setIsSelect: any) {
       (selectedPlace) => selectedPlace.place_id === place.place_id
     ).length !== 0
   );
+}
+
+// 탭 체인지
+function changeTab(
+  category: any,
+  index: number,
+  selectedPlaces: any,
+  setFilterPlaces: any,
+  setCurrentCategory: any
+) {
+  const newPlaces = selectedPlaces.filter((place) =>
+    place.types.includes(category.en)
+  );
+
+  setFilterPlaces(newPlaces);
+
+  setCurrentCategory(index);
 }
 
 // 일정에 추가하기 (일정 추가하기와 제거하기를 하나로 함수로 묶을까?)
@@ -70,8 +85,6 @@ function selectPlace(place: Place, setSelectedPlaces: any, currentDay: number) {
 
 // 일정에 제거하기
 function deletePlace(place: Place, setSelectedPlaces: any) {}
-
-function changeTab(category: any, index: number) {}
 
 export {
   searchPlaces,

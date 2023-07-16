@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Button from "../common/Button";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { selectedPlacesState } from "../../store/selectedPlacesState";
 import { Place } from "../../types";
 import { useEffect, useState } from "react";
