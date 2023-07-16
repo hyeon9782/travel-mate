@@ -2,6 +2,8 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { citiesState } from "../../store/citiesState";
 import { isDomesticState } from "../../store/isDomesticState";
+import { searchState } from "../../store/searchState";
+import { searchPlacesState } from "../../store/searchPlacesState";
 type Props = {
   size?: string;
   holder?: string;
@@ -20,6 +22,8 @@ const Input = ({
 }: Props) => {
   const setCities = useSetRecoilState(citiesState);
   const isDomestic = useRecoilValue(isDomesticState);
+  const searchData = useRecoilValue(searchState);
+  const setSearchPlaces = useSetRecoilState(searchPlacesState);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
@@ -30,7 +34,7 @@ const Input = ({
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (onSubmit) {
-      onSubmit(e);
+      onSubmit(e, setSearchPlaces, searchData);
     }
   };
 

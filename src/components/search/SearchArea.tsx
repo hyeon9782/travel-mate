@@ -1,37 +1,16 @@
 import styled from "styled-components";
 import SearchMap from "../google/SearchMap";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { searchState } from "../../store/searchState";
+import { useRecoilState } from "recoil";
 import Input from "../common/Input";
 import ResultList from "./ResultList";
-import { searchPlacesState } from "../../store/searchPlacesState";
 import PlacesTab from "../places/PlacesTab";
-import axios from "axios";
 import { Place } from "../../types";
-import { selectPlacesState } from "../../store/selectPlacesState";
+import { selectedPlacesState } from "../../store/selectedPlacesState";
 import DoneButton from "../plan/DoneButton";
+import { removePlace, searchPlaces } from "../../service/place";
 
 const PlacesArea = ({ moveStep }) => {
-  const setSearchPlaces = useSetRecoilState(searchPlacesState);
-  const [selectPlaces, setSelectPlaces] = useRecoilState(selectPlacesState);
-  const searchData = useRecoilValue(searchState);
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const formElement = e.currentTarget;
-    const inputElement = formElement.querySelector("input") as HTMLInputElement; //Form의 input 원소에 대한 참조
-    const res = await axios.get(
-      `http://localhost:4000/api/search?keyword=${
-        inputElement.value
-      }&radius=${5000}&latitude=${searchData.location.lat}&longitude=${
-        searchData.location.lng
-      }`
-    );
-    console.log(res);
-    console.log(res.data);
-
-    setSearchPlaces(res.data);
-  };
+  const [selectPlaces, setSelectPlaces] = useRecoilState(selectedPlacesState);
 
   // 클릭 시 장소 선택 취소
   const handleClick = (place: Place) => {
@@ -42,7 +21,7 @@ const PlacesArea = ({ moveStep }) => {
   };
   return (
     <PlacesAreaBlock>
-      <PlacesTab selectPlace={handleClick} />
+      <PlacesTab />
       <SearchBlock>
         <MapBox>
           <SearchMap />
@@ -50,7 +29,7 @@ const PlacesArea = ({ moveStep }) => {
         <SearchBox>
           <InputBox>
             <Input
-              onSubmit={handleSubmit}
+              onSubmit={searchPlaces}
               holder="가고 싶은 장소를 검색해보세요!"
             />
           </InputBox>

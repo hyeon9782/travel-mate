@@ -3,7 +3,7 @@ import { City } from "../../types";
 import { useState, useEffect } from "react";
 import { appendCity, checkSelect, removeCity } from "../../service/city";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { selectedCitiesState } from "../../store/seletedCitiesState";
+import { selectedCitiesState } from "../../store/selectedCitiesState";
 
 type Props = {
   city: City;

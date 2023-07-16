@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { scheduleState } from "../../store/scheduleState";
 import Schedule from "./Schedule";
 import { currentDayState } from "../../store/currentDayState";
-import { selectPlacesState } from "../../store/selectPlacesState";
+import { selectedPlacesState } from "../../store/selectedPlacesState";
 import Directions from "../directions/Directions";
 import { travelTimeState } from "../../store/travelTimeState";
 import TravelTimes from "../directions/TravelTimes";
@@ -12,7 +12,7 @@ import TravelTime from "../directions/TravelTime";
 const Schedules = () => {
   const currentDay = useRecoilValue(currentDayState);
   const [schedules, setSchedules] = useRecoilState(scheduleState);
-  const selectedPlaces = useSetRecoilState(selectPlacesState);
+  const selectedPlaces = useSetRecoilState(selectedPlacesState);
   const setTravelTimes = useSetRecoilState(travelTimeState);
   const handleClick = (place: Place) => {
     setSchedules((prev) => {

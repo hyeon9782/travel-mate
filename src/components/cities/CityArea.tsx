@@ -5,7 +5,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { citiesState } from "../../store/citiesState";
 import SeletedCities from "./SeletedCities";
 import DoneButton from "../plan/DoneButton";
-import { selectedCitiesState } from "../../store/seletedCitiesState";
+import { selectedCitiesState } from "../../store/selectedCitiesState";
 import CitySubHeader from "./CitySubHeader";
 
 const CityArea = ({ moveStep }: (direction: number) => void) => {

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import SelectedCity from "./SeletedCity";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useSetRecoilState } from "recoil";
-import { selectedCitiesState } from "../../store/seletedCitiesState";
+import { selectedCitiesState } from "../../store/selectedCitiesState";
 type Props = {
   selectedCities: [];
 };
@@ -12,7 +12,7 @@ const SeletedCities = ({ selectedCities = [] }: Props) => {
     <SeletedCitiesBlock>
       <Swiper slidesPerView={5}>
         {selectedCities.map((city, index) => (
-          <SwiperSlide>
+          <SwiperSlide key={index}>
             <SelectedCity
               key={index}
               city={city}

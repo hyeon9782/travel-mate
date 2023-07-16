@@ -7,12 +7,12 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { currentDayState } from "../../store/currentDayState";
 import { scheduleState } from "../../store/scheduleState";
 import Schedules from "../schedules/Schedules";
-import { selectPlacesState } from "../../store/selectPlacesState";
+import { selectedPlacesState } from "../../store/selectedPlacesState";
 
 const PlanArea = () => {
   const currentDay = useRecoilValue(currentDayState);
   const setSchedule = useSetRecoilState(scheduleState);
-  const selectedPlaces = useSetRecoilState(selectPlacesState);
+  const selectedPlaces = useSetRecoilState(selectedPlacesState);
 
   const selectPlaces = (place: Place) => {
     selectedPlaces((prev) => {

@@ -1,14 +1,18 @@
 import styled from "styled-components";
 import { Place } from "../../types";
 import { truncateTextOverflow } from "../../utils/utils";
+import { removePlace } from "../../service/place";
+import { useSetRecoilState } from "recoil";
+import { selectedPlacesState } from "../../store/selectedPlacesState";
 
 type Props = {
   place: Place;
   handleClick: (place: Place) => void;
 };
 const Place = ({ place, handleClick }: Props) => {
+  const setSelectedPlaces = useSetRecoilState(selectedPlacesState);
   return (
-    <PlaceBlock onClick={() => handleClick(place)}>
+    <PlaceBlock onClick={() => removePlace(place, setSelectedPlaces)}>
       <PlaceImage></PlaceImage>
       <PlaceName>{truncateTextOverflow(place.name)}</PlaceName>
     </PlaceBlock>

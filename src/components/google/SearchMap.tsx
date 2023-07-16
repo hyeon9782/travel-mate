@@ -1,10 +1,10 @@
 import Map from "./Map";
 import { useRecoilValue } from "recoil";
 import { Marker } from "@react-google-maps/api";
-import { selectPlacesState } from "../../store/selectPlacesState";
+import { selectedPlacesState } from "../../store/selectedPlacesState";
 
 const SearchMap = () => {
-  const selectPlaces = useRecoilValue(selectPlacesState);
+  const selectPlaces = useRecoilValue(selectedPlacesState);
   return (
     <Map position={selectPlaces.at(-1)}>
       {selectPlaces &&
