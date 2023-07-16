@@ -7,6 +7,7 @@ import DateArea from "../components/date/DateArea";
 import SearchArea from "../components/search/SearchArea";
 import PrevStep from "../components/plan/PrevStep";
 import { useNavigate } from "react-router-dom";
+
 const STEPS = ["도시 선택", "날짜 선택", "장소 검색", "일정 계획", "미리 보기"];
 
 const PlanPage = () => {

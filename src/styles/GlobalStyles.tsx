@@ -9,10 +9,12 @@ a {
   color: black;
 }
 
-/* body, html, #root {
+
+body, html, #root {
   width: 100%;
   height: 100%;
-} */
+  overflow: hidden;
+}
 
 /* body {
   font-family: 'Cabin', sans-serif;

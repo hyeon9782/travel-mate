@@ -2,10 +2,8 @@ import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import ResultItem from "./ResultItem";
 import { searchPlacesState } from "../../store/searchPlacesState";
-type Props = {
-  list?: [];
-};
-const ResultList = ({ list }: Props) => {
+
+const ResultList = () => {
   const searchPlaces = useRecoilValue(searchPlacesState);
   return (
     <ResultListBlock>
@@ -22,10 +20,9 @@ const ResultListBlock = styled.div`
   flex-direction: column;
   gap: 10px;
   box-sizing: border-box;
-  height: 300px;
+  height: 250px;
   padding: 10px;
   overflow: auto;
-  min-height: 200px;
   background-color: #faf9fc;
 `;
 

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import SearchMap from "../google/SearchMap";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import Input from "../common/Input";
 import ResultList from "./ResultList";
 import PlacesTab from "../places/PlacesTab";
@@ -10,11 +10,11 @@ import DoneButton from "../plan/DoneButton";
 import { removePlace, searchPlaces } from "../../service/place";
 
 const SearchArea = ({ moveStep }) => {
-  const [selectPlaces, setSelectPlaces] = useRecoilState(selectedPlacesState);
+  const setSelectedPlaces = useSetRecoilState(selectedPlacesState);
 
   // 클릭 시 장소 선택 취소
   const handleClick = (place: Place) => {
-    removePlace(place, setSelectPlaces);
+    removePlace(place, setSelectedPlaces);
   };
 
   return (
@@ -34,13 +34,25 @@ const SearchArea = ({ moveStep }) => {
           <ResultList />
         </SearchBox>
       </SearchBlock>
-      <DoneButton moveStep={moveStep}>장소 선택 완료</DoneButton>
+      <DoneButtonBox>
+        <DoneButton moveStep={moveStep}>장소 선택 완료</DoneButton>
+      </DoneButtonBox>
     </SearchAreaBlock>
   );
 };
 
 const SearchAreaBlock = styled.article`
-  height: 100%;
+  position: relative;
+  height: calc(100vh - 41.59px);
+`;
+
+const DoneButtonBox = styled.div`
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 `;
 
 const SearchBlock = styled.article`
@@ -54,7 +66,6 @@ const InputBox = styled.div`
 
 const SearchBox = styled.div`
   width: 100%;
-  height: 100%;
 `;
 
 const MapBox = styled.div`
