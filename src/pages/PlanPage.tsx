@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import Steps from "../components/steps/Steps";
-import Wrapper from "../components/layout/Wrapper";
 import { useState } from "react";
 import PlanArea from "../components/plan/PlanArea";
 import PreviewArea from "../components/plan/PreviewArea";
@@ -45,7 +43,10 @@ const PlanPage = () => {
 
   return (
     <PlanPageBlock>
-      <PrevStep moveStep={moveStep} activeStep={activeStep} />
+      {activeStep > 1 && (
+        <PrevStep moveStep={moveStep} activeStep={activeStep} />
+      )}
+
       {move()}
     </PlanPageBlock>
   );

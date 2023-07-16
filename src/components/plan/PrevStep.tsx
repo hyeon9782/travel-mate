@@ -1,27 +1,14 @@
-import { searchCity } from "../../service/city";
-import Input from "../common/Input";
-import { ArrowLeftIcon, SearchIcon } from "../common/icons";
+import { ArrowLeftIcon } from "../common/icons";
 import styled from "styled-components";
 type Props = {
   moveStep: (direction: number) => void;
-  handleChange: () => void;
-  activeStep: number;
 };
-const PrevStep = ({ moveStep, activeStep }: Props) => {
+const PrevStep = ({ moveStep }: Props) => {
   return (
     <PrevStepBlock>
-      <PrevStepBox onClick={() => moveStep(-1)} className="test123">
+      <PrevStepBox onClick={() => moveStep(-1)}>
         <ArrowLeftIcon></ArrowLeftIcon>
       </PrevStepBox>
-      {activeStep === 1 && (
-        <SearchBox>
-          <Input
-            onChange={searchCity}
-            holder="여행을 떠날 도시를 검색해보세요!"
-          />
-          <SearchIcon className="icon" />
-        </SearchBox>
-      )}
     </PrevStepBlock>
   );
 };
@@ -29,22 +16,15 @@ const PrevStep = ({ moveStep, activeStep }: Props) => {
 const PrevStepBlock = styled.div`
   display: flex;
   padding: 5px 10px;
+  background-color: white;
   position: sticky;
+  top: 0;
+  left: 0;
 `;
 
 const PrevStepBox = styled.span`
   font-size: 1.8rem;
   width: 10%;
-`;
-
-const SearchBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 90%;
-
-  .icon {
-    font-size: 1.5rem;
-  }
 `;
 
 export default PrevStep;
