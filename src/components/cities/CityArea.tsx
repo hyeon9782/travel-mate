@@ -11,7 +11,7 @@ const CityArea = (props) => {
 
 const CityAreaBlock = styled.section`
   box-sizing: border-box;
-  /* height: 570px; */
+  margin-bottom: 200px;
 `;
 
 export default CityArea;

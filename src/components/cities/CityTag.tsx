@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import { filteringCity } from "../../service/city";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { citiesState } from "../../store/citiesState";
-import { isDomesticState } from "../../store/isDomesticState";
 type Props = {
   children: any;
 };
@@ -11,19 +10,23 @@ const CityTag = ({ children }: Props) => {
 
   return (
     <CityTagBlock onClick={() => filteringCity(children, setCities)}>
-      {children}
+      <ContentWrapper>{children}</ContentWrapper>
     </CityTagBlock>
   );
 };
 
 const CityTagBlock = styled.div`
-  width: 70px;
+  width: fit-content; /* 내용물에 맞게 크기 조정 */
   border-radius: 15px;
   background-color: white;
   font-weight: 400;
-  padding: 10px 15px;
   font-size: 0.8rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+`;
+
+const ContentWrapper = styled.div`
+  display: inline-block; /* 내용물을 inline-block으로 설정하여 패딩값을 포함한 크기 조정 */
+  padding: 10px 15px;
 `;
 
 export default CityTag;

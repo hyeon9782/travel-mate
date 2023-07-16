@@ -7,11 +7,11 @@ import "swiper/css";
 const CityTags = ({ tags }: any) => {
   return (
     <CityTagsBlock>
-      <Swiper slidesPerView={3} className="swiper">
+      <Swiper slidesPerView={3}>
         {tags.map((tag, index) => (
-          <CityTagWrapper key={index}>
+          <SwiperSlide key={index}>
             <CityTag>{tag}</CityTag>
-          </CityTagWrapper>
+          </SwiperSlide>
         ))}
       </Swiper>
     </CityTagsBlock>
@@ -21,15 +21,6 @@ const CityTags = ({ tags }: any) => {
 const CityTagsBlock = styled.div`
   background-color: #faf9fc;
   padding: 10px;
-  /* .swiper {
-    display: flex;
-  } */
-`;
-
-const CityTagWrapper = styled(SwiperSlide)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
 export default CityTags;
