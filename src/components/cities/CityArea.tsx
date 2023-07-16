@@ -39,7 +39,7 @@ const CityArea = ({ moveStep }: (direction: number) => void) => {
 const CityAreaBlock = styled.section`
   position: relative;
   box-sizing: border-box;
-  margin-bottom: 200px;
+  margin-bottom: 152px;
 `;
 
 const SeletedBox = styled.div`

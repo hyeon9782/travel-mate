@@ -20,11 +20,25 @@ const Input = ({
 }: Props) => {
   const setCities = useSetRecoilState(citiesState);
   const isDomestic = useRecoilValue(isDomesticState);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (onChange) {
+      onChange(e, setCities, isDomestic);
+    }
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    if (onSubmit) {
+      onSubmit(e);
+    }
+  };
+
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={handleSubmit}>
       <InputBlock
         size={size}
-        onChange={(e) => onChange(e, setCities, isDomestic)}
+        onChange={handleChange}
         value={value}
         onKeyDown={onKeyDown}
         placeholder={holder}

@@ -52,10 +52,6 @@ const PlanPage = () => {
   );
 };
 
-const PlanPageBlock = styled.section`
-  padding: 10px 0;
-`;
-
-const PlanBlock = styled.article``;
+const PlanPageBlock = styled.section``;
 
 export default PlanPage;

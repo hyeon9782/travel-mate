@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 const menu = [
@@ -13,11 +13,13 @@ const menu = [
 ];
 
 const Header = () => {
-  const path = window.location.pathname;
-  console.log(path);
-  const shouldHideHeader = path === "/plan";
+  const location = useLocation();
+  const isPlanPath = location.pathname === "/plan";
+  if (isPlanPath) {
+    return null;
+  }
   return (
-    <HeaderBlock className={shouldHideHeader ? "none" : "block"}>
+    <HeaderBlock>
       <Logo>
         <Link to={"/"}>Travel Mate</Link>
       </Logo>
@@ -39,13 +41,6 @@ const HeaderBlock = styled.div`
   padding: 10px 20px;
   border-bottom: 2px solid lightgray;
   font-weight: bold;
-  &.none {
-    display: none;
-  }
-
-  &.block {
-    display: flex;
-  }
 `;
 
 const Logo = styled.div`

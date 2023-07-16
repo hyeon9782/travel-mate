@@ -28,6 +28,8 @@ const CitySubHeaderBlock = styled.div`
   position: sticky;
   top: 0;
   left: 0;
+  padding: 10px 0;
+  background-color: white;
 `;
 
 const SubHeaderBox = styled.div`
@@ -35,7 +37,6 @@ const SubHeaderBox = styled.div`
 `;
 
 const SearchBox = styled.div`
-  background-color: white;
   display: flex;
   justify-content: space-between;
   width: 90%;
