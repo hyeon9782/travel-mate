@@ -8,7 +8,7 @@ a {
   text-decoration: none;
   color: black;
 }
-/* @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Outfit:wght@700&display=swap'); */
+
 
 body, html, #root {
   width: 100%;
