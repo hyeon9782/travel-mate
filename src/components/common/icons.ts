@@ -1,4 +1,5 @@
 import { ImArrowDown } from "react-icons/im";
+import { BsTrash3 } from "react-icons/bs";
 import {
   AiOutlineArrowRight,
   AiOutlineArrowLeft,
@@ -6,6 +7,7 @@ import {
   AiOutlineSearch,
   AiOutlineMenu,
   AiOutlineClose,
+  AiOutlineEdit,
 } from "react-icons/ai";
 export const PlusIcon = AiOutlinePlus;
 
@@ -20,3 +22,7 @@ export const SearchIcon = AiOutlineSearch;
 export const MenuIcon = AiOutlineMenu;
 
 export const CloseIcon = AiOutlineClose;
+
+export const EditIcon = AiOutlineEdit;
+
+export const TrashIcon = BsTrash3;

@@ -5,6 +5,13 @@ export type City = {
   location: { lat: number; lng: number };
 };
 
+export type Plan = {
+  title: string;
+  startDate: string;
+  endDate: string;
+  city: [];
+};
+
 export type Place = {
   place_id: string;
   name: string;
