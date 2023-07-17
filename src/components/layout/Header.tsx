@@ -14,7 +14,8 @@ const menu = [
 
 const Header = () => {
   const location = useLocation();
-  const isPlanPath = location.pathname === "/plan";
+  const isPlanPath =
+    location.pathname === "/plan" || location.pathname === "/login";
   if (isPlanPath) {
     return null;
   }

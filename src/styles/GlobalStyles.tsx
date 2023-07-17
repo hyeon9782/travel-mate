@@ -8,13 +8,19 @@ a {
   text-decoration: none;
   color: black;
 }
-
+/* @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Outfit:wght@700&display=swap'); */
 
 body, html, #root {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  /* font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Outfit', sans-serif; */
+  font-family: 'Nanum Gothic', sans-serif;
+/* font-family: 'Outfit', sans-serif; */
 }
+
+
 
 /* body {
   font-family: 'Cabin', sans-serif;
