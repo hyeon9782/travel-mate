@@ -1,5 +1,6 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { MenuIcon, PlusIcon } from "../common/icons";
 
 const menu = [
   {
@@ -14,6 +15,7 @@ const menu = [
 
 const Header = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const isPlanPath =
     location.pathname === "/plan" || location.pathname === "/login";
   if (isPlanPath) {
@@ -24,13 +26,17 @@ const Header = () => {
       <Logo>
         <Link to={"/"}>Travel Mate</Link>
       </Logo>
-      <Nav>
+      {/* <Nav>
         {menu.map((item, index) => (
           <li key={index}>
             <Link to={item.href}>{item.text}</Link>
           </li>
         ))}
-      </Nav>
+      </Nav> */}
+      <IconBox>
+        <PlusIcon onClick={() => navigate("/plan")} />
+        <MenuIcon />
+      </IconBox>
     </HeaderBlock>
   );
 };
@@ -46,6 +52,12 @@ const HeaderBlock = styled.div`
 
 const Logo = styled.div`
   font-size: 1.2rem;
+`;
+
+const IconBox = styled.div`
+  display: flex;
+  gap: 20px;
+  font-size: 1.3rem;
 `;
 
 const Nav = styled.ul`
