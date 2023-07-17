@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import Place from "./Place";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 type Props = {
   places: [];
   handleClick: (place: any) => void;
@@ -7,17 +9,18 @@ type Props = {
 const Places = ({ places, handleClick }: Props) => {
   return (
     <PlacesBlock>
-      {places &&
-        places.map((place, index) => (
-          <Place key={index} place={place} handleClick={handleClick} />
+      <Swiper slidesPerView={5}>
+        {places.map((place, index) => (
+          <SwiperSlide key={index}>
+            <Place key={index} place={place} handleClick={handleClick} />
+          </SwiperSlide>
         ))}
+      </Swiper>
     </PlacesBlock>
   );
 };
 
 const PlacesBlock = styled.article`
-  display: flex;
-  gap: 15px;
   padding: 10px;
   width: 100%;
 `;

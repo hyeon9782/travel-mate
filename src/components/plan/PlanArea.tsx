@@ -56,7 +56,9 @@ const ScheduleBlock = styled.article`
 `;
 
 const ScheduleBox = styled.div`
+  box-sizing: border-box;
   width: 100%;
+  padding: 0px 10px;
 `;
 
 const MapBox = styled.div`
