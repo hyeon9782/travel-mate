@@ -14,7 +14,7 @@ const WrapperBlock = styled.div`
   margin: 0px auto;
   width: 100%;
   padding: 0px 20px;
-  height: calc(100vh - 52px);
+  height: calc(100vh - 42.8px);
 `;
 
 export default Wrapper;

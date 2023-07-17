@@ -1,6 +1,9 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { MenuIcon, PlusIcon } from "../common/icons";
+import AppPanel from "../common/AppPanel";
+import { useState } from "react";
+import UserPanel from "../user/UserPanel";
 
 const menu = [
   {
@@ -16,6 +19,7 @@ const menu = [
 const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [active, setActive] = useState(false);
   const isPlanPath =
     location.pathname === "/plan" || location.pathname === "/login";
   if (isPlanPath) {
@@ -35,8 +39,9 @@ const Header = () => {
       </Nav> */}
       <IconBox>
         <PlusIcon onClick={() => navigate("/plan")} />
-        <MenuIcon />
+        <MenuIcon onClick={() => setActive(true)} />
       </IconBox>
+      {active && <UserPanel handleClick={() => setActive(false)} />}
     </HeaderBlock>
   );
 };
