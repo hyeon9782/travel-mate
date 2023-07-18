@@ -1,8 +1,9 @@
 import axios from "axios";
+import { Plan } from "../types";
 
-async function createPlan() {
+async function createPlan(plan: Plan) {
   try {
-    const res = await axios.post(`http://localhost:4000/api/plan`);
+    const res = await axios.post(`http://localhost:4000/api/plan`, plan);
     console.log(res);
   } catch (err) {
     console.error(err);
@@ -10,6 +11,15 @@ async function createPlan() {
 }
 
 async function fetchPlan() {
+  try {
+    const res = await axios.get(`http://localhost:4000/api/plan`);
+    console.log(res);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+async function fetchPlanDetail(planId: string) {
   try {
     const res = await axios.get(`http://localhost:4000/api/plan`);
     console.log(res);
@@ -27,7 +37,7 @@ async function modifyPlan() {
   }
 }
 
-async function removePlan() {
+async function removePlan(planId: string) {
   try {
     const res = await axios.delete(`http://localhost:4000/api/plan`);
     console.log(res);
@@ -36,4 +46,4 @@ async function removePlan() {
   }
 }
 
-export { createPlan, fetchPlan, modifyPlan, removePlan };
+export { createPlan, fetchPlan, fetchPlanDetail, modifyPlan, removePlan };
