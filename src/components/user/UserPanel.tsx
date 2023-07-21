@@ -6,10 +6,19 @@ import { useRecoilValue } from "recoil";
 import { userState } from "../../store/userState";
 import { PlusIcon } from "../common/icons";
 import PlanList from "../plan/PlanList";
+import { useEffect } from "react";
+import { fetchPlan, fetchPlanDetail } from "../../service/plan";
+import { useState } from "react";
 
 const UserPanel = (props) => {
   const user = useRecoilValue(userState);
   const navigate = useNavigate();
+  const [plans, setPlans] = useState([]);
+
+  useEffect(() => {
+    fetchPlan("0", setPlans);
+  }, []);
+
   return (
     <UserPanelBlock>
       <AppPanel {...props}>
@@ -35,7 +44,7 @@ const UserPanel = (props) => {
           </CreatePlan>
           <PlanBox>
             <div className="text-box">지난 여행</div>
-            <PlanList />
+            <PlanList list={plans} />
           </PlanBox>
         </UserBox>
       </AppPanel>

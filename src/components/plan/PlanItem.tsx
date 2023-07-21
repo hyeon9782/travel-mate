@@ -8,9 +8,11 @@ const PlanItem = ({ plan }: Plan) => {
       <div className="item-box">
         <ImageBox></ImageBox>
         <TextBox>
-          <div className="title">도쿄 여행</div>
-          <div className="period">2023.7.12 - 2023.7.15</div>
-          <div className="city">1개 도시</div>
+          <div className="title">{plan.name}</div>
+          <div className="period">
+            {plan.startDate} - {plan.endDate}
+          </div>
+          <div className="city">{plan.city.length}개 도시</div>
         </TextBox>
       </div>
       <IconBox>

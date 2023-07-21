@@ -10,10 +10,11 @@ async function createPlan(plan: Plan) {
   }
 }
 
-async function fetchPlan() {
+async function fetchPlan(userId: string, setPlans: any) {
   try {
-    const res = await axios.get(`http://localhost:4000/api/plan`);
+    const res = await axios.get(`http://localhost:4000/api/plan/${userId}`);
     console.log(res);
+    setPlans([...res.data]);
   } catch (err) {
     console.error(err);
   }
@@ -21,7 +22,7 @@ async function fetchPlan() {
 
 async function fetchPlanDetail(planId: string) {
   try {
-    const res = await axios.get(`http://localhost:4000/api/plan`);
+    const res = await axios.get(`http://localhost:4000/api/plan/${planId}`);
     console.log(res);
   } catch (err) {
     console.error(err);
