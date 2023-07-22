@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import CityTab from "./CityTab";
 import Cities from "./Cities";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { citiesState } from "../../store/citiesState";
@@ -8,7 +7,11 @@ import DoneButton from "../plan/DoneButton";
 import { selectedCitiesState } from "../../store/selectedCitiesState";
 import CitySubHeader from "./CitySubHeader";
 
-const CityArea = ({ moveStep }: (direction: number) => void) => {
+type Props = {
+  moveStep: (direction: number) => void;
+  addData: (key: string, value: string) => void;
+};
+const CityArea = ({ moveStep, addData }: Props) => {
   const [cities, setCities] = useRecoilState(citiesState);
   const selectedCities = useRecoilValue(selectedCitiesState);
   return (

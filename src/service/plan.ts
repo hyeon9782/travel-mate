@@ -20,18 +20,20 @@ async function fetchPlan(userId: string, setPlans: any) {
   }
 }
 
-async function fetchPlanDetail(planId: string) {
+async function fetchPlanDetail(userId: string, planId: string) {
   try {
-    const res = await axios.get(`http://localhost:4000/api/plan/${planId}`);
+    const res = await axios.get(
+      `http://localhost:4000/api/plan/${userId}/${planId}`
+    );
     console.log(res);
   } catch (err) {
     console.error(err);
   }
 }
 
-async function modifyPlan() {
+async function modifyPlan(planId: string) {
   try {
-    const res = await axios.patch(`http://localhost:4000/api/plan`);
+    const res = await axios.put(`http://localhost:4000/api/plan/${planId}`);
     console.log(res);
   } catch (err) {
     console.error(err);
@@ -40,7 +42,7 @@ async function modifyPlan() {
 
 async function removePlan(planId: string) {
   try {
-    const res = await axios.delete(`http://localhost:4000/api/plan`);
+    const res = await axios.delete(`http://localhost:4000/api/plan/${planId}`);
     console.log(res);
   } catch (err) {
     console.error(err);

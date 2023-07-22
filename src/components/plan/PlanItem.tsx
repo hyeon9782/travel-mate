@@ -1,10 +1,23 @@
 import styled from "styled-components";
 import { Plan } from "../../types";
 import { EditIcon, TrashIcon } from "../common/icons";
+import { fetchPlanDetail, removePlan } from "../../service/plan";
+import { useNavigate } from "react-router-dom";
 
 const PlanItem = ({ plan }: Plan) => {
+  const navigate = useNavigate();
+
+  const moveDetail = () => {
+    fetchPlanDetail(plan.userId, plan.planId);
+    navigate(`/plan/${plan.planId}`);
+  };
+
+  const moveEdit = () => {
+    navigate(`/plan/${plan.planId}`);
+  };
+
   return (
-    <PlanItemBlock>
+    <PlanItemBlock onClick={moveDetail}>
       <div className="item-box">
         <ImageBox></ImageBox>
         <TextBox>
@@ -16,8 +29,8 @@ const PlanItem = ({ plan }: Plan) => {
         </TextBox>
       </div>
       <IconBox>
-        <EditIcon onClick={() => console.log("안녕")} />
-        <TrashIcon onClick={() => console.log("안녕")} />
+        <EditIcon onClick={() => moveDetail()} />
+        <TrashIcon onClick={() => removePlan(plan.planId)} />
       </IconBox>
     </PlanItemBlock>
   );

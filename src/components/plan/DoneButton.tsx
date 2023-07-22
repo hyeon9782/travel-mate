@@ -2,11 +2,16 @@ import styled from "styled-components";
 type Props = {
   children: any;
   moveStep: (direction: number) => void;
+  addData: (key: string, value: string) => void;
   disabled?: boolean;
 };
-const DoneButton = ({ children, moveStep, disabled }: Props) => {
+const DoneButton = ({ children, moveStep, disabled, addData }: Props) => {
+  const handleClick = () => {
+    addData("", "");
+    moveStep(1);
+  };
   return (
-    <DoneButtonBox onClick={() => moveStep(1)} disabled={disabled}>
+    <DoneButtonBox onClick={() => handleClick()} disabled={disabled}>
       {children}
     </DoneButtonBox>
   );

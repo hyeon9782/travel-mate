@@ -1,23 +1,83 @@
+import styled from "styled-components";
+import { useState } from "react";
+import PlanArea from "../components/plan/PlanArea";
+import PreviewArea from "../components/plan/PreviewArea";
 import CityArea from "../components/cities/CityArea";
 import DateArea from "../components/date/DateArea";
+import SearchArea from "../components/search/SearchArea";
+
+import { useNavigate } from "react-router-dom";
 import { useFunnel } from "../hooks/useFunnel";
-import { useState } from "react";
 
-// const PlanPage2 = () => {
-//   const [placeData, setPlaceData] = useState();
-//   const [Funnul, setStep] = useFunnel<
-//     "도시선택" | "날짜선택" | "장소검색" | "일정계획" | "미리보기"
-//   >("도시선택");
-//   return (
-//     <Funnul>
-//       <Funnul.step name="도시선택">
-//         <CityArea onNext={() => setStep("날짜선택")} />
-//       </Funnul.step>
-//       <Funnul.step name="날짜선택">
-//         <DateArea onNext={() => setStep("장소검색")} />
-//       </Funnul.step>
-//     </Funnul>
-//   );
-// };
+const PlanPage2 = () => {
+  const [registerData, setRegisterData] = useState({});
+  //   const [step, setStep] = useState<
+  //     "도시선택" | "날짜선택" | "장소검색" | "일정계획" | "미리보기"
+  //   >("도시선택");
 
-// export default PlanPage2;
+  const [Funnel, setStep] = useFunnel<
+    "도시선택" | "날짜선택" | "장소검색" | "일정계획" | "미리보기"
+  >(["도시선택", "날짜선택", "장소검색", "일정계획", "미리보기"] as const);
+
+  const navigate = useNavigate();
+  const [planData, setPlanData] = useState({});
+  const [activeStep, setActiveStep] = useState(1);
+
+  const appendData = () => {
+    setRegisterData((prev) => {
+      const newData = { ...prev };
+      return newData;
+    });
+  };
+
+  const moveStep = (direction: number) => {
+    if (activeStep === 1 && direction === -1) {
+      navigate(-1);
+    } else {
+      setActiveStep(activeStep + direction);
+      setStep((prev) => prev++);
+    }
+  };
+
+  const addData = (key: string, value: string) => {
+    setPlanData((prev) => {
+      const newPrev = { ...prev };
+      newPrev[key] = value;
+      return newPrev;
+    });
+  };
+
+  return (
+    <PlanPageBlock>
+      <Funnel>
+        <Funnel.Step name="도시선택">
+          <CityArea moveStep={moveStep} addData={addData} />
+        </Funnel.Step>
+        <Funnel.Step name="날짜선택">
+          <DateArea moveStep={moveStep} addData={addData} />
+        </Funnel.Step>
+      </Funnel>
+      {/* {step !== "도시선택" && (
+        <PrevStep moveStep={moveStep} activeStep={activeStep} />
+      )}
+
+      {step === "도시선택" && (
+        <CityArea moveStep={moveStep} addData={addData} />
+      )}
+      {step === "날짜선택" && (
+        <DateArea moveStep={moveStep} addData={addData} />
+      )}
+      {step === "장소검색" && (
+        <SearchArea moveStep={moveStep} addData={addData} />
+      )}
+      {step === "일정계획" && (
+        <PlanArea moveStep={moveStep} addData={addData} />
+      )}
+      {step === "미리보기" && <PreviewArea />} */}
+    </PlanPageBlock>
+  );
+};
+
+const PlanPageBlock = styled.main``;
+
+export default PlanPage2;
