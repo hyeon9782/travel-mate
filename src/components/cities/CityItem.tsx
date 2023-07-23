@@ -1,22 +1,19 @@
 import styled from "styled-components";
 import { City } from "../../types";
-import { useState, useEffect } from "react";
-import { appendCity, checkSelect, removeCity } from "../../service/city";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { selectedCitiesState } from "../../store/selectedCitiesState";
+import { checkSelect, handleCitySelection } from "../../service/city";
+import { useRecoilState } from "recoil";
+import { planState } from "../../store/planState";
 
 type Props = {
   city: City;
-  handleClick: (city: City) => void;
 };
-const CityItem = ({ city, handleClick }: Props) => {
-  const [isSelect, setIsSelect] = useState(true);
-  const [selectedCities, setSelectedCities] =
-    useRecoilState(selectedCitiesState);
 
-  useEffect(() => {
-    checkSelect(city, selectedCities, setIsSelect);
-  }, [selectedCities]);
+const CityItem = ({ city }: Props) => {
+  const [planData, setPlanData] = useRecoilState(planState);
+
+  const selectedCities = planData?.cities ?? [];
+
+  const isSelect = checkSelect(city, selectedCities);
 
   return (
     <CityBlock>
@@ -28,11 +25,15 @@ const CityItem = ({ city, handleClick }: Props) => {
         </CityContent>
       </div>
       {isSelect ? (
-        <CancleButton onClick={() => removeCity(city, setSelectedCities)}>
+        <CancleButton
+          onClick={() => handleCitySelection(isSelect, setPlanData, city)}
+        >
           취소
         </CancleButton>
       ) : (
-        <SelectButton onClick={() => appendCity(city, setSelectedCities)}>
+        <SelectButton
+          onClick={() => handleCitySelection(isSelect, setPlanData, city)}
+        >
           선택
         </SelectButton>
       )}

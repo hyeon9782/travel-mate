@@ -1,28 +1,36 @@
-import { useState } from "react";
 import styled from "styled-components";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import { useRecoilState } from "recoil";
+import { planState } from "../../store/planState";
 
-const AppCalender = ({ moveStep }: () => void) => {
-  const [dateRange, setDateRange] = useState([new Date(), new Date()]);
+const AppCalender = ({ onNext }: () => void) => {
+  const [planData, setPlanData] = useRecoilState(planState);
 
-  const onChange = (selectedDates) => {
-    // selectedDates is [start, end]
-    setDateRange(selectedDates);
+  const onChange = (selectedDates: []) => {
+    setPlanData((prevData) => ({
+      ...prevData,
+      period: [...selectedDates],
+    }));
   };
 
   return (
     <CalenderBlock>
       <Calendar
         onChange={onChange}
-        value={dateRange}
+        value={planData.period}
         calendarType="US"
         selectRange={true}
       />
-      <DoneButton onClick={() => moveStep(1)}>
-        {`${dateRange[0].getMonth() + 1}월 ${dateRange[0].getDate()}일`} -{" "}
-        {`${dateRange[1].getMonth() + 1}월 ${dateRange[1].getDate()}일`} / 등록
-        완료
+      <DoneButton onClick={onNext}>
+        {`${
+          planData.period[0].getMonth() + 1
+        }월 ${planData.period[0].getDate()}일`}{" "}
+        -{" "}
+        {`${
+          planData.period[1].getMonth() + 1
+        }월 ${planData.period[1].getDate()}일`}{" "}
+        / 등록 완료
       </DoneButton>
     </CalenderBlock>
   );

@@ -1,10 +1,12 @@
 import styled from "styled-components";
-import Place from "./Place";
+import PlaceItem from "./PlaceItem";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import { Place } from "../../types";
+
 type Props = {
-  places: [];
-  handleClick: (place: any) => void;
+  places: Place[];
+  handleClick: () => void;
 };
 const Places = ({ places, handleClick }: Props) => {
   return (
@@ -12,7 +14,7 @@ const Places = ({ places, handleClick }: Props) => {
       <Swiper slidesPerView={5}>
         {places.map((place, index) => (
           <SwiperSlide key={index}>
-            <Place key={index} place={place} handleClick={handleClick} />
+            <PlaceItem key={index} place={place} handleClick={handleClick} />
           </SwiperSlide>
         ))}
       </Swiper>

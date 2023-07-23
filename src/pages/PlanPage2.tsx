@@ -5,61 +5,53 @@ import PreviewArea from "../components/plan/PreviewArea";
 import CityArea from "../components/cities/CityArea";
 import DateArea from "../components/date/DateArea";
 import SearchArea from "../components/search/SearchArea";
-
 import { useNavigate } from "react-router-dom";
+import PrevStep from "../components/plan/PrevStep";
 
 const PlanPage2 = () => {
-  const [registerData, setRegisterData] = useState({});
+  const navigate = useNavigate();
   const [step, setStep] = useState<
     "도시선택" | "날짜선택" | "장소검색" | "일정계획" | "미리보기"
   >("도시선택");
 
-  const navigate = useNavigate();
   const [planData, setPlanData] = useState({});
-  const [activeStep, setActiveStep] = useState(1);
 
-  const appendData = () => {
-    setRegisterData((prev) => {
-      const newData = { ...prev };
-      return newData;
-    });
-  };
-
-  const moveStep = (direction: number) => {
-    if (activeStep === 1 && direction === -1) {
-      navigate(-1);
-    } else {
-      setActiveStep(activeStep + direction);
-      setStep("날짜선택");
+  const onPrev = () => {
+    switch (step) {
+      case "도시선택":
+        navigate(-1);
+        break;
+      case "날짜선택":
+        setStep("도시선택");
+        break;
+      case "장소검색":
+        setStep("날짜선택");
+        break;
+      case "일정계획":
+        setStep("장소검색");
+        break;
+      case "미리보기":
+        setStep("일정계획");
     }
   };
 
-  const addData = (key: string, value: string) => {
+  const addData = (key: string, value: any) => {
     setPlanData((prev) => {
-      const newPrev = { ...prev };
-      newPrev[key] = value;
-      return newPrev;
+      const newData = { ...prev };
+      newData[key] = value;
+      return newData;
     });
   };
 
   return (
     <PlanPageBlock>
-      {step !== "도시선택" && (
-        <PrevStep moveStep={moveStep} activeStep={activeStep} />
-      )}
-
+      {step !== "도시선택" && <PrevStep onPrev={onPrev} />}
       {step === "도시선택" && (
-        <CityArea moveStep={moveStep} addData={addData} />
+        <CityArea onNext={() => setStep("날짜선택")} onPrev={onPrev} />
       )}
-      {step === "날짜선택" && (
-        <DateArea moveStep={moveStep} addData={addData} />
-      )}
-      {step === "장소검색" && (
-        <SearchArea moveStep={moveStep} addData={addData} />
-      )}
-      {step === "일정계획" && (
-        <PlanArea moveStep={moveStep} addData={addData} />
-      )}
+      {step === "날짜선택" && <DateArea onNext={() => setStep("장소검색")} />}
+      {step === "장소검색" && <SearchArea onNext={() => setStep("일정계획")} />}
+      {step === "일정계획" && <PlanArea onNext={() => setStep("미리보기")} />}
       {step === "미리보기" && <PreviewArea />}
     </PlanPageBlock>
   );

@@ -1,4 +1,3 @@
-import React from "react";
 import PlanItem from "./PlanItem";
 import styled from "styled-components";
 

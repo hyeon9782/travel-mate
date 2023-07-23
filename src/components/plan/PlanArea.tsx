@@ -3,16 +3,19 @@ import Days from "../days/Days";
 import RenderMap from "../google/RenderMap";
 import PlacesTab from "../places/PlacesTab";
 import { Place } from "../../types";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { currentDayState } from "../../store/currentDayState";
 import { scheduleState } from "../../store/scheduleState";
 import Schedules from "../schedules/Schedules";
 import { selectedPlacesState } from "../../store/selectedPlacesState";
+import { handleScheduleSelection } from "../../service/place";
+import { planState } from "../../store/planState";
 
 const PlanArea = () => {
   const currentDay = useRecoilValue(currentDayState);
   const setSchedule = useSetRecoilState(scheduleState);
   const selectedPlaces = useSetRecoilState(selectedPlacesState);
+  const [planData, setPlanData] = useRecoilState(planState);
 
   const selectPlaces = (place: Place) => {
     selectedPlaces((prev) => {
@@ -29,9 +32,19 @@ const PlanArea = () => {
     });
   };
 
+  const order = planData.selectedPlaces.filter(
+    (selectedPlace) => selectedPlace.day === currentDay
+  ).length;
+
+  console.log(order);
+
+  const handleScheduleAdd = (place: Place) => {
+    handleScheduleSelection(false, setPlanData, place, currentDay, order);
+  };
+
   return (
     <PlanBlock>
-      <PlacesTab handleClick={selectPlaces} />
+      <PlacesTab handleClick={() => handleScheduleAdd} />
       <ScheduleBlock>
         <MapBox>
           <RenderMap />

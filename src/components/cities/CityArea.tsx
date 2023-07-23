@@ -4,34 +4,35 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { citiesState } from "../../store/citiesState";
 import SeletedCities from "./SeletedCities";
 import DoneButton from "../plan/DoneButton";
-import { selectedCitiesState } from "../../store/selectedCitiesState";
 import CitySubHeader from "./CitySubHeader";
+import { planState } from "../../store/planState";
 
 type Props = {
-  moveStep: (direction: number) => void;
-  addData: (key: string, value: string) => void;
+  onNext: () => void;
+  onPrev: () => void;
 };
-const CityArea = ({ moveStep, addData }: Props) => {
+const CityArea = ({ onNext, onPrev }: Props) => {
   const [cities, setCities] = useRecoilState(citiesState);
-  const selectedCities = useRecoilValue(selectedCitiesState);
+  const planData = useRecoilValue(planState);
+
   return (
     <CityAreaBlock>
-      <CitySubHeader moveStep={moveStep} />
+      <CitySubHeader onPrev={onPrev} />
       <Cities cities={cities} />
       <SeletedBox>
-        {selectedCities.length !== 0 && (
-          <SeletedCities selectedCities={selectedCities} />
+        {planData?.cities?.length !== 0 && (
+          <SeletedCities selectedCities={planData?.cities} />
         )}
         <div className="done-btn-box">
           <DoneButton
-            moveStep={moveStep}
-            disabled={selectedCities.length === 0 ? true : false}
+            moveStep={onNext}
+            disabled={planData?.cities?.length === 0 ? true : false}
           >
-            {selectedCities.length > 0
-              ? selectedCities.length !== 1
-                ? `${selectedCities[0].city} 외 ${selectedCities.length}개 선택 완료`
-                : `${selectedCities[0].city} 선택 완료`
-              : selectedCities.length !== 1 && "최소 1개 이상의 도시 선택"}
+            {planData?.cities?.length > 1
+              ? planData?.cities?.length !== 1
+                ? `${planData?.cities[0]?.city} 외 ${planData?.cities?.length}개 선택 완료`
+                : `${planData?.cities[0]?.city} 선택 완료`
+              : planData?.cities?.length !== 1 && "최소 1개 이상의 도시 선택"}
           </DoneButton>
         </div>
       </SeletedBox>

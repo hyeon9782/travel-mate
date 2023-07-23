@@ -5,11 +5,11 @@ import { SearchIcon } from "../common/icons";
 import Input from "../common/Input";
 import PrevStep from "../plan/PrevStep";
 
-const CitySubHeader = ({ moveStep }: (direction: number) => void) => {
+const CitySubHeader = ({ onPrev }: () => void) => {
   return (
     <CitySubHeaderBlock>
       <SubHeaderBox>
-        <PrevStep moveStep={moveStep} />
+        <PrevStep onPrev={onPrev} />
 
         <SearchBox>
           <Input

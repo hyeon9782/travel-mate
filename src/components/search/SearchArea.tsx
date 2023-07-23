@@ -1,25 +1,15 @@
 import styled from "styled-components";
 import SearchMap from "../google/SearchMap";
-import { useSetRecoilState } from "recoil";
 import Input from "../common/Input";
 import ResultList from "./ResultList";
 import PlacesTab from "../places/PlacesTab";
-import { Place } from "../../types";
-import { selectedPlacesState } from "../../store/selectedPlacesState";
 import DoneButton from "../plan/DoneButton";
-import { removePlace, searchPlaces } from "../../service/place";
+import { searchPlaces } from "../../service/place";
 
-const SearchArea = ({ moveStep }) => {
-  const setSelectedPlaces = useSetRecoilState(selectedPlacesState);
-
-  // 클릭 시 장소 선택 취소
-  const handleClick = (place: Place) => {
-    removePlace(place, setSelectedPlaces);
-  };
-
+const SearchArea = ({ onNext }: () => void) => {
   return (
     <SearchAreaBlock>
-      <PlacesTab handleClick={handleClick} />
+      <PlacesTab />
       <SearchBlock>
         <MapBox>
           <SearchMap />
@@ -35,7 +25,7 @@ const SearchArea = ({ moveStep }) => {
         </SearchBox>
       </SearchBlock>
       <DoneButtonBox>
-        <DoneButton moveStep={moveStep}>장소 선택 완료</DoneButton>
+        <DoneButton moveStep={onNext}>장소 선택 완료</DoneButton>
       </DoneButtonBox>
     </SearchAreaBlock>
   );

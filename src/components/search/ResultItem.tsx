@@ -1,28 +1,19 @@
 import styled from "styled-components";
 import Button from "../common/Button";
 import { useRecoilState } from "recoil";
-import { selectedPlacesState } from "../../store/selectedPlacesState";
 import { Place } from "../../types";
-import { useEffect, useState } from "react";
-import { appendPlace, checkPlace, removePlace } from "../../service/place";
+import { checkPlace, handlePlaceSelection } from "../../service/place";
+import { planState } from "../../store/planState";
 
 type Props = {
   place: Place;
 };
 
 const ResultItem = ({ place }: Props) => {
-  const [isSelect, setIsSelect] = useState(false);
-  const [selectedPlaces, setSelectedPlaces] =
-    useRecoilState(selectedPlacesState);
+  const [planData, setPlanData] = useRecoilState(planState);
   const { name, user_ratings_total, rating } = place;
 
-  useEffect(() => {
-    checkPlace(place, selectedPlaces, setIsSelect);
-    return () => {
-      // Cleanup function
-      // 이전에 선택되었던 장소에서 해제해야 할 작업 수행
-    };
-  }, [selectedPlaces]);
+  const isSelect = checkPlace(place, planData.selectedPlaces);
 
   return (
     <ResultItemBlock isSelect={isSelect}>
@@ -36,13 +27,13 @@ const ResultItem = ({ place }: Props) => {
           <Button
             text="추가"
             color="black"
-            onClick={() => appendPlace(place, setSelectedPlaces)}
+            onClick={() => handlePlaceSelection(isSelect, setPlanData, place)}
           />
         ) : (
           <Button
             text="제거"
             color="black"
-            onClick={() => removePlace(place, setSelectedPlaces)}
+            onClick={() => handlePlaceSelection(isSelect, setPlanData, place)}
           />
         )}
       </div>

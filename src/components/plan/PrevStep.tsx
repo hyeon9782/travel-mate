@@ -1,12 +1,12 @@
 import { ArrowLeftIcon } from "../common/icons";
 import styled from "styled-components";
 type Props = {
-  moveStep: (direction: number) => void;
+  onPrev: () => void;
 };
-const PrevStep = ({ moveStep }: Props) => {
+const PrevStep = ({ onPrev }: Props) => {
   return (
     <PrevStepBlock>
-      <PrevStepBox onClick={() => moveStep(-1)}>
+      <PrevStepBox onClick={() => onPrev()}>
         <ArrowLeftIcon></ArrowLeftIcon>
       </PrevStepBox>
     </PrevStepBlock>

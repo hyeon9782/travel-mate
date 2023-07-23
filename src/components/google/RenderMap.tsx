@@ -4,6 +4,7 @@ import { scheduleState } from "../../store/scheduleState";
 import { currentDayState } from "../../store/currentDayState";
 import { Marker, Polyline } from "@react-google-maps/api";
 import { useState, useEffect } from "react";
+import { planState } from "../../store/planState";
 
 const OPTIONS = {
   strokeColor: "#FF0000",
@@ -20,22 +21,43 @@ const OPTIONS = {
 };
 
 const RenderMap = () => {
-  const schedules = useRecoilValue(scheduleState);
   const currentDay = useRecoilValue(currentDayState);
+  const planData = useRecoilValue(planState);
   const [markerPositions, setMarkerPositions] = useState([]);
 
+  const schedules = planData.selectedPlaces.filter(
+    (selectedPlace) => selectedPlace.day === currentDay
+  );
+
+  // 두 배열이 동일한지 비교하는 함수를 추가합니다.
+  const arraysAreEqual = (arr1, arr2) => {
+    if (arr1.length !== arr2.length) {
+      return false;
+    }
+
+    for (let i = 0; i < arr1.length; i++) {
+      if (arr1[i] !== arr2[i]) {
+        return false;
+      }
+    }
+
+    return true;
+  };
+
   useEffect(() => {
-    const position = schedules[currentDay].map(
+    const newPositions = schedules.map(
       (schedule) => schedule.geometry.location
     );
 
-    setMarkerPositions(position);
-  }, [schedules[currentDay]]);
-
+    // 이전 markerPositions 배열과 새로운 newPositions 배열이 동일한지 확인합니다.
+    if (!arraysAreEqual(markerPositions, newPositions)) {
+      setMarkerPositions(newPositions);
+    }
+  }, [schedules, markerPositions]);
   return (
-    <Map position={schedules[currentDay]?.at(-1)}>
-      {schedules[currentDay] &&
-        schedules[currentDay].map((schedule) => (
+    <Map position={schedules?.at(-1)}>
+      {schedules &&
+        schedules.map((schedule) => (
           <Marker
             key={schedule.place_id}
             position={schedule.geometry.location}

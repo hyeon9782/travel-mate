@@ -5,15 +5,21 @@ import Schedule from "./Schedule";
 import { currentDayState } from "../../store/currentDayState";
 import { selectedPlacesState } from "../../store/selectedPlacesState";
 import Directions from "../directions/Directions";
-import { travelTimeState } from "../../store/travelTimeState";
-import TravelTimes from "../directions/TravelTimes";
-import TravelTime from "../directions/TravelTime";
+import { planState } from "../../store/planState";
 
 const Schedules = () => {
   const currentDay = useRecoilValue(currentDayState);
   const [schedules, setSchedules] = useRecoilState(scheduleState);
   const selectedPlaces = useSetRecoilState(selectedPlacesState);
-  const setTravelTimes = useSetRecoilState(travelTimeState);
+
+  const [planData, setPlanData] = useRecoilState(planState);
+
+  const newData = planData.selectedPlaces.filter(
+    (selectedPlace) => selectedPlace.day === 0
+  );
+
+  console.log(newData);
+
   const handleClick = (place: Place) => {
     setSchedules((prev) => {
       const newSchedule = [...prev];
@@ -23,11 +29,6 @@ const Schedules = () => {
       return newSchedule;
     });
     selectedPlaces((prev) => [...prev, place]);
-    // setTravelTimes(prev => {
-    //   const newTravelTimes = {...prev};
-    //   newTravelTimes[]
-    //   return newTravelTimes;
-    // })
   };
   return (
     <SchedulesBlock>
@@ -37,10 +38,10 @@ const Schedules = () => {
           schedules[currentDay].map((place, index, self) => (
             <div key={index}>
               <Schedule place={place} handleClick={handleClick} />
-              {self[index + 1] && (
-                <TravelTime index={index} />
+              {/* {self[index + 1] && (
+                // <TravelTime index={index} />
                 // <TravelTimeBlock>{travelTimes[index]}</TravelTimeBlock>
-              )}
+              )} */}
             </div>
           ))}
         {/* <TravelTimes /> */}

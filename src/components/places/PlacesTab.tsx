@@ -1,10 +1,8 @@
 import styled from "styled-components";
 import Places from "./Places";
-import { useRecoilState } from "recoil";
-import { selectedPlacesState } from "../../store/selectedPlacesState";
-import { useState, useEffect } from "react";
-import { changeTab } from "../../service/place";
-import { Place } from "../../types";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { useState } from "react";
+import { planState } from "../../store/planState";
 
 const CATEGORIES = [
   {
@@ -21,26 +19,23 @@ const CATEGORIES = [
   },
 ];
 
-const PlacesTab = (props) => {
-  console.log("탭");
-  console.log(props);
-  const [selectedPlaces, setSelectedPlaces] =
-    useRecoilState(selectedPlacesState);
-  const [currentCategory, setCurrentCategory] = useState(0);
+const PlacesTab = ({ handleClick }: () => void) => {
+  const planData = useRecoilValue(planState);
 
-  const [filterPlaces, setFilterPlaces] = useState(
-    selectedPlaces.filter((place) => place.types.includes("food"))
-  );
+  const [selectedCategory, setSelectedCategory] = useState(0);
 
-  useEffect(() => {
-    changeTab(
-      { en: "food" },
-      0,
-      selectedPlaces,
-      setFilterPlaces,
-      setCurrentCategory
+  const filterPlacesByCategory = (category: any) => {
+    return planData.selectedPlaces.filter((place) =>
+      place?.types.includes(category.en)
     );
-  }, [selectedPlaces]);
+  };
+
+  const handleCategoryChange = (category: any, index: number) => {
+    setSelectedCategory(index);
+    return filterPlacesByCategory(category);
+  };
+
+  const filterPlaces = filterPlacesByCategory(CATEGORIES[selectedCategory]);
 
   return (
     <PlacesTabBlock>
@@ -48,23 +43,15 @@ const PlacesTab = (props) => {
         {CATEGORIES.map((category, index) => (
           <Category
             key={index}
-            onClick={() =>
-              changeTab(
-                category,
-                index,
-                selectedPlaces,
-                setFilterPlaces,
-                setCurrentCategory
-              )
-            }
-            isActive={index === currentCategory}
+            onClick={() => handleCategoryChange(category, index)}
+            isActive={index === selectedCategory}
           >
             {category.ko}
           </Category>
         ))}
       </Categories>
       <PlacesBlock>
-        <Places places={filterPlaces} {...props} />
+        <Places places={filterPlaces} handleClick={handleClick} />
       </PlacesBlock>
     </PlacesTabBlock>
   );

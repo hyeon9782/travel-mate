@@ -34,26 +34,30 @@ function toggle(isDomestic: boolean, setIsDomestic: any, setCities: any) {
   setCities(CITIES.filter((city) => city.isDomestic === isDomestic));
 }
 
-// 도시 선택
-function appendCity(city: City, setSelectedCities: any) {
-  setSelectedCities((prev) => [...prev, city]);
-}
-
-// 도시 선택 취소
-function removeCity(city: City, setSelectedCities: any) {
-  setSelectedCities((prev) => prev.filter((v) => v.city !== city.city));
-}
-
 // 선택 했는지 확인
-function checkSelect(city: City, selectedCities: [], setIsSelect: any) {
-  setIsSelect(selectedCities.includes(city));
+function checkSelect(city: City, selectedCities: City[]) {
+  return selectedCities.includes(city);
 }
 
-export {
-  searchCity,
-  filteringCity,
-  toggle,
-  appendCity,
-  checkSelect,
-  removeCity,
+// 도시 선택 또는 취소
+const handleCitySelection = (
+  isSelect: boolean,
+  setPlanData: any,
+  city: City
+) => {
+  if (isSelect) {
+    // 도시 취소
+    setPlanData((prevData) => ({
+      ...prevData,
+      cities: prevData?.cities?.filter((c) => c !== city),
+    }));
+  } else {
+    // 도시 선택
+    setPlanData((prevData) => ({
+      ...prevData,
+      cities: [...prevData?.cities, city],
+    }));
+  }
 };
+
+export { searchCity, filteringCity, toggle, checkSelect, handleCitySelection };

@@ -1,14 +1,16 @@
 import styled from "styled-components";
 import { City } from "../../types";
 import { truncateTextOverflow } from "../../utils/utils";
-import { removeCity } from "../../service/city";
+import { handleCitySelection } from "../../service/city";
 type Props = {
   city: City;
-  setSelectedCities: any;
+  setPlanData: any;
 };
-const SelectedCity = ({ city, setSelectedCities }: Props) => {
+const SelectedCity = ({ city, setPlanData }: Props) => {
   return (
-    <SelectedCityBlock onClick={() => removeCity(city, setSelectedCities)}>
+    <SelectedCityBlock
+      onClick={() => handleCitySelection(true, setPlanData, city)}
+    >
       <CityImage></CityImage>
       <CityName>{truncateTextOverflow(city.city)}</CityName>
     </SelectedCityBlock>
