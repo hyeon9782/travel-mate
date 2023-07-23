@@ -40,7 +40,7 @@ const CityArea = ({ moveStep, addData }: Props) => {
 };
 
 const CityAreaBlock = styled.section`
-  position: relative;
+  /* position: relative; */
   box-sizing: border-box;
   margin-bottom: 152px;
 `;

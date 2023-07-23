@@ -1,8 +1,7 @@
 import { useState } from "react";
 
-export function useFunnel() {
-  const [step, setStep] = useState();
-  //   const step = useQueryParam("funnel-step")
+export function useFunnel({ steps }) {
+  const [step, setStep] = useState("dd");
 
   const Step = (props) => {
     return <>{props.children}</>;

@@ -5,16 +5,12 @@ import Header from "./components/layout/Header";
 
 function App() {
   return (
-    <>
-      <RecoilRoot>
-        <BrowserRouter>
-          <div style={{ position: "relative" }}>
-            <Header />
-            <AppRoutes />
-          </div>
-        </BrowserRouter>
-      </RecoilRoot>
-    </>
+    <RecoilRoot>
+      <BrowserRouter>
+        <Header />
+        <AppRoutes />
+      </BrowserRouter>
+    </RecoilRoot>
   );
 }
 
