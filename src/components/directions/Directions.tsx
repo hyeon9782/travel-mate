@@ -12,8 +12,6 @@ const Directions = () => {
     (selectedPlace) => selectedPlace.day === currentDay
   );
 
-  console.log(schedules);
-
   return (
     <DirectionsBlock>
       {schedules.length > 1 && <Line />}

@@ -1,6 +1,5 @@
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import DayCreater from "./DayCreater";
 import DayItem from "./DayItem";
 import { planState } from "../../store/planState";
 
@@ -11,9 +10,8 @@ const Days = () => {
   return (
     <DaysBlock>
       {Array.from(Array(days + 1), (_, i) => i).map((_, i) => (
-        <DayItem key={i} day={i} />
+        <DayItem key={i} day={i + 1} />
       ))}
-      <DayCreater />
     </DaysBlock>
   );
 };

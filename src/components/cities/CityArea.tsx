@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Cities from "./Cities";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import { citiesState } from "../../store/citiesState";
 import SeletedCities from "./SeletedCities";
 import DoneButton from "../plan/DoneButton";
@@ -12,7 +12,7 @@ type Props = {
   onPrev: () => void;
 };
 const CityArea = ({ onNext, onPrev }: Props) => {
-  const [cities, setCities] = useRecoilState(citiesState);
+  const cities = useRecoilValue(citiesState);
   const planData = useRecoilValue(planState);
 
   return (
@@ -28,11 +28,11 @@ const CityArea = ({ onNext, onPrev }: Props) => {
             moveStep={onNext}
             disabled={planData?.cities?.length === 0 ? true : false}
           >
-            {planData?.cities?.length > 1
-              ? planData?.cities?.length !== 1
-                ? `${planData?.cities[0]?.city} 외 ${planData?.cities?.length}개 선택 완료`
-                : `${planData?.cities[0]?.city} 선택 완료`
-              : planData?.cities?.length !== 1 && "최소 1개 이상의 도시 선택"}
+            {planData.cities.length > 0
+              ? planData.cities.length !== 1
+                ? `${planData.cities[0].city} 외 ${planData.cities.length}개 선택 완료`
+                : `${planData.cities[0].city} 선택 완료`
+              : planData.cities.length !== 1 && "최소 1개 이상의 도시 선택"}
           </DoneButton>
         </div>
       </SeletedBox>
@@ -41,7 +41,6 @@ const CityArea = ({ onNext, onPrev }: Props) => {
 };
 
 const CityAreaBlock = styled.section`
-  /* position: relative; */
   box-sizing: border-box;
   margin-bottom: 152px;
 `;

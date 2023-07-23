@@ -37,7 +37,9 @@ const handlePlaceSelection = (
     setPlanData((prevData) => ({
       ...prevData,
       selectedPlaces: [
-        ...prevData.selectedPlaces,
+        ...(prevData?.selectedPlaces[0]?.name !== ""
+          ? prevData.selectedPlaces
+          : []),
         { ...place, day: 0, order: 0 },
       ],
     }));
@@ -50,20 +52,6 @@ function checkPlace(place: Place, selectedPlaces: []) {
     selectedPlaces.filter(
       (selectedPlace) => selectedPlace.place_id === place.place_id
     ).length !== 0
-  );
-}
-
-// 일정에 추가하기 (일정 추가하기와 제거하기를 하나로 함수로 묶을까?)
-function selectPlace(place: Place, setSelectedPlaces: any, currentDay: number) {
-  setSelectedPlaces((prev) =>
-    prev.map((selectedPlaces) => {
-      if (selectedPlaces.place_id === place.place_id) {
-        selectedPlaces.isSelect = true;
-        selectedPlaces.day = currentDay;
-        selectedPlaces.order++;
-      }
-      return selectedPlaces;
-    })
   );
 }
 
@@ -81,8 +69,7 @@ const handleScheduleSelection = (
       ...prevData,
       selectedPlaces: prevData.selectedPlaces.map((selectedPlace) => {
         if (selectedPlace.place_id === place.place_id) {
-          selectedPlace.day = 0;
-          selectedPlace.order = 0;
+          return { ...selectedPlace, day: 0, order: 0 }; // 새로운 객체를 생성하여 값을 변경
         }
         return selectedPlace;
       }),
@@ -93,8 +80,7 @@ const handleScheduleSelection = (
       ...prevData,
       selectedPlaces: prevData.selectedPlaces.map((selectedPlace) => {
         if (selectedPlace.place_id === place.place_id) {
-          selectedPlace.day = day;
-          selectedPlace.order = order++;
+          return { ...selectedPlace, day, order: order++ }; // 새로운 객체를 생성하여 값을 변경
         }
         return selectedPlace;
       }),

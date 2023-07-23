@@ -4,12 +4,21 @@ import Input from "../common/Input";
 import ResultList from "./ResultList";
 import PlacesTab from "../places/PlacesTab";
 import DoneButton from "../plan/DoneButton";
-import { searchPlaces } from "../../service/place";
+import { handlePlaceSelection, searchPlaces } from "../../service/place";
+import { Place } from "../../types";
+import { useSetRecoilState } from "recoil";
+import { planState } from "../../store/planState";
 
 const SearchArea = ({ onNext }: () => void) => {
+  const setPlanData = useSetRecoilState(planState);
+
+  const handlePlaceSelectionRemove = (place: Place) => {
+    handlePlaceSelection(true, setPlanData, place);
+  };
+
   return (
     <SearchAreaBlock>
-      <PlacesTab />
+      <PlacesTab handleClick={handlePlaceSelectionRemove} />
       <SearchBlock>
         <MapBox>
           <SearchMap />

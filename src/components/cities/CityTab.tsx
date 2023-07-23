@@ -1,14 +1,13 @@
 import styled from "styled-components";
 import { useEffect } from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { searchState } from "../../store/searchState";
+import { useRecoilState } from "recoil";
+
 import CitiesTag from "./CityTags";
 import { citiesState } from "../../store/citiesState";
 import { toggle } from "../../service/city";
 import { isDomesticState } from "../../store/isDomesticState";
 
 const CityTab = () => {
-  const setSearchData = useSetRecoilState(searchState);
   const [isDomestic, setIsDomestic] = useRecoilState(isDomesticState);
   const [cities, setCities] = useRecoilState(citiesState);
 

@@ -14,7 +14,7 @@ const DayItem = ({ day }: Props) => {
   };
   return (
     <DayItemBlock onClick={handleClick}>
-      <div className={day === currentDay ? "active" : "no"}>{day + 1}일차</div>
+      <div className={day === currentDay ? "active" : "no"}>{day}일차</div>
     </DayItemBlock>
   );
 };

@@ -1,6 +1,5 @@
 import { useRecoilValue } from "recoil";
 import Map from "./Map";
-import { scheduleState } from "../../store/scheduleState";
 import { currentDayState } from "../../store/currentDayState";
 import { Marker, Polyline } from "@react-google-maps/api";
 import { useState, useEffect } from "react";
@@ -30,7 +29,7 @@ const RenderMap = () => {
   );
 
   // 두 배열이 동일한지 비교하는 함수를 추가합니다.
-  const arraysAreEqual = (arr1, arr2) => {
+  const arraysAreEqual = (arr1: [], arr2: []) => {
     if (arr1.length !== arr2.length) {
       return false;
     }
@@ -55,13 +54,10 @@ const RenderMap = () => {
     }
   }, [schedules, markerPositions]);
   return (
-    <Map position={schedules?.at(-1)}>
-      {schedules &&
-        schedules.map((schedule) => (
-          <Marker
-            key={schedule.place_id}
-            position={schedule.geometry.location}
-          />
+    <Map type="계획">
+      {markerPositions &&
+        markerPositions.map((marker, index) => (
+          <Marker key={index} position={marker} />
         ))}
       {markerPositions.length > 0 && (
         <Polyline path={markerPositions} options={OPTIONS} />

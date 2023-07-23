@@ -1,20 +1,9 @@
-import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { PlusIcon } from "../common/icons";
-import { scheduleState } from "../../store/scheduleState";
 
 const DayCreater = () => {
-  const setSchedule = useSetRecoilState(scheduleState);
-
-  const handleClick = () => {
-    setSchedule((prev) => {
-      const newSchedule = [...prev];
-      newSchedule[newSchedule.length] = [];
-      return newSchedule;
-    });
-  };
   return (
-    <DayCreaterBlock onClick={() => handleClick()}>
+    <DayCreaterBlock>
       <PlusIcon />
       <div>날짜추가</div>
     </DayCreaterBlock>

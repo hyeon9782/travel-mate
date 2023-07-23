@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Places from "./Places";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import { useState } from "react";
 import { planState } from "../../store/planState";
 
@@ -25,8 +25,8 @@ const PlacesTab = ({ handleClick }: () => void) => {
   const [selectedCategory, setSelectedCategory] = useState(0);
 
   const filterPlacesByCategory = (category: any) => {
-    return planData.selectedPlaces.filter((place) =>
-      place?.types.includes(category.en)
+    return planData.selectedPlaces.filter(
+      (place) => place?.types.includes(category.en) && place?.day === 0
     );
   };
 
