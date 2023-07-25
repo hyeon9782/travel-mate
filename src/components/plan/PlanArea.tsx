@@ -39,7 +39,7 @@ const PlanArea = ({ onNext }: Props) => {
         </ScheduleBox>
       </ScheduleBlock>
       <BtnBox>
-        <DoneButton onNext={onNext}>일정 저장</DoneButton>
+        <DoneButton onNext={onNext}>미리보기</DoneButton>
       </BtnBox>
     </PlanBlock>
   );
@@ -59,6 +59,7 @@ const ScheduleBlock = styled.article`
 const ScheduleBox = styled.div`
   box-sizing: border-box;
   width: 100%;
+  height: 220px;
   padding: 0px 10px;
 `;
 

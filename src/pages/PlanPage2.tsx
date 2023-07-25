@@ -42,7 +42,9 @@ const PlanPage2 = () => {
       {step === "날짜선택" && <DateArea onNext={() => setStep("장소검색")} />}
       {step === "장소검색" && <SearchArea onNext={() => setStep("일정계획")} />}
       {step === "일정계획" && <PlanArea onNext={() => setStep("미리보기")} />}
-      {step === "미리보기" && <PreviewArea />}
+      {step === "미리보기" && (
+        <PreviewArea onSubmit={() => console.log("등록")} />
+      )}
     </PlanPageBlock>
   );
 };
