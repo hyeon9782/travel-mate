@@ -8,12 +8,12 @@ const PlanItem = ({ plan }: Plan) => {
   const navigate = useNavigate();
 
   const moveDetail = () => {
-    fetchPlanDetail(plan.userId, plan.planId);
-    navigate(`/plan/${plan.planId}`);
+    fetchPlanDetail(plan.user_id, plan.plan_id);
+    navigate(`/plan/${plan.plan_id}`, { state: { planData: plan } });
   };
 
   const moveEdit = () => {
-    navigate(`/plan/${plan.planId}`);
+    navigate(`/plan/edit/${plan.plan_id}`);
   };
 
   return (

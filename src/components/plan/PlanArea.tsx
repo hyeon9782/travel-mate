@@ -2,8 +2,8 @@ import styled from "styled-components";
 import Days from "../days/Days";
 import RenderMap from "../google/RenderMap";
 import PlacesTab from "../places/PlacesTab";
-import { Place } from "../../types";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { Place, Plan } from "../../types";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { currentDayState } from "../../store/currentDayState";
 import Schedules from "../schedules/Schedules";
 import { handleScheduleSelection } from "../../service/place";
@@ -12,11 +12,12 @@ import DoneButton from "./DoneButton";
 
 type Props = {
   onNext: () => void;
+  planData: Plan;
 };
-const PlanArea = ({ onNext }: Props) => {
+const PlanArea = ({ onNext, planData }: Props) => {
   const currentDay = useRecoilValue(currentDayState);
 
-  const [planData, setPlanData] = useRecoilState(planState);
+  const setPlanData = useSetRecoilState(planState);
 
   const order = planData.selectedPlaces.filter(
     (selectedPlace) => selectedPlace.day === currentDay
@@ -31,7 +32,7 @@ const PlanArea = ({ onNext }: Props) => {
       <PlacesTab handleClick={handleScheduleAdd} />
       <ScheduleBlock>
         <MapBox>
-          <RenderMap />
+          <RenderMap planData={planData} />
         </MapBox>
         <ScheduleBox>
           <Days />

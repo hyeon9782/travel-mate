@@ -3,7 +3,7 @@ import Map from "./Map";
 import { currentDayState } from "../../store/currentDayState";
 import { Marker, Polyline } from "@react-google-maps/api";
 import { useState, useEffect } from "react";
-import { planState } from "../../store/planState";
+import { Plan } from "../../types";
 
 const OPTIONS = {
   strokeColor: "#FF0000",
@@ -19,10 +19,14 @@ const OPTIONS = {
   zIndex: 1,
 };
 
-const RenderMap = () => {
+type Props = {
+  planData: Plan;
+};
+
+const RenderMap = ({ planData }: Props) => {
   const currentDay = useRecoilValue(currentDayState);
-  const planData = useRecoilValue(planState);
   const [markerPositions, setMarkerPositions] = useState([]);
+  console.log(planData);
 
   const schedules = planData.selectedPlaces.filter(
     (selectedPlace) => selectedPlace.day === currentDay
@@ -54,7 +58,7 @@ const RenderMap = () => {
     }
   }, [schedules, markerPositions]);
   return (
-    <Map type="계획">
+    <Map type="계획" planData={planData}>
       {markerPositions &&
         markerPositions.map((marker, index) => (
           <Marker key={index} position={marker} />

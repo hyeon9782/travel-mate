@@ -6,10 +6,11 @@ export type City = {
 };
 
 export type Plan = {
-  title: string;
-  startDate: string;
-  endDate: string;
-  city: [];
+  plan_id: string;
+  user_id: string;
+  cities: City[];
+  period: [];
+  selectedPlaces: Place[];
 };
 
 export type Place = {

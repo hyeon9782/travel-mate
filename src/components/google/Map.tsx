@@ -1,20 +1,15 @@
 import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import { useRecoilValue } from "recoil";
-import { planState } from "../../store/planState";
 import { currentDayState } from "../../store/currentDayState";
+import { Plan } from "../../types";
 
 type Props = {
   children: React.ReactNode;
   type: string;
-  size: any;
+  planData: Plan;
 };
 
-const Map = ({
-  children,
-  type,
-  size = { width: "100%", height: "100%" },
-}: Props) => {
-  const planData = useRecoilValue(planState);
+const Map = ({ children, type, planData }: Props) => {
   const currentDay = useRecoilValue(currentDayState);
 
   const { isLoaded } = useLoadScript({
@@ -38,7 +33,7 @@ const Map = ({
   return (
     <GoogleMap
       zoom={13}
-      mapContainerStyle={size}
+      mapContainerStyle={{ width: "100%", height: "100%" }}
       center={
         position?.name
           ? position.geometry.location

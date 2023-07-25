@@ -28,13 +28,6 @@ const PreviewArea = ({ onSubmit }: Props) => {
 
 const PreviewAreaBlock = styled.section``;
 
-const RegisterInput = styled.input`
-  width: 100%;
-  border-radius: 5px;
-  border: 1px solid lightgray;
-  height: 30px;
-`;
-
 const ScheduleBlock = styled.article`
   height: 80%;
   display: flex;

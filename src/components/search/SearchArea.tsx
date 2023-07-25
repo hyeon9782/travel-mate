@@ -5,15 +5,16 @@ import ResultList from "./ResultList";
 import PlacesTab from "../places/PlacesTab";
 import DoneButton from "../plan/DoneButton";
 import { handlePlaceSelection, searchPlaces } from "../../service/place";
-import { Place } from "../../types";
+import { Place, Plan } from "../../types";
 import { useSetRecoilState } from "recoil";
 import { planState } from "../../store/planState";
 
 type Props = {
   onNext: () => void;
+  planData: Plan;
 };
 
-const SearchArea = ({ onNext }: Props) => {
+const SearchArea = ({ onNext, planData }: Props) => {
   const setPlanData = useSetRecoilState(planState);
 
   const handlePlaceSelectionRemove = (place: Place) => {
@@ -25,7 +26,7 @@ const SearchArea = ({ onNext }: Props) => {
       <PlacesTab handleClick={handlePlaceSelectionRemove} />
       <SearchBlock>
         <MapBox>
-          <SearchMap />
+          <SearchMap planData={planData} />
         </MapBox>
         <SearchBox>
           <InputBox>
@@ -45,7 +46,6 @@ const SearchArea = ({ onNext }: Props) => {
 };
 
 const SearchAreaBlock = styled.article`
-  /* position: relative; */
   width: 100%;
   height: calc(100vh - 44.59px);
   overflow: hidden;
