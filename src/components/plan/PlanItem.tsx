@@ -12,8 +12,9 @@ const PlanItem = ({ plan }: Plan) => {
     navigate(`/plan/${plan.plan_id}`, { state: { planData: plan } });
   };
 
-  const moveEdit = () => {
-    navigate(`/plan/edit/${plan.plan_id}`);
+  const moveEdit = (event) => {
+    event.stopPropagation();
+    navigate(`/plan/edit/${plan.plan_id}`, { state: { planData: plan } });
   };
 
   return (
@@ -29,7 +30,7 @@ const PlanItem = ({ plan }: Plan) => {
         </TextBox>
       </div>
       <IconBox>
-        <EditIcon onClick={() => moveDetail()} />
+        <EditIcon onClick={(e) => moveEdit(e)} />
         <TrashIcon onClick={() => removePlan(plan.planId)} />
       </IconBox>
     </PlanItemBlock>

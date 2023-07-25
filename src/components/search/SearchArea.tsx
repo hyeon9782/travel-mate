@@ -23,7 +23,7 @@ const SearchArea = ({ onNext, planData }: Props) => {
 
   return (
     <SearchAreaBlock>
-      <PlacesTab handleClick={handlePlaceSelectionRemove} />
+      <PlacesTab handleClick={handlePlaceSelectionRemove} planData={planData} />
       <SearchBlock>
         <MapBox>
           <SearchMap planData={planData} />

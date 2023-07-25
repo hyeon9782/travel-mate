@@ -3,24 +3,30 @@ import DoneButton from "./DoneButton";
 import Days from "../days/Days";
 import Schedules from "../schedules/Schedules";
 import RenderMap from "../google/RenderMap";
+import { Plan } from "../../types";
+import { useLocation } from "react-router-dom";
 
 type Props = {
   onSubmit: () => void;
+  planData: Plan;
 };
-const PreviewArea = ({ onSubmit }: Props) => {
+const PreviewArea = ({ onSubmit, planData }: Props) => {
+  const location = useLocation();
   return (
     <PreviewAreaBlock>
       <ScheduleBlock>
         <MapBox>
-          <RenderMap />
+          <RenderMap planData={planData} />
         </MapBox>
         <ScheduleBox>
-          <Days />
+          <Days planData={planData} />
           <Schedules />
         </ScheduleBox>
       </ScheduleBlock>
       <BtnBox>
-        <DoneButton onNext={onSubmit}>일정 저장</DoneButton>
+        <DoneButton onNext={onSubmit}>
+          {location.pathname === "/plan" ? "일정 등록" : "일정 수정"}
+        </DoneButton>
       </BtnBox>
     </PreviewAreaBlock>
   );

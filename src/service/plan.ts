@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Plan } from "../types";
 
-async function createPlan(plan: any) {
+async function createPlan(plan: Plan) {
   try {
     console.log(plan);
     const res = await axios.post(`http://localhost:4000/api/plan`, plan);
@@ -32,9 +32,12 @@ async function fetchPlanDetail(userId: string, planId: string) {
   }
 }
 
-async function modifyPlan(planId: string) {
+async function modifyPlan(planId: string, plan: Plan) {
   try {
-    const res = await axios.put(`http://localhost:4000/api/plan/${planId}`);
+    const res = await axios.put(
+      `http://localhost:4000/api/plan/${planId}`,
+      plan
+    );
     console.log(res);
   } catch (err) {
     console.error(err);

@@ -16,7 +16,7 @@ const PlanDetailPage = () => {
           <RenderMap planData={planData} />
         </MapBox>
         <ScheduleBox>
-          <Days />
+          <Days planData={planData} />
           <Schedules />
         </ScheduleBox>
       </ScheduleBlock>

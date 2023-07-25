@@ -5,15 +5,15 @@ import { citiesState } from "../../store/citiesState";
 import SeletedCities from "./SeletedCities";
 import DoneButton from "../plan/DoneButton";
 import CitySubHeader from "./CitySubHeader";
-import { planState } from "../../store/planState";
+import { Plan } from "../../types";
 
 type Props = {
   onNext: () => void;
   onPrev: () => void;
+  planData: Plan;
 };
-const CityArea = ({ onNext, onPrev }: Props) => {
+const CityArea = ({ onNext, onPrev, planData }: Props) => {
   const cities = useRecoilValue(citiesState);
-  const planData = useRecoilValue(planState);
 
   return (
     <CityAreaBlock>
@@ -42,16 +42,15 @@ const CityArea = ({ onNext, onPrev }: Props) => {
 
 const CityAreaBlock = styled.section`
   box-sizing: border-box;
-  /* margin-bottom: 152px; */
 `;
 
 const SeletedBox = styled.div`
   width: 100%;
   background-color: white;
   border-top: 1px solid lightgray;
-  position: sticky; /* DoneButton이 고정될 수 있도록 설정 */
-  bottom: 0; /* 화면 하단에 위치하도록 설정 */
-  left: 0; /* 왼쪽 정렬을 위해 설정 (센터 정렬을 원한다면, left와 right를 조정) */
+  position: sticky;
+  bottom: 0;
+  left: 0;
 `;
 
 const BtnBox = styled.div`

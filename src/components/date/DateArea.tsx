@@ -1,15 +1,17 @@
 import styled from "styled-components";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { planState } from "../../store/planState";
 import DoneButton from "../plan/DoneButton";
+import { Plan } from "../../types";
 
 type Props = {
   onNext: () => void;
+  planData: Plan;
 };
-const DateArea = ({ onNext }: Props) => {
-  const [planData, setPlanData] = useRecoilState(planState);
+const DateArea = ({ onNext, planData }: Props) => {
+  const setPlanData = useSetRecoilState(planState);
 
   const onChange = (selectedDates: []) => {
     setPlanData((prevData) => ({
@@ -35,13 +37,13 @@ const DateArea = ({ onNext }: Props) => {
       </CalenderBox>
       <BtnBox>
         <DoneButton onNext={onNext}>
-          {`${
-            planData.period[0].getMonth() + 1
-          }월 ${planData.period[0].getDate()}일`}{" "}
+          {`${new Date(planData.period[0]).getMonth() + 1}월 ${new Date(
+            planData.period[0]
+          ).getDate()}일`}{" "}
           -{" "}
-          {`${
-            planData.period[1].getMonth() + 1
-          }월 ${planData.period[1].getDate()}일`}{" "}
+          {`${new Date(planData.period[1]).getMonth() + 1}월 ${new Date(
+            planData.period[1]
+          ).getDate()}일`}{" "}
           / 등록 완료
         </DoneButton>
       </BtnBox>

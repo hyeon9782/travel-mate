@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import Places from "./Places";
-import { useRecoilValue } from "recoil";
 import { useState } from "react";
-import { planState } from "../../store/planState";
+import { Plan } from "../../types";
 
 const CATEGORIES = [
   {
@@ -19,9 +18,11 @@ const CATEGORIES = [
   },
 ];
 
-const PlacesTab = ({ handleClick }: () => void) => {
-  const planData = useRecoilValue(planState);
-
+type Props = {
+  handleClick: () => void;
+  planData: Plan;
+};
+const PlacesTab = ({ handleClick, planData }: Props) => {
   const [selectedCategory, setSelectedCategory] = useState(0);
 
   const filterPlacesByCategory = (category: any) => {
