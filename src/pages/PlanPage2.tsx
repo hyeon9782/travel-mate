@@ -14,8 +14,6 @@ const PlanPage2 = () => {
     "도시선택" | "날짜선택" | "장소검색" | "일정계획" | "미리보기"
   >("도시선택");
 
-  const [planData, setPlanData] = useState({});
-
   const onPrev = () => {
     switch (step) {
       case "도시선택":
@@ -35,14 +33,6 @@ const PlanPage2 = () => {
     }
   };
 
-  const addData = (key: string, value: any) => {
-    setPlanData((prev) => {
-      const newData = { ...prev };
-      newData[key] = value;
-      return newData;
-    });
-  };
-
   return (
     <PlanPageBlock>
       {step !== "도시선택" && <PrevStep onPrev={onPrev} />}
@@ -57,6 +47,8 @@ const PlanPage2 = () => {
   );
 };
 
-const PlanPageBlock = styled.main``;
+const PlanPageBlock = styled.main`
+  height: 100%;
+`;
 
 export default PlanPage2;

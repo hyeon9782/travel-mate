@@ -9,7 +9,11 @@ import { Place } from "../../types";
 import { useSetRecoilState } from "recoil";
 import { planState } from "../../store/planState";
 
-const SearchArea = ({ onNext }: () => void) => {
+type Props = {
+  onNext: () => void;
+};
+
+const SearchArea = ({ onNext }: Props) => {
   const setPlanData = useSetRecoilState(planState);
 
   const handlePlaceSelectionRemove = (place: Place) => {
@@ -33,25 +37,18 @@ const SearchArea = ({ onNext }: () => void) => {
           <ResultList />
         </SearchBox>
       </SearchBlock>
-      <DoneButtonBox>
-        <DoneButton moveStep={onNext}>장소 선택 완료</DoneButton>
-      </DoneButtonBox>
+      <BtnBox>
+        <DoneButton onNext={onNext}>장소 선택 완료</DoneButton>
+      </BtnBox>
     </SearchAreaBlock>
   );
 };
 
 const SearchAreaBlock = styled.article`
-  position: relative;
-  height: calc(100vh - 41.59px);
-`;
-
-const DoneButtonBox = styled.div`
-  padding: 10px;
+  /* position: relative; */
   width: 100%;
-  box-sizing: border-box;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  height: calc(100vh - 44.59px);
+  overflow: hidden;
 `;
 
 const SearchBlock = styled.article`
@@ -70,6 +67,15 @@ const SearchBox = styled.div`
 const MapBox = styled.div`
   height: 200px;
   background-color: gray;
+`;
+
+const BtnBox = styled.div`
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  left: 0;
 `;
 
 export default SearchArea;

@@ -40,7 +40,7 @@ const Input = ({
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <FormBlock onSubmit={handleSubmit}>
       <InputBlock
         size={size}
         onChange={handleChange}
@@ -48,9 +48,14 @@ const Input = ({
         onKeyDown={onKeyDown}
         placeholder={holder}
       ></InputBlock>
-    </form>
+    </FormBlock>
   );
 };
+
+const FormBlock = styled.form`
+  display: flex;
+  align-items: center;
+`;
 
 const InputBlock = styled.input<{ size?: string }>`
   width: 300px;

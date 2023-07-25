@@ -23,9 +23,9 @@ const CityArea = ({ onNext, onPrev }: Props) => {
         {planData?.cities?.length !== 0 && (
           <SeletedCities selectedCities={planData?.cities} />
         )}
-        <div className="done-btn-box">
+        <BtnBox>
           <DoneButton
-            moveStep={onNext}
+            onNext={onNext}
             disabled={planData?.cities?.length === 0 ? true : false}
           >
             {planData.cities.length > 0
@@ -34,7 +34,7 @@ const CityArea = ({ onNext, onPrev }: Props) => {
                 : `${planData.cities[0].city} 선택 완료`
               : planData.cities.length !== 1 && "최소 1개 이상의 도시 선택"}
           </DoneButton>
-        </div>
+        </BtnBox>
       </SeletedBox>
     </CityAreaBlock>
   );
@@ -42,20 +42,20 @@ const CityArea = ({ onNext, onPrev }: Props) => {
 
 const CityAreaBlock = styled.section`
   box-sizing: border-box;
-  margin-bottom: 152px;
+  /* margin-bottom: 152px; */
 `;
 
 const SeletedBox = styled.div`
   width: 100%;
   background-color: white;
   border-top: 1px solid lightgray;
-  position: fixed; /* DoneButton이 고정될 수 있도록 설정 */
+  position: sticky; /* DoneButton이 고정될 수 있도록 설정 */
   bottom: 0; /* 화면 하단에 위치하도록 설정 */
   left: 0; /* 왼쪽 정렬을 위해 설정 (센터 정렬을 원한다면, left와 right를 조정) */
+`;
 
-  .done-btn-box {
-    padding: 10px;
-  }
+const BtnBox = styled.div`
+  padding: 10px;
 `;
 
 export default CityArea;

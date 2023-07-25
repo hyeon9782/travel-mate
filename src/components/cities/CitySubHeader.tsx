@@ -10,7 +10,6 @@ const CitySubHeader = ({ onPrev }: () => void) => {
     <CitySubHeaderBlock>
       <SubHeaderBox>
         <PrevStep onPrev={onPrev} />
-
         <SearchBox>
           <Input
             onChange={searchCity}
@@ -28,7 +27,6 @@ const CitySubHeaderBlock = styled.div`
   position: sticky;
   top: 0;
   left: 0;
-  padding: 10px 0;
   background-color: white;
 `;
 
@@ -39,10 +37,12 @@ const SubHeaderBox = styled.div`
 const SearchBox = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 90%;
 
   .icon {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    padding: 5px;
   }
 `;
 

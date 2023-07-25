@@ -8,8 +8,12 @@ import { currentDayState } from "../../store/currentDayState";
 import Schedules from "../schedules/Schedules";
 import { handleScheduleSelection } from "../../service/place";
 import { planState } from "../../store/planState";
+import DoneButton from "./DoneButton";
 
-const PlanArea = () => {
+type Props = {
+  onNext: () => void;
+};
+const PlanArea = ({ onNext }: Props) => {
   const currentDay = useRecoilValue(currentDayState);
 
   const [planData, setPlanData] = useRecoilState(planState);
@@ -34,12 +38,16 @@ const PlanArea = () => {
           <Schedules />
         </ScheduleBox>
       </ScheduleBlock>
+      <BtnBox>
+        <DoneButton onNext={onNext}>일정 저장</DoneButton>
+      </BtnBox>
     </PlanBlock>
   );
 };
 
 const PlanBlock = styled.div`
-  height: 100%;
+  height: calc(100% - 44.59);
+  overflow: hidden;
 `;
 
 const ScheduleBlock = styled.article`
@@ -57,7 +65,15 @@ const ScheduleBox = styled.div`
 const MapBox = styled.div`
   width: 100%;
   height: 200px;
-  /* height: 300px; */
+`;
+
+const BtnBox = styled.div`
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  left: 0;
 `;
 
 export default PlanArea;

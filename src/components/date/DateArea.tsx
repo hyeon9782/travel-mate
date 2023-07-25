@@ -1,7 +1,22 @@
 import styled from "styled-components";
-import AppCalender from "../common/AppCalender";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import { useRecoilState } from "recoil";
+import { planState } from "../../store/planState";
+import DoneButton from "../plan/DoneButton";
 
-const DateArea = (props) => {
+type Props = {
+  onNext: () => void;
+};
+const DateArea = ({ onNext }: Props) => {
+  const [planData, setPlanData] = useRecoilState(planState);
+
+  const onChange = (selectedDates: []) => {
+    setPlanData((prevData) => ({
+      ...prevData,
+      period: [...selectedDates],
+    }));
+  };
   return (
     <DateAreaBlock>
       <DateAreaTitle>
@@ -11,8 +26,25 @@ const DateArea = (props) => {
         </div>
       </DateAreaTitle>
       <CalenderBox>
-        <AppCalender {...props} />
+        <Calendar
+          onChange={onChange}
+          value={planData.period}
+          calendarType="US"
+          selectRange={true}
+        />
       </CalenderBox>
+      <BtnBox>
+        <DoneButton onNext={onNext}>
+          {`${
+            planData.period[0].getMonth() + 1
+          }월 ${planData.period[0].getDate()}일`}{" "}
+          -{" "}
+          {`${
+            planData.period[1].getMonth() + 1
+          }월 ${planData.period[1].getDate()}일`}{" "}
+          / 등록 완료
+        </DoneButton>
+      </BtnBox>
     </DateAreaBlock>
   );
 };
@@ -20,11 +52,13 @@ const DateArea = (props) => {
 const DateAreaBlock = styled.div`
   display: flex;
   flex-direction: column;
+  height: calc(100% - 44.59px);
 `;
 
 const CalenderBox = styled.div`
   display: flex;
   justify-content: center;
+  padding: 30px;
 `;
 
 const DateAreaTitle = styled.div`
@@ -41,6 +75,15 @@ const DateAreaTitle = styled.div`
   }
   padding-bottom: 20px;
   border-bottom: 1px solid gray;
+`;
+
+const BtnBox = styled.div`
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  left: 0;
 `;
 
 export default DateArea;

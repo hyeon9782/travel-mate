@@ -20,7 +20,7 @@ const ResultListBlock = styled.div`
   flex-direction: column;
   gap: 10px;
   box-sizing: border-box;
-  height: 250px;
+  height: 200px;
   padding: 10px;
   overflow: auto;
   background-color: #faf9fc;
