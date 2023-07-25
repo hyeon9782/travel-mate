@@ -21,11 +21,11 @@ const PlanItem = ({ plan }: Plan) => {
       <div className="item-box">
         <ImageBox></ImageBox>
         <TextBox>
-          <div className="title">{plan.name}</div>
+          <div className="title">{plan.cities[0].city} 여행</div>
           <div className="period">
-            {plan.startDate} - {plan.endDate}
+            {plan.period[0].slice(0, 7)} - {plan.period[1].slice(0, 7)}
           </div>
-          <div className="city">{plan.city.length}개 도시</div>
+          <div className="city">{plan.cities.length}개 도시</div>
         </TextBox>
       </div>
       <IconBox>

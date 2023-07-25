@@ -3,14 +3,11 @@ import DoneButton from "./DoneButton";
 import Days from "../days/Days";
 import Schedules from "../schedules/Schedules";
 import RenderMap from "../google/RenderMap";
-import { useState } from "react";
-import AppModal from "../common/AppModal";
-import Button from "../common/Button";
+
 type Props = {
   onSubmit: () => void;
 };
 const PreviewArea = ({ onSubmit }: Props) => {
-  const [isModal, setIsModal] = useState(false);
   return (
     <PreviewAreaBlock>
       <ScheduleBlock>
@@ -23,13 +20,8 @@ const PreviewArea = ({ onSubmit }: Props) => {
         </ScheduleBox>
       </ScheduleBlock>
       <BtnBox>
-        <DoneButton onNext={() => setIsModal(true)}>일정 저장</DoneButton>
+        <DoneButton onNext={onSubmit}>일정 저장</DoneButton>
       </BtnBox>
-      <AppModal isModal={isModal} close={() => setIsModal(false)}>
-        <div>모달</div>
-        <RegisterInput />
-        <Button text="일정 등록" />
-      </AppModal>
     </PreviewAreaBlock>
   );
 };

@@ -1,8 +1,9 @@
 import axios from "axios";
 import { Plan } from "../types";
 
-async function createPlan(plan: Plan) {
+async function createPlan(plan: any) {
   try {
+    console.log(plan);
     const res = await axios.post(`http://localhost:4000/api/plan`, plan);
     console.log(res);
   } catch (err) {
