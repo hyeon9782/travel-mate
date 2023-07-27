@@ -1,25 +1,15 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { MenuIcon, PlusIcon } from "../common/icons";
-import AppPanel from "../common/AppPanel";
 import { useState } from "react";
-import UserPanel from "../user/UserPanel";
-
-const menu = [
-  {
-    href: "/plan",
-    text: "여행일정",
-  },
-  {
-    href: "/login",
-    text: "로그인",
-  },
-];
+import AppPanel from "../common/AppPanel";
+import UserContent from "../user/UserContent";
 
 const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [active, setActive] = useState(false);
+
   const isPlanPath =
     location.pathname === "/plan" || location.pathname === "/login";
   if (isPlanPath) {
@@ -30,18 +20,15 @@ const Header = () => {
       <Logo>
         <Link to={"/"}>Travel Mate</Link>
       </Logo>
-      {/* <Nav>
-        {menu.map((item, index) => (
-          <li key={index}>
-            <Link to={item.href}>{item.text}</Link>
-          </li>
-        ))}
-      </Nav> */}
       <IconBox>
         <PlusIcon onClick={() => navigate("/plan")} />
         <MenuIcon onClick={() => setActive(true)} />
       </IconBox>
-      {active && <UserPanel handleClick={() => setActive(false)} />}
+      {active && (
+        <AppPanel handleClick={() => setActive(false)}>
+          <UserContent />
+        </AppPanel>
+      )}
     </HeaderBlock>
   );
 };
@@ -63,15 +50,6 @@ const IconBox = styled.div`
   display: flex;
   gap: 20px;
   font-size: 1.3rem;
-`;
-
-const Nav = styled.ul`
-  display: flex;
-  font-size: 1rem;
-
-  li {
-    padding-left: 5px;
-  }
 `;
 
 export default Header;

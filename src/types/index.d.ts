@@ -1,3 +1,7 @@
+export type User = {
+  email: string;
+};
+
 export type City = {
   city: string;
   country: string;

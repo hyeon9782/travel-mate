@@ -41,7 +41,7 @@ const AppPanelBox = styled.div`
 
 const ContentBox = styled.div``;
 
-const IconBox = styled.div`
+const IconBox = styled.span`
   font-size: 1.7rem;
   color: black;
 `;
