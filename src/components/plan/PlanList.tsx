@@ -1,10 +1,16 @@
+import { Plan } from "../../types";
 import PlanItem from "./PlanItem";
 import styled from "styled-components";
 
-const PlanList = ({ list }: { list: [] }) => {
+type Props = {
+  plans: Plan[];
+};
+
+const PlanList = ({ plans }: Props) => {
   return (
     <PlanListBlock>
-      {list && list.map((item) => <PlanItem key={item.plan_id} plan={item} />)}
+      {plans &&
+        plans.map((plan) => <PlanItem key={plan.plan_id} plan={plan} />)}
     </PlanListBlock>
   );
 };

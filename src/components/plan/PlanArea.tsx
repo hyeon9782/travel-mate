@@ -3,7 +3,7 @@ import Days from "../days/Days";
 import RenderMap from "../google/RenderMap";
 import PlacesTab from "../places/PlacesTab";
 import { Place, Plan } from "../../types";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { currentDayState } from "../../store/currentDayState";
 import Schedules from "../schedules/Schedules";
 import { handleScheduleSelection } from "../../service/place";

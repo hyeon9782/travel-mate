@@ -2,15 +2,25 @@ import styled from "styled-components";
 import RenderMap from "../components/google/RenderMap";
 import Days from "../components/days/Days";
 import Schedules from "../components/schedules/Schedules";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import PrevStep from "../components/plan/PrevStep";
+import { useSetRecoilState } from "recoil";
+import { planState } from "../store/planState";
+import { useEffect } from "react";
 
 const PlanDetailPage = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const planData = location?.state?.planData || null;
-  console.log(planData);
+  const setPlanData = useSetRecoilState(planState);
+
+  useEffect(() => {
+    setPlanData({ ...planData });
+  }, []);
 
   return (
     <PlanDetailPageBlock>
+      <PrevStep onPrev={() => navigate(-1)} />
       <ScheduleBlock>
         <MapBox>
           <RenderMap planData={planData} />

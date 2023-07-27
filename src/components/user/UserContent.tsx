@@ -34,7 +34,6 @@ const UserContent = () => {
             <Profile />
           </ProfileBox>
           <UserBox>
-            <UserMenu>내 여행</UserMenu>
             <CreatePlan onClick={() => navigate("/plan")}>
               <div className="icon-box">
                 <PlusIcon />
@@ -46,7 +45,7 @@ const UserContent = () => {
             </CreatePlan>
             <PlanBox>
               <div className="text-box">지난 여행</div>
-              <PlanList list={plans} />
+              <PlanList plans={plans} />
             </PlanBox>
           </UserBox>
           <GoogleLogout />
@@ -71,11 +70,8 @@ const ProfileBox = styled.div`
 
 const UserBox = styled.div``;
 
-const UserMenu = styled.div`
-  padding: 20px 0;
-`;
-
 const PlanBox = styled.div`
+  height: 350px;
   .text-box {
     padding: 20px 0;
   }
@@ -87,6 +83,7 @@ const CreatePlan = styled.div`
   background-color: #faf9fc;
   border-radius: 5px;
   padding: 10px;
+  margin-top: 30px;
 
   .icon-box {
     border-radius: 50%;

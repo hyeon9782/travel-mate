@@ -22,6 +22,7 @@ const LogoutButton = styled.button`
   background-color: white;
   font-weight: bold;
   padding: 10px;
+  margin: 10px 0;
 `;
 
 export default GoogleLogout;

@@ -23,11 +23,17 @@ const Header = () => {
     }
   }, []);
 
-  const isPlanPath =
-    location.pathname === "/plan" || location.pathname === "/login";
-  if (isPlanPath) {
-    return null;
+  const isPlanPath = location.pathname === "/";
+
+  if (!isPlanPath) {
+    return;
   }
+
+  // const isPlanPath =
+  //   location.pathname === "/plan" || location.pathname === "/login";
+  // if (isPlanPath) {
+  //   return null;
+  // }
   return (
     <HeaderBlock>
       <Logo>
