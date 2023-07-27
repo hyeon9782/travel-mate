@@ -1,19 +1,23 @@
 import styled from "styled-components";
 import { Post } from "../../types";
 import PostTag from "./PostTag";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   post: Post;
 };
 
 const PostItem = ({ post }: Props) => {
-  const { title, content, tags } = post;
+  const { title, tags, post_id } = post;
+  const navigate = useNavigate();
   return (
-    <PostItemBlock>
+    <PostItemBlock
+      onClick={() => navigate(`/post/${post_id}`, { state: { post } })}
+    >
       <div className="title">{title}</div>
       <div className="tags">
-        {tags.map((tag) => (
-          <PostTag tag={tag} />
+        {tags.map((tag, index) => (
+          <PostTag key={index} tag={tag} />
         ))}
       </div>
     </PostItemBlock>

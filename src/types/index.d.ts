@@ -10,7 +10,7 @@ export type Post = {
   post_id: string;
   title: string;
   content: string;
-  tags: [];
+  tags: string[];
   user_id: string;
   plan_id: string;
 };
@@ -19,7 +19,10 @@ export type City = {
   city: string;
   country: string;
   isDomestic: boolean;
+  region: string;
   location: { lat: number; lng: number };
+  related: string[];
+  isSelect: boolean;
 };
 
 export type Plan = {

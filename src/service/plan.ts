@@ -21,10 +21,10 @@ async function fetchPlan(userId: string, setPlans: any) {
   }
 }
 
-async function fetchPlanDetail(userId: string, planId: string) {
+async function fetchPlanDetail(planId: string) {
   try {
     const res = await axios.get(
-      `http://localhost:4000/api/plan/${userId}/${planId}`
+      `http://localhost:4000/api/plan/detail/${planId}`
     );
     console.log(res);
   } catch (err) {
