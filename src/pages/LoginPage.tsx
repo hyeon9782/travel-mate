@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import GoogleLoginButton from "../libs/google/GoogleLoginButton";
 import { useNavigate } from "react-router-dom";
-import GoogleLogoutButton from "../libs/google/GoogleLogoutButton";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -23,7 +22,6 @@ const LoginPage = () => {
           <br /> 여행을 떠나보세요!
         </TextBox>
         <LoginBox>
-          <GoogleLogoutButton />
           <GoogleLoginButton />
         </LoginBox>
       </ContentBox>

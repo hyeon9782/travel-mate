@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { userState } from "../../store/userState";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,11 +7,18 @@ import Profile from "./Profile";
 import { PlusIcon } from "../common/icons";
 import PlanList from "../plan/PlanList";
 import { fetchPlan } from "../../service/plan";
+import GoogleLogoutButton from "../../libs/google/GoogleLogoutButton";
+import { getLocalStorage } from "../../utils/storage";
 
 const UserContent = () => {
-  const userData = useRecoilValue(userState);
+  const [userData, setUserData] = useRecoilState(userState);
   const navigate = useNavigate();
   const [plans, setPlans] = useState([]);
+
+  if (!userData && getLocalStorage("user")) {
+    console.log(getLocalStorage("user"));
+    // setUserData({...getLocalStorage("user")});
+  }
 
   useEffect(() => {
     if (userData.email) {
@@ -48,6 +55,7 @@ const UserContent = () => {
               <PlanList list={plans} />
             </PlanBox>
           </UserBox>
+          <GoogleLogoutButton />
         </>
       )}
     </>

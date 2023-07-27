@@ -1,14 +1,27 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { MenuIcon, PlusIcon } from "../common/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AppPanel from "../common/AppPanel";
 import UserContent from "../user/UserContent";
+import { useRecoilState } from "recoil";
+import { userState } from "../../store/userState";
+import { getLocalStorage } from "../../utils/storage";
 
 const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [active, setActive] = useState(false);
+
+  const [userData, setUserData] = useRecoilState(userState);
+
+  useEffect(() => {
+    if (Object.keys(userData).length === 0) {
+      const userFromLocalStorage = getLocalStorage("user");
+      console.log(userFromLocalStorage);
+      setUserData({ ...userFromLocalStorage });
+    }
+  }, []);
 
   const isPlanPath =
     location.pathname === "/plan" || location.pathname === "/login";

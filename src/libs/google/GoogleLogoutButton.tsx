@@ -1,14 +1,24 @@
 import { useSetRecoilState } from "recoil";
 import { userState } from "../../store/userState";
 import { removeLocalStorage } from "../../utils/storage";
+import styled from "styled-components";
 
 const GoogleLogoutButton = () => {
-  const setUser = useSetRecoilState(userState);
+  const setUserData = useSetRecoilState(userState);
   const handleClick = () => {
-    setUser({});
+    setUserData({});
     removeLocalStorage("user");
   };
-  return <button onClick={() => handleClick()}>로그아웃</button>;
+  return <LogoutButton onClick={() => handleClick()}>로그아웃</LogoutButton>;
 };
+
+const LogoutButton = styled.button`
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+  font-weight: bold;
+  padding: 10px;
+`;
 
 export default GoogleLogoutButton;

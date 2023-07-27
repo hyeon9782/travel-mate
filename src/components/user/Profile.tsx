@@ -7,7 +7,7 @@ const Profile = () => {
   return (
     <ProfileBlock>
       <ImageBox image={user.picture}></ImageBox>
-      <NameBox>{user.family_name + " " + user.given_name}</NameBox>
+      <NameBox>{user.name}</NameBox>
     </ProfileBlock>
   );
 };
