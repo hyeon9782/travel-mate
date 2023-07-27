@@ -3,11 +3,14 @@ import { userState } from "../../store/userState";
 import { removeLocalStorage } from "../../utils/storage";
 import styled from "styled-components";
 
-const GoogleLogoutButton = () => {
+const GoogleLogout = () => {
   const setUserData = useSetRecoilState(userState);
+
   const handleClick = () => {
     setUserData({});
+    google.accounts.id.disableAutoSelect();
     removeLocalStorage("user");
+    alert("로그아웃 했습니다.");
   };
   return <LogoutButton onClick={() => handleClick()}>로그아웃</LogoutButton>;
 };
@@ -21,4 +24,4 @@ const LogoutButton = styled.button`
   padding: 10px;
 `;
 
-export default GoogleLogoutButton;
+export default GoogleLogout;
