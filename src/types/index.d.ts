@@ -6,6 +6,15 @@ export type User = {
   given_name: string;
 };
 
+export type Post = {
+  post_id: string;
+  title: string;
+  content: string;
+  tags: [];
+  user_id: string;
+  plan_id: string;
+};
+
 export type City = {
   city: string;
   country: string;
