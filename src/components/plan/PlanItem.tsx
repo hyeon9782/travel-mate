@@ -4,17 +4,23 @@ import { EditIcon, TrashIcon } from "../common/icons";
 import { fetchPlanDetail, removePlan } from "../../service/plan";
 import { useNavigate } from "react-router-dom";
 
-const PlanItem = ({ plan }: Plan) => {
+type Props = {
+  plan: Plan;
+};
+
+const PlanItem = ({ plan }: Props) => {
   const navigate = useNavigate();
 
+  const { user_id, plan_id, cities, period } = plan;
+
   const moveDetail = () => {
-    fetchPlanDetail(plan.user_id, plan.plan_id);
-    navigate(`/plan/${plan.plan_id}`, { state: { planData: plan } });
+    fetchPlanDetail(user_id, plan_id);
+    navigate(`/plan/${plan_id}`, { state: { planData: plan } });
   };
 
   const moveEdit = (event) => {
     event.stopPropagation();
-    navigate(`/plan/edit/${plan.plan_id}`, { state: { planData: plan } });
+    navigate(`/plan/edit/${plan_id}`, { state: { planData: plan } });
   };
 
   return (
@@ -22,16 +28,16 @@ const PlanItem = ({ plan }: Plan) => {
       <div className="item-box">
         <ImageBox></ImageBox>
         <TextBox>
-          <div className="title">{plan.cities[0].city} 여행</div>
+          <div className="title">{cities[0].city} 여행</div>
           <div className="period">
-            {plan.period[0].slice(0, 7)} - {plan.period[1].slice(0, 7)}
+            {period[0].slice(0, 7)} - {period[1].slice(0, 7)}
           </div>
-          <div className="city">{plan.cities.length}개 도시</div>
+          <div className="city">{cities.length}개 도시</div>
         </TextBox>
       </div>
       <IconBox>
         <EditIcon onClick={(e) => moveEdit(e)} />
-        <TrashIcon onClick={() => removePlan(plan.planId)} />
+        <TrashIcon onClick={() => removePlan(plan_id)} />
       </IconBox>
     </PlanItemBlock>
   );

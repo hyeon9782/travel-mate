@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import PrevStep from "../components/plan/PrevStep";
 import Button from "../components/common/Button";
-import { fetchPlanDetail } from "../service/plan";
 
 const PostPage = () => {
   const location = useLocation();
@@ -18,7 +17,6 @@ const PostPage = () => {
 
   useEffect(() => {
     setPost({ ...postParam });
-    fetchPlanDetail(plan_id);
   }, []);
 
   return (
@@ -27,7 +25,12 @@ const PostPage = () => {
       <PostTitle>{title}</PostTitle>
       <PostContent>{content}</PostContent>
       <BtnBox>
-        <Button text="일정보기" onClick={() => navigate(`/plan/${plan_id}`)} />
+        <Button
+          text="일정보기"
+          onClick={() =>
+            navigate(`/plan/${plan_id}`, { state: { plan_id: plan_id } })
+          }
+        />
       </BtnBox>
     </PostPageBlock>
   );

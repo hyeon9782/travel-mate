@@ -21,12 +21,15 @@ async function fetchPlan(userId: string, setPlans: any) {
   }
 }
 
-async function fetchPlanDetail(planId: string) {
+async function fetchPlanDetail(planId: string, setPlan: any) {
   try {
+    console.log("여기");
+
     const res = await axios.get(
       `http://localhost:4000/api/plan/detail/${planId}`
     );
     console.log(res);
+    setPlan({ ...res.data });
   } catch (err) {
     console.error(err);
   }
