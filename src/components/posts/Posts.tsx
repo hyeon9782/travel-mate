@@ -13,6 +13,11 @@ const Posts = ({ posts }: Props) => {
   );
 };
 
-const PostsBlock = styled.div``;
+const PostsBlock = styled.div`
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
 
 export default Posts;

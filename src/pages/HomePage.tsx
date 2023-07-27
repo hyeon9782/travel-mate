@@ -1,18 +1,20 @@
-import Wrapper from "../components/layout/Wrapper";
 import styled from "styled-components";
+import Posts from "../components/posts/Posts";
+import { useEffect, useState } from "react";
+import { fetchPosts } from "../service/post";
 
 const HomePage = () => {
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    fetchPosts(setPosts);
+  }, []);
   return (
-    <Wrapper>
-      <HomePageBlock>HomePage</HomePageBlock>
-    </Wrapper>
+    <HomePageBlock>
+      <Posts posts={posts} />
+    </HomePageBlock>
   );
 };
 
-const HomePageBlock = styled.div`
-  text-align: center;
-  font-size: 3rem;
-  font-weight: bold;
-`;
+const HomePageBlock = styled.main``;
 
 export default HomePage;
