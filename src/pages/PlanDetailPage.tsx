@@ -7,20 +7,19 @@ import PrevStep from "../components/plan/PrevStep";
 
 import { useEffect, useState } from "react";
 import { fetchPlanDetail } from "../service/plan";
+import { Plan } from "../types";
 
 const PlanDetailPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const plan_id = location?.state?.plan_id;
-  console.log(plan_id);
-
-  const [plan, setPlan] = useState({});
+  const [plan, setPlan] = useState<Plan>({});
 
   useEffect(() => {
     fetchPlanDetail(plan_id, setPlan);
   }, []);
 
-  if (Object.keys(plan).length === 0) return;
+  if (Object.keys(plan).length === 0) return <></>;
 
   return (
     <PlanDetailPageBlock>

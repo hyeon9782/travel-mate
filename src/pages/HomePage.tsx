@@ -1,16 +1,42 @@
 import styled from "styled-components";
 import Posts from "../components/posts/Posts";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { fetchPosts } from "../service/post";
+import InfiniteScroll from "../components/common/InfiniteScroll";
+import useInfiniteScroll from "../hooks/useInfiniteScroll";
+import axios from "axios";
 
 const HomePage = () => {
-  const [posts, setPosts] = useState([]);
+  // const [posts, setPosts] = useState([]);
+  // useEffect(() => {
+  //   fetchPosts(setPosts);
+  // }, []);
+
+  const targetRef = useRef(null);
+  const [hasMoreData, setHasMoreData] = useState(true);
+  // 페이지네이션된 데이터를 가져오는 비동기 함수
+  const fetchData = async (page: number) => {
+    const response = await axios.get(
+      `http://localhost:4000/api/post?page=${page}`
+    );
+    return response.data;
+  };
+
+  const [data, loading] = useInfiniteScroll(
+    fetchData,
+    hasMoreData,
+    setHasMoreData
+  );
+
   useEffect(() => {
-    fetchPosts(setPosts);
-  }, []);
+    if (data.length === 0) {
+      setHasMoreData(false);
+    }
+  }, [data]);
   return (
     <HomePageBlock>
-      <Posts posts={posts} />
+      <Posts posts={data} loading={loading} />
+      <div ref={targetRef}></div>
     </HomePageBlock>
   );
 };

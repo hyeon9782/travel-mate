@@ -3,8 +3,9 @@ import { Post } from "../../types";
 import PostItem from "./PostItem";
 type Props = {
   posts: Post[];
+  loading: boolean;
 };
-const Posts = ({ posts }: Props) => {
+const Posts = ({ posts, loading }: Props) => {
   return (
     <PostsBlock>
       {posts &&

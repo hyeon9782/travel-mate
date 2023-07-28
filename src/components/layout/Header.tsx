@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { MenuIcon, PlusIcon } from "../common/icons";
+import { MenuIcon, PlusIcon, WriteIcon } from "../common/icons";
 import { useEffect, useState } from "react";
 import AppPanel from "../common/AppPanel";
 import UserContent from "../user/UserContent";
@@ -29,17 +29,13 @@ const Header = () => {
     return;
   }
 
-  // const isPlanPath =
-  //   location.pathname === "/plan" || location.pathname === "/login";
-  // if (isPlanPath) {
-  //   return null;
-  // }
   return (
     <HeaderBlock>
       <Logo>
         <Link to={"/"}>Travel Mate</Link>
       </Logo>
       <IconBox>
+        <WriteIcon onClick={() => navigate("/post")} />
         <PlusIcon onClick={() => navigate("/plan")} />
         <MenuIcon onClick={() => setActive(true)} />
       </IconBox>
