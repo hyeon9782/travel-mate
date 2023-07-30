@@ -7,11 +7,6 @@ import useInfiniteScroll from "../hooks/useInfiniteScroll";
 import axios from "axios";
 
 const HomePage = () => {
-  // const [posts, setPosts] = useState([]);
-  // useEffect(() => {
-  //   fetchPosts(setPosts);
-  // }, []);
-
   const targetRef = useRef(null);
   const [hasMoreData, setHasMoreData] = useState(true);
   // 페이지네이션된 데이터를 가져오는 비동기 함수
@@ -22,20 +17,9 @@ const HomePage = () => {
     return response.data;
   };
 
-  const [data, loading] = useInfiniteScroll(
-    fetchData,
-    hasMoreData,
-    setHasMoreData
-  );
-
-  useEffect(() => {
-    if (data.length === 0) {
-      setHasMoreData(false);
-    }
-  }, [data]);
   return (
     <HomePageBlock>
-      <Posts posts={data} loading={loading} />
+      {/* <Posts posts={data} loading={loading} /> */}
       <div ref={targetRef}></div>
     </HomePageBlock>
   );
