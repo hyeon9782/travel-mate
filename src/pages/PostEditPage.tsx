@@ -5,10 +5,27 @@ import { useState } from "react";
 import AppEditor from "../libs/AppEditor";
 import Button from "../components/common/Button";
 import TagInput from "../components/tags/TagInput";
+import { registPostAPI } from "../api/post";
 
 const PostEditPage = () => {
   const navigate = useNavigate();
-  const [form, setForm] = useState({});
+  const [content, setContent] = useState("");
+  const [title, setTitle] = useState("");
+  const [tags, setTags] = useState([]);
+
+  const handleClick = () => {
+    const formData = {
+      content,
+      title,
+      tags,
+    };
+
+    console.log(formData);
+
+    registPostAPI(formData);
+    alert("게시글을 등록했어요!");
+    navigate(-1);
+  };
   return (
     <PostEditPageBlock>
       <PrevStep onPrev={() => navigate(-1)} />
@@ -18,20 +35,17 @@ const PostEditPage = () => {
             type="text"
             className="title-input"
             placeholder="게시글 제목을 입력해주세요."
+            onChange={(e) => setTitle(e.target.value)}
           />
         </div>
         <div className="tags-box">
-          <TagInput />
+          <TagInput tags={tags} setTags={setTags} />
         </div>
         <div className="content-box">
-          <AppEditor />
+          <AppEditor content={content} setContent={setContent} />
         </div>
         <div className="btn-box">
-          <Button
-            text={"등록하기"}
-            onClick={() => console.log("여기")}
-            size="small"
-          />
+          <Button text={"등록하기"} onClick={handleClick} size="small" />
         </div>
       </PostEditBox>
     </PostEditPageBlock>
@@ -62,8 +76,7 @@ const PostEditBox = styled.div`
   }
 
   .content-box {
-    padding-top: 10px;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
     height: 442px;
   }
 

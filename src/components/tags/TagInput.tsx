@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import { useState } from "react";
 
-const TagInput = () => {
-  const [tags, setTags] = useState([]);
+type Props = {
+  tags: string[];
+  setTags: any;
+};
+const TagInput = ({ tags, setTags }: Props) => {
   const [value, setValue] = useState("");
 
   const handleSubmit = (e: any) => {
@@ -41,9 +44,11 @@ const TagInputBlock = styled.div``;
 
 const TagsBox = styled.div`
   display: flex;
+  min-height: 38px;
   flex-wrap: wrap;
   gap: 5px;
   padding: 5px 0;
+  box-sizing: border-box;
 `;
 
 const TagBox = styled.div`
