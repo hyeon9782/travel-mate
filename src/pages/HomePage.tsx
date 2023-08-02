@@ -13,6 +13,9 @@ const HomePage = () => {
   );
 };
 
-const HomePageBlock = styled.main``;
+const HomePageBlock = styled.main`
+  height: calc(100% - 42.8px);
+  overflow: auto;
+`;
 
 export default HomePage;
