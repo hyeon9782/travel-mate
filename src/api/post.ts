@@ -1,8 +1,12 @@
 import { Post } from "../types";
 import { posts } from "./index";
 
-const fetchPostAPI = (page: number) => {
+const fetchPostsAPI = (page: number) => {
   return posts.get(`/api/post?page=${page}`);
+};
+
+const fetchPostAPI = (post_id: string) => {
+  return posts.get(`/api/post/${post_id}`);
 };
 
 const registPostAPI = (post: Post) => {
@@ -17,4 +21,10 @@ const removePostAPI = (post_id: string) => {
   return posts.delete(`/api/post/${post_id}`);
 };
 
-export { fetchPostAPI, registPostAPI, modifyPostAPI, removePostAPI };
+export {
+  fetchPostsAPI,
+  fetchPostAPI,
+  registPostAPI,
+  modifyPostAPI,
+  removePostAPI,
+};

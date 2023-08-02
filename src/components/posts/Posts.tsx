@@ -2,14 +2,12 @@ import styled from "styled-components";
 import { Post } from "../../types";
 import PostItem from "./PostItem";
 type Props = {
-  posts: Post[];
-  loading: boolean;
+  data: Post[];
 };
-const Posts = ({ posts, loading }: Props) => {
+const Posts = ({ data }: Props) => {
   return (
     <PostsBlock>
-      {posts &&
-        posts.map((post) => <PostItem key={post.post_id} post={post} />)}
+      {data && data.map((post) => <PostItem key={post.post_id} post={post} />)}
     </PostsBlock>
   );
 };

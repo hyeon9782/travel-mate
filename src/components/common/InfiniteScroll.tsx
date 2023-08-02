@@ -1,25 +1,15 @@
-import { useState, useEffect, useRef } from "react";
-import axios from "axios";
-import styled from "styled-components";
+import React, { useState, useEffect, useRef } from "react";
 type Props = {
   children: React.ReactNode;
-  fatchData: () => void;
+  fetchData: any;
 };
-function InfiniteScroll({ children }: Props) {
+function InfiniteScroll({ children, fetchData }: Props) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hasMoreData, setHasMoreData] = useState(true); // 추가된 상태
   const divRef = useRef(null);
 
   const pageRef = useRef(1); // 페이지 번호를 useRef를 이용해 상태로 관리
-
-  // 페이지네이션된 데이터를 가져오는 비동기 함수
-  const fetchData = async (page: number) => {
-    const response = await axios.get(
-      `http://localhost:4000/api/post?page=${page}`
-    );
-    return response.data;
-  };
 
   useEffect(() => {
     const options = {
@@ -34,10 +24,10 @@ function InfiniteScroll({ children }: Props) {
         // 추가된 조건
         setLoading(true);
         const newData = await fetchData(pageRef.current);
-        if (newData.length === 0) {
+        if (newData.data.length === 0) {
           setHasMoreData(false); // 더 이상 데이터가 없을 때 상태 업데이트
         } else {
-          setData((prevData) => [...prevData, ...newData]);
+          setData((prevData) => [...prevData, ...newData.data]);
           pageRef.current += 1; // 다음 페이지를 위해 페이지 번호 업데이트
         }
         setLoading(false);
@@ -54,21 +44,14 @@ function InfiniteScroll({ children }: Props) {
   }, [loading, hasMoreData]); // 추가된 의존성 배열
 
   return (
-    <div>
-      {data.map((item, index) => (
-        <ItemBox key={index}>{item.title}</ItemBox>
-      ))}
-      {loading && <div>Loading...</div>}
+    <>
+      {React.Children.map(children, (child) =>
+        React.cloneElement(child, { data })
+      )}
       <div ref={divRef} style={{ height: "10px" }}></div>
-    </div>
+      {loading && <div>Loading...</div>}
+    </>
   );
 }
-
-const ItemBox = styled.div`
-  height: 300px;
-  width: 300px;
-  background-color: black;
-  margin: 10px;
-`;
 
 export default InfiniteScroll;

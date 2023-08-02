@@ -1,10 +1,12 @@
 import axios from "axios";
 import { Plan } from "../types";
+import { registPlanAPI } from "../api/plan";
 
 async function createPlan(plan: Plan) {
   try {
     console.log(plan);
-    const res = await axios.post(`http://localhost:4000/api/plan`, plan);
+    const res = await registPlanAPI(plan);
+
     console.log(res);
   } catch (err) {
     console.error(err);
@@ -13,7 +15,9 @@ async function createPlan(plan: Plan) {
 
 async function fetchPlan(userId: string, setPlans: any) {
   try {
-    const res = await axios.get(`http://localhost:4000/api/plan/${userId}`);
+    const res = await axios.get(
+      `http://localhost:4000/api/plan?user_id=${userId}`
+    );
     console.log(res);
     setPlans([...res.data]);
   } catch (err) {
@@ -25,9 +29,7 @@ async function fetchPlanDetail(planId: string, setPlan: any) {
   try {
     console.log("여기");
 
-    const res = await axios.get(
-      `http://localhost:4000/api/plan/detail/${planId}`
-    );
+    const res = await axios.get(`http://localhost:4000/api/plan/${planId}`);
     console.log(res);
     setPlan({ ...res.data });
   } catch (err) {
