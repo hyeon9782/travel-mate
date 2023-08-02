@@ -16,7 +16,7 @@ const UserContent = () => {
 
   useEffect(() => {
     if (userData.email) {
-      fetchPlan("0", setPlans);
+      fetchPlan(userData.email, setPlans);
     }
   }, []);
 

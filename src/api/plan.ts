@@ -13,11 +13,11 @@ const registPlanAPI = (plan: Plan) => {
   return posts.post("/api/plan", plan);
 };
 
-const modifyPlanAPI = (plan_id: string, plan: Plan) => {
+const modifyPlanAPI = (plan_id: number, plan: Plan) => {
   return posts.put(`/api/plan/${plan_id}`, plan);
 };
 
-const removePlanAPI = (plan_id: string) => {
+const removePlanAPI = (plan_id: number) => {
   return posts.delete(`/api/plan/${plan_id}`);
 };
 

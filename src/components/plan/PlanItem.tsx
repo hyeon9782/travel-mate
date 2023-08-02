@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { Plan } from "../../types";
 import { EditIcon, TrashIcon } from "../common/icons";
-import { fetchPlanDetail, removePlan } from "../../service/plan";
 import { useNavigate } from "react-router-dom";
+import { removePlan } from "../../service/plan";
 
 type Props = {
   plan: Plan;
@@ -11,20 +11,19 @@ type Props = {
 const PlanItem = ({ plan }: Props) => {
   const navigate = useNavigate();
 
-  const { user_id, plan_id, cities, period } = plan;
+  const { plan_id, cities, period } = plan;
 
-  const moveDetail = () => {
-    fetchPlanDetail(user_id, plan_id);
-    navigate(`/plan/${plan_id}`, { state: { planData: plan } });
+  const moveDetail = (plan_id: number) => {
+    navigate(`/plan/${plan_id}`, { state: { plan_id } });
   };
 
-  const moveEdit = (event) => {
+  const moveEdit = (event: MouseEvent, plan_id: number) => {
     event.stopPropagation();
     navigate(`/plan/edit/${plan_id}`, { state: { planData: plan } });
   };
 
   return (
-    <PlanItemBlock onClick={moveDetail}>
+    <PlanItemBlock onClick={() => moveDetail(plan_id)}>
       <div className="item-box">
         <ImageBox></ImageBox>
         <TextBox>
@@ -36,8 +35,8 @@ const PlanItem = ({ plan }: Props) => {
         </TextBox>
       </div>
       <IconBox>
-        <EditIcon onClick={(e) => moveEdit(e)} />
-        <TrashIcon onClick={() => removePlan(plan_id)} />
+        <EditIcon onClick={(e) => moveEdit(e, plan_id)} />
+        <TrashIcon onClick={(e) => removePlan(e, plan_id)} />
       </IconBox>
     </PlanItemBlock>
   );

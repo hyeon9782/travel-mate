@@ -1,6 +1,11 @@
-import axios from "axios";
 import { Plan } from "../types";
-import { registPlanAPI } from "../api/plan";
+import {
+  fetchPlanAPI,
+  fetchPlansAPI,
+  modifyPlanAPI,
+  registPlanAPI,
+  removePlanAPI,
+} from "../api/plan";
 
 async function createPlan(plan: Plan) {
   try {
@@ -15,9 +20,7 @@ async function createPlan(plan: Plan) {
 
 async function fetchPlan(userId: string, setPlans: any) {
   try {
-    const res = await axios.get(
-      `http://localhost:4000/api/plan?user_id=${userId}`
-    );
+    const res = await fetchPlansAPI(userId);
     console.log(res);
     setPlans([...res.data]);
   } catch (err) {
@@ -25,11 +28,11 @@ async function fetchPlan(userId: string, setPlans: any) {
   }
 }
 
-async function fetchPlanDetail(planId: string, setPlan: any) {
+async function fetchPlanDetail(planId: number, setPlan: any) {
   try {
     console.log("여기");
 
-    const res = await axios.get(`http://localhost:4000/api/plan/${planId}`);
+    const res = await fetchPlanAPI(planId);
     console.log(res);
     setPlan({ ...res.data });
   } catch (err) {
@@ -37,21 +40,19 @@ async function fetchPlanDetail(planId: string, setPlan: any) {
   }
 }
 
-async function modifyPlan(planId: string, plan: Plan) {
+async function modifyPlan(plan_id: number, plan: Plan) {
   try {
-    const res = await axios.put(
-      `http://localhost:4000/api/plan/${planId}`,
-      plan
-    );
+    const res = await modifyPlanAPI(plan_id, plan);
     console.log(res);
   } catch (err) {
     console.error(err);
   }
 }
 
-async function removePlan(planId: string) {
+async function removePlan(event: MouseEvent, plan_id: number) {
   try {
-    const res = await axios.delete(`http://localhost:4000/api/plan/${planId}`);
+    event.stopPropagation();
+    const res = await removePlanAPI(plan_id);
     console.log(res);
   } catch (err) {
     console.error(err);
