@@ -3,6 +3,8 @@ import PrevStep from "../components/plan/PrevStep";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import AppEditor from "../libs/AppEditor";
+import Button from "../components/common/Button";
+import TagInput from "../components/tags/TagInput";
 
 const PostEditPage = () => {
   const navigate = useNavigate();
@@ -12,11 +14,24 @@ const PostEditPage = () => {
       <PrevStep onPrev={() => navigate(-1)} />
       <PostEditBox>
         <div className="title-box">
-          <input type="text" className="title-input" />
+          <input
+            type="text"
+            className="title-input"
+            placeholder="게시글 제목을 입력해주세요."
+          />
         </div>
-        <div className="tags-box"></div>
+        <div className="tags-box">
+          <TagInput />
+        </div>
         <div className="content-box">
           <AppEditor />
+        </div>
+        <div className="btn-box">
+          <Button
+            text={"등록하기"}
+            onClick={() => console.log("여기")}
+            size="small"
+          />
         </div>
       </PostEditBox>
     </PostEditPageBlock>
@@ -38,18 +53,23 @@ const PostEditBox = styled.div`
       box-sizing: border-box;
       border: 1px solid lightgray;
       border-radius: 5px;
+      outline: none;
     }
   }
 
   .tags-box {
-    height: 35px;
-    padding: 5px;
     box-sizing: border-box;
   }
 
   .content-box {
-    padding: 10px 0;
-    height: 400px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    height: 442px;
+  }
+
+  .btn-box {
+    display: flex;
+    justify-content: center;
   }
 `;
 

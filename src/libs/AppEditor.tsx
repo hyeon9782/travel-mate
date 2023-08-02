@@ -6,12 +6,14 @@ const AppEditor = () => {
   const [value, setValue] = useState("");
 
   return (
-    <ReactQuill
-      theme="snow"
-      value={value}
-      onChange={setValue}
-      style={{ height: "100%" }}
-    />
+    <div style={{ height: "400px" }}>
+      <ReactQuill
+        theme="snow"
+        value={value}
+        onChange={setValue}
+        style={{ height: "100%" }}
+      />
+    </div>
   );
 };
 
