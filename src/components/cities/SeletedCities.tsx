@@ -3,8 +3,9 @@ import SelectedCity from "./SeletedCity";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useSetRecoilState } from "recoil";
 import { planState } from "../../store/planState";
+import { City } from "../../types";
 type Props = {
-  selectedCities: [];
+  selectedCities: City[];
 };
 const SeletedCities = ({ selectedCities = [] }: Props) => {
   const setPlanData = useSetRecoilState(planState);

@@ -12,6 +12,7 @@ const PostPage = () => {
     title: "임시 제목입니다.",
     content: "임시 내용입니다.",
     plan_id: "0",
+    user_id: "3",
   });
   const { title, content, plan_id, user_id } = post;
 

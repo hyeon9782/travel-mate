@@ -4,8 +4,10 @@ import CityTab from "./CityTab";
 import { SearchIcon } from "../common/icons";
 import Input from "../common/Input";
 import PrevStep from "../plan/PrevStep";
-
-const CitySubHeader = ({ onPrev }: () => void) => {
+type Props = {
+  onPrev: () => void;
+};
+const CitySubHeader = ({ onPrev }: Props) => {
   return (
     <CitySubHeaderBlock>
       <SubHeaderBox>

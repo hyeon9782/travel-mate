@@ -26,7 +26,7 @@ const Header = () => {
   const isPlanPath = location.pathname === "/";
 
   if (!isPlanPath) {
-    return;
+    return <></>;
   }
 
   return (

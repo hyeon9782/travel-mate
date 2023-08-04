@@ -2,8 +2,7 @@ import styled from "styled-components";
 import CityItem from "./CityItem";
 import { City } from "../../types";
 type Props = {
-  cities: [];
-  handleClick: (city: City) => void;
+  cities: City[];
 };
 const Cities = ({ cities = [] }: Props) => {
   return (

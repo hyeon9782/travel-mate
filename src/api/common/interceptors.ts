@@ -1,18 +1,18 @@
-export function setInterceptors(instance) {
+export function setInterceptors(instance: any) {
   instance.interceptors.request.use(
-    function (config) {
+    function (config: any) {
       return config;
     },
-    function (error) {
+    function (error: any) {
       return Promise.reject(error);
     }
   );
 
   instance.interceptors.response.use(
-    function (response) {
+    function (response: any) {
       return response;
     },
-    function (error) {
+    function (error: any) {
       return Promise.reject(error);
     }
   );
