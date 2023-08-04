@@ -5,7 +5,7 @@ import { isDomesticState } from "../../store/isDomesticState";
 import { searchPlacesState } from "../../store/searchPlacesState";
 import { planState } from "../../store/planState";
 type Props = {
-  size1: string;
+  size1?: string;
   holder?: string;
   onSubmit?: (
     e: React.FormEvent<HTMLFormElement>,
