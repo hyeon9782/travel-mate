@@ -35,8 +35,8 @@ const PlanItem = ({ plan }: Props) => {
         </TextBox>
       </div>
       <IconBox>
-        <EditIcon onClick={(e) => moveEdit(e, plan_id)} />
-        <TrashIcon onClick={(e) => removePlan(e, plan_id)} />
+        <EditIcon onClick={(e: any) => moveEdit(e, plan_id)} />
+        <TrashIcon onClick={(e: any) => removePlan(e, plan_id)} />
       </IconBox>
     </PlanItemBlock>
   );

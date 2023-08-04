@@ -3,7 +3,7 @@ import styled from "styled-components";
 type Props = {
   index: number;
 };
-const DirectionItem = ({ index }): Props => {
+const DirectionItem = ({ index }: Props) => {
   return <DirectionItemBlock>{index + 1}</DirectionItemBlock>;
 };
 

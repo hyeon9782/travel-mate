@@ -3,8 +3,10 @@ import CityTag from "./CityTag";
 import { SwiperSlide, Swiper } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
-
-const CityTags = ({ tags }: any) => {
+type Props = {
+  tags: string[];
+};
+const CityTags = ({ tags }: Props) => {
   return (
     <CityTagsBlock>
       <Swiper slidesPerView={3}>

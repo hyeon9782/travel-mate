@@ -23,9 +23,14 @@ type Props = {
   planData: Plan;
 };
 
+type MarkerPositions = {
+  lat: number;
+  lng: number;
+};
+
 const RenderMap = ({ planData }: Props) => {
   const currentDay = useRecoilValue(currentDayState);
-  const [markerPositions, setMarkerPositions] = useState([]);
+  const [markerPositions, setMarkerPositions] = useState<any[]>([]);
   console.log(planData);
 
   const schedules = planData.selectedPlaces.filter(
@@ -33,7 +38,7 @@ const RenderMap = ({ planData }: Props) => {
   );
 
   // 두 배열이 동일한지 비교하는 함수를 추가합니다.
-  const arraysAreEqual = (arr1: [], arr2: []) => {
+  const arraysAreEqual = (arr1: any[], arr2: any[]) => {
     if (arr1.length !== arr2.length) {
       return false;
     }

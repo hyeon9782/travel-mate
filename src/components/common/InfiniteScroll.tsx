@@ -4,7 +4,7 @@ type Props = {
   fetchData: any;
 };
 function InfiniteScroll({ children, fetchData }: Props) {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [hasMoreData, setHasMoreData] = useState(true); // 추가된 상태
   const divRef = useRef(null);
@@ -45,7 +45,7 @@ function InfiniteScroll({ children, fetchData }: Props) {
 
   return (
     <>
-      {React.Children.map(children, (child) =>
+      {React.Children.map(children, (child: any) =>
         React.cloneElement(child, { data })
       )}
       <div ref={divRef} style={{ height: "10px" }}></div>

@@ -4,7 +4,7 @@ import { truncateTextOverflow } from "../../utils/utils";
 
 type Props = {
   place: Place;
-  handleClick: () => void;
+  handleClick: (arg: any) => void;
 };
 const PlaceItem = ({ place, handleClick }: Props) => {
   return (

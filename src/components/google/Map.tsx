@@ -1,7 +1,7 @@
 import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import { useRecoilValue } from "recoil";
 import { currentDayState } from "../../store/currentDayState";
-import { Plan } from "../../types";
+import { Plan, Place } from "../../types";
 
 type Props = {
   children: React.ReactNode;
@@ -20,7 +20,7 @@ const Map = ({ children, type, planData }: Props) => {
     return null;
   }
 
-  let position = [];
+  let position: Place | undefined = undefined;
 
   if (type === "검색") {
     position = planData.selectedPlaces?.at(-1);

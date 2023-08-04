@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { userState } from "../../store/userState";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,7 +10,7 @@ import { fetchPlan } from "../../service/plan";
 import GoogleLogout from "../../libs/google/GoogleLogout";
 
 const UserContent = () => {
-  const [userData, setUserData] = useRecoilState(userState);
+  const userData = useRecoilValue(userState);
   const navigate = useNavigate();
   const [plans, setPlans] = useState([]);
 

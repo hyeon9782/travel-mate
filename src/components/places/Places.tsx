@@ -6,7 +6,7 @@ import { Place } from "../../types";
 
 type Props = {
   places: Place[];
-  handleClick: () => void;
+  handleClick: (arg: any) => void;
 };
 const Places = ({ places, handleClick }: Props) => {
   return (

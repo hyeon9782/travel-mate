@@ -7,12 +7,12 @@ export const planState = atom<Plan>({
     plan_id: 0,
     user_id: "",
     cities: [],
-    period: [new Date(), new Date()],
+    period: [String(new Date()), String(new Date())],
     selectedPlaces: [
       {
         place_id: "",
         name: "",
-        user_rating: "",
+        user_ratings_total: "",
         rating: "",
         geometry: {
           location: {

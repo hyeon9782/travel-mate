@@ -8,7 +8,13 @@ const GoogleLogout = () => {
   const setUserData = useSetRecoilState(userState);
 
   const handleClick = () => {
-    setUserData({});
+    setUserData({
+      email: "",
+      name: "",
+      picture: "",
+      family_name: "",
+      given_name: "",
+    });
     //@ts-ignore
     google.accounts.id.disableAutoSelect();
     removeLocalStorage("user");

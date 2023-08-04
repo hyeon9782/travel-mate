@@ -8,11 +8,15 @@ type Props = {
   size?: string;
   holder?: string;
   onSubmit?: (
-    e: React.FormEventHandler<HTMLFormElement>,
+    e: React.FormEvent<HTMLFormElement>,
     setSearchPlaces: any,
     searchData: any
   ) => void;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onChange?: (
+    e: React.ChangeEvent<HTMLInputElement>,
+    setCities: any,
+    isDomestic: boolean
+  ) => void;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   value?: string;
 };

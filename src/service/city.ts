@@ -2,7 +2,12 @@ import { CITIES } from "../constants/cities";
 import { City, Plan } from "../types";
 
 // 도시 검색
-function searchCity(e: any, setCities: any, isDomestic: boolean) {
+
+const searchCity = (
+  e: React.ChangeEvent<HTMLInputElement>,
+  setCities: any,
+  isDomestic: boolean
+) => {
   let newCities = [];
 
   if (e.target.value === "") {
@@ -15,7 +20,7 @@ function searchCity(e: any, setCities: any, isDomestic: boolean) {
     );
   }
   setCities(newCities);
-}
+};
 
 // 도시 태그 클릭
 function filteringCity(region: string, setCities: any) {

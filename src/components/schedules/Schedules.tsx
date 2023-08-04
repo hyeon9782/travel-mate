@@ -50,10 +50,4 @@ const PlaceBlock = styled.div`
   box-sizing: border-box;
 `;
 
-const TravelTimeBlock = styled.div`
-  min-height: 15px;
-  padding: 15px;
-  text-align: center;
-`;
-
 export default Schedules;

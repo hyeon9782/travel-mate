@@ -29,14 +29,14 @@ export type Plan = {
   plan_id: number;
   user_id: string;
   cities: City[];
-  period: Date[];
+  period: string[];
   selectedPlaces: Place[];
 };
 
 export type Place = {
   place_id: string;
   name: string;
-  user_rating: string;
+  user_ratings_total: string;
   rating: string;
   geometry: {
     location: {
@@ -44,7 +44,7 @@ export type Place = {
       lng: number;
     };
   };
-  types: [];
+  types: string[];
   isSelect: boolean;
   day: number;
   order: number;
