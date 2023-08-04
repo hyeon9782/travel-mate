@@ -23,11 +23,6 @@ type Props = {
   planData: Plan;
 };
 
-type MarkerPositions = {
-  lat: number;
-  lng: number;
-};
-
 const RenderMap = ({ planData }: Props) => {
   const currentDay = useRecoilValue(currentDayState);
   const [markerPositions, setMarkerPositions] = useState<any[]>([]);

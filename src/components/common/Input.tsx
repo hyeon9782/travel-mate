@@ -5,7 +5,7 @@ import { isDomesticState } from "../../store/isDomesticState";
 import { searchPlacesState } from "../../store/searchPlacesState";
 import { planState } from "../../store/planState";
 type Props = {
-  size?: string;
+  size1: string;
   holder?: string;
   onSubmit?: (
     e: React.FormEvent<HTMLFormElement>,
@@ -20,8 +20,9 @@ type Props = {
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   value?: string;
 };
+
 const Input = ({
-  size = "small",
+  size1 = "small",
   holder,
   onSubmit,
   onChange,
@@ -50,7 +51,7 @@ const Input = ({
   return (
     <FormBlock onSubmit={handleSubmit}>
       <InputBlock
-        size={size}
+        size1={size1}
         onChange={handleChange}
         value={value}
         onKeyDown={onKeyDown}
@@ -65,13 +66,13 @@ const FormBlock = styled.form`
   align-items: center;
 `;
 
-const InputBlock = styled.input<{ size?: string }>`
+const InputBlock = styled.input<Props>`
   width: 300px;
   border: none;
   outline: none;
-  font-size: ${(props) => (props.size === "big" ? "1.5rem" : "1rem")};
+  font-size: ${(props) => (props.size1 === "big" ? "1.5rem" : "1rem")};
   box-sizing: border-box;
-  height: ${(props) => (props.size === "big" ? "80px" : "30px")};
+  height: ${(props) => (props.size1 === "big" ? "80px" : "30px")};
 `;
 
 export default Input;

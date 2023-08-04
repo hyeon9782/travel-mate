@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import styled from "styled-components";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -13,8 +14,8 @@ type Props = {
 const DateArea = ({ onNext, planData }: Props) => {
   const setPlanData = useSetRecoilState(planState);
 
-  const onChange = (selectedDates: Date[]) => {
-    setPlanData((prevData) => ({
+  const onChange = (selectedDates: string[]) => {
+    setPlanData((prevData: Plan) => ({
       ...prevData,
       period: [...selectedDates],
     }));
@@ -28,6 +29,7 @@ const DateArea = ({ onNext, planData }: Props) => {
         </div>
       </DateAreaTitle>
       <CalenderBox>
+        {/* @ts-ignore */}
         <Calendar
           onChange={onChange}
           value={planData.period}
