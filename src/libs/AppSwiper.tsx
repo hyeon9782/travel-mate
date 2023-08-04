@@ -8,7 +8,7 @@ const AppSwiper = ({ list, children }: Props) => {
   return (
     <Swiper spaceBetween={10}>
       {list &&
-        list.map((item, index) => (
+        list.map((_, index) => (
           <SwiperSlide key={index}>{children}</SwiperSlide>
         ))}
     </Swiper>

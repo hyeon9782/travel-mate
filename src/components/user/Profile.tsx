@@ -18,7 +18,7 @@ const ProfileBlock = styled.div`
   align-items: center;
 `;
 
-const ImageBox = styled.div`
+const ImageBox = styled.div<{ image: string }>`
   border-radius: 50%;
   width: 100px;
   height: 100px;

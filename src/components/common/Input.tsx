@@ -7,7 +7,11 @@ import { planState } from "../../store/planState";
 type Props = {
   size?: string;
   holder?: string;
-  onSubmit?: React.FormEventHandler<HTMLFormElement>;
+  onSubmit?: (
+    e: React.FormEventHandler<HTMLFormElement>,
+    setSearchPlaces: any,
+    searchData: any
+  ) => void;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   value?: string;

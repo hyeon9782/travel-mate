@@ -11,15 +11,25 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 import { planState } from "../store/planState";
 import { createPlan, modifyPlan } from "../service/plan";
 import { searchPlacesState } from "../store/searchPlacesState";
+import { Plan } from "../types";
 
-const INITIAL_DATA = {
+export const INITIAL_DATA: Plan = {
+  plan_id: 0,
+  user_id: "",
   cities: [],
   period: [new Date(), new Date()],
   selectedPlaces: [
     {
+      place_id: "",
       name: "",
-      rating: "",
       user_rating: "",
+      rating: "",
+      geometry: {
+        location: {
+          lat: 214254,
+          lng: 3215213,
+        },
+      },
       types: [],
       isSelect: false,
       day: 0,

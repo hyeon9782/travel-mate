@@ -7,12 +7,12 @@ export type User = {
 };
 
 export type Post = {
-  post_id: string;
+  post_id?: string;
   title: string;
   content: string;
   tags: string[];
-  user_id: string;
-  plan_id: string;
+  user_id?: string;
+  plan_id?: string;
 };
 
 export type City = {
@@ -26,17 +26,17 @@ export type City = {
 };
 
 export type Plan = {
-  plan_id: string;
+  plan_id: number;
   user_id: string;
   cities: City[];
-  period: [];
+  period: Date[];
   selectedPlaces: Place[];
 };
 
 export type Place = {
   place_id: string;
   name: string;
-  user_ratings_total: string;
+  user_rating: string;
   rating: string;
   geometry: {
     location: {
@@ -44,6 +44,7 @@ export type Place = {
       lng: number;
     };
   };
+  types: [];
   isSelect: boolean;
   day: number;
   order: number;

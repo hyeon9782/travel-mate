@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Post } from "../../types";
 import PostItem from "./PostItem";
 type Props = {
-  data: Post[];
+  data?: Post[];
 };
 const Posts = ({ data }: Props) => {
   return (

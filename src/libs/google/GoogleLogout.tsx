@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useSetRecoilState } from "recoil";
 import { userState } from "../../store/userState";
 import { removeLocalStorage } from "../../utils/storage";
@@ -8,6 +9,7 @@ const GoogleLogout = () => {
 
   const handleClick = () => {
     setUserData({});
+    //@ts-ignore
     google.accounts.id.disableAutoSelect();
     removeLocalStorage("user");
     alert("로그아웃 했습니다.");

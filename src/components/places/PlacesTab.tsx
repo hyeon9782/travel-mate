@@ -19,7 +19,7 @@ const CATEGORIES = [
 ];
 
 type Props = {
-  handleClick: () => void;
+  handleClick: (args: any) => void;
   planData: Plan;
 };
 const PlacesTab = ({ handleClick, planData }: Props) => {

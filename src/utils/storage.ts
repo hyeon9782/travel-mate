@@ -8,7 +8,7 @@ function setLocalStorage(key: string, value: any) {
 }
 
 function getLocalStorage(key: string) {
-  return JSON.parse(localStorage.getItem(key));
+  return JSON.parse(localStorage.getItem(key) || "{}");
 }
 
 function removeLocalStorage(key: string) {

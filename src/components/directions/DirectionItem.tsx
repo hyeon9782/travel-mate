@@ -1,10 +1,9 @@
 import styled from "styled-components";
-import { Place } from "../../types";
+
 type Props = {
-  place: Place;
   index: number;
 };
-const DirectionItem = ({ place, index }): Props => {
+const DirectionItem = ({ index }): Props => {
   return <DirectionItemBlock>{index + 1}</DirectionItemBlock>;
 };
 

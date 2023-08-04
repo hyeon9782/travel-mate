@@ -11,13 +11,15 @@ const TagInput = ({ tags, setTags }: Props) => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (value.trim() !== "") {
-      setTags((prevTags) => [...prevTags, value]);
+      setTags((prevTags: string[]) => [...prevTags, value]);
       setValue("");
     }
   };
 
   const handleClick = (tag: string) => {
-    setTags((prevTags) => prevTags.filter((prevTag) => prevTag !== tag));
+    setTags((prevTags: string[]) =>
+      prevTags.filter((prevTag) => prevTag !== tag)
+    );
   };
 
   return (

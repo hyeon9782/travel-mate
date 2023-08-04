@@ -3,7 +3,7 @@ import { useRef } from "react";
 const useIntersectionObserver = (cb: () => void) => {
   const observer = useRef(
     new IntersectionObserver(
-      (entries, observer) => {
+      (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
           cb();

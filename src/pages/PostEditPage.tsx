@@ -6,6 +6,7 @@ import AppEditor from "../libs/AppEditor";
 import Button from "../components/common/Button";
 import TagInput from "../components/tags/TagInput";
 import { registPostAPI } from "../api/post";
+import { Post } from "../types";
 
 const PostEditPage = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const PostEditPage = () => {
   const [tags, setTags] = useState([]);
 
   const handleClick = () => {
-    const formData = {
+    const formData: Post = {
       content,
       title,
       tags,

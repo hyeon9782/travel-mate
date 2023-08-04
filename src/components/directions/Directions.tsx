@@ -16,8 +16,8 @@ const Directions = () => {
     <DirectionsBlock>
       {schedules.length > 1 && <Line />}
       {schedules &&
-        schedules.map((place, index) => (
-          <DirectionItem key={index} place={place} index={index} />
+        schedules.map((_, index) => (
+          <DirectionItem key={index} index={index} />
         ))}
     </DirectionsBlock>
   );
