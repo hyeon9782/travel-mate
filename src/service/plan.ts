@@ -20,7 +20,7 @@ async function createPlan(plan: Plan) {
 
 async function fetchPlan(userId: string, setPlans: any) {
   try {
-    const res = await fetchPlansAPI(userId);
+    const res = await fetchPlansAPI(userId, 1);
     console.log(res);
     setPlans([...res.data]);
   } catch (err) {

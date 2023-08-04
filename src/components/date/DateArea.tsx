@@ -13,7 +13,7 @@ type Props = {
 const DateArea = ({ onNext, planData }: Props) => {
   const setPlanData = useSetRecoilState(planState);
 
-  const onChange = (selectedDates: []) => {
+  const onChange = (selectedDates: Date[]) => {
     setPlanData((prevData) => ({
       ...prevData,
       period: [...selectedDates],

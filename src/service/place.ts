@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Place } from "../types";
+import { Place, Plan } from "../types";
 
 async function searchPlaces(
   e: React.FormEvent<HTMLFormElement>,
@@ -26,7 +26,7 @@ const handlePlaceSelection = (
 ) => {
   if (isSelect) {
     // 장소 취소
-    setPlanData((prevData) => ({
+    setPlanData((prevData: Plan) => ({
       ...prevData,
       selectedPlaces: prevData.selectedPlaces.filter(
         (selectedPlace) => selectedPlace.place_id !== place.place_id
@@ -34,7 +34,7 @@ const handlePlaceSelection = (
     }));
   } else {
     // 장소 선택
-    setPlanData((prevData) => ({
+    setPlanData((prevData: Plan) => ({
       ...prevData,
       selectedPlaces: [
         ...(prevData?.selectedPlaces[0]?.name !== ""
@@ -47,7 +47,7 @@ const handlePlaceSelection = (
 };
 
 // 장바구니에 넣었는지 체크
-function checkPlace(place: Place, selectedPlaces: []) {
+function checkPlace(place: Place, selectedPlaces: Place[]) {
   return (
     selectedPlaces.filter(
       (selectedPlace) => selectedPlace.place_id === place.place_id
@@ -65,7 +65,7 @@ const handleScheduleSelection = (
 ) => {
   if (isSelect) {
     // 일정 취소
-    setPlanData((prevData) => ({
+    setPlanData((prevData: Plan) => ({
       ...prevData,
       selectedPlaces: prevData.selectedPlaces.map((selectedPlace) => {
         if (selectedPlace.place_id === place.place_id) {
@@ -76,7 +76,7 @@ const handleScheduleSelection = (
     }));
   } else {
     // 일정 선택
-    setPlanData((prevData) => ({
+    setPlanData((prevData: Plan) => ({
       ...prevData,
       selectedPlaces: prevData.selectedPlaces.map((selectedPlace) => {
         if (selectedPlace.place_id === place.place_id) {

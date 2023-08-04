@@ -1,5 +1,5 @@
 import { CITIES } from "../constants/cities";
-import { City } from "../types";
+import { City, Plan } from "../types";
 
 // 도시 검색
 function searchCity(e: any, setCities: any, isDomestic: boolean) {
@@ -47,13 +47,13 @@ const handleCitySelection = (
 ) => {
   if (isSelect) {
     // 도시 취소
-    setPlanData((prevData) => ({
+    setPlanData((prevData: Plan) => ({
       ...prevData,
       cities: prevData?.cities?.filter((c) => c !== city),
     }));
   } else {
     // 도시 선택
-    setPlanData((prevData) => ({
+    setPlanData((prevData: Plan) => ({
       ...prevData,
       cities: [...prevData?.cities, city],
     }));
