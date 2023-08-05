@@ -6,6 +6,7 @@ import { fetchPostsAPI } from "../api/post";
 const HomePage = () => {
   return (
     <HomePageBlock>
+      <h1 className="title">동행 모집 목록</h1>
       <InfiniteScroll fetchData={fetchPostsAPI}>
         <Posts />
       </InfiniteScroll>
@@ -16,6 +17,11 @@ const HomePage = () => {
 const HomePageBlock = styled.main`
   height: calc(100% - 42.8px);
   overflow: auto;
+  .titie {
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 10px;
+  }
 `;
 
 export default HomePage;
