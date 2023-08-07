@@ -1,6 +1,7 @@
 import { ImArrowDown } from "react-icons/im";
 import { BsTrash3 } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
+import { GrView } from "react-icons/gr";
 import {
   AiOutlineArrowRight,
   AiOutlineArrowLeft,
@@ -10,6 +11,7 @@ import {
   AiOutlineClose,
   AiOutlineEdit,
 } from "react-icons/ai";
+
 export const PlusIcon = AiOutlinePlus;
 
 export const ArrowDownIcon = ImArrowDown;
@@ -29,3 +31,5 @@ export const EditIcon = AiOutlineEdit;
 export const TrashIcon = BsTrash3;
 
 export const WriteIcon = FiEdit;
+
+export const ViewIcon = GrView;

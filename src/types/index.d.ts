@@ -11,6 +11,10 @@ export type Post = {
   title: string;
   content: string;
   tags: string[];
+  category: string;
+  deadline: string;
+  user_name: string;
+  views: number;
   user_id?: string;
   plan_id?: string;
 };

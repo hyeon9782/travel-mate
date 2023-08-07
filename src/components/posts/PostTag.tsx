@@ -8,9 +8,10 @@ const PostTag = ({ tag }: Props) => {
 };
 
 const PostTagBlock = styled.div`
-  padding: 6px 10px;
+  padding: 5px 8px;
   border-radius: 15px;
   border: 1px solid black;
+  font-size: 0.8rem;
 `;
 
 export default PostTag;
