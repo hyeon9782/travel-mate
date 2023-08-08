@@ -10,6 +10,7 @@ import {
   AiOutlineMenu,
   AiOutlineClose,
   AiOutlineEdit,
+  AiFillStar,
 } from "react-icons/ai";
 
 export const PlusIcon = AiOutlinePlus;
@@ -33,3 +34,5 @@ export const TrashIcon = BsTrash3;
 export const WriteIcon = FiEdit;
 
 export const ViewIcon = GrView;
+
+export const StarIcon = AiFillStar;

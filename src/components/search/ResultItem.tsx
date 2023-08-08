@@ -4,6 +4,8 @@ import { useRecoilState } from "recoil";
 import { Place } from "../../types";
 import { checkPlace, handlePlaceSelection } from "../../service/place";
 import { planState } from "../../store/planState";
+import { truncateTextOverflow } from "../../utils/utils";
+import { StarIcon } from "../common/icons";
 
 type Props = {
   place: Place;
@@ -17,10 +19,14 @@ const ResultItem = ({ place }: Props) => {
 
   return (
     <ResultItemBlock isSelect={isSelect}>
-      <div className="name-box">{name}</div>
+      <div className="name-box">{truncateTextOverflow(name, 9)}</div>
       <div className="rating-box">
-        <div>리뷰 개수 : {user_ratings_total}개</div>
-        <div>평균 평점 : {rating}점</div>
+        <div className="icon-box">
+          <StarIcon />
+        </div>
+        <div className="score-box">
+          {rating} (리뷰:{user_ratings_total}개)
+        </div>
       </div>
       <div className="btn-box">
         {!isSelect ? (
@@ -51,12 +57,25 @@ const ResultItemBlock = styled.div<{ isSelect: boolean }>`
   background-color: #faf9fc;
   .name-box {
     font-weight: bold;
+    width: 50%;
   }
 
   .rating-box {
-    div {
-      padding: 3px;
+    width: 35%;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    .icon-box {
+      font-size: 1.2rem;
     }
+
+    .score-box {
+      font-size: 0.8rem;
+    }
+  }
+
+  .btn-box {
+    width: 15%;
   }
 `;
 
