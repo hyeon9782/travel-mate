@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import SearchMap from "../google/SearchMap";
-import Input from "../common/Input";
 import ResultList from "./ResultList";
 import PlacesTab from "../places/PlacesTab";
 import DoneButton from "../plan/DoneButton";

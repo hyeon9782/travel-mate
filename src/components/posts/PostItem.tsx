@@ -4,6 +4,7 @@ import PostTag from "./PostTag";
 import { useNavigate } from "react-router-dom";
 import { ViewIcon } from "../common/icons";
 import UserBox from "../user/UserBox";
+import { calculateDday } from "../../utils/utils";
 
 type Props = {
   post: Post;
@@ -18,7 +19,7 @@ const PostItem = ({ post }: Props) => {
     >
       <div className="post_head">
         <div className="category">{category}</div>
-        <div className="deadline">마감일ㅣ{deadline}</div>
+        <div className="deadline">마감일ㅣ{calculateDday(deadline)}</div>
       </div>
       <div className="title">{title}</div>
       <div className="tags">

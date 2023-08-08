@@ -7,7 +7,7 @@ const SearchInput = ({ onSubmit }: Props) => {
     <form onSubmit={onSubmit}>
       <SearchInputBlock
         type="text"
-        placeholder="가고 싶은 장소를 검새해보세요."
+        placeholder="가고 싶은 장소를 검색해보세요."
       />
     </form>
   );
