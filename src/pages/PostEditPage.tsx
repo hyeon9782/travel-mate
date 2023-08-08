@@ -1,15 +1,29 @@
 import styled from "styled-components";
 import PrevStep from "../components/plan/PrevStep";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AppEditor from "../libs/AppEditor";
 import Button from "../components/common/Button";
 import TagInput from "../components/tags/TagInput";
 import { registPostAPI } from "../api/post";
-import { Post } from "../types";
+import { Plan, Post } from "../types";
+import { useRecoilValue } from "recoil";
+import { userState } from "../store/userState";
+import { fetchPlan } from "../service/plan";
 
 const PostEditPage = () => {
   const navigate = useNavigate();
+
+  const userData = useRecoilValue(userState);
+
+  const [plans, setPlans] = useState<Plan[]>([]);
+  const [content, setContent] = useState("");
+
+  useEffect(() => {
+    if (userData.email) {
+      fetchPlan(userData.email, setPlans);
+    }
+  }, []);
 
   const [postData, setPostData] = useState<Post>({
     title: "",
@@ -17,11 +31,12 @@ const PostEditPage = () => {
     tags: [],
     deadline: "2023-03-03",
     category: "동행 모집",
+    user_id: userData.email,
+    user_name: userData.name,
+    views: 0,
   });
 
   const handleChange = (event: any) => {
-    console.log(event.target.value);
-    console.log(event.target.name);
     const { name, value } = event.target;
 
     setPostData((prevPost) => ({
@@ -66,6 +81,23 @@ const PostEditPage = () => {
               <option value="여행 질문">여행 질문</option>
             </select>
           </div>
+          <div className="plan-box">
+            <label htmlFor="plan" className="plan-label">
+              일정 선택
+            </label>
+            <select
+              className="plan"
+              id="plan"
+              name="plan_id"
+              onChange={handleChange}
+            >
+              {plans.map((plan) => (
+                <option value={plan.plan_id} key={plan.plan_id}>
+                  {plan.cities[0].city} 여행
+                </option>
+              ))}
+            </select>
+          </div>
           <div className="deadline-box">
             <label htmlFor="deadline" className="deadline-label">
               모집 마감일
@@ -81,23 +113,31 @@ const PostEditPage = () => {
           </div>
         </div>
         <div className="tags-box">
-          <TagInput tags={postData.tags} onChange={handleChange} />
+          <TagInput setPostData={setPostData} />
         </div>
         <div className="content-box">
-          <AppEditor content={postData.content} setContent={handleChange} />
+          <AppEditor content={content} setContent={setContent} />
         </div>
         <div className="btn-box">
-          <Button text={"등록하기"} onClick={handleClick} size="small" />
+          <Button
+            text={"등록하기"}
+            onClick={() => handleClick({ ...postData, content })}
+            size="small"
+          />
         </div>
       </PostEditBox>
     </PostEditPageBlock>
   );
 };
 
-const PostEditPageBlock = styled.main``;
+const PostEditPageBlock = styled.main`
+  height: 100%;
+`;
 
 const PostEditBox = styled.div`
   padding: 10px;
+  height: calc(100% - 44.59px);
+  box-sizing: border-box;
 
   .title-box {
     padding-bottom: 10px;
@@ -118,7 +158,10 @@ const PostEditBox = styled.div`
     gap: 10px;
     font-size: 0.9rem;
     .category-box {
-      width: 50%;
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
       .category-label {
       }
@@ -130,8 +173,23 @@ const PostEditBox = styled.div`
       }
     }
 
+    .plan-box {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .plan {
+        width: 100%;
+        height: 30px;
+        margin: 10px 0;
+      }
+    }
+
     .deadline-box {
-      width: 50%;
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
       .deadline-label {
       }
@@ -149,12 +207,13 @@ const PostEditBox = styled.div`
 
   .content-box {
     padding-bottom: 20px;
-    height: 442px;
+    height: 50%;
   }
 
   .btn-box {
     display: flex;
     justify-content: center;
+    margin-top: 42px;
   }
 `;
 

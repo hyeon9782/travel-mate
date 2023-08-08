@@ -2,16 +2,17 @@ import styled from "styled-components";
 import { useState } from "react";
 
 type Props = {
-  tags: string[];
-  onChange: any;
+  setPostData: any;
 };
-const TagInput = ({ tags, onChange }: Props) => {
+const TagInput = ({ setPostData }: Props) => {
   const [value, setValue] = useState("");
+  const [tags, setTags] = useState<string[]>([]);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (value.trim() !== "") {
-      onChange(e);
+      setPostData((prevData) => ({ ...prevData, tags }));
+      setTags((prev) => [...prev, value]);
       setValue("");
     }
   };

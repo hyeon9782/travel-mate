@@ -7,7 +7,7 @@ type Props = {
 };
 const AppEditor = ({ content, setContent }: Props) => {
   return (
-    <div style={{ height: "400px" }}>
+    <div style={{ height: "100%" }}>
       <ReactQuill
         theme="snow"
         value={content}
