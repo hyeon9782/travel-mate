@@ -1,8 +1,8 @@
 import { Post } from "../types";
 import { posts } from "./index";
 
-const fetchPostsAPI = (page: number) => {
-  return posts.get(`/api/post?page=${page}`);
+const fetchPostsAPI = (page: number, category: string) => {
+  return posts.get(`/api/post?page=${page}&category=${category}`);
 };
 
 const fetchPostAPI = (post_id: string) => {

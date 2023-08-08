@@ -10,20 +10,30 @@ import { Post } from "../types";
 
 const PostEditPage = () => {
   const navigate = useNavigate();
-  const [content, setContent] = useState("");
-  const [title, setTitle] = useState("");
-  const [tags, setTags] = useState([]);
 
-  const handleClick = () => {
-    const formData: Post = {
-      content,
-      title,
-      tags,
-    };
+  const [postData, setPostData] = useState<Post>({
+    title: "",
+    content: "",
+    tags: [],
+    deadline: "2023-03-03",
+    category: "동행 모집",
+  });
 
-    console.log(formData);
+  const handleChange = (event: any) => {
+    console.log(event.target.value);
+    console.log(event.target.name);
+    const { name, value } = event.target;
 
-    registPostAPI(formData);
+    setPostData((prevPost) => ({
+      ...prevPost,
+      [name]: value,
+    }));
+  };
+
+  const handleClick = (postData: Post) => {
+    console.log(postData);
+
+    registPostAPI(postData);
     alert("게시글을 등록했어요!");
     navigate(-1);
   };
@@ -35,15 +45,46 @@ const PostEditPage = () => {
           <input
             type="text"
             className="title-input"
+            name="title"
             placeholder="게시글 제목을 입력해주세요."
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => handleChange(e)}
           />
         </div>
+        <div className="info-box">
+          <div className="category-box">
+            <label htmlFor="category" className="category-label">
+              카테고리
+            </label>
+            <select
+              className="category"
+              id="category"
+              name="category"
+              value={postData.category}
+              onChange={handleChange}
+            >
+              <option value="동행 모집">동행 모집</option>
+              <option value="여행 질문">여행 질문</option>
+            </select>
+          </div>
+          <div className="deadline-box">
+            <label htmlFor="deadline" className="deadline-label">
+              모집 마감일
+            </label>
+            <input
+              type="date"
+              className="deadline"
+              name="deadline"
+              data-placeholder="모집 마감일"
+              onChange={handleChange}
+              value={postData.deadline}
+            />
+          </div>
+        </div>
         <div className="tags-box">
-          <TagInput tags={tags} setTags={setTags} />
+          <TagInput tags={postData.tags} onChange={handleChange} />
         </div>
         <div className="content-box">
-          <AppEditor content={content} setContent={setContent} />
+          <AppEditor content={postData.content} setContent={handleChange} />
         </div>
         <div className="btn-box">
           <Button text={"등록하기"} onClick={handleClick} size="small" />
@@ -69,6 +110,36 @@ const PostEditBox = styled.div`
       border: 1px solid lightgray;
       border-radius: 5px;
       outline: none;
+    }
+  }
+
+  .info-box {
+    display: flex;
+    gap: 10px;
+    font-size: 0.9rem;
+    .category-box {
+      width: 50%;
+
+      .category-label {
+      }
+
+      .category {
+        width: 100%;
+        height: 30px;
+        margin: 10px 0;
+      }
+    }
+
+    .deadline-box {
+      width: 50%;
+
+      .deadline-label {
+      }
+      .deadline {
+        width: 100%;
+        height: 30px;
+        margin: 10px 0;
+      }
     }
   }
 

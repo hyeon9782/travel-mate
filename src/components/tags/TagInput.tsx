@@ -3,15 +3,15 @@ import { useState } from "react";
 
 type Props = {
   tags: string[];
-  setTags: any;
+  onChange: any;
 };
-const TagInput = ({ tags, setTags }: Props) => {
+const TagInput = ({ tags, onChange }: Props) => {
   const [value, setValue] = useState("");
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (value.trim() !== "") {
-      setTags((prevTags: string[]) => [...prevTags, value]);
+      onChange(e);
       setValue("");
     }
   };
@@ -28,6 +28,7 @@ const TagInput = ({ tags, setTags }: Props) => {
         <CreateInput
           placeholder="태그를 입력하세요."
           value={value}
+          name="tags"
           onChange={(e) => setValue(e.target.value)}
         />
       </form>
