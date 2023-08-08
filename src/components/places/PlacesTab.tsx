@@ -52,23 +52,41 @@ const PlacesTab = ({ handleClick, planData }: Props) => {
         ))}
       </Categories>
       <PlacesBlock>
-        <Places places={filterPlaces} handleClick={handleClick} />
+        {filterPlaces.length === 0 ? (
+          <NoPlaceBlock>장소를 추가해주세요</NoPlaceBlock>
+        ) : (
+          <Places places={filterPlaces} handleClick={handleClick} />
+        )}
       </PlacesBlock>
     </PlacesTabBlock>
   );
 };
 
+const NoPlaceBlock = styled.div`
+  background-color: lightgray;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: gray;
+  font-weight: bold;
+  font-size: 1.2rem;
+`;
+
 const PlacesTabBlock = styled.article`
-  padding: 10px;
+  padding: 0px 10px;
 `;
 
 const PlacesBlock = styled.div`
-  min-height: 100px;
+  height: 50px;
 `;
 
 const Categories = styled.div`
   display: flex;
   gap: 10px;
+  padding: 5px 0;
 `;
 
 const Category = styled.div<{ isActive?: boolean }>`

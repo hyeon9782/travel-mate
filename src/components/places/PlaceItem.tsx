@@ -15,12 +15,16 @@ const PlaceItem = ({ place, handleClick }: Props) => {
   );
 };
 
-const PlaceBlock = styled.div``;
+const PlaceBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const PlaceImage = styled.div`
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   background-color: lightgray;
 `;
 

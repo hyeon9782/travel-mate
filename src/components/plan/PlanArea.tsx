@@ -29,11 +29,11 @@ const PlanArea = ({ onNext, planData }: Props) => {
 
   return (
     <PlanBlock>
-      <PlacesTab handleClick={handleScheduleAdd} planData={planData} />
+      <MapBox>
+        <RenderMap planData={planData} />
+      </MapBox>
       <ScheduleBlock>
-        <MapBox>
-          <RenderMap planData={planData} />
-        </MapBox>
+        <PlacesTab handleClick={handleScheduleAdd} planData={planData} />
         <ScheduleBox>
           <Days planData={planData} />
           <Schedules />

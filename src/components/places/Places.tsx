@@ -23,7 +23,6 @@ const Places = ({ places, handleClick }: Props) => {
 };
 
 const PlacesBlock = styled.article`
-  padding: 10px;
   width: 100%;
 `;
 
