@@ -23,7 +23,7 @@ function InfiniteScroll({ children, fetchData }: Props) {
       if (entry.isIntersecting && !loading && hasMoreData) {
         // 추가된 조건
         setLoading(true);
-        const newData = await fetchData(pageRef.current);
+        const newData = await fetchData(pageRef.current, "동행 모집");
         if (newData.data.length === 0) {
           setHasMoreData(false); // 더 이상 데이터가 없을 때 상태 업데이트
         } else {

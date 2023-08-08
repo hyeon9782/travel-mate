@@ -1,13 +1,29 @@
-import { useState } from "react";
 import styled from "styled-components";
-
-const PostsTab = () => {
-  const [select, setSelect] = useState(0);
+type Props = {
+  onClick: (category: string) => void;
+  category: string;
+};
+const PostsTab = ({ onClick, category }: Props) => {
   return (
     <PostsTabBlock>
-      <li className={select === 0 ? "select" : ""}>전체</li>
-      <li className={select === 1 ? "select" : ""}>동행 모집</li>
-      <li className={select === 2 ? "select" : ""}>여행 질문</li>
+      <li
+        onClick={() => onClick("전체")}
+        className={category === "전체" ? "select" : ""}
+      >
+        전체
+      </li>
+      <li
+        onClick={() => onClick("동행 모집")}
+        className={category === "동행 모집" ? "select" : ""}
+      >
+        동행 모집
+      </li>
+      <li
+        onClick={() => onClick("여행 질문")}
+        className={category === "여행 질문" ? "select" : ""}
+      >
+        여행 질문
+      </li>
     </PostsTabBlock>
   );
 };

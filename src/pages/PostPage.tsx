@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import PrevStep from "../components/plan/PrevStep";
 import Button from "../components/common/Button";
+import UserBox from "../components/user/UserBox";
 
 const PostPage = () => {
   const location = useLocation();
@@ -14,7 +15,7 @@ const PostPage = () => {
     plan_id: "0",
     user_id: "3",
   });
-  const { title, content, plan_id, user_id } = post;
+  const { title, content, plan_id, user_id, user_name } = post;
 
   useEffect(() => {
     setPost({ ...postParam });
@@ -25,10 +26,7 @@ const PostPage = () => {
       <PrevStep onPrev={() => navigate(-1)} />
       <PostTitle>{title}</PostTitle>
       <UserBlock>
-        <div className="user-box">
-          <div className="profile"></div>
-          <div>{user_id}</div>
-        </div>
+        <UserBox user_name={user_name} size="big" />
         <Button
           text="일정보기"
           onClick={() =>
