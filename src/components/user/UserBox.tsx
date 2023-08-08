@@ -20,11 +20,12 @@ const UserBox = ({ user, user_name }: Props) => {
 const UserBoxBlock = styled.article`
   display: flex;
   align-items: center;
+  font-size: 0.9rem;
   .image_box {
     border-radius: 50%;
     background-color: lightgray;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
   }
 
   .name_box {

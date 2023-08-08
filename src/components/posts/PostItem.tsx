@@ -83,9 +83,9 @@ const PostItemBlock = styled.div`
     .views {
       display: flex;
       align-items: center;
-      font-size: 1.3rem;
+      font-size: 1rem;
       .number {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         padding-left: 5px;
       }
     }
