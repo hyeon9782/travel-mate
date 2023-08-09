@@ -4,18 +4,23 @@ import styled from "styled-components";
 import PrevStep from "../components/plan/PrevStep";
 import Button from "../components/common/Button";
 import UserBox from "../components/user/UserBox";
+import { Post } from "../types";
 
 const PostPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const postParam = location?.state?.post || null;
-  const [post, setPost] = useState({
-    title: "임시 제목입니다.",
-    content: "임시 내용입니다.",
-    plan_id: "0",
-    user_id: "3",
+  const [post, setPost] = useState<Post>({
+    title: "",
+    content: "",
+    tags: [],
+    category: "",
+    deadline: "",
+    user_name: "",
+    views: 0,
+    plan_id: "",
   });
-  const { title, content, plan_id, user_id, user_name } = post;
+  const { title, content, plan_id, user_name } = post;
 
   useEffect(() => {
     setPost({ ...postParam });

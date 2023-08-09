@@ -3,7 +3,7 @@ import { User } from "../../types";
 
 type Props = {
   user?: User;
-  user_name: string;
+  user_name?: string;
   size?: string;
 };
 

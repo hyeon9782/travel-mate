@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { Post } from "../../types";
 
 type Props = {
   setPostData: any;
@@ -11,7 +12,7 @@ const TagInput = ({ setPostData }: Props) => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (value.trim() !== "") {
-      setPostData((prevData) => ({ ...prevData, tags }));
+      setPostData((prevData: Post) => ({ ...prevData, tags }));
       setTags((prev) => [...prev, value]);
       setValue("");
     }
