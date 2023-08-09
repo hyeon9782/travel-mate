@@ -1,16 +1,16 @@
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import Schedule from "./Schedule";
 import { currentDayState } from "../../store/currentDayState";
 import Directions from "../directions/Directions";
-import { planState } from "../../store/planState";
 import { handleScheduleSelection } from "../../service/place";
-import { Place } from "../../types";
-
-const Schedules = () => {
+import { Place, Plan } from "../../types";
+type Props = {
+  planData: Plan;
+  setPlanData: any;
+};
+const Schedules = ({ planData, setPlanData }: Props) => {
   const currentDay = useRecoilValue(currentDayState);
-  const [planData, setPlanData] = useRecoilState(planState);
-
   const newData = planData.selectedPlaces
     .filter((selectedPlace) => selectedPlace.day === currentDay)
     .sort((a, b) => a.order - b.order);

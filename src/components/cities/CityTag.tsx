@@ -19,9 +19,9 @@ const CityTagBlock = styled.div`
   width: fit-content; /* 내용물에 맞게 크기 조정 */
   border-radius: 15px;
   background-color: white;
+  border: 1px solid lightgray;
   font-weight: 400;
   font-size: 0.8rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
 `;
 
 const ContentWrapper = styled.div`

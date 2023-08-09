@@ -1,21 +1,16 @@
 import styled from "styled-components";
 import CityTag from "./CityTag";
-import { SwiperSlide, Swiper } from "swiper/react";
-// Import Swiper styles
-import "swiper/css";
+import Carousel from "../common/Carousel";
 type Props = {
   tags: string[];
 };
 const CityTags = ({ tags }: Props) => {
+  const render = (props: any, key: number) => {
+    return <CityTag key={key}>{props}</CityTag>;
+  };
   return (
     <CityTagsBlock>
-      <Swiper slidesPerView={3}>
-        {tags.map((tag, index) => (
-          <SwiperSlide key={index}>
-            <CityTag>{tag}</CityTag>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <Carousel list={tags} render={render} />
     </CityTagsBlock>
   );
 };

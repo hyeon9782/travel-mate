@@ -36,7 +36,7 @@ const PlanArea = ({ onNext, planData }: Props) => {
         <PlacesTab handleClick={handleScheduleAdd} planData={planData} />
         <ScheduleBox>
           <Days planData={planData} />
-          <Schedules />
+          <Schedules planData={planData} setPlanData={setPlanData} />
         </ScheduleBox>
       </ScheduleBlock>
       <BtnBox>

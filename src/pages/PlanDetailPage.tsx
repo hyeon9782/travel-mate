@@ -4,34 +4,34 @@ import Days from "../components/days/Days";
 import Schedules from "../components/schedules/Schedules";
 import { useLocation, useNavigate } from "react-router-dom";
 import PrevStep from "../components/plan/PrevStep";
-
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { fetchPlanDetail } from "../service/plan";
-import { Plan } from "../types";
-import { INITIAL_DATA } from "./PlanPage";
+import { useRecoilState } from "recoil";
+import { planState } from "../store/planState";
 
 const PlanDetailPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const plan_id = location?.state?.plan_id;
-  const [plan, setPlan] = useState<Plan>(INITIAL_DATA);
+
+  const [planData, setPlanData] = useRecoilState(planState);
 
   useEffect(() => {
-    fetchPlanDetail(plan_id, setPlan);
+    fetchPlanDetail(plan_id, setPlanData);
   }, []);
 
-  if (Object.keys(plan).length === 0) return <></>;
+  if (Object.keys(planData).length === 0) return <></>;
 
   return (
     <PlanDetailPageBlock>
       <PrevStep onPrev={() => navigate(-1)} />
       <ScheduleBlock>
         <MapBox>
-          <RenderMap planData={plan} />
+          <RenderMap planData={planData} />
         </MapBox>
         <ScheduleBox>
-          <Days planData={plan} />
-          <Schedules />
+          <Days planData={planData} />
+          <Schedules planData={planData} setPlanData={setPlanData} />
         </ScheduleBox>
       </ScheduleBlock>
     </PlanDetailPageBlock>

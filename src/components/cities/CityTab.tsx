@@ -33,7 +33,7 @@ const CityTab = () => {
       </ButtonBox>
       {!isDomestic && (
         <CitiesTag
-          tags={["전체", "일본", "동남아시아", "유럽", "미주", "중화/중국"]}
+          tags={["전체", "일본", "유럽", "동남아시아", "중화/중국", "미주"]}
         />
       )}
     </CityTabBlock>
