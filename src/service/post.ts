@@ -1,10 +1,13 @@
 import axios from "axios";
 import { Post } from "../types";
+import { fetchPostsAPI } from "../api/post";
 
-const fetchPosts = async (setPosts: any) => {
+const fetchPosts = async (page: number, category: string) => {
   try {
-    const res = await axios.get("http://localhost:4000/api/post");
-    setPosts(res.data);
+    const res = await fetchPostsAPI(page, category);
+    console.log(res.data);
+
+    return res.data;
   } catch (err) {
     console.log(err);
   }

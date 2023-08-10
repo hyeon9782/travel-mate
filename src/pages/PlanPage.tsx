@@ -7,7 +7,7 @@ import DateArea from "../components/date/DateArea";
 import SearchArea from "../components/search/SearchArea";
 import { useLocation, useNavigate } from "react-router-dom";
 import PrevStep from "../components/plan/PrevStep";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useResetRecoilState, useSetRecoilState } from "recoil";
 import { planState } from "../store/planState";
 import { createPlan, modifyPlan } from "../service/plan";
 import { searchPlacesState } from "../store/searchPlacesState";
@@ -46,9 +46,12 @@ const PlanPage = () => {
   >("도시선택");
   const planDataParam = location?.state?.planData || null;
   const [isPlanDataInitialized, setPlanDataInitialized] = useState(false); // New state
+  const resetPlanData = useResetRecoilState(planState);
   console.log(planDataParam);
 
   const [planData, setPlanData] = useRecoilState(planState);
+
+  console.log(planData);
 
   useEffect(() => {
     // 최초에만 planDataParam을 recoil의 planData에 설정
@@ -56,6 +59,10 @@ const PlanPage = () => {
       setPlanData({ ...planDataParam });
       setPlanDataInitialized(true);
     }
+
+    () => {
+      resetPlanData();
+    };
   }, [planDataParam, isPlanDataInitialized, setPlanData]);
 
   const setSearchPlaces = useSetRecoilState(searchPlacesState);

@@ -42,6 +42,9 @@ const PlacesTab = ({ handleClick, planData }: Props) => {
           "natural_feature",
           "lodging",
         ].filter((type) => selectedPlace?.types.includes(type));
+        console.log(matchingTypes.length === 0);
+        console.log(matchingTypes[0] !== "");
+
         return matchingTypes.length === 0;
       });
     }
