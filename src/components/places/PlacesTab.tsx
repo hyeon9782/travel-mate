@@ -6,7 +6,11 @@ import { Plan } from "../../types";
 const CATEGORIES = [
   {
     ko: "맛집",
-    en: "food",
+    en: "restaurant",
+  },
+  {
+    ko: "카페",
+    en: "cafe",
   },
   {
     ko: "명소",
@@ -15,6 +19,10 @@ const CATEGORIES = [
   {
     ko: "숙소",
     en: "lodging",
+  },
+  {
+    ko: "기타",
+    en: "",
   },
 ];
 
@@ -26,6 +34,18 @@ const PlacesTab = ({ handleClick, planData }: Props) => {
   const [selectedCategory, setSelectedCategory] = useState(0);
 
   const filterPlacesByCategory = (category: any) => {
+    if (category.en === "") {
+      return planData.selectedPlaces.filter((selectedPlace) => {
+        const matchingTypes = [
+          "restaurant",
+          "cafe",
+          "natural_feature",
+          "lodging",
+        ].filter((type) => selectedPlace?.types.includes(type));
+        return matchingTypes.length === 0;
+      });
+    }
+
     return planData.selectedPlaces.filter(
       (place) => place?.types.includes(category.en) && place?.day === 0
     );
