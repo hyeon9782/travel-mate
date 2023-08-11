@@ -1,99 +1,25 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
-import PrevStep from "../components/plan/PrevStep";
-import Button from "../components/common/Button";
-import UserBox from "../components/user/UserBox";
-import { Post } from "../types";
+import { lazy } from "react";
+
+import { Suspense } from "react";
+import PostDetailSkeleton from "../components/posts/PostDetailSkeleton";
+
+const PostContainer = lazy(() => import("../components/posts/PostContainer"));
 
 const PostPage = () => {
   const location = useLocation();
-  const navigate = useNavigate();
-  const postParam = location?.state?.post || null;
-  const [post, setPost] = useState<Post>({
-    title: "",
-    content: "",
-    tags: [],
-    category: "",
-    deadline: "",
-    user_name: "",
-    views: 0,
-    plan_id: "",
-  });
-  const { title, content, plan_id, user_name } = post;
-
-  useEffect(() => {
-    setPost({ ...postParam });
-  }, []);
+  const { post_id } = location?.state || null;
 
   return (
     <PostPageBlock>
-      <PrevStep onPrev={() => navigate(-1)} />
-      <PostTitle>{title}</PostTitle>
-      <UserBlock>
-        <UserBox user_name={user_name} size="big" />
-        <Button
-          text="일정보기"
-          onClick={() =>
-            navigate(`/plan/${plan_id}`, { state: { plan_id: plan_id } })
-          }
-        />
-      </UserBlock>
-      <PostContent dangerouslySetInnerHTML={{ __html: content }}></PostContent>
-      <BtnBox></BtnBox>
+      <Suspense fallback={<PostDetailSkeleton />}>
+        <PostContainer post_id={post_id} />
+      </Suspense>
     </PostPageBlock>
   );
 };
 
 const PostPageBlock = styled.main``;
-
-const UserBlock = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  border-bottom: 1px solid lightgray;
-
-  .user-box {
-    display: flex;
-    align-items: center;
-    .profile {
-      border-radius: 50%;
-      background-color: gray;
-      width: 30px;
-      height: 30px;
-      margin-right: 10px;
-    }
-  }
-`;
-
-const PostTitle = styled.div`
-  font-size: 2rem;
-  font-weight: bold;
-  padding: 10px;
-
-  border-bottom: 1px solid lightgray;
-`;
-
-const PostContent = styled.div`
-  padding: 10px;
-  min-height: 400px;
-  box-sizing: border-box;
-
-  h1 {
-    font-size: 2em;
-  }
-
-  h2 {
-    font-size: 1.8em;
-  }
-
-  h3 {
-    font-size: 1.6em;
-  }
-`;
-
-const BtnBox = styled.div`
-  padding: 10px;
-`;
 
 export default PostPage;

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Post } from "../types";
-import { fetchPostsAPI } from "../api/post";
+import { fetchPostAPI, fetchPostsAPI } from "../api/post";
 
 const fetchPosts = async (page: number, category: string) => {
   try {
@@ -11,6 +11,11 @@ const fetchPosts = async (page: number, category: string) => {
   } catch (err) {
     console.log(err);
   }
+};
+
+const fetchPost = async (post_id: string) => {
+  const res = await fetchPostAPI(post_id);
+  return res.data;
 };
 
 const createPost = (post: Post) => {
@@ -40,4 +45,4 @@ const removePost = (post_id: string) => {
   }
 };
 
-export { fetchPosts, createPost, modifyPost, removePost };
+export { fetchPosts, fetchPost, createPost, modifyPost, removePost };

@@ -15,7 +15,7 @@ const PostItem = ({ post }: Props) => {
   const navigate = useNavigate();
   return (
     <PostItemBlock
-      onClick={() => navigate(`/post/${post_id}`, { state: { post } })}
+      onClick={() => navigate(`/post/${post_id}`, { state: { post_id } })}
     >
       <div className="post_head">
         <div className="category">{category}</div>
