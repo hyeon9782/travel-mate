@@ -17,8 +17,10 @@ const CityArea = ({ onNext, onPrev, planData }: Props) => {
 
   return (
     <CityAreaBlock>
-      <CitySubHeader onPrev={onPrev} />
-      <Cities cities={cities} />
+      <div className="box">
+        <CitySubHeader onPrev={onPrev} />
+        <Cities cities={cities} />
+      </div>
       <SeletedBox>
         {planData?.cities?.length !== 0 && (
           <SeletedCities selectedCities={planData?.cities} />
@@ -42,6 +44,10 @@ const CityArea = ({ onNext, onPrev, planData }: Props) => {
 
 const CityAreaBlock = styled.section`
   box-sizing: border-box;
+  height: 100%;
+  .box {
+    min-height: calc(100% - 68px);
+  }
 `;
 
 const SeletedBox = styled.div`

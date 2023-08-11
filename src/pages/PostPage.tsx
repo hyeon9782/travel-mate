@@ -1,7 +1,6 @@
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { lazy } from "react";
-
 import { Suspense } from "react";
 import PostDetailSkeleton from "../components/posts/PostDetailSkeleton";
 

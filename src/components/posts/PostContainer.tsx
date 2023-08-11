@@ -4,7 +4,7 @@ import UserBox from "../user/UserBox";
 import Button from "../common/Button";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import { postSelector } from "../../store/postState";
+import { postSelector } from "../../store/postSelector";
 type Props = {
   post_id: string;
 };

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useEffect } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 
 import CitiesTag from "./CityTags";
@@ -10,10 +9,6 @@ import { isDomesticState } from "../../store/isDomesticState";
 const CityTab = () => {
   const [isDomestic, setIsDomestic] = useRecoilState(isDomesticState);
   const setCities = useSetRecoilState(citiesState);
-
-  useEffect(() => {
-    setCities((prev) => prev.filter((v) => v.isDomestic === isDomestic));
-  }, []);
 
   return (
     <CityTabBlock>
