@@ -1,37 +1,44 @@
 import styled from "styled-components";
 import PostsTab from "../components/posts/PostsTab";
-import React, { useState, Suspense, useRef, useEffect } from "react";
+import React, {
+  useState,
+  Suspense,
+  useRef,
+  useEffect,
+  useCallback,
+} from "react";
 import PostSkeleton from "../components/posts/PostSkeleton";
 
 const Posts = React.lazy(() => import("../components/posts/Posts"));
+
+const option = {
+  root: null,
+  rootMargin: "0px",
+  threshold: 0.5,
+};
 
 const HomePage = () => {
   const targetRef = useRef(null);
   const [category, setCategory] = useState<string>("전체");
   const [page, setPage] = useState(1);
 
-  const handleClick = (category: string) => {
+  const handleClick = useCallback((category: string) => {
     setCategory(category);
-  };
+  }, []);
 
-  useEffect(() => {
-    console.log("이펙트");
-
-    const option = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.5,
-    };
-
-    const handleIntersection = async (entries: IntersectionObserverEntry[]) => {
+  const handleIntersection = useCallback(
+    async (entries: IntersectionObserverEntry[]) => {
       const entry = entries[0];
       console.log(entry.isIntersecting);
 
       if (entry.isIntersecting) {
         setPage((prevPage) => prevPage + 1);
       }
-    };
+    },
+    []
+  );
 
+  useEffect(() => {
     const observer = new IntersectionObserver(handleIntersection, option);
 
     if (targetRef.current) {
@@ -47,8 +54,8 @@ const HomePage = () => {
     <HomePageBlock>
       <PostsTab onClick={handleClick} category={category} />
       {Array.from({ length: page }, (_, i) => (
-        <Suspense key={i} fallback={<PostSkeleton />}>
-          <Posts category={category} page={page + 1} />
+        <Suspense key={i} fallback={<PostSkeleton key={i} />}>
+          <Posts category={category} page={page} />
         </Suspense>
       ))}
       <div ref={targetRef} style={{ height: "10px" }}></div>

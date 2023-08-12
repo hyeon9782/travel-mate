@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import PostItem from "./PostItem";
-import { useEffect, useRef, useState } from "react";
 import { Post } from "../../types";
-import { fetchPosts } from "../../service/post";
 import { useRecoilValue } from "recoil";
 import { postsSelector } from "../../store/postsSelector";
 type Props = {
