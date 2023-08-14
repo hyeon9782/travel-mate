@@ -12,6 +12,7 @@ import { planState } from "../store/planState";
 import { createPlan, modifyPlan } from "../service/plan";
 import { searchPlacesState } from "../store/searchPlacesState";
 import { Plan } from "../types";
+import useCustomBack from "../hooks/useCustomBack";
 
 export const INITIAL_DATA: Plan = {
   plan_id: 0,
@@ -102,6 +103,8 @@ const PlanPage = () => {
       console.error(err);
     }
   };
+
+  useCustomBack(onPrev);
 
   return (
     <PlanPageBlock>

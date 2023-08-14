@@ -54,7 +54,7 @@ const HomePage = () => {
     <HomePageBlock>
       <PostsTab onClick={handleClick} category={category} />
       {Array.from({ length: page }, (_, i) => (
-        <Suspense key={i} fallback={<PostSkeleton key={i} />}>
+        <Suspense key={i} fallback={<PostSkeleton key={i + 1 * 362} />}>
           <Posts category={category} page={page} />
         </Suspense>
       ))}

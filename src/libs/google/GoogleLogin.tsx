@@ -22,26 +22,37 @@ const GoogleLogin = () => {
     navigate("/");
   };
 
+  const handleLogout = () => {
+    //@ts-ignore
+    google.accounts.id.revoke("hyeon9782@google.com", (done) => {
+      console.log("consent revoked");
+    });
+  };
+
   useScript("https://accounts.google.com/gsi/client", () => {
     //@ts-ignore
     google.accounts.id.initialize({
       client_id,
       callback: handleCallbackResponse,
     });
-
-    // 사용자가 로그인되어 있는지 확인합니다.
     //@ts-ignore
     google.accounts.id.prompt();
-
     //@ts-ignore
     google.accounts.id.renderButton(googleSignInButton.current, {
       width: "250",
       type: "icon",
       shape: "circle",
     });
+
+    // 사용자가 로그인되어 있는지 확인합니다.
   });
 
-  return <div id="google-login-api" ref={googleSignInButton} />;
+  return (
+    <>
+      <div id="google-login-api" ref={googleSignInButton} />
+      <button onClick={handleLogout}>로그아웃</button>
+    </>
+  );
 };
 
 export default GoogleLogin;
