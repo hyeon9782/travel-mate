@@ -15,6 +15,8 @@ async function searchPlaces(
       searchData.location.lng
     }`
   );
+  console.log(res);
+
   setSearchPlaces(res.data);
 }
 

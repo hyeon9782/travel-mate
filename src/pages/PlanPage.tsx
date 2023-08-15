@@ -126,7 +126,11 @@ const PlanPage = () => {
         <PlanArea onNext={() => setStep("미리보기")} planData={planData} />
       )}
       {step === "미리보기" && (
-        <PreviewArea onSubmit={handleSubmit} planData={planData} />
+        <PreviewArea
+          onSubmit={handleSubmit}
+          planData={planData}
+          setPlanData={setPlanData}
+        />
       )}
     </PlanPageBlock>
   );

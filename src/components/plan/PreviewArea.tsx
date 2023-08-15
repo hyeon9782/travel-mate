@@ -8,9 +8,10 @@ import { useLocation } from "react-router-dom";
 
 type Props = {
   onSubmit: () => void;
+  setPlanData: any;
   planData: Plan;
 };
-const PreviewArea = ({ onSubmit, planData }: Props) => {
+const PreviewArea = ({ onSubmit, planData, setPlanData }: Props) => {
   const location = useLocation();
   return (
     <PreviewAreaBlock>
@@ -20,7 +21,7 @@ const PreviewArea = ({ onSubmit, planData }: Props) => {
         </MapBox>
         <ScheduleBox>
           <Days planData={planData} />
-          <Schedules />
+          <Schedules planData={planData} setPlanData={setPlanData} />
         </ScheduleBox>
       </ScheduleBlock>
       <BtnBox>

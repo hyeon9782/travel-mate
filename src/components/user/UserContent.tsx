@@ -8,6 +8,7 @@ import { PlusIcon } from "../common/icons";
 import PlanList from "../plan/PlanList";
 import { fetchPlan } from "../../service/plan";
 import GoogleLogout from "../../libs/google/GoogleLogout";
+import UserTab from "./UserTab";
 
 const UserContent = () => {
   const userData = useRecoilValue(userState);
@@ -43,6 +44,7 @@ const UserContent = () => {
                 <div className="sub">새로운 여행을 떠나보세요.</div>
               </div>
             </CreatePlan>
+            <UserTab />
             <PlanBox>
               <div className="text-box">지난 여행</div>
               <PlanList plans={plans} />
