@@ -1,19 +1,20 @@
-import React, { ReactNode, useMemo, useState } from "react";
+import { ReactNode, useMemo, useState } from "react";
 import {
   DialogsDispatchContext,
   DialogsStateContext,
 } from "../context/DialogsContext";
+import Dialogs from "../components/dialog/Dialogs";
 type Props = {
   children: ReactNode;
 };
 const DialogsProvider = ({ children }: Props) => {
-  const [openedDialogs, setOpenedDialogs] = useState([]);
-  const open = (Component, props) => {
+  const [openedDialogs, setOpenedDialogs] = useState<any>([]);
+  const open = (Component: any, props: any) => {
     setOpenedDialogs((dialogs) => {
       return [...dialogs, { Component, props }];
     });
   };
-  const close = (Component) => {
+  const close = (Component: any) => {
     setOpenedDialogs((dialogs) => {
       return dialogs.filter((dialog) => {
         return dialog.Component !== Component;
@@ -25,7 +26,7 @@ const DialogsProvider = ({ children }: Props) => {
     <DialogsStateContext.Provider value={openedDialogs}>
       <DialogsDispatchContext.Provider value={dispatch}>
         {children}
-        <Modals />
+        <Dialogs />
       </DialogsDispatchContext.Provider>
     </DialogsStateContext.Provider>
   );
