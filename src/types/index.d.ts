@@ -53,3 +53,18 @@ export type Place = {
   day: number;
   order: number;
 };
+
+export type Dialog = {
+  Component: React.ComponentType<any>;
+  props: any;
+};
+
+export type DialogsContextType = {
+  open: (Component: React.ComponentType<any>, props: any) => void;
+  close: (Component: React.ComponentType<any>) => void;
+};
+
+export type DialogComponentProps = {
+  onClose: () => void;
+  onSubmit: (value: any) => void;
+};

@@ -24,8 +24,6 @@ const DialogBackground = styled.div`
 `;
 
 const DialogBlock = styled.article`
-  width: 400px;
-  height: 300px;
   background-color: white;
   border-radius: 5px;
   padding: 10px;

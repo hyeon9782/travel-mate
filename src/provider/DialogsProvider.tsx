@@ -1,20 +1,21 @@
-import { ReactNode, useMemo, useState } from "react";
+import { ComponentType, ReactNode, useMemo, useState } from "react";
 import {
   DialogsDispatchContext,
   DialogsStateContext,
 } from "../context/DialogsContext";
 import Dialogs from "../components/dialog/Dialogs";
+import { Dialog } from "../types";
 type Props = {
   children: ReactNode;
 };
 const DialogsProvider = ({ children }: Props) => {
-  const [openedDialogs, setOpenedDialogs] = useState<any>([]);
-  const open = (Component: any, props: any) => {
+  const [openedDialogs, setOpenedDialogs] = useState<Dialog[]>([]);
+  const open = (Component: ComponentType<any>, props: any) => {
     setOpenedDialogs((dialogs) => {
       return [...dialogs, { Component, props }];
     });
   };
-  const close = (Component: any) => {
+  const close = (Component: ComponentType<any>) => {
     setOpenedDialogs((dialogs) => {
       return dialogs.filter((dialog) => {
         return dialog.Component !== Component;

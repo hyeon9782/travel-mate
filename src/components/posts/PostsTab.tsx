@@ -1,22 +1,9 @@
 import styled from "styled-components";
-import useDialogs from "../../hooks/useDialogs";
-import { dialogs } from "../dialog/Dialogs";
 type Props = {
   onClick: (category: string) => void;
   category: string;
 };
 const PostsTab = ({ onClick, category }: Props) => {
-  const { openDialog } = useDialogs();
-  const handleClick = () => {
-    console.log("안녕");
-
-    openDialog(dialogs.ConfirmDialog, {
-      onSubmit: (value) => {
-        console.log(value);
-        console.log("비즈니스 로직 처리");
-      },
-    });
-  };
   return (
     <PostsTabBlock>
       <li
@@ -36,12 +23,6 @@ const PostsTab = ({ onClick, category }: Props) => {
         className={category === "여행 질문" ? "select" : ""}
       >
         여행 질문
-      </li>
-      <li
-        onClick={handleClick}
-        className={category === "여행 질문" ? "select" : ""}
-      >
-        모달
       </li>
     </PostsTabBlock>
   );

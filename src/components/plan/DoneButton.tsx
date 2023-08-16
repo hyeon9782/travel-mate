@@ -1,8 +1,9 @@
 import styled from "styled-components";
 type Props = {
   children: any;
-  onNext: () => void;
+  onNext?: () => void;
   disabled?: boolean;
+  onClick?: () => void;
 };
 const DoneButton = ({ children, onNext, disabled }: Props) => {
   return (

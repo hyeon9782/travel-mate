@@ -9,12 +9,16 @@ import Schedules from "../schedules/Schedules";
 import { handleScheduleSelection } from "../../service/place";
 import { planState } from "../../store/planState";
 import DoneButton from "./DoneButton";
+import useDialogs from "../../hooks/useDialogs";
+import { dialogs } from "../dialog/Dialogs";
 
 type Props = {
   onNext: () => void;
   planData: Plan;
 };
 const PlanArea = ({ onNext, planData }: Props) => {
+  const { openDialog } = useDialogs();
+
   const currentDay = useRecoilValue(currentDayState);
 
   const setPlanData = useSetRecoilState(planState);
@@ -25,6 +29,16 @@ const PlanArea = ({ onNext, planData }: Props) => {
 
   const handleScheduleAdd = (place: Place) => {
     handleScheduleSelection(false, setPlanData, place, currentDay, order);
+  };
+
+  const handleConfirmDialog = () => {
+    openDialog(dialogs.ConfirmDialog, {
+      onSubmit: (value) => {
+        console.log(value);
+      },
+      title: "확인해주세요.",
+      content: "여행 계획을 저장하시겠습니까?",
+    });
   };
 
   return (
@@ -40,7 +54,7 @@ const PlanArea = ({ onNext, planData }: Props) => {
         </ScheduleBox>
       </ScheduleBlock>
       <BtnBox>
-        <DoneButton onNext={onNext}>미리보기</DoneButton>
+        <DoneButton onClick={handleConfirmDialog}>저장하기</DoneButton>
       </BtnBox>
     </PlanBlock>
   );
