@@ -5,9 +5,9 @@ type Props = {
   disabled?: boolean;
   onClick?: () => void;
 };
-const DoneButton = ({ children, onNext, disabled }: Props) => {
+const DoneButton = ({ children, onNext, disabled, onClick }: Props) => {
   return (
-    <DoneButtonBox onClick={onNext} disabled={disabled}>
+    <DoneButtonBox onClick={onNext || onClick} disabled={disabled}>
       {children}
     </DoneButtonBox>
   );
