@@ -122,9 +122,7 @@ const PlanPage = () => {
       {step === "장소검색" && (
         <SearchArea onNext={() => setStep("일정계획")} planData={planData} />
       )}
-      {step === "일정계획" && (
-        <PlanArea onNext={() => setStep("미리보기")} planData={planData} />
-      )}
+      {step === "일정계획" && <PlanArea planData={planData} />}
       {step === "미리보기" && (
         <PreviewArea
           onSubmit={handleSubmit}

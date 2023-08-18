@@ -13,10 +13,9 @@ import useDialogs from "../../hooks/useDialogs";
 import { dialogs } from "../dialog/Dialogs";
 
 type Props = {
-  onNext: () => void;
   planData: Plan;
 };
-const PlanArea = ({ onNext, planData }: Props) => {
+const PlanArea = ({ planData }: Props) => {
   const { openDialog } = useDialogs();
 
   const currentDay = useRecoilValue(currentDayState);
@@ -33,7 +32,7 @@ const PlanArea = ({ onNext, planData }: Props) => {
 
   const handleConfirmDialog = () => {
     openDialog(dialogs.ConfirmDialog, {
-      onSubmit: (value) => {
+      onSubmit: (value: any) => {
         console.log(value);
       },
       title: "확인해주세요.",

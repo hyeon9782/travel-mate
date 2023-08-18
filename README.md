@@ -1,8 +1,8 @@
-# Travel Mate
+# Travel Mate (<a href="https://travel-mate-eta.vercel.app/">Visit</a>)
 
 ### 자신만의 여행 계획을 기획하는 웹
 
----
+<img src="public/travel-mate-logo.png">
 
 ## 시작 가이드
 
@@ -61,23 +61,23 @@ npm run dev
 
 ### ✔ 여행 코스 계획 기능
 
-- Google Place API를 활용하여 사용자가 원하는 키워드로 장소를 검색
-- Google Map API를 활용하여 자신이 선택한 장소들의 위치를 확인하며 여행 코스 기획
+- Google Place API를 활용하여 사용자가 원하는 <strong>키워드로 장소 검색</strong>
+- Google Map API를 활용하여 자신이 선택한 <strong>장소들의 위치를 확인하며 여행 코스 기획</strong>
 
 ### ✔ 게시글 작성 기능
 
-- react-quill를 이용해 Editor 연동 및 게시글 작성 기능 구현
-- category 별 게시글 검색 및 무한 스크롤 기능 구현
-- React 18 Suspense를 사용해 로딩 처리 및 Skeleton UI 구현
+- react-quill를 이용해 <strong>Editor 연동 및 게시글 작성</strong> 기능 구현
+- category 별 게시글 검색 및 <strong>무한 스크롤</strong> 기능 구현
+- React 18 Suspense를 사용해 <strong>로딩 처리 및 Skeleton UI</strong> 구현
 
 ### ✔ Google Login 기능
 
-- Google Auth API를 활용하여 Google Login 기능 구현
+- Google Auth API를 활용하여 <strong>Google Login</strong> 기능 구현
 
 ## Future Works
 
 ---
 
-### 카카오톡 공유 기능
+### ✨ 카카오톡 공유 기능
 
 ###

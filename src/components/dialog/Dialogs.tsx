@@ -15,22 +15,26 @@ const Dialogs = () => {
   const openedDialogs = useContext(DialogsStateContext);
   const { close } = useContext(DialogsDispatchContext);
 
-  return openedDialogs.map((modal, index) => {
-    const { Component, props } = modal;
-    const { onSubmit, ...restProps } = props;
-    const onClose = () => {
-      close(Component);
-    };
+  return (
+    <>
+      {openedDialogs.map((modal, index) => {
+        const { Component, props } = modal;
+        const { onSubmit, ...restProps } = props;
+        const onClose = () => {
+          close(Component);
+        };
 
-    return (
-      <Component
-        key={index}
-        {...restProps}
-        onClose={onClose}
-        onSubmit={onSubmit}
-      />
-    );
-  });
+        return (
+          <Component
+            key={index}
+            {...restProps}
+            onClose={onClose}
+            onSubmit={onSubmit}
+          />
+        );
+      })}
+    </>
+  );
 };
 
 export default Dialogs;
