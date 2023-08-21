@@ -40,6 +40,12 @@ const PlanArea = ({ planData }: Props) => {
     });
   };
 
+  const handleSavePlanDialog = () => {
+    openDialog(dialogs.SavePlanDialog, {
+      onSubmit: () => {},
+    });
+  };
+
   return (
     <PlanBlock>
       <MapBox>
@@ -53,27 +59,27 @@ const PlanArea = ({ planData }: Props) => {
         </ScheduleBox>
       </ScheduleBlock>
       <BtnBox>
-        <DoneButton onClick={handleConfirmDialog}>저장하기</DoneButton>
+        <DoneButton onClick={handleSavePlanDialog}>저장하기</DoneButton>
       </BtnBox>
     </PlanBlock>
   );
 };
 
 const PlanBlock = styled.div`
-  height: calc(100% - 44.59);
-  overflow: hidden;
+  height: calc(100vh - 44.59);
+  overflow: auto;
 `;
 
 const ScheduleBlock = styled.article`
-  height: 80%;
   display: flex;
   flex-direction: column;
+  margin-bottom: 80px;
 `;
 
 const ScheduleBox = styled.div`
   box-sizing: border-box;
   width: 100%;
-  height: 220px;
+  min-height: 220px;
   padding: 0px 10px;
 `;
 
@@ -89,6 +95,7 @@ const BtnBox = styled.div`
   position: fixed;
   bottom: 0px;
   left: 0;
+  z-index: 2;
 `;
 
 export default PlanArea;

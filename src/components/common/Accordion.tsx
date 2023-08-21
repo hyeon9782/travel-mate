@@ -24,7 +24,7 @@ const Accordion = ({ title, children }: Props) => {
   return (
     <AccordionContainer>
       <AccordionHeader>
-        {title}
+        <TitleBox>{title}</TitleBox>
         <ArrowBox onClick={handleArrowClick}>
           {!isCollapse ? <ArrowDownIcon /> : <ArrowUpIcon />}
         </ArrowBox>
@@ -40,7 +40,7 @@ const Accordion = ({ title, children }: Props) => {
 
 const AccordionContainer = styled.div`
   display: flex;
-  position: relative;
+
   flex-direction: column;
   border-radius: 5px;
   border: 1px solid silver;
@@ -49,13 +49,20 @@ const AccordionContainer = styled.div`
 
 const AccordionHeader = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 10px 0;
+  box-sizing: border-box;
+`;
+
+const TitleBox = styled.div`
+  width: 90%;
+  text-align: center;
 `;
 
 const ArrowBox = styled.div`
+  width: 10%;
   font-size: 1.3rem;
+  text-align: center;
 `;
 
 const AccordionContents = styled.div`

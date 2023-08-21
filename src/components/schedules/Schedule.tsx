@@ -9,7 +9,6 @@ type Props = {
 const Schedule = ({ place, handleClick }: Props) => {
   return (
     <>
-      {/* <ScheduleBlock onClick={() => handleClick(place)}></ScheduleBlock> */}
       <Accordion title={place.name}>
         <Memo placeholder="메모를 입력해보세요!" />
       </Accordion>
@@ -17,15 +16,9 @@ const Schedule = ({ place, handleClick }: Props) => {
   );
 };
 
-const ScheduleBlock = styled.div`
-  border-radius: 5px;
-  border: 1px solid lightgray;
-  padding: 15px;
-  text-align: center;
-`;
-
 const Memo = styled.textarea`
   width: 100%;
+  height: 100px;
   resize: none;
 `;
 

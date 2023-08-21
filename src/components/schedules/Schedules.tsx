@@ -38,8 +38,6 @@ const Schedules = ({ planData, setPlanData }: Props) => {
 
 const SchedulesBlock = styled.article`
   display: flex;
-
-  max-height: 200px;
   overflow: auto;
 `;
 

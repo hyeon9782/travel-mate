@@ -5,10 +5,12 @@ import {
   DialogsDispatchContext,
   DialogsStateContext,
 } from "../../context/DialogsContext";
+import SavePlanDialog from "./SavePlanDialog";
 
 export const dialogs = {
   AlertDialog,
   ConfirmDialog,
+  SavePlanDialog,
 };
 
 const Dialogs = () => {
