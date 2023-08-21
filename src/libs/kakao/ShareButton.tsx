@@ -11,11 +11,14 @@ const { Kakao }: any = window;
 
 const KAKAO_API_KEY = import.meta.env.VITE_APP_KAKAO_API_KEY;
 const ShareButton = ({ title, description, imageUrl, buttonTitle }: Props) => {
-  console.log("개발 환경이니? : " + import.meta.env.Dev);
+  console.log("개발 환경이니? : " + import.meta.env.DEV);
 
-  const url = import.meta.env.Dev
+  const url = import.meta.env.DEV
     ? window.location.href
     : "https://travel-mate-eta.vercel.app/";
+
+  console.log("url 입니다 : " + url);
+
   useEffect(() => {
     Kakao.cleanup();
     Kakao.init(KAKAO_API_KEY);
