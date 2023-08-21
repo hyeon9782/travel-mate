@@ -61,7 +61,7 @@ const PlanPage = () => {
       setPlanDataInitialized(true);
     }
 
-    () => {
+    return () => {
       resetPlanData();
     };
   }, [planDataParam, isPlanDataInitialized, setPlanData]);

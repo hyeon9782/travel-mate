@@ -18,6 +18,10 @@ const PlanDetailPage = () => {
 
   useEffect(() => {
     fetchPlanDetail(plan_id, setPlanData);
+
+    return () => {
+      setPlanData({});
+    };
   }, []);
 
   if (Object.keys(planData).length === 0) return <></>;

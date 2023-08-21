@@ -30,11 +30,11 @@ const CityArea = ({ onNext, onPrev, planData }: Props) => {
             onNext={onNext}
             disabled={planData?.cities?.length === 0 ? true : false}
           >
-            {planData.cities.length > 0
-              ? planData.cities.length !== 1
-                ? `${planData.cities[0].city} 외 ${planData.cities.length}개 선택 완료`
-                : `${planData.cities[0].city} 선택 완료`
-              : planData.cities.length !== 1 && "최소 1개 이상의 도시 선택"}
+            {planData?.cities?.length > 0
+              ? planData?.cities?.length !== 1
+                ? `${planData?.cities[0]?.city} 외 ${planData?.cities?.length}개 선택 완료`
+                : `${planData?.cities[0]?.city} 선택 완료`
+              : planData?.cities?.length !== 1 && "최소 1개 이상의 도시 선택"}
           </DoneButton>
         </BtnBox>
       </SeletedBox>

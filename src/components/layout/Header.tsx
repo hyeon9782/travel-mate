@@ -16,12 +16,12 @@ const Header = () => {
   const [userData, setUserData] = useRecoilState(userState);
 
   useEffect(() => {
-    if (Object.keys(userData).length === 0) {
+    if (userData.email.length === 0) {
       const userFromLocalStorage = getLocalStorage("user");
       console.log(userFromLocalStorage);
       setUserData({ ...userFromLocalStorage });
     }
-  }, []);
+  }, [userData, setUserData]);
 
   const isPlanPath = location.pathname === "/";
 

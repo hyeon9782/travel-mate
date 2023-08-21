@@ -21,6 +21,7 @@ const DialogBackground = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 `;
 
 const DialogBlock = styled.article`
