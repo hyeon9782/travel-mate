@@ -22,7 +22,7 @@ const PlanDetailPage = () => {
     return () => {
       setPlanData({});
     };
-  }, []);
+  }, [plan_id, setPlanData]);
 
   if (Object.keys(planData).length === 0) return <></>;
 
