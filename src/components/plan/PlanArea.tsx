@@ -11,12 +11,14 @@ import { planState } from "../../store/planState";
 import DoneButton from "./DoneButton";
 import useDialogs from "../../hooks/useDialogs";
 import { dialogs } from "../dialog/Dialogs";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   planData: Plan;
 };
 const PlanArea = ({ planData }: Props) => {
   const { openDialog } = useDialogs();
+  const navigate = useNavigate();
 
   const currentDay = useRecoilValue(currentDayState);
 
@@ -32,17 +34,19 @@ const PlanArea = ({ planData }: Props) => {
 
   const handleConfirmDialog = () => {
     openDialog(dialogs.ConfirmDialog, {
-      onSubmit: (value: any) => {
-        console.log(value);
+      onSubmit: () => {
+        navigate("/post");
       },
-      title: "확인해주세요.",
-      content: "여행 계획을 저장하시겠습니까?",
+      title: "여행 일정 저장에 성공했습니다!",
+      content: "동행을 구하겠습니까?",
     });
   };
 
   const handleSavePlanDialog = () => {
     openDialog(dialogs.SavePlanDialog, {
-      onSubmit: () => {},
+      onSubmit: () => {
+        handleConfirmDialog();
+      },
     });
   };
 

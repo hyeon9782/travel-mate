@@ -8,6 +8,7 @@ type Props = {
 const SavePlanDialog = ({ onSubmit, onClose }: Props) => {
   const handleClickSave = () => {
     onSubmit();
+    onClose();
   };
   const handleClickClose = () => {
     onClose();

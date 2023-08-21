@@ -50,7 +50,6 @@ const GoogleLogin = () => {
   return (
     <>
       <div id="google-login-api" ref={googleSignInButton} />
-      <button onClick={handleLogout}>로그아웃</button>
     </>
   );
 };
