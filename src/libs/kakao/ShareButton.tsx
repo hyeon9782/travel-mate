@@ -15,7 +15,7 @@ const ShareButton = ({ title, description, imageUrl, buttonTitle }: Props) => {
 
   const url = import.meta.env.Dev
     ? window.location.href
-    : "https://travel-mate-ds24gs7g6-hyeon9782.vercel.app/";
+    : "https://travel-mate-eta.vercel.app/";
   useEffect(() => {
     Kakao.cleanup();
     Kakao.init(KAKAO_API_KEY);
