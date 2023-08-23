@@ -7,7 +7,7 @@ import { handleScheduleSelection } from "../../service/place";
 import { Place, Plan } from "../../types";
 type Props = {
   planData: Plan;
-  setPlanData: any;
+  setPlanData?: any;
 };
 const Schedules = ({ planData, setPlanData }: Props) => {
   const currentDay = useRecoilValue(currentDayState);
@@ -21,7 +21,7 @@ const Schedules = ({ planData, setPlanData }: Props) => {
 
   return (
     <SchedulesBlock>
-      <Directions />
+      <Directions planData={planData} />
       <PlaceBlock>
         {newData &&
           newData.map((place) => (

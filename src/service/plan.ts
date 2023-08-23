@@ -21,20 +21,16 @@ async function createPlan(plan: Plan) {
 async function fetchPlans(userId: string, setPlans: any) {
   try {
     const res = await fetchPlansAPI(userId, 1);
-    console.log(res);
     setPlans([...res.data]);
   } catch (err) {
     console.error(err);
   }
 }
 
-async function fetchPlanDetail(planId: number, setPlan: any) {
+async function fetchPlan(planId: number) {
   try {
-    console.log("여기");
-
     const res = await fetchPlanAPI(planId);
-    console.log(res);
-    setPlan({ ...res.data });
+    return res.data;
   } catch (err) {
     console.error(err);
   }
@@ -59,4 +55,4 @@ async function removePlan(event: MouseEvent, plan_id: number) {
   }
 }
 
-export { createPlan, fetchPlans, fetchPlanDetail, modifyPlan, removePlan };
+export { createPlan, fetchPlans, fetchPlan, modifyPlan, removePlan };

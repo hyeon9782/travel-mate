@@ -2,12 +2,14 @@ import styled from "styled-components";
 import DirectionItem from "./DirectionItem";
 import { useRecoilValue } from "recoil";
 import { currentDayState } from "../../store/currentDayState";
-import { planState } from "../../store/planState";
 
-const Directions = () => {
+import { Plan } from "../../types";
+type Props = {
+  planData: Plan;
+};
+const Directions = ({ planData }: Props) => {
   const currentDay = useRecoilValue(currentDayState);
 
-  const planData = useRecoilValue(planState);
   const schedules = planData.selectedPlaces.filter(
     (selectedPlace) => selectedPlace.day === currentDay
   );

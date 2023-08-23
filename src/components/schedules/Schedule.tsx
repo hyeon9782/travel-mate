@@ -4,13 +4,14 @@ import Accordion from "../common/Accordion";
 import { changeMemo } from "../../service/place";
 import { useSetRecoilState } from "recoil";
 import { planState } from "../../store/planState";
+import { useLocation } from "react-router-dom";
 
 type Props = {
   place: Place;
-  handleClick: (place: Place) => void;
 };
-const Schedule = ({ place, handleClick }: Props) => {
-  console.log(place.memo);
+const Schedule = ({ place }: Props) => {
+  const location = useLocation();
+  const path = location.pathname;
 
   const setPlanData = useSetRecoilState(planState);
 
@@ -23,6 +24,7 @@ const Schedule = ({ place, handleClick }: Props) => {
         <Memo
           placeholder="메모를 입력해보세요!"
           value={place.memo}
+          readOnly={path !== "/plan" && path !== "/plan/edit"}
           onChange={(e) => handleChangeMemo(e.target.value)}
         />
       </Accordion>

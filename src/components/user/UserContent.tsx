@@ -22,13 +22,14 @@ const UserContent = () => {
     if (userData.email) {
       fetchPlans(userData.email, setPlans);
     }
-  }, [userData.email, plans]);
+  }, [userData.email]);
 
   const handleClickDelete = (event: MouseEvent, plan_id: number) => {
     event.stopPropagation();
     openDialog(dialogs.ConfirmDialog, {
-      onSubmit: () => {
-        removePlan(event, plan_id);
+      onSubmit: async () => {
+        await removePlan(event, plan_id);
+        await fetchPlans(userData.email, setPlans);
       },
       title: "여행 일정을 삭제하시겠습니까?",
       content: "삭제한 일정은 복구할 수 없습니다.",
