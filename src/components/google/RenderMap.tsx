@@ -26,37 +26,26 @@ type Props = {
 const RenderMap = ({ planData }: Props) => {
   const currentDay = useRecoilValue(currentDayState);
   const [markerPositions, setMarkerPositions] = useState<any[]>([]);
-  console.log(planData);
 
   const schedules = planData.selectedPlaces.filter(
     (selectedPlace) => selectedPlace.day === currentDay
   );
 
-  // 두 배열이 동일한지 비교하는 함수를 추가합니다.
-  const arraysAreEqual = (arr1: any[], arr2: any[]) => {
-    if (arr1.length !== arr2.length) {
-      return false;
-    }
-
-    for (let i = 0; i < arr1.length; i++) {
-      if (arr1[i] !== arr2[i]) {
-        return false;
-      }
-    }
-
-    return true;
-  };
-
   useEffect(() => {
     const newPositions = schedules.map(
       (schedule) => schedule.geometry.location
     );
-
-    // 이전 markerPositions 배열과 새로운 newPositions 배열이 동일한지 확인합니다.
-    if (!arraysAreEqual(markerPositions, newPositions)) {
+    // 이전 markerPositions 배열과 새로운 newPositions 배열의 내용을 비교합니다.
+    if (JSON.stringify(markerPositions) !== JSON.stringify(newPositions)) {
       setMarkerPositions(newPositions);
     }
   }, [schedules, markerPositions]);
+
+  // // 비어있는 경우 Marker를 렌더링하지 않음
+  // if (markerPositions.length === 0) {
+  //   return null;
+  // }
+
   return (
     <Map type="계획" planData={planData}>
       {markerPositions &&

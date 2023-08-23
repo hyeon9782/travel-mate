@@ -4,13 +4,16 @@ import styled from "styled-components";
 
 type Props = {
   plans: Plan[];
+  onDelete: (event: MouseEvent, plan_id: number) => void;
 };
 
-const PlanList = ({ plans }: Props) => {
+const PlanList = ({ plans, onDelete }: Props) => {
   return (
     <PlanListBlock>
       {plans &&
-        plans.map((plan) => <PlanItem key={plan.plan_id} plan={plan} />)}
+        plans.map((plan) => (
+          <PlanItem key={plan.plan_id} plan={plan} onDelete={onDelete} />
+        ))}
     </PlanListBlock>
   );
 };

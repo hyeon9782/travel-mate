@@ -18,7 +18,7 @@ async function createPlan(plan: Plan) {
   }
 }
 
-async function fetchPlan(userId: string, setPlans: any) {
+async function fetchPlans(userId: string, setPlans: any) {
   try {
     const res = await fetchPlansAPI(userId, 1);
     console.log(res);
@@ -59,4 +59,4 @@ async function removePlan(event: MouseEvent, plan_id: number) {
   }
 }
 
-export { createPlan, fetchPlan, fetchPlanDetail, modifyPlan, removePlan };
+export { createPlan, fetchPlans, fetchPlanDetail, modifyPlan, removePlan };

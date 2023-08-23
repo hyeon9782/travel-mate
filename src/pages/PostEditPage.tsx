@@ -9,7 +9,7 @@ import { registPostAPI } from "../api/post";
 import { Plan, Post } from "../types";
 import { useRecoilValue } from "recoil";
 import { userState } from "../store/userState";
-import { fetchPlan } from "../service/plan";
+import { fetchPlans } from "../service/plan";
 
 const PostEditPage = () => {
   const navigate = useNavigate();
@@ -21,9 +21,9 @@ const PostEditPage = () => {
 
   useEffect(() => {
     if (userData.email) {
-      fetchPlan(userData.email, setPlans);
+      fetchPlans(userData.email, setPlans);
     }
-  }, []);
+  }, [userData.email]);
 
   const [postData, setPostData] = useState<Post>({
     title: "",

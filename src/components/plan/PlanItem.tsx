@@ -2,15 +2,14 @@ import styled from "styled-components";
 import { Plan } from "../../types";
 import { EditIcon, TrashIcon } from "../common/icons";
 import { useNavigate } from "react-router-dom";
-import { removePlan } from "../../service/plan";
 
 type Props = {
   plan: Plan;
+  onDelete: (event: MouseEvent, plan_id: number) => void;
 };
 
-const PlanItem = ({ plan }: Props) => {
+const PlanItem = ({ plan, onDelete }: Props) => {
   const navigate = useNavigate();
-
   const { plan_id, cities, period, title } = plan;
 
   const moveDetail = (plan_id: number) => {
@@ -35,8 +34,8 @@ const PlanItem = ({ plan }: Props) => {
         </TextBox>
       </div>
       <IconBox>
-        <EditIcon onClick={(e: any) => moveEdit(e, plan_id)} />
-        <TrashIcon onClick={(e: any) => removePlan(e, plan_id)} />
+        <EditIcon onClick={(e: MouseEvent) => moveEdit(e, plan_id)} />
+        <TrashIcon onClick={(e: MouseEvent) => onDelete(e, plan_id)} />
       </IconBox>
     </PlanItemBlock>
   );

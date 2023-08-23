@@ -38,6 +38,9 @@ const PlanArea = ({ planData, onSubmit }: Props) => {
       onSubmit: () => {
         navigate("/post");
       },
+      onRedirect: () => {
+        navigate("/");
+      },
       title: "여행 일정 저장에 성공했습니다!",
       content: "동행을 구하겠습니까?",
     });

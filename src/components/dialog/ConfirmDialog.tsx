@@ -2,18 +2,26 @@ import styled from "styled-components";
 import Dialog from "./Dialog";
 import Button from "../common/Button";
 type Props = {
-  onSubmit: (value: any) => void;
+  onSubmit?: (value: any) => void;
+  onRedirect?: () => void;
   onClose: () => void;
   content: string;
   title: string;
 };
-const ConfirmDialog = ({ onSubmit, onClose, content, title }: Props) => {
+const ConfirmDialog = ({
+  onSubmit,
+  onClose,
+  onRedirect,
+  content,
+  title,
+}: Props) => {
   const handleClickSubmit = async () => {
-    onSubmit("my-value");
+    onSubmit && onSubmit("my-value");
     onClose();
   };
 
   const handleClickCancel = () => {
+    onRedirect && onRedirect();
     onClose();
   };
   return (

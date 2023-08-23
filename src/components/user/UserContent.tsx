@@ -6,20 +6,34 @@ import { Link, useNavigate } from "react-router-dom";
 import Profile from "./Profile";
 import { PlusIcon } from "../common/icons";
 import PlanList from "../plan/PlanList";
-import { fetchPlan } from "../../service/plan";
+import { fetchPlans, removePlan } from "../../service/plan";
 import GoogleLogout from "../../libs/google/GoogleLogout";
 import UserTab from "./UserTab";
+import useDialogs from "../../hooks/useDialogs";
+import { dialogs } from "../dialog/Dialogs";
 
 const UserContent = () => {
   const userData = useRecoilValue(userState);
+  const { openDialog } = useDialogs();
   const navigate = useNavigate();
   const [plans, setPlans] = useState([]);
 
   useEffect(() => {
     if (userData.email) {
-      fetchPlan(userData.email, setPlans);
+      fetchPlans(userData.email, setPlans);
     }
-  }, [userData.email]);
+  }, [userData.email, plans]);
+
+  const handleClickDelete = (event: MouseEvent, plan_id: number) => {
+    event.stopPropagation();
+    openDialog(dialogs.ConfirmDialog, {
+      onSubmit: () => {
+        removePlan(event, plan_id);
+      },
+      title: "여행 일정을 삭제하시겠습니까?",
+      content: "삭제한 일정은 복구할 수 없습니다.",
+    });
+  };
 
   return (
     <>
@@ -47,7 +61,7 @@ const UserContent = () => {
             <UserTab />
             <PlanBox>
               <div className="text-box">지난 여행</div>
-              <PlanList plans={plans} />
+              <PlanList plans={plans} onDelete={handleClickDelete} />
             </PlanBox>
           </UserBox>
           <GoogleLogout />
