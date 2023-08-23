@@ -2,6 +2,7 @@ import { BsTrash3 } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
 import { GrView } from "react-icons/gr";
 import { FaWalking, FaTrain } from "react-icons/fa";
+import { RiArrowUpDownFill } from "react-icons/ri";
 import {
   MdOutlineKeyboardArrowUp,
   MdOutlineKeyboardArrowDown,
@@ -16,11 +17,10 @@ import {
   AiOutlineEdit,
   AiFillStar,
   AiFillCar,
+  AiOutlineMinusCircle,
 } from "react-icons/ai";
 
 export const PlusIcon = AiOutlinePlus;
-
-// export const ArrowDownIcon = ImArrowDown;
 
 export const ArrowLeftIcon = AiOutlineArrowLeft;
 
@@ -51,3 +51,7 @@ export const CarIcon = AiFillCar;
 export const ArrowUpIcon = MdOutlineKeyboardArrowUp;
 
 export const ArrowDownIcon = MdOutlineKeyboardArrowDown;
+
+export const ArrowUpDownIcon = RiArrowUpDownFill;
+
+export const MinusIcon = AiOutlineMinusCircle;

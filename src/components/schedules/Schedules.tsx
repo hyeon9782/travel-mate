@@ -2,7 +2,6 @@ import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import Schedule from "./Schedule";
 import { currentDayState } from "../../store/currentDayState";
-import Directions from "../directions/Directions";
 import { handleScheduleSelection } from "../../service/place";
 import { Place, Plan } from "../../types";
 type Props = {
@@ -21,14 +20,13 @@ const Schedules = ({ planData, setPlanData }: Props) => {
 
   return (
     <SchedulesBlock>
-      <Directions planData={planData} />
       <PlaceBlock>
         {newData &&
           newData.map((place) => (
             <Schedule
               key={place.place_id}
               place={place}
-              handleClick={handleScheduleRemove}
+              onRemove={handleScheduleRemove}
             />
           ))}
       </PlaceBlock>
@@ -47,7 +45,6 @@ const PlaceBlock = styled.div`
   flex-direction: column;
   gap: 10px;
   width: 100%;
-  padding: 0 10px;
   box-sizing: border-box;
 `;
 

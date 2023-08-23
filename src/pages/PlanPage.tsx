@@ -45,6 +45,7 @@ const PlanPage = () => {
     // 최초에만 planDataParam을 recoil의 planData에 설정
     if (planDataParam && !isPlanDataInitialized) {
       setPlanData({ ...planDataParam });
+      setStep("일정계획");
       setPlanDataInitialized(true);
     }
 

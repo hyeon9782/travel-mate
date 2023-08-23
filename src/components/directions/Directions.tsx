@@ -6,8 +6,9 @@ import { currentDayState } from "../../store/currentDayState";
 import { Plan } from "../../types";
 type Props = {
   planData: Plan;
+  onRemove: () => void;
 };
-const Directions = ({ planData }: Props) => {
+const Directions = ({ planData, onRemove }: Props) => {
   const currentDay = useRecoilValue(currentDayState);
 
   const schedules = planData.selectedPlaces.filter(

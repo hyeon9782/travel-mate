@@ -40,9 +40,8 @@ const Accordion = ({ title, children }: Props) => {
 
 const AccordionContainer = styled.div`
   display: flex;
-
   flex-direction: column;
-  border-radius: 5px;
+  border-radius: 3px;
   border: 1px solid silver;
   overflow: hidden;
 `;
@@ -50,7 +49,7 @@ const AccordionContainer = styled.div`
 const AccordionHeader = styled.div`
   display: flex;
   align-items: center;
-  padding: 10px 0;
+  padding: 5px 0;
   box-sizing: border-box;
 `;
 
