@@ -30,6 +30,7 @@ export type City = {
 };
 
 export type Plan = {
+  title: string;
   plan_id: number;
   user_id: string;
   cities: City[];
@@ -48,6 +49,7 @@ export type Place = {
       lng: number;
     };
   };
+  memo: string;
   types: string[];
   isSelect: boolean;
   day: number;

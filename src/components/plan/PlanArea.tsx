@@ -15,8 +15,9 @@ import { useNavigate } from "react-router-dom";
 
 type Props = {
   planData: Plan;
+  onSubmit: (title: string) => void;
 };
-const PlanArea = ({ planData }: Props) => {
+const PlanArea = ({ planData, onSubmit }: Props) => {
   const { openDialog } = useDialogs();
   const navigate = useNavigate();
 
@@ -44,7 +45,8 @@ const PlanArea = ({ planData }: Props) => {
 
   const handleSavePlanDialog = () => {
     openDialog(dialogs.SavePlanDialog, {
-      onSubmit: () => {
+      onSubmit: (title: string) => {
+        onSubmit(title);
         handleConfirmDialog();
       },
     });

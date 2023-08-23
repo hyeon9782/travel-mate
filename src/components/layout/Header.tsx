@@ -18,7 +18,7 @@ const Header = () => {
   useEffect(() => {
     if (userData?.email?.length === 0) {
       const userFromLocalStorage = getLocalStorage("user");
-      console.log(userFromLocalStorage);
+
       setUserData({ ...userFromLocalStorage });
     }
   }, [userData, setUserData]);

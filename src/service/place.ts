@@ -90,9 +90,22 @@ const handleScheduleSelection = (
   }
 };
 
+const changeMemo = (memo: string, place_id: string, setPlanData: any) => {
+  setPlanData((prevData: Plan) => ({
+    ...prevData,
+    selectedPlaces: prevData.selectedPlaces.map((selectedPlace) => {
+      if (selectedPlace.place_id === place_id) {
+        return { ...selectedPlace, memo };
+      }
+      return selectedPlace;
+    }),
+  }));
+};
+
 export {
   searchPlaces,
   checkPlace,
   handlePlaceSelection,
   handleScheduleSelection,
+  changeMemo,
 };

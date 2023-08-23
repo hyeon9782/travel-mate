@@ -1,13 +1,15 @@
 import styled from "styled-components";
 import Dialog from "./Dialog";
 import Button from "../common/Button";
+import { useState } from "react";
 type Props = {
-  onSubmit: () => void;
+  onSubmit: (title: string) => void;
   onClose: () => void;
 };
 const SavePlanDialog = ({ onSubmit, onClose }: Props) => {
+  const [title, setTitle] = useState("");
   const handleClickSave = () => {
-    onSubmit();
+    onSubmit(title);
     onClose();
   };
   const handleClickClose = () => {
@@ -15,7 +17,12 @@ const SavePlanDialog = ({ onSubmit, onClose }: Props) => {
   };
   return (
     <Dialog>
-      <TitleInput type="text" placeholder="일정 제목을 입력해주세요." />
+      <TitleInput
+        type="text"
+        placeholder="일정 제목을 입력해주세요."
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
 
       <ButtonBox>
         <Button text="취소" onClick={handleClickClose} />

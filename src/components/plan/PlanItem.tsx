@@ -11,7 +11,7 @@ type Props = {
 const PlanItem = ({ plan }: Props) => {
   const navigate = useNavigate();
 
-  const { plan_id, cities, period } = plan;
+  const { plan_id, cities, period, title } = plan;
 
   const moveDetail = (plan_id: number) => {
     navigate(`/plan/${plan_id}`, { state: { plan_id } });
@@ -27,7 +27,7 @@ const PlanItem = ({ plan }: Props) => {
       <div className="item-box">
         <ImageBox></ImageBox>
         <TextBox>
-          <div className="title">{cities[0].city} 여행</div>
+          <div className="title">{title}</div>
           <div className="period">
             {period[0].slice(0, 7)} - {period[1].slice(0, 7)}
           </div>

@@ -2,17 +2,16 @@ import { useEffect } from "react";
 
 const useCustomBack = (customBack: () => void) => {
   useEffect(() => {
-    console.log("들어옴");
+    const handlePopState = (e: PopStateEvent) => {
+      e.preventDefault();
+      customBack();
+    };
 
-    (() => {
-      console.log("발동됨");
-
-      history.pushState(null, "", location.href);
-      window.addEventListener("popstate", customBack);
-    })();
+    window.addEventListener("popstate", handlePopState);
+    history.pushState(null, "", location.href);
 
     return () => {
-      window.removeEventListener("popstate", customBack);
+      window.removeEventListener("popstate", handlePopState);
     };
   }, [customBack]);
 };

@@ -19,7 +19,7 @@ const UserContent = () => {
     if (userData.email) {
       fetchPlan(userData.email, setPlans);
     }
-  }, []);
+  }, [userData.email]);
 
   return (
     <>
