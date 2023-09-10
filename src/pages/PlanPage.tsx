@@ -36,17 +36,15 @@ const PlanPage = () => {
   >("도시선택");
   const { email } = useRecoilValue(userState);
   const planDataParam = location?.state?.planData || null;
-  const [isPlanDataInitialized, setPlanDataInitialized] = useState(false); // New state
   const resetPlanData = useResetRecoilState(planState);
   const setSearchPlaces = useSetRecoilState(searchPlacesState);
   const [planData, setPlanData] = useRecoilState(planState);
 
   useEffect(() => {
     // 최초에만 planDataParam을 recoil의 planData에 설정
-    if (planDataParam && !isPlanDataInitialized) {
+    if (planDataParam && planData.title === "") {
       setPlanData({ ...planDataParam });
       setStep("일정계획");
-      setPlanDataInitialized(true);
     }
 
     return () => {

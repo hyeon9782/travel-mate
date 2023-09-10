@@ -4,15 +4,22 @@ import Schedule from "./Schedule";
 import { currentDayState } from "../../store/currentDayState";
 import { handleScheduleSelection } from "../../service/place";
 import { Place, Plan } from "../../types";
+import { useMemo } from "react";
+import DragAndDrop from "../common/DragAndDrop";
+
 type Props = {
   planData: Plan;
   setPlanData?: any;
 };
 const Schedules = ({ planData, setPlanData }: Props) => {
   const currentDay = useRecoilValue(currentDayState);
-  const newData = planData.selectedPlaces
-    .filter((selectedPlace) => selectedPlace.day === currentDay)
-    .sort((a, b) => a.order - b.order);
+  const newData = useMemo(
+    () =>
+      planData.selectedPlaces
+        .filter((selectedPlace) => selectedPlace.day === currentDay)
+        .sort((a, b) => a.order - b.order),
+    [currentDay, planData.selectedPlaces]
+  );
 
   const handleScheduleRemove = (place: Place) => {
     handleScheduleSelection(true, setPlanData, place, currentDay, 0);
@@ -20,7 +27,7 @@ const Schedules = ({ planData, setPlanData }: Props) => {
 
   return (
     <SchedulesBlock>
-      <PlaceBlock>
+      {/* <PlaceBlock>
         {newData &&
           newData.map((place) => (
             <Schedule
@@ -29,7 +36,8 @@ const Schedules = ({ planData, setPlanData }: Props) => {
               onRemove={handleScheduleRemove}
             />
           ))}
-      </PlaceBlock>
+      </PlaceBlock> */}
+      <DragAndDrop list={newData} setList={setPlanData}></DragAndDrop>
     </SchedulesBlock>
   );
 };
