@@ -42,7 +42,7 @@ const PostItemBlock = styled.div`
   box-sizing: border-box;
   width: 100%;
   padding: 10px;
-  border: 1px solid lightgray;
+  box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
