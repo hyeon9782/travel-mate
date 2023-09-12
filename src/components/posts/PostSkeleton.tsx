@@ -10,8 +10,9 @@ const PostSkeleton = () => {
           height="140.41px"
           radius="10px"
           color="lightgray"
+          key={index}
         >
-          <div className="box" key={index}>
+          <div className="box">
             <div className="head">
               <SkeletonElement width="78.19px" height="24.41px" radius="5px" />
               <SkeletonElement width="100.97px" height="14.41px" radius="5px" />

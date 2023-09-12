@@ -9,9 +9,10 @@ import { ArrowUpDownIcon, MinusIcon } from "../common/icons";
 
 type Props = {
   place: Place;
+  planId: string;
   onRemove: (place: Place) => void;
 };
-const Schedule = ({ place, onRemove }: Props) => {
+const Schedule = ({ place, onRemove, planId }: Props) => {
   const location = useLocation();
   const path = location.pathname;
 
@@ -22,9 +23,12 @@ const Schedule = ({ place, onRemove }: Props) => {
   };
   return (
     <ScheduleBlock>
-      <ArrowIconBox>
-        <ArrowUpDownIcon />
-      </ArrowIconBox>
+      {path === `/plan/edit/${planId}` && (
+        <ArrowIconBox>
+          <ArrowUpDownIcon />
+        </ArrowIconBox>
+      )}
+
       <ScheduleBox>
         <Accordion title={place.name}>
           <Memo
@@ -35,9 +39,11 @@ const Schedule = ({ place, onRemove }: Props) => {
           />
         </Accordion>
       </ScheduleBox>
-      <MinusIconBox onClick={() => onRemove(place)}>
-        <MinusIcon />
-      </MinusIconBox>
+      {path === `/plan/edit/${planId}` && (
+        <MinusIconBox onClick={() => onRemove(place)}>
+          <MinusIcon />
+        </MinusIconBox>
+      )}
     </ScheduleBlock>
   );
 };

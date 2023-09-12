@@ -27,17 +27,18 @@ const Schedules = ({ planData, setPlanData }: Props) => {
 
   return (
     <SchedulesBlock>
-      {/* <PlaceBlock>
+      <PlaceBlock>
         {newData &&
           newData.map((place) => (
             <Schedule
               key={place.place_id}
               place={place}
+              planId={planData.plan_id}
               onRemove={handleScheduleRemove}
             />
           ))}
-      </PlaceBlock> */}
-      <DragAndDrop list={newData} setList={setPlanData}></DragAndDrop>
+      </PlaceBlock>
+      {/* <DragAndDrop list={newData} setList={setPlanData}></DragAndDrop> */}
     </SchedulesBlock>
   );
 };
