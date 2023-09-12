@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { lazy } from "react";
 import { Suspense } from "react";
 import PostDetailSkeleton from "../components/posts/PostDetailSkeleton";
+import { Container } from "../components/layout/Container";
 
 const PostContainer = lazy(() => import("../components/posts/PostContainer"));
 
@@ -11,11 +12,13 @@ const PostPage = () => {
   const { post_id } = location?.state || null;
 
   return (
-    <PostPageBlock>
-      <Suspense fallback={<PostDetailSkeleton />}>
-        <PostContainer post_id={post_id} />
-      </Suspense>
-    </PostPageBlock>
+    <Container>
+      <PostPageBlock>
+        <Suspense fallback={<PostDetailSkeleton />}>
+          <PostContainer post_id={post_id} />
+        </Suspense>
+      </PostPageBlock>
+    </Container>
   );
 };
 

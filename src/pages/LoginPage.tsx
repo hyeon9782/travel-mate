@@ -1,31 +1,34 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import GoogleLogin from "../libs/google/GoogleLogin";
+import { Container } from "../components/layout/Container";
 
 const LoginPage = () => {
   const navigate = useNavigate();
 
   return (
-    <LoginPageBlock>
-      <ButtonBox>
-        <div className="back" onClick={() => navigate(-1)}>
-          뒤로가기
-        </div>
-        {/* <div className="preview">둘러보기</div> */}
-      </ButtonBox>
-      <ContentBox>
-        <ImageBox>
-          <img src="/travel-mate-logo.png" alt="" width={300} height={300} />
-        </ImageBox>
-        <TextBox>
-          트레블 메이트와 함께
-          <br /> 여행을 떠나보세요!
-        </TextBox>
-        <LoginBox>
-          <GoogleLogin />
-        </LoginBox>
-      </ContentBox>
-    </LoginPageBlock>
+    <Container>
+      <LoginPageBlock>
+        <ButtonBox>
+          <div className="back" onClick={() => navigate(-1)}>
+            뒤로가기
+          </div>
+          {/* <div className="preview">둘러보기</div> */}
+        </ButtonBox>
+        <ContentBox>
+          <ImageBox>
+            <img src="/travel-mate-logo.png" alt="" width={300} height={300} />
+          </ImageBox>
+          <TextBox>
+            트레블 메이트와 함께
+            <br /> 여행을 떠나보세요!
+          </TextBox>
+          <LoginBox>
+            <GoogleLogin />
+          </LoginBox>
+        </ContentBox>
+      </LoginPageBlock>
+    </Container>
   );
 };
 

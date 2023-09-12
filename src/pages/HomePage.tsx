@@ -8,6 +8,7 @@ import React, {
   useCallback,
 } from "react";
 import PostSkeleton from "../components/posts/PostSkeleton";
+import { Container } from "../components/layout/Container";
 
 const Posts = React.lazy(() => import("../components/posts/Posts"));
 
@@ -51,15 +52,17 @@ const HomePage = () => {
   }, [category]);
 
   return (
-    <HomePageBlock>
-      <PostsTab onClick={handleClick} category={category} />
-      {Array.from({ length: page }, (_, i) => (
-        <Suspense key={i} fallback={<PostSkeleton />}>
-          <Posts category={category} page={page} />
-        </Suspense>
-      ))}
-      <div ref={targetRef} style={{ height: "10px" }}></div>
-    </HomePageBlock>
+    <Container>
+      <HomePageBlock>
+        <PostsTab onClick={handleClick} category={category} />
+        {Array.from({ length: page }, (_, i) => (
+          <Suspense key={i} fallback={<PostSkeleton />}>
+            <Posts category={category} page={page} />
+          </Suspense>
+        ))}
+        <div ref={targetRef} style={{ height: "10px" }}></div>
+      </HomePageBlock>
+    </Container>
   );
 };
 

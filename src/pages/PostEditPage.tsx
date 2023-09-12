@@ -10,6 +10,7 @@ import { Plan, Post } from "../types";
 import { useRecoilValue } from "recoil";
 import { userState } from "../store/userState";
 import { fetchPlans } from "../service/plan";
+import { Container } from "../components/layout/Container";
 
 const PostEditPage = () => {
   const navigate = useNavigate();
@@ -53,80 +54,82 @@ const PostEditPage = () => {
     navigate(-1);
   };
   return (
-    <PostEditPageBlock>
-      <PrevStep onPrev={() => navigate(-1)} />
-      <PostEditBox>
-        <div className="title-box">
-          <input
-            type="text"
-            className="title-input"
-            name="title"
-            placeholder="게시글 제목을 입력해주세요."
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div className="info-box">
-          <div className="category-box">
-            <label htmlFor="category" className="category-label">
-              카테고리
-            </label>
-            <select
-              className="category"
-              id="category"
-              name="category"
-              value={postData.category}
-              onChange={handleChange}
-            >
-              <option value="동행 모집">동행 모집</option>
-              <option value="여행 질문">여행 질문</option>
-            </select>
-          </div>
-          <div className="plan-box">
-            <label htmlFor="plan" className="plan-label">
-              일정 선택
-            </label>
-            <select
-              className="plan"
-              id="plan"
-              name="plan_id"
-              onChange={handleChange}
-            >
-              {plans.map((plan) => (
-                <option value={plan.plan_id} key={plan.plan_id}>
-                  {plan.cities[0].city} 여행
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="deadline-box">
-            <label htmlFor="deadline" className="deadline-label">
-              모집 마감일
-            </label>
+    <Container>
+      <PostEditPageBlock>
+        <PrevStep onPrev={() => navigate(-1)} />
+        <PostEditBox>
+          <div className="title-box">
             <input
-              type="date"
-              className="deadline"
-              name="deadline"
-              data-placeholder="모집 마감일"
-              onChange={handleChange}
-              value={postData.deadline}
+              type="text"
+              className="title-input"
+              name="title"
+              placeholder="게시글 제목을 입력해주세요."
+              onChange={(e) => handleChange(e)}
             />
           </div>
-        </div>
-        <div className="tags-box">
-          <TagInput setPostData={setPostData} />
-        </div>
-        <div className="content-box">
-          <AppEditor content={content} setContent={setContent} />
-        </div>
-        <div className="btn-box">
-          <Button
-            text={"등록하기"}
-            onClick={() => handleClick({ ...postData, content })}
-            size="small"
-          />
-        </div>
-      </PostEditBox>
-    </PostEditPageBlock>
+          <div className="info-box">
+            <div className="category-box">
+              <label htmlFor="category" className="category-label">
+                카테고리
+              </label>
+              <select
+                className="category"
+                id="category"
+                name="category"
+                value={postData.category}
+                onChange={handleChange}
+              >
+                <option value="동행 모집">동행 모집</option>
+                <option value="여행 질문">여행 질문</option>
+              </select>
+            </div>
+            <div className="plan-box">
+              <label htmlFor="plan" className="plan-label">
+                일정 선택
+              </label>
+              <select
+                className="plan"
+                id="plan"
+                name="plan_id"
+                onChange={handleChange}
+              >
+                {plans.map((plan) => (
+                  <option value={plan.plan_id} key={plan.plan_id}>
+                    {plan.cities[0].city} 여행
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="deadline-box">
+              <label htmlFor="deadline" className="deadline-label">
+                모집 마감일
+              </label>
+              <input
+                type="date"
+                className="deadline"
+                name="deadline"
+                data-placeholder="모집 마감일"
+                onChange={handleChange}
+                value={postData.deadline}
+              />
+            </div>
+          </div>
+          <div className="tags-box">
+            <TagInput setPostData={setPostData} />
+          </div>
+          <div className="content-box">
+            <AppEditor content={content} setContent={setContent} />
+          </div>
+          <div className="btn-box">
+            <Button
+              text={"등록하기"}
+              onClick={() => handleClick({ ...postData, content })}
+              size="small"
+            />
+          </div>
+        </PostEditBox>
+      </PostEditPageBlock>
+    </Container>
   );
 };
 

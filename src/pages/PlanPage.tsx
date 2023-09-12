@@ -18,6 +18,7 @@ import { searchPlacesState } from "../store/searchPlacesState";
 import { Plan } from "../types";
 import useCustomBack from "../hooks/useCustomBack";
 import { userState } from "../store/userState";
+import { Container } from "../components/layout/Container";
 
 export const INITIAL_DATA: Plan = {
   title: "",
@@ -87,25 +88,27 @@ const PlanPage = () => {
   useCustomBack(handleClickPrev);
 
   return (
-    <PlanPageBlock>
-      {step !== "도시선택" && <PrevStep onPrev={handleClickPrev} />}
-      {step === "도시선택" && (
-        <CityArea
-          onNext={() => setStep("날짜선택")}
-          onPrev={handleClickPrev}
-          planData={planData}
-        />
-      )}
-      {step === "날짜선택" && (
-        <DateArea onNext={() => setStep("장소검색")} planData={planData} />
-      )}
-      {step === "장소검색" && (
-        <SearchArea onNext={() => setStep("일정계획")} planData={planData} />
-      )}
-      {step === "일정계획" && (
-        <PlanArea planData={planData} onSubmit={handleSubmit} />
-      )}
-    </PlanPageBlock>
+    <Container>
+      <PlanPageBlock>
+        {step !== "도시선택" && <PrevStep onPrev={handleClickPrev} />}
+        {step === "도시선택" && (
+          <CityArea
+            onNext={() => setStep("날짜선택")}
+            onPrev={handleClickPrev}
+            planData={planData}
+          />
+        )}
+        {step === "날짜선택" && (
+          <DateArea onNext={() => setStep("장소검색")} planData={planData} />
+        )}
+        {step === "장소검색" && (
+          <SearchArea onNext={() => setStep("일정계획")} planData={planData} />
+        )}
+        {step === "일정계획" && (
+          <PlanArea planData={planData} onSubmit={handleSubmit} />
+        )}
+      </PlanPageBlock>
+    </Container>
   );
 };
 

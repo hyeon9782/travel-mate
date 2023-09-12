@@ -1,7 +1,12 @@
 import styled from "styled-components";
+import { Container } from "../components/layout/Container";
 
 const NotFound = () => {
-  return <NotFoundBlock>404 Not Found</NotFoundBlock>;
+  return (
+    <Container>
+      <NotFoundBlock>404 Not Found</NotFoundBlock>
+    </Container>
+  );
 };
 
 const NotFoundBlock = styled.div`
