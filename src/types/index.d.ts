@@ -19,12 +19,11 @@ export type Post = {
   plan_id?: string;
 };
 
-export type City = {
+export type City = Pick<Geometry, "location"> & {
   city: string;
   country: string;
   isDomestic: boolean;
   region: string;
-  location: { lat: number; lng: number };
   related: string[];
   isSelect: boolean;
 };
@@ -43,17 +42,19 @@ export type Place = {
   name: string;
   user_ratings_total: string;
   rating: string;
-  geometry: {
-    location: {
-      lat: number;
-      lng: number;
-    };
-  };
+  geometry: Geometry;
   memo: string;
   types: string[];
   isSelect: boolean;
   day: number;
   order: number;
+};
+
+export type Geometry = {
+  location: {
+    lat: number;
+    lng: number;
+  };
 };
 
 export type Dialog = {

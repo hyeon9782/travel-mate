@@ -6,7 +6,9 @@ const UserTab = () => {
   return (
     <UserTabBlock>
       {USER_TAB.map((tab, index) => (
-        <div key={index}>{tab}</div>
+        <div key={index} className="user-tab-item">
+          {tab}
+        </div>
       ))}
     </UserTabBlock>
   );
@@ -14,6 +16,9 @@ const UserTab = () => {
 
 const UserTabBlock = styled.div`
   display: flex;
+  .user-tab-item: {
+    background: red;
+  }
 `;
 
 export default UserTab;
