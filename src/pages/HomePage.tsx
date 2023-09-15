@@ -9,14 +9,9 @@ import React, {
 } from "react";
 import PostSkeleton from "../components/posts/PostSkeleton";
 import { Container } from "../components/layout/Container";
+import useIntersectionObserver from "../hooks/useIntersectionObserver";
 
 const Posts = React.lazy(() => import("../components/posts/Posts"));
-
-const option = {
-  root: null,
-  rootMargin: "0px",
-  threshold: 0.5,
-};
 
 const HomePage = () => {
   const targetRef = useRef(null);
@@ -25,31 +20,26 @@ const HomePage = () => {
 
   const handleClick = useCallback((category: string) => {
     setCategory(category);
+    setPage(1);
   }, []);
 
-  const handleIntersection = useCallback(
-    async (entries: IntersectionObserverEntry[]) => {
-      const entry = entries[0];
-      console.log(entry.isIntersecting);
-
-      if (entry.isIntersecting) {
-        setPage((prevPage) => prevPage + 1);
-      }
-    },
-    []
-  );
+  const { observe } = useIntersectionObserver(() => {
+    setPage((prevPage) => prevPage + 1);
+  });
 
   useEffect(() => {
-    const observer = new IntersectionObserver(handleIntersection, option);
-
+    // targetRef를 관찰 대상으로 추가
     if (targetRef.current) {
-      observer.observe(targetRef.current);
+      observe(targetRef.current);
     }
 
+    // 컴포넌트가 언마운트될 때 관찰을 중지하도록 클린업 함수 등록
     return () => {
-      if (targetRef.current) observer.disconnect();
+      if (targetRef.current) {
+        observe(targetRef.current)();
+      }
     };
-  }, [category]);
+  }, [observe]);
 
   return (
     <Container>
