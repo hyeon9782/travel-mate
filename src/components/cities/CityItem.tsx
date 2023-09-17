@@ -1,16 +1,14 @@
 import styled from "styled-components";
-import { City } from "../../types";
-import { checkSelect, handleCitySelection } from "../../service/city";
-import { useRecoilState } from "recoil";
-import { planState } from "../../store/planState";
+import { City, Plan } from "../../types";
+import { checkSelect } from "../../service/city";
 
 type Props = {
   city: City;
+  planData: Plan;
+  onCitySelection: (isSelect: boolean, city: City) => void;
 };
 
-const CityItem = ({ city }: Props) => {
-  const [planData, setPlanData] = useRecoilState(planState);
-
+const CityItem = ({ planData, city, onCitySelection }: Props) => {
   const selectedCities = planData?.cities ?? [];
 
   const isSelect = checkSelect(city, selectedCities);
@@ -25,15 +23,11 @@ const CityItem = ({ city }: Props) => {
         </CityContent>
       </div>
       {isSelect ? (
-        <CancleButton
-          onClick={() => handleCitySelection(isSelect, setPlanData, city)}
-        >
+        <CancleButton onClick={() => onCitySelection(isSelect, city)}>
           취소
         </CancleButton>
       ) : (
-        <SelectButton
-          onClick={() => handleCitySelection(isSelect, setPlanData, city)}
-        >
+        <SelectButton onClick={() => onCitySelection(isSelect, city)}>
           선택
         </SelectButton>
       )}

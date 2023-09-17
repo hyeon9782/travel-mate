@@ -44,25 +44,4 @@ function checkSelect(city: City, selectedCities: City[]) {
   return selectedCities.includes(city);
 }
 
-// 도시 선택 또는 취소
-const handleCitySelection = (
-  isSelect: boolean,
-  setPlanData: any,
-  city: City
-) => {
-  if (isSelect) {
-    // 도시 취소
-    setPlanData((prevData: Plan) => ({
-      ...prevData,
-      cities: prevData?.cities?.filter((c) => c !== city),
-    }));
-  } else {
-    // 도시 선택
-    setPlanData((prevData: Plan) => ({
-      ...prevData,
-      cities: [...prevData?.cities, city],
-    }));
-  }
-};
-
-export { searchCity, filteringCity, toggle, checkSelect, handleCitySelection };
+export { searchCity, filteringCity, toggle, checkSelect };

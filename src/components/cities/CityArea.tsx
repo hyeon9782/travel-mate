@@ -5,25 +5,33 @@ import { citiesState } from "../../store/citiesState";
 import SeletedCities from "./SeletedCities";
 import DoneButton from "../plan/DoneButton";
 import CitySubHeader from "./CitySubHeader";
-import { Plan } from "../../types";
+import { City, Plan } from "../../types";
 
 type Props = {
   onNext: () => void;
   onPrev: () => void;
+  onCitySelection: (isSelect: boolean, city: City) => void;
   planData: Plan;
 };
-const CityArea = ({ onNext, onPrev, planData }: Props) => {
+const CityArea = ({ onNext, onPrev, planData, onCitySelection }: Props) => {
   const cities = useRecoilValue(citiesState);
 
   return (
     <CityAreaBlock>
       <div className="box">
         <CitySubHeader onPrev={onPrev} />
-        <Cities cities={cities} />
+        <Cities
+          cities={cities}
+          onCitySelection={onCitySelection}
+          planData={planData}
+        />
       </div>
       <SeletedBox>
         {planData?.cities?.length !== 0 && (
-          <SeletedCities selectedCities={planData?.cities} />
+          <SeletedCities
+            selectedCities={planData?.cities}
+            onAddCity={onCitySelection}
+          />
         )}
         <BtnBox>
           <DoneButton

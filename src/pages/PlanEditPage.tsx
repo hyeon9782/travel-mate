@@ -1,34 +1,24 @@
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Container } from "../components/layout/Container";
-import { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
-import { userState } from "../store/userState";
+import { useState } from "react";
 import PrevStep from "../components/plan/PrevStep";
 import CityArea from "../components/cities/CityArea";
 import DateArea from "../components/date/DateArea";
 import SearchArea from "../components/search/SearchArea";
 import PlanArea from "../components/plan/PlanArea";
-import { createPlan, modifyPlan } from "../service/plan";
+import { modifyPlan } from "../service/plan";
+import { PLAN_INITIAL_DATA } from "../constants/plan";
 
 const PlanEditPage = () => {
   const navigate = useNavigate();
-  const { pathname } = useLocation();
   const { id } = useParams();
   const [step, setStep] = useState<
     "도시선택" | "날짜선택" | "장소검색" | "일정계획"
   >("일정계획");
-  const { email } = useRecoilValue(userState);
 
   console.log(id);
 
-  const [planData, setPlanData] = useState({
-    title: "",
-    plan_id: 0,
-    user_id: "",
-    cities: [],
-    period: [String(new Date()), String(new Date())],
-    selectedPlaces: [],
-  });
+  const [planData, setPlanData] = useState({ ...PLAN_INITIAL_DATA });
 
   //   useEffect(() => {}, []);
 
@@ -51,16 +41,8 @@ const PlanEditPage = () => {
     }
   };
 
-  const handleSubmit = (title: string) => {
-    try {
-      if (pathname === "/plan") {
-        createPlan({ ...planData, user_id: email, title });
-      } else {
-        modifyPlan(planData.plan_id, planData);
-      }
-    } catch (err) {
-      console.error(err);
-    }
+  const handleSubmit = () => {
+    modifyPlan(planData.plan_id, planData);
   };
 
   return (

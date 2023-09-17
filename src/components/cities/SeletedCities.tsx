@@ -1,20 +1,18 @@
 import styled from "styled-components";
 import SelectedCity from "./SeletedCity";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useSetRecoilState } from "recoil";
-import { planState } from "../../store/planState";
 import { City } from "../../types";
 type Props = {
   selectedCities: City[];
+  onAddCity: (isSelect: boolean, city: City) => void;
 };
-const SeletedCities = ({ selectedCities = [] }: Props) => {
-  const setPlanData = useSetRecoilState(planState);
+const SeletedCities = ({ selectedCities = [], onAddCity }: Props) => {
   return (
     <SeletedCitiesBlock>
       <Swiper slidesPerView={5}>
         {selectedCities.map((city, index) => (
           <SwiperSlide key={index}>
-            <SelectedCity key={index} city={city} setPlanData={setPlanData} />
+            <SelectedCity key={index} city={city} onAddCity={onAddCity} />
           </SwiperSlide>
         ))}
       </Swiper>
