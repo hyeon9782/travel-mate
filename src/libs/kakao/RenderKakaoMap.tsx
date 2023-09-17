@@ -1,8 +1,6 @@
 import { useEffect, useRef } from "react";
-
 const { kakao } = window;
-
-const SearchKakaoMap = () => {
+const RenderKakaoMap = () => {
   const mapRef = useRef(null);
   let map = "";
   useEffect(() => {
@@ -14,7 +12,9 @@ const SearchKakaoMap = () => {
     map = new kakao.maps.Map(mapRef.current, options);
   }, []);
 
+  console.log(map);
+
   return <div ref={mapRef} style={{ width: "100%", height: "100%" }}></div>;
 };
 
-export default SearchKakaoMap;
+export default RenderKakaoMap;

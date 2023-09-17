@@ -6,6 +6,7 @@ import PlanDetailPage from "../pages/PlanDetailPage";
 import PlanPage from "../pages/PlanPage";
 import PostPage from "../pages/PostPage";
 import PostEditPage from "../pages/PostEditPage";
+import PlanEditPage from "../pages/PlanEditPage";
 
 const AppRoutes = () => {
   return (
@@ -13,7 +14,7 @@ const AppRoutes = () => {
       <Route path="/" element={<HomePage />} />
       <Route path="/plan" element={<PlanPage />} />
       <Route path="/plan/:id" element={<PlanDetailPage />} />
-      <Route path="/plan/edit/:id" element={<PlanPage />} />
+      <Route path="/plan/edit/:id" element={<PlanEditPage />} />
       <Route path="/post" element={<PostEditPage />} />
       <Route path="/post/:id" element={<PostPage />} />
       <Route path="/login" element={<LoginPage />} />

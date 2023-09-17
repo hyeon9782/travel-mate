@@ -1,7 +1,18 @@
 import axios from "axios";
 import { Place, Plan } from "../types";
 
-async function searchPlaces(
+const { kakao } = window;
+
+const currentPosition = () => {
+  navigator.geolocation.getCurrentPosition((position) => {
+    const lat = position.coords.latitude; // 위도
+    const lon = position.coords.longitude; // 경도
+    const locPosition = new kakao.maps.LatLng(lat, lon);
+    console.log(locPosition);
+  });
+};
+
+async function searchPlacesGoogle(
   e: React.FormEvent<HTMLFormElement>,
   setSearchPlaces: any,
   searchData: any
@@ -103,7 +114,8 @@ const changeMemo = (memo: string, place_id: string, setPlanData: any) => {
 };
 
 export {
-  searchPlaces,
+  currentPosition,
+  searchPlacesGoogle,
   checkPlace,
   handlePlaceSelection,
   handleScheduleSelection,

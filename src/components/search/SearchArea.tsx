@@ -3,13 +3,14 @@ import SearchMap from "../google/SearchMap";
 import ResultList from "./ResultList";
 import PlacesTab from "../places/PlacesTab";
 import DoneButton from "../plan/DoneButton";
-import { handlePlaceSelection, searchPlaces } from "../../service/place";
+import { handlePlaceSelection, searchPlacesGoogle } from "../../service/place";
 import { Place, Plan } from "../../types";
 import { useSetRecoilState } from "recoil";
 import { planState } from "../../store/planState";
 import SearchInput from "./SearchInput";
 import { searchPlacesState } from "../../store/searchPlacesState";
 import KakaoMap from "../../libs/kakao/KakaoMap";
+import SearchKakaoMap from "../../libs/kakao/SearchKakaoMap";
 
 type Props = {
   onNext: () => void;
@@ -17,7 +18,7 @@ type Props = {
 };
 const { kakao } = window;
 const SearchArea = ({ onNext, planData }: Props) => {
-  const isDomestic = planData.cities[0].isDomestic;
+  const isDomestic = planData?.cities[0]?.isDomestic;
   const setPlanData = useSetRecoilState(planState);
   const setSearchPlaces = useSetRecoilState(searchPlacesState);
 
@@ -30,7 +31,7 @@ const SearchArea = ({ onNext, planData }: Props) => {
     if (isDomestic) {
       searchPlacesKakao(e);
     } else {
-      searchPlaces(e, setSearchPlaces, planData.cities[0]);
+      searchPlacesGoogle(e, setSearchPlaces, planData.cities[0]);
     }
   };
 
@@ -42,7 +43,7 @@ const SearchArea = ({ onNext, planData }: Props) => {
       if (status === kakao.maps.services.Status.OK) {
         console.log(data);
         console.log(pagination);
-        return data;
+        setSearchPlaces(data);
       }
     });
   };
@@ -50,7 +51,7 @@ const SearchArea = ({ onNext, planData }: Props) => {
   return (
     <SearchAreaBlock>
       <MapBox>
-        {isDomestic ? <KakaoMap /> : <SearchMap planData={planData} />}
+        {isDomestic ? <SearchKakaoMap /> : <SearchMap planData={planData} />}
       </MapBox>
       <SearchBlock>
         <PlacesTab

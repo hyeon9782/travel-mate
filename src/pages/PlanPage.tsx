@@ -85,7 +85,7 @@ const PlanPage = () => {
     }
   };
 
-  useCustomBack(handleClickPrev);
+  // useCustomBack(handleClickPrev);
 
   return (
     <Container>
