@@ -9,13 +9,15 @@ import { useSetRecoilState } from "recoil";
 import { planState } from "../../store/planState";
 import SearchInput from "./SearchInput";
 import { searchPlacesState } from "../../store/searchPlacesState";
+import KakaoMap from "../../libs/kakao/KakaoMap";
 
 type Props = {
   onNext: () => void;
   planData: Plan;
 };
-
+const { kakao } = window;
 const SearchArea = ({ onNext, planData }: Props) => {
+  const isDomestic = planData.cities[0].isDomestic;
   const setPlanData = useSetRecoilState(planState);
   const setSearchPlaces = useSetRecoilState(searchPlacesState);
 
@@ -25,13 +27,30 @@ const SearchArea = ({ onNext, planData }: Props) => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    searchPlaces(e, setSearchPlaces, planData.cities[0]);
+    if (isDomestic) {
+      searchPlacesKakao(e);
+    } else {
+      searchPlaces(e, setSearchPlaces, planData.cities[0]);
+    }
+  };
+
+  const searchPlacesKakao = (e: any) => {
+    const keyword = e.target.keyword.value;
+    const ps = new kakao.maps.services.Places();
+
+    ps.keywordSearch(keyword, (data: [], status: any, pagination: any) => {
+      if (status === kakao.maps.services.Status.OK) {
+        console.log(data);
+        console.log(pagination);
+        return data;
+      }
+    });
   };
 
   return (
     <SearchAreaBlock>
       <MapBox>
-        <SearchMap planData={planData} />
+        {isDomestic ? <KakaoMap /> : <SearchMap planData={planData} />}
       </MapBox>
       <SearchBlock>
         <PlacesTab

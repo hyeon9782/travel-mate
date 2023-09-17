@@ -11,6 +11,8 @@ import PostSkeleton from "../components/posts/PostSkeleton";
 import { Container } from "../components/layout/Container";
 import useIntersectionObserver from "../hooks/useIntersectionObserver";
 import KakaoMap from "../libs/kakao/KakaoMap";
+import SearchKakaoMap from "../libs/kakao/SearchKakaoMap";
+import SearchPlacesKakao from "../libs/kakao/SearchPlacesKakao";
 
 const Posts = React.lazy(() => import("../components/posts/Posts"));
 
@@ -45,7 +47,10 @@ const HomePage = () => {
   return (
     <Container>
       <HomePageBlock>
-        <KakaoMap />
+        <div className="map-box">
+          <SearchPlacesKakao />
+        </div>
+
         <PostsTab onClick={handleClick} category={category} />
         {Array.from({ length: page }, (_, i) => (
           <Suspense key={i} fallback={<PostSkeleton />}>
@@ -61,6 +66,11 @@ const HomePage = () => {
 const HomePageBlock = styled.main`
   height: calc(100% - 42.8px);
   overflow: auto;
+
+  .map-box {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 export default HomePage;

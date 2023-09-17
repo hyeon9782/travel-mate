@@ -12,6 +12,7 @@ import DoneButton from "./DoneButton";
 import useDialogs from "../../hooks/useDialogs";
 import { dialogs } from "../dialog/Dialogs";
 import { useNavigate } from "react-router-dom";
+import KakaoMap from "../../libs/kakao/KakaoMap";
 
 type Props = {
   planData: Plan;
@@ -58,7 +59,11 @@ const PlanArea = ({ planData, onSubmit }: Props) => {
   return (
     <PlanBlock>
       <MapBox>
-        <RenderMap planData={planData} />
+        {planData.cities[0].isDomestic ? (
+          <KakaoMap />
+        ) : (
+          <RenderMap planData={planData} />
+        )}
       </MapBox>
       <ScheduleBlock>
         <PlacesTab handleClick={handleScheduleAdd} planData={planData} />
