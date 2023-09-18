@@ -8,12 +8,10 @@ type Props = {
 };
 const ResultList = ({ planData }: Props) => {
   const searchPlaces = [];
-  const { data } = useQuery({
-    queryKey: ['searchPlacesKakao'],
-    queryFn: 
-  })
-
-  console.log(data);
+  // const { data } = useQuery({
+  //   queryKey: ['searchPlacesKakao'],
+  //   queryFn:
+  // })
 
   return (
     <ResultListBlock>
