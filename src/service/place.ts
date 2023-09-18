@@ -22,6 +22,7 @@ const searchPlacesKakao = (e: any) => {
     if (status === kakao.maps.services.Status.OK) {
       console.log(data);
       console.log(pagination);
+      return data;
     }
   });
 };

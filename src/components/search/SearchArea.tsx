@@ -17,7 +17,7 @@ type Props = {
   planData: Plan;
   setPlanData: any;
 };
-const { kakao } = window;
+
 const SearchArea = ({ onNext, planData, setPlanData }: Props) => {
   const isDomestic = planData?.cities[0]?.isDomestic;
 
@@ -48,7 +48,7 @@ const SearchArea = ({ onNext, planData, setPlanData }: Props) => {
           <InputBox>
             <SearchInput onSubmit={handleSubmit} />
           </InputBox>
-          <ResultList />
+          <ResultList planData={planData} />
         </SearchBox>
       </SearchBlock>
       <BtnBox>
