@@ -5,7 +5,6 @@ import { currentDayState } from "../../store/currentDayState";
 import { handleScheduleSelection } from "../../service/place";
 import { Place, Plan } from "../../types";
 import { useMemo } from "react";
-import DragAndDrop from "../common/DragAndDrop";
 
 type Props = {
   planData: Plan;
@@ -34,6 +33,7 @@ const Schedules = ({ planData, setPlanData }: Props) => {
               key={place.place_id}
               place={place}
               planId={planData.plan_id}
+              setPlanData={setPlanData}
               onRemove={handleScheduleRemove}
             />
           ))}

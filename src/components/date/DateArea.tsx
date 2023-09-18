@@ -2,18 +2,15 @@
 import styled from "styled-components";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { useSetRecoilState } from "recoil";
-import { planState } from "../../store/planState";
 import DoneButton from "../plan/DoneButton";
 import { Plan } from "../../types";
 
 type Props = {
   onNext: () => void;
   planData: Plan;
+  setPlanData: any;
 };
-const DateArea = ({ onNext, planData }: Props) => {
-  const setPlanData = useSetRecoilState(planState);
-
+const DateArea = ({ onNext, planData, setPlanData }: Props) => {
   const onChange = (selectedDates: string[]) => {
     setPlanData((prevData: Plan) => ({
       ...prevData,

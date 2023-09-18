@@ -1,18 +1,16 @@
 import styled from "styled-components";
 import Button from "../common/Button";
-import { useRecoilState } from "recoil";
-import { Place } from "../../types";
+import { Place, Plan } from "../../types";
 import { checkPlace, handlePlaceSelection } from "../../service/place";
-import { planState } from "../../store/planState";
 import { truncateTextOverflow } from "../../utils/utils";
 import { StarIcon } from "../common/icons";
 
 type Props = {
   place: Place;
+  planData: Plan;
 };
 
-const ResultItem = ({ place }: Props) => {
-  const [planData, setPlanData] = useRecoilState(planState);
+const ResultItem = ({ place, planData }: Props) => {
   const { name, user_ratings_total, rating } = place;
 
   const isSelect = checkPlace(place, planData.selectedPlaces);

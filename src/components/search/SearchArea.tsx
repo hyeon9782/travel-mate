@@ -3,24 +3,23 @@ import SearchMap from "../google/SearchMap";
 import ResultList from "./ResultList";
 import PlacesTab from "../places/PlacesTab";
 import DoneButton from "../plan/DoneButton";
-import { handlePlaceSelection, searchPlacesGoogle } from "../../service/place";
+import {
+  handlePlaceSelection,
+  searchPlacesGoogle,
+  searchPlacesKakao,
+} from "../../service/place";
 import { Place, Plan } from "../../types";
-import { useSetRecoilState } from "recoil";
-import { planState } from "../../store/planState";
 import SearchInput from "./SearchInput";
-import { searchPlacesState } from "../../store/searchPlacesState";
-import KakaoMap from "../../libs/kakao/KakaoMap";
 import SearchKakaoMap from "../../libs/kakao/SearchKakaoMap";
 
 type Props = {
   onNext: () => void;
   planData: Plan;
+  setPlanData: any;
 };
 const { kakao } = window;
-const SearchArea = ({ onNext, planData }: Props) => {
+const SearchArea = ({ onNext, planData, setPlanData }: Props) => {
   const isDomestic = planData?.cities[0]?.isDomestic;
-  const setPlanData = useSetRecoilState(planState);
-  const setSearchPlaces = useSetRecoilState(searchPlacesState);
 
   const handlePlaceSelectionRemove = (place: Place) => {
     handlePlaceSelection(true, setPlanData, place);
@@ -31,21 +30,8 @@ const SearchArea = ({ onNext, planData }: Props) => {
     if (isDomestic) {
       searchPlacesKakao(e);
     } else {
-      searchPlacesGoogle(e, setSearchPlaces, planData.cities[0]);
+      searchPlacesGoogle(e);
     }
-  };
-
-  const searchPlacesKakao = (e: any) => {
-    const keyword = e.target.keyword.value;
-    const ps = new kakao.maps.services.Places();
-
-    ps.keywordSearch(keyword, (data: [], status: any, pagination: any) => {
-      if (status === kakao.maps.services.Status.OK) {
-        console.log(data);
-        console.log(pagination);
-        setSearchPlaces(data);
-      }
-    });
   };
 
   return (

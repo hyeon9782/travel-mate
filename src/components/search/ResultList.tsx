@@ -1,15 +1,20 @@
-import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import ResultItem from "./ResultItem";
-import { searchPlacesState } from "../../store/searchPlacesState";
-
-const ResultList = () => {
-  const searchPlaces = useRecoilValue(searchPlacesState);
+import { Plan } from "../../types";
+type Props = {
+  planData: Plan;
+};
+const ResultList = ({ planData }: Props) => {
+  const searchPlaces = [];
   return (
     <ResultListBlock>
       {searchPlaces.length > 0 &&
         searchPlaces.map((item) => (
-          <ResultItem key={item.place_id} place={item}></ResultItem>
+          <ResultItem
+            key={item.place_id}
+            place={item}
+            planData={planData}
+          ></ResultItem>
         ))}
     </ResultListBlock>
   );

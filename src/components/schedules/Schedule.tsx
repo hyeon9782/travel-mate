@@ -2,8 +2,6 @@ import styled from "styled-components";
 import { Place } from "../../types";
 import Accordion from "../common/Accordion";
 import { changeMemo } from "../../service/place";
-import { useSetRecoilState } from "recoil";
-import { planState } from "../../store/planState";
 import { useLocation } from "react-router-dom";
 import { ArrowUpDownIcon, MinusIcon } from "../common/icons";
 
@@ -11,12 +9,11 @@ type Props = {
   place: Place;
   planId: string;
   onRemove: (place: Place) => void;
+  setPlanData: any;
 };
-const Schedule = ({ place, onRemove, planId }: Props) => {
+const Schedule = ({ place, onRemove, planId, setPlanData }: Props) => {
   const location = useLocation();
   const path = location.pathname;
-
-  const setPlanData = useSetRecoilState(planState);
 
   const handleChangeMemo = (memo: string) => {
     changeMemo(memo, place.place_id, setPlanData);

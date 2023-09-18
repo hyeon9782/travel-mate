@@ -72,13 +72,25 @@ const PlanPage = () => {
           />
         )}
         {step === "날짜선택" && (
-          <DateArea onNext={() => setStep("장소검색")} planData={planData} />
+          <DateArea
+            onNext={() => setStep("장소검색")}
+            planData={planData}
+            setPlanData={setPlanData}
+          />
         )}
         {step === "장소검색" && (
-          <SearchArea onNext={() => setStep("일정계획")} planData={planData} />
+          <SearchArea
+            onNext={() => setStep("일정계획")}
+            planData={planData}
+            setPlanData={setPlanData}
+          />
         )}
         {step === "일정계획" && (
-          <PlanArea planData={planData} onSubmit={handleSubmit} />
+          <PlanArea
+            planData={planData}
+            onSubmit={handleSubmit}
+            setPlanData={setPlanData}
+          />
         )}
       </PlanPageBlock>
     </Container>

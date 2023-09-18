@@ -3,6 +3,7 @@ import { Place, Plan } from "../types";
 
 const { kakao } = window;
 
+// 현재 위치
 const currentPosition = () => {
   navigator.geolocation.getCurrentPosition((position) => {
     const lat = position.coords.latitude; // 위도
@@ -12,23 +13,28 @@ const currentPosition = () => {
   });
 };
 
-async function searchPlacesGoogle(
-  e: React.FormEvent<HTMLFormElement>,
-  setSearchPlaces: any,
-  searchData: any
-) {
-  const formElement = e.currentTarget;
-  const inputElement = formElement.querySelector("input") as HTMLInputElement; //Form의 input 원소에 대한 참조
-  const res = await axios.get(
-    `http://localhost:4000/api/search?keyword=${
-      inputElement.value
-    }&radius=${5000}&latitude=${searchData.location.lat}&longitude=${
-      searchData.location.lng
-    }`
-  );
-  console.log(res);
+// Kakao 검색
+const searchPlacesKakao = (e: any) => {
+  const keyword = e.target.keyword.value;
+  const ps = new kakao.maps.services.Places();
 
-  setSearchPlaces(res.data);
+  ps.keywordSearch(keyword, (data: [], status: any, pagination: any) => {
+    if (status === kakao.maps.services.Status.OK) {
+      console.log(data);
+      console.log(pagination);
+    }
+  });
+};
+
+// Google 검색
+async function searchPlacesGoogle(e: any) {
+  const keyword = e.target.keyword.value;
+
+  const res = await axios.get(
+    `http://localhost:4000/api/search?keyword=${keyword}`
+  );
+
+  console.log(res);
 }
 
 // 장소 선택 또는 취소
@@ -115,6 +121,7 @@ const changeMemo = (memo: string, place_id: string, setPlanData: any) => {
 
 export {
   currentPosition,
+  searchPlacesKakao,
   searchPlacesGoogle,
   checkPlace,
   handlePlaceSelection,

@@ -3,11 +3,10 @@ import Days from "../days/Days";
 import RenderMap from "../google/RenderMap";
 import PlacesTab from "../places/PlacesTab";
 import { Place, Plan } from "../../types";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { currentDayState } from "../../store/currentDayState";
 import Schedules from "../schedules/Schedules";
 import { handleScheduleSelection } from "../../service/place";
-import { planState } from "../../store/planState";
 import DoneButton from "./DoneButton";
 import useDialogs from "../../hooks/useDialogs";
 import { dialogs } from "../dialog/Dialogs";
@@ -17,15 +16,14 @@ import RenderKakaoMap from "../../libs/kakao/RenderKakaoMap";
 type Props = {
   planData: Plan;
   onSubmit: (title: string) => void;
+  setPlanData: any;
 };
-const PlanArea = ({ planData, onSubmit }: Props) => {
+const PlanArea = ({ planData, onSubmit, setPlanData }: Props) => {
   const isDomestic = planData?.cities[0]?.isDomestic;
   const { openDialog } = useDialogs();
   const navigate = useNavigate();
 
   const currentDay = useRecoilValue(currentDayState);
-
-  const setPlanData = useSetRecoilState(planState);
 
   const order = planData.selectedPlaces.filter(
     (selectedPlace) => selectedPlace.day === currentDay
