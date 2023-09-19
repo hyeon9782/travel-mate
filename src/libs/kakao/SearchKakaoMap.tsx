@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import { useCreateMarker } from "../../hooks/useCreateMarker";
 import { createMarker } from "./marker";
 
 const { kakao } = window;
@@ -46,14 +45,6 @@ const SearchKakaoMap = () => {
       const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
 
       const marker = createMarker(positions[i], map, markerImage);
-
-      // // 마커를 생성합니다
-      // const marker = new kakao.maps.Marker({
-      //   map: map, // 마커를 표시할 지도
-      //   position: positions[i].latlng, // 마커를 표시할 위치
-      //   title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-      //   image: markerImage, // 마커 이미지
-      // });
     }
   }, []);
 

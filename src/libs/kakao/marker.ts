@@ -1,5 +1,6 @@
 const { kakao } = window;
 
+// 차후 컴포넌트로 변환
 export const createMarker = (position: any, map: any, markerImage: string) => {
   const marker = new kakao.maps.Marker({
     map: map, // 마커를 표시할 지도
