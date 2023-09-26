@@ -14,8 +14,7 @@ const currentPosition = () => {
 };
 
 // Kakao 검색
-const searchPlacesKakao = (e: any) => {
-  const keyword = e.target.keyword.value;
+const searchPlacesKakao = (keyword: string) => {
   const ps = new kakao.maps.services.Places();
 
   ps.keywordSearch(keyword, (data: [], status: any, pagination: any) => {
@@ -28,9 +27,7 @@ const searchPlacesKakao = (e: any) => {
 };
 
 // Google 검색
-async function searchPlacesGoogle(e: any) {
-  const keyword = e.target.keyword.value;
-
+async function searchPlacesGoogle(keyword: string) {
   const res = await axios.get(
     `http://localhost:4000/api/search?keyword=${keyword}`
   );

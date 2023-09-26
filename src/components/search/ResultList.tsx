@@ -1,17 +1,12 @@
 import styled from "styled-components";
 import ResultItem from "./ResultItem";
 import { Plan } from "../../types";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { searchPlacesKakao } from "../../service/place";
+
 type Props = {
   planData: Plan;
 };
 const ResultList = ({ planData }: Props) => {
   const searchPlaces = [];
-  // const { data } = useQuery({
-  //   queryKey: ['searchPlacesKakao'],
-  //   queryFn:
-  // })
 
   return (
     <ResultListBlock>

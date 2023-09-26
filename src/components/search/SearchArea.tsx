@@ -11,6 +11,8 @@ import {
 import { Place, Plan } from "../../types";
 import SearchInput from "./SearchInput";
 import SearchKakaoMap from "../../libs/kakao/SearchKakaoMap";
+import { useState } from "react";
+import { useSearchPlaces } from "../../hooks/useSearchPlaces";
 
 type Props = {
   onNext: () => void;
@@ -20,6 +22,9 @@ type Props = {
 
 const SearchArea = ({ onNext, planData, setPlanData }: Props) => {
   const isDomestic = planData?.cities[0]?.isDomestic;
+  const [keyword, setKeyword] = useState("");
+  const { data } = useSearchPlaces(keyword, isDomestic);
+  console.log(data);
 
   const handlePlaceSelectionRemove = (place: Place) => {
     handlePlaceSelection(true, setPlanData, place);
@@ -27,11 +32,7 @@ const SearchArea = ({ onNext, planData, setPlanData }: Props) => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    if (isDomestic) {
-      searchPlacesKakao(e);
-    } else {
-      searchPlacesGoogle(e);
-    }
+    setKeyword(e.target.keyword.value);
   };
 
   return (
