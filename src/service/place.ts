@@ -15,24 +15,27 @@ const currentPosition = () => {
 
 // Kakao 검색
 const searchPlacesKakao = (keyword: string) => {
-  const ps = new kakao.maps.services.Places();
+  return new Promise((resolve, reject) => {
+    const ps = new kakao.maps.services.Places();
 
-  ps.keywordSearch(keyword, (data: [], status: any, pagination: any) => {
-    if (status === kakao.maps.services.Status.OK) {
-      console.log(data);
-      console.log(pagination);
-      return data;
-    }
+    ps.keywordSearch(keyword, (data: [], status: any, pagination: any) => {
+      if (status === kakao.maps.services.Status.OK) {
+        console.log(data);
+        console.log(pagination);
+        resolve(data); // 데이터를 resolve로 반환
+      } else {
+        reject(new Error(`Kakao Places search failed with status: ${status}`));
+      }
+    });
   });
 };
-
 // Google 검색
 async function searchPlacesGoogle(keyword: string) {
   const res = await axios.get(
     `http://localhost:4000/api/search?keyword=${keyword}`
   );
 
-  console.log(res);
+  return res;
 }
 
 // 장소 선택 또는 취소
