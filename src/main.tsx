@@ -1,23 +1,12 @@
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
-import {
-  QueryClientProvider,
-  QueryClient,
-  QueryCache,
-} from "@tanstack/react-query";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import GlobalStyle from "./styles/GlobalStyles.tsx";
 import React from "react";
 import DialogsProvider from "./provider/DialogsProvider.tsx";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const queryClient = new QueryClient({
-  queryCache: new QueryCache({
-    onError: (error) => {
-      console.log("onError", error);
-    },
-    onSuccess: (data) => {
-      console.log("onSuccess", data);
-    },
-  }),
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false, // 윈도우가 다시 포커스되었을때 데이터를 호출할 것인지
@@ -33,6 +22,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <GlobalStyle />
         <App />
       </DialogsProvider>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </React.StrictMode>
 );
