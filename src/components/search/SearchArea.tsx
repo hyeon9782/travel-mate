@@ -13,6 +13,7 @@ import SearchInput from "./SearchInput";
 import SearchKakaoMap from "../../libs/kakao/SearchKakaoMap";
 import { useState } from "react";
 import { useSearchPlaces } from "../../hooks/useSearchPlaces";
+import KakaoMap from "../../libs/kakao-map/KakaoMap";
 
 type Props = {
   onNext: () => void;
@@ -38,7 +39,7 @@ const SearchArea = ({ onNext, planData, setPlanData }: Props) => {
   return (
     <SearchAreaBlock>
       <MapBox>
-        {isDomestic ? <SearchKakaoMap /> : <SearchMap planData={planData} />}
+        {isDomestic ? <KakaoMap /> : <SearchMap planData={planData} />}
       </MapBox>
       <SearchBlock>
         <PlacesTab

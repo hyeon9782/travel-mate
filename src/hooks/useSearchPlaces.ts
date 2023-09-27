@@ -3,7 +3,7 @@ import { searchPlacesGoogle, searchPlacesKakao } from "../service/place";
 
 export const useSearchPlaces = (keyword: string, isDomestic: boolean) => {
   return useQuery({
-    queryKey: ["search-places", isDomestic, keyword],
+    queryKey: ["search-places", isDomestic],
     queryFn: async () => {
       if (isDomestic) {
         return await searchPlacesKakao(keyword);
