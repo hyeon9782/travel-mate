@@ -11,6 +11,7 @@ type Props = {
 const PlacesTab = ({ handleClick, planData }: Props) => {
   const [selectedCategory, setSelectedCategory] = useState(0);
 
+  //
   const filterPlacesByCategory = (category: any) => {
     if (category.en === "") {
       return planData.selectedPlaces.filter((selectedPlace) => {
@@ -19,6 +20,7 @@ const PlacesTab = ({ handleClick, planData }: Props) => {
           "cafe",
           "natural_feature",
           "lodging",
+          "음식점",
         ].filter((type) => selectedPlace?.types.includes(type));
         console.log(matchingTypes.length === 0);
         console.log(matchingTypes[0] !== "");
