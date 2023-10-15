@@ -5,14 +5,14 @@ export const Container = styled.section`
   width: 100%;
 
   @media (min-width: 768px) {
-    width: 750px;
+    width: 400px;
   }
 
   @media (min-width: 992px) {
-    width: 970px;
+    width: 400px;
   }
 
   @media (min-width: 1200px) {
-    width: 1170px;
+    width: 400px;
   }
 `;
