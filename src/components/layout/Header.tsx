@@ -7,6 +7,7 @@ import UserContent from "../user/UserContent";
 import { useRecoilState } from "recoil";
 import { userState } from "../../store/userState";
 import { getLocalStorage } from "../../utils/storage";
+import { Container } from "./Container";
 
 const Header = () => {
   const location = useLocation();
@@ -30,21 +31,23 @@ const Header = () => {
   }
 
   return (
-    <HeaderBlock>
-      <Logo>
-        <Link to={"/"}>Travel Mate</Link>
-      </Logo>
-      <IconBox>
-        <WriteIcon onClick={() => navigate("/post")} />
-        <PlusIcon onClick={() => navigate("/plan")} />
-        <MenuIcon onClick={() => setActive(true)} />
-      </IconBox>
-      {active && (
-        <AppPanel handleClick={() => setActive(false)}>
-          <UserContent />
-        </AppPanel>
-      )}
-    </HeaderBlock>
+    <Container>
+      <HeaderBlock>
+        <Logo>
+          <Link to={"/"}>Travel Mate</Link>
+        </Logo>
+        <IconBox>
+          <WriteIcon onClick={() => navigate("/post")} />
+          <PlusIcon onClick={() => navigate("/plan")} />
+          <MenuIcon onClick={() => setActive(true)} />
+        </IconBox>
+        {active && (
+          <AppPanel handleClick={() => setActive(false)}>
+            <UserContent />
+          </AppPanel>
+        )}
+      </HeaderBlock>
+    </Container>
   );
 };
 

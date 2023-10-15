@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+// 모바일 웹이기 때문에 min-width를 사용
 export const Container = styled.section`
   margin: 0 auto;
   width: 100%;
