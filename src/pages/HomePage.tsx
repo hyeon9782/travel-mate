@@ -10,7 +10,6 @@ import React, {
 import PostSkeleton from "../components/posts/PostSkeleton";
 import { Container } from "../components/layout/Container";
 import useIntersectionObserver from "../hooks/useIntersectionObserver";
-import SocialKakao from "../libs/kakao/SocialKakao";
 
 const Posts = React.lazy(() => import("../components/posts/Posts"));
 
@@ -46,7 +45,6 @@ const HomePage = () => {
     <Container>
       <HomePageBlock>
         <PostsTab onClick={handleClick} category={category} />
-        <SocialKakao />
         {Array.from({ length: page }, (_, i) => (
           <Suspense key={i} fallback={<PostSkeleton />}>
             <Posts category={category} page={page} />

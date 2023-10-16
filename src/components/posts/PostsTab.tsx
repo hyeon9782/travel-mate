@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import ShareButton from "../../libs/kakao/ShareButton";
 type Props = {
   onClick: (category: string) => void;
   category: string;
@@ -25,14 +24,6 @@ const PostsTab = ({ onClick, category }: Props) => {
       >
         여행 질문
       </li>
-      <ShareButton
-        title="일본 여행"
-        description="#맛집, #먹부림, #보빈이"
-        imageUrl={
-          "http://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png"
-        }
-        buttonTitle="여행 코스 확인"
-      />
     </PostsTabBlock>
   );
 };

@@ -37,7 +37,7 @@ const Header = () => {
           <Link to={"/"}>Travel Mate</Link>
         </Logo>
         <IconBox>
-          <WriteIcon onClick={() => navigate("/post")} />
+          <WriteIcon onClick={() => navigate("/post/new")} />
           <PlusIcon onClick={() => navigate("/plan")} />
           <MenuIcon onClick={() => setActive(true)} />
         </IconBox>
