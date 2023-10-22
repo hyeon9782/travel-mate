@@ -1,12 +1,10 @@
-# Travel Mate (<a href="https://travel-mate-eta.vercel.app/">Visit</a>)
+# Travel Mate
 
-### 자신만의 여행 계획을 기획하는 웹
+### 자신만의 여행 코스를 계획하는 웹
 
 <img src="public/travel-mate-logo.png">
 
 ## 시작 가이드
-
----
 
 ### Installation
 
@@ -30,13 +28,13 @@ npm run dev
 
 ## Stacks
 
----
-
 ### Environment
 
-<img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=for-the-badge&logo=Visual Studio Code&logoColor=white">
-<img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white">
-<img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white">
+<div style="display: flex">
+  <img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=for-the-badge&logo=Visual Studio Code&logoColor=white">
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white">
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white">
+</div>
 
 ### Config
 
@@ -44,16 +42,15 @@ npm run dev
 
 ### Development
 
-<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
-<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white">
-<img src="https://img.shields.io/badge/styled components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white">
-<img src="https://img.shields.io/badge/Recoil-3578E5?style=for-the-badge&logo=Recoil&logoColor=white">
-<img src="https://img.shields.io/badge/React Router-CA4245?style=for-the-badge&logo=React Router&logoColor=white">
-<img src="https://img.shields.io/badge/React Query-FF4154?style=for-the-badge&logo=React Query&logoColor=white">
+<div style="display: flex">
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
+  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white">
+  <img src="https://img.shields.io/badge/styled components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white">
+  <img src="https://img.shields.io/badge/Recoil-3578E5?style=for-the-badge&logo=Recoil&logoColor=white">
+  <img src="https://img.shields.io/badge/React Router-CA4245?style=for-the-badge&logo=React Router&logoColor=white">
+</div>
 
 ## 화면 구성
-
----
 
 ### 메인 화면 (포스팅 화면)
 
@@ -64,8 +61,6 @@ npm run dev
 ### 여행 일정 상세페이지
 
 ## 주요 기능
-
----
 
 ### ✔ 여행 코스 계획 기능
 
