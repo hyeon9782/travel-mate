@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import DoneButton from "./DoneButton";
 import Days from "../days/Days";
-import Schedules from "../schedules/Schedules";
+import Schedules from "../schedules/SchedulesTest";
 import RenderMap from "../google/RenderMap";
 import { Plan } from "../../types";
 import { useLocation } from "react-router-dom";

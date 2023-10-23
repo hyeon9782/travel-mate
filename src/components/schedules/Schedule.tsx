@@ -14,13 +14,14 @@ type Props = {
 const Schedule = ({ place, onRemove, planId, setPlanData }: Props) => {
   const location = useLocation();
   const path = location.pathname;
+  const edit = path === "/plan" || path === "/plan/edit";
 
   const handleChangeMemo = (memo: string) => {
     changeMemo(memo, place.place_id, setPlanData);
   };
   return (
     <ScheduleBlock>
-      {true && (
+      {edit && (
         <ArrowIconBox>
           <ArrowUpDownIcon />
         </ArrowIconBox>
@@ -36,7 +37,7 @@ const Schedule = ({ place, onRemove, planId, setPlanData }: Props) => {
           />
         </Accordion>
       </ScheduleBox>
-      {true && (
+      {edit && (
         <MinusIconBox onClick={() => onRemove(place)}>
           <MinusIcon />
         </MinusIconBox>
@@ -68,7 +69,7 @@ const MinusIconBox = styled.div`
 `;
 
 const ScheduleBox = styled.div`
-  width: 80%;
+  width: 100%;
 `;
 
 const Memo = styled.textarea`

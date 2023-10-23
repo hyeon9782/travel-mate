@@ -2,7 +2,7 @@ import styled from "styled-components";
 import PrevStep from "./PrevStep";
 import RenderMap from "../google/RenderMap";
 import Days from "../days/Days";
-import Schedules from "../schedules/Schedules";
+import Schedules from "../schedules/SchedulesTest";
 import { planSelector } from "../../store/planSelector";
 import { useRecoilValue } from "recoil";
 import { useNavigate } from "react-router-dom";

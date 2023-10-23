@@ -5,7 +5,7 @@ import PlacesTab from "../places/PlacesTab";
 import { Place, Plan } from "../../types";
 import { useRecoilValue } from "recoil";
 import { currentDayState } from "../../store/currentDayState";
-import Schedules from "../schedules/Schedules copy";
+import Schedules from "../schedules/Schedules";
 import { handleScheduleSelection } from "../../service/place";
 import DoneButton from "./DoneButton";
 import useDialogs from "../../hooks/useDialogs";
