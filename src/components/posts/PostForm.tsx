@@ -199,7 +199,6 @@ const PostEditBox = styled.div`
 
   .content-box {
     padding-bottom: 20px;
-    min-height: 400px;
   }
 
   .btn-box {
