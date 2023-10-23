@@ -24,6 +24,8 @@ const Cities = ({ planData, cities = [], onCitySelection }: Props) => {
 const CitiesBlock = styled.div`
   padding: 10px;
   overflow: auto;
+
+  max-height: 600px;
 `;
 
 export default Cities;

@@ -1,6 +1,7 @@
+import { ReactNode } from "react";
 import styled from "styled-components";
 type Props = {
-  children: any;
+  children: ReactNode;
   onNext?: () => void;
   disabled?: boolean;
   onClick?: () => void;

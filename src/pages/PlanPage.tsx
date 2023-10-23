@@ -98,7 +98,7 @@ const PlanPage = () => {
 };
 
 const PlanPageBlock = styled.main`
-  height: 100%;
+  height: 100vh;
 `;
 
 export default PlanPage;
