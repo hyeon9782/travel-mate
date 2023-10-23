@@ -7,7 +7,7 @@ import { ArrowUpDownIcon, MinusIcon } from "../common/icons";
 
 type Props = {
   place: Place;
-  planId: string;
+  planId: number;
   onRemove: (place: Place) => void;
   setPlanData: any;
 };
@@ -20,7 +20,7 @@ const Schedule = ({ place, onRemove, planId, setPlanData }: Props) => {
   };
   return (
     <ScheduleBlock>
-      {path === `/plan/edit/${planId}` && (
+      {true && (
         <ArrowIconBox>
           <ArrowUpDownIcon />
         </ArrowIconBox>
@@ -36,7 +36,7 @@ const Schedule = ({ place, onRemove, planId, setPlanData }: Props) => {
           />
         </Accordion>
       </ScheduleBox>
-      {path === `/plan/edit/${planId}` && (
+      {true && (
         <MinusIconBox onClick={() => onRemove(place)}>
           <MinusIcon />
         </MinusIconBox>

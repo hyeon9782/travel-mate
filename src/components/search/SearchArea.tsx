@@ -3,17 +3,11 @@ import SearchMap from "../google/SearchMap";
 import ResultList from "./ResultList";
 import PlacesTab from "../places/PlacesTab";
 import DoneButton from "../plan/DoneButton";
-import {
-  handlePlaceSelection,
-  searchPlacesGoogle,
-  searchPlacesKakao,
-} from "../../service/place";
+import { handlePlaceSelection } from "../../service/place";
 import { Place, Plan } from "../../types";
 import SearchInput from "./SearchInput";
-import SearchKakaoMap from "../../libs/kakao/SearchKakaoMap";
 import { useState } from "react";
 import { useSearchPlaces } from "../../hooks/useSearchPlaces";
-import KakaoMap from "../../libs/kakao-map/KakaoMap";
 
 type Props = {
   onNext: () => void;
@@ -22,10 +16,8 @@ type Props = {
 };
 
 const SearchArea = ({ onNext, planData, setPlanData }: Props) => {
-  const isDomestic = planData?.cities[0]?.isDomestic;
   const [keyword, setKeyword] = useState("");
-  const { data } = useSearchPlaces(keyword, isDomestic);
-  console.log(data);
+  const { data: places } = useSearchPlaces(keyword, false);
 
   const handlePlaceSelectionRemove = (place: Place) => {
     handlePlaceSelection(true, setPlanData, place);
@@ -39,7 +31,7 @@ const SearchArea = ({ onNext, planData, setPlanData }: Props) => {
   return (
     <SearchAreaBlock>
       <MapBox>
-        {isDomestic ? <KakaoMap /> : <SearchMap planData={planData} />}
+        <SearchMap planData={planData} />
       </MapBox>
       <SearchBlock>
         <PlacesTab
@@ -50,7 +42,7 @@ const SearchArea = ({ onNext, planData, setPlanData }: Props) => {
           <InputBox>
             <SearchInput onSubmit={handleSubmit} />
           </InputBox>
-          <ResultList planData={planData} />
+          <ResultList planData={planData} setPlanData={setPlanData} />
         </SearchBox>
       </SearchBlock>
       <BtnBox>

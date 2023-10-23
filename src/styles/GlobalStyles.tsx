@@ -16,6 +16,9 @@ body, html, #root {
   font-family: 'Nanum Gothic', sans-serif;
 }
 
+
+
+
 `;
 
 export default GlobalStyle;

@@ -52,6 +52,7 @@ const Header = () => {
 };
 
 const HeaderBlock = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;

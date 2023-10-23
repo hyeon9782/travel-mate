@@ -8,9 +8,10 @@ import { StarIcon } from "../common/icons";
 type Props = {
   place: Place;
   planData: Plan;
+  setPlanData: any;
 };
 
-const ResultItem = ({ place, planData }: Props) => {
+const ResultItem = ({ place, planData, setPlanData }: Props) => {
   const { name, user_ratings_total, rating } = place;
 
   const isSelect = checkPlace(place, planData.selectedPlaces);

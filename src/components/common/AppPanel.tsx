@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { CloseIcon } from "./icons";
+import { ReactNode } from "react";
 
 type Props = {
   handleClick: () => void;
-  children: any;
+  children: ReactNode;
 };
 
 const AppPanel = ({ handleClick, children }: Props) => {
@@ -20,12 +21,16 @@ const AppPanel = ({ handleClick, children }: Props) => {
 };
 
 const AppPanelBlock = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.1);
+  border-right: 1px solid lightgray;
+  border-left: 1px solid lightgray;
+  z-index: 5;
+  overflow: hidden; // 여기에 추가
 `;
 
 const AppPanelBox = styled.div`

@@ -35,7 +35,7 @@ async function searchPlacesGoogle(keyword: string) {
     `http://localhost:4000/api/search?keyword=${keyword}`
   );
 
-  return res;
+  return res.data;
 }
 
 // 장소 선택 또는 취소
