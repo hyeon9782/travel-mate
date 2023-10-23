@@ -61,6 +61,7 @@ const SearchArea = ({ onNext, planData, setPlanData }: Props) => {
 };
 
 const SearchAreaBlock = styled.article`
+  position: relative;
   width: 100%;
   height: calc(100vh - 44.59px);
   overflow: hidden;
@@ -91,7 +92,7 @@ const BtnBox = styled.div`
   padding: 10px;
   box-sizing: border-box;
   width: 100%;
-  position: fixed;
+  position: absolute;
   bottom: 0px;
   left: 0;
 `;

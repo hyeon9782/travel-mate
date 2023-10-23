@@ -51,6 +51,7 @@ const DateArea = ({ onNext, planData, setPlanData }: Props) => {
 };
 
 const DateAreaBlock = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   height: calc(100% - 44.59px);
@@ -82,8 +83,8 @@ const BtnBox = styled.div`
   padding: 10px;
   box-sizing: border-box;
   width: 100%;
-  position: fixed;
-  bottom: 0px;
+  position: absolute;
+  bottom: 0;
   left: 0;
 `;
 

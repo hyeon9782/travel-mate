@@ -75,7 +75,8 @@ const PlanArea = ({ planData, onSubmit, setPlanData }: Props) => {
 };
 
 const PlanBlock = styled.div`
-  height: calc(100vh - 44.59);
+  position: relative;
+  height: calc(100vh - 44.59px);
   overflow: auto;
 `;
 
@@ -101,7 +102,7 @@ const BtnBox = styled.div`
   padding: 10px;
   box-sizing: border-box;
   width: 100%;
-  position: fixed;
+  position: absolute;
   bottom: 0px;
   left: 0;
   z-index: 2;
