@@ -23,9 +23,11 @@ const Accordion = ({ title, children }: Props) => {
   };
   return (
     <AccordionContainer>
-      <AccordionHeader onClick={handleArrowClick}>
+      <AccordionHeader>
         <TitleBox>{title}</TitleBox>
-        <ArrowBox>{!isCollapse ? <ArrowDownIcon /> : <ArrowUpIcon />}</ArrowBox>
+        <ArrowBox onClick={handleArrowClick}>
+          {!isCollapse ? <ArrowDownIcon /> : <ArrowUpIcon />}
+        </ArrowBox>
       </AccordionHeader>
       <AccordionContents ref={parentRef}>
         <AccordionContentsChild ref={childRef}>

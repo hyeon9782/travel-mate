@@ -1,4 +1,4 @@
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import Schedule from "./Schedule";
 import { currentDayState } from "../../store/currentDayState";
@@ -6,6 +6,7 @@ import { handleScheduleSelection } from "../../service/place";
 import { Place, Plan } from "../../types";
 import { useMemo, useRef } from "react";
 import { useLocation } from "react-router-dom";
+import { currentScheduleState } from "../../store/currentScheduleState";
 
 type Props = {
   planData: Plan;
@@ -13,6 +14,7 @@ type Props = {
 };
 const Schedules = ({ planData, setPlanData }: Props) => {
   const currentDay = useRecoilValue(currentDayState);
+  const setCurrentSchedule = useSetRecoilState(currentScheduleState);
   const location = useLocation();
   const path =
     location.pathname === "/plan" || location.pathname === "/plan/edit";
@@ -71,6 +73,10 @@ const Schedules = ({ planData, setPlanData }: Props) => {
     e.preventDefault();
   };
 
+  const handleScheduleClick = (index: number) => {
+    setCurrentSchedule(index);
+  };
+
   return (
     <SchedulesBlock>
       <PlaceBlock>
@@ -78,6 +84,7 @@ const Schedules = ({ planData, setPlanData }: Props) => {
           initialData.map((place, index) => (
             <div
               key={place.place_id}
+              onClick={() => handleScheduleClick(index)}
               onDragStart={(e) => dragStart(e, index)}
               onDragEnter={(e) => dragEnter(e, index)}
               onDragOver={onDragOver}

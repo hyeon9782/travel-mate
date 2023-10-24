@@ -8,6 +8,7 @@ import {
 } from "@react-google-maps/api";
 import { useState, useEffect } from "react";
 import { Plan } from "../../types";
+import { currentScheduleState } from "../../store/currentScheduleState";
 
 const OPTIONS = {
   strokeColor: "#FF0000",
@@ -41,13 +42,9 @@ const RenderMap = ({ planData }: Props) => {
       .map((schedule) => schedule.geometry.location)
   );
 
-  const [currentSchedule, setCurrentSchedule] = useState(0);
+  const currentSchedule = useRecoilValue(currentScheduleState);
 
   console.log(markerPositions);
-
-  const handleMarkerClick = (index: number) => {
-    setCurrentSchedule(index);
-  };
 
   useEffect(() => {
     const newPositions = planData.selectedPlaces
@@ -86,10 +83,10 @@ const RenderMap = ({ planData }: Props) => {
           position={marker}
           // onClick={() => handleMarkerClick(index)}
           icon={{
-            url: "/images/marker/marker.png",
+            url: `/images/marker/marker ${index + 1}.png`,
             scaledSize: new google.maps.Size(
-              index === currentSchedule ? 40 : 30,
-              index === currentSchedule ? 40 : 30
+              index === currentSchedule ? 55 : 50,
+              index === currentSchedule ? 55 : 50
             ), // This determines the size of the icon.
             origin: new google.maps.Point(0, 0), // Origin is the left top corner of the image (default is 0,0).
             anchor: new google.maps.Point(25, 25), // This is where the icon will be attached to the marker. (middle point)
