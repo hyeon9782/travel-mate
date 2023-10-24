@@ -17,6 +17,13 @@ const GoogleLogout = () => {
     });
     //@ts-ignore
     google.accounts.id.disableAutoSelect();
+
+    // //@ts-ignore
+    // 이건 회원 탈퇴했을 때
+    // google.accounts.id.revoke("hyeon9782@gmail.com", (done) => {
+    //   console.log("consent revoked");
+    // });
+
     removeLocalStorage("user");
     alert("로그아웃 했습니다.");
   };

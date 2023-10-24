@@ -13,7 +13,6 @@ const LoginPage = () => {
           <div className="back" onClick={() => navigate(-1)}>
             뒤로가기
           </div>
-          {/* <div className="preview">둘러보기</div> */}
         </ButtonBox>
         <ContentBox>
           <ImageBox>
@@ -25,6 +24,7 @@ const LoginPage = () => {
           </TextBox>
           <LoginBox>
             <GoogleLogin />
+            {/* <GoogleLoginButton /> */}
           </LoginBox>
         </ContentBox>
       </LoginPageBlock>
