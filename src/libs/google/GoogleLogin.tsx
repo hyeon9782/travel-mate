@@ -24,9 +24,7 @@ const GoogleLogin = () => {
 
   const handleLogout = () => {
     //@ts-ignore
-    google.accounts.id.revoke("hyeon9782@google.com", (done) => {
-      console.log("consent revoked");
-    });
+    google.accounts.id.disableAutoSelect();
   };
 
   useScript("https://accounts.google.com/gsi/client", () => {
@@ -50,6 +48,7 @@ const GoogleLogin = () => {
   return (
     <>
       <div id="google-login-api" ref={googleSignInButton} />
+      <button onClick={handleLogout}>로그아웃</button>
     </>
   );
 };

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import GoogleLogin from "../libs/google/GoogleLogin";
 import { Container } from "../components/layout/Container";
+import GoogleLoginButton from "../libs/google/GoogleLoginButton";
 
 const LoginPage = () => {
   const navigate = useNavigate();

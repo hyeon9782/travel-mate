@@ -2,7 +2,7 @@ import styled from "styled-components";
 import PrevStep from "./PrevStep";
 import RenderMap from "../google/RenderMap";
 import Days from "../days/Days";
-import Schedules from "../schedules/SchedulesTest";
+import Schedules from "../schedules/Schedules";
 import { planSelector } from "../../store/planSelector";
 import { useRecoilValue } from "recoil";
 import { useNavigate } from "react-router-dom";
@@ -19,6 +19,9 @@ const PlanDetailContainer = ({ plan_id }: Props) => {
       <PrevStep onPrev={() => navigate(-1)} />
       <ScheduleBlock>
         <MapBox>
+          {/* {planData.selectedPlaces.length > 0 && (
+            <RenderMap planData={planData} />
+          )} */}
           <RenderMap planData={planData} />
         </MapBox>
         <ScheduleBox>

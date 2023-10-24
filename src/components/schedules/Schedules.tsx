@@ -5,6 +5,7 @@ import { currentDayState } from "../../store/currentDayState";
 import { handleScheduleSelection } from "../../service/place";
 import { Place, Plan } from "../../types";
 import { useMemo, useRef } from "react";
+import { useLocation } from "react-router-dom";
 
 type Props = {
   planData: Plan;
@@ -12,6 +13,9 @@ type Props = {
 };
 const Schedules = ({ planData, setPlanData }: Props) => {
   const currentDay = useRecoilValue(currentDayState);
+  const location = useLocation();
+  const path =
+    location.pathname === "/plan" || location.pathname === "/plan/edit";
   const initialData = useMemo(
     () =>
       planData.selectedPlaces
@@ -78,7 +82,7 @@ const Schedules = ({ planData, setPlanData }: Props) => {
               onDragEnter={(e) => dragEnter(e, index)}
               onDragOver={onDragOver}
               onDragEnd={drop}
-              draggable
+              draggable={path}
             >
               <Schedule
                 key={place.place_id}
