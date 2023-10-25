@@ -13,7 +13,7 @@ const PlanItem = ({ plan, onDelete }: Props) => {
   const { plan_id, cities, period, title } = plan;
 
   const moveDetail = (plan_id: number) => {
-    navigate(`/plan/${plan_id}`, { state: { plan_id } });
+    navigate(`/plan/${plan_id}`);
   };
 
   const moveEdit = (event: MouseEvent, plan_id: number) => {

@@ -22,7 +22,7 @@ const PlanListBlock = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  height: 300px;
+  height: 200px;
   overflow: auto;
 `;
 

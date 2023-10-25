@@ -62,28 +62,24 @@ npm run dev
 
 ## 주요 기능
 
-### ✔ 여행 코스 계획 기능
+- [x] Google Places API 기반 장소 검색
+- [x] Google Map API 기반 여행 코스 계획
+- [x] Drag & Drop으로 여행 코스 수정
+- [x] Google OAuth 2.0 기반 Login & Logout
+- [x] UX 향상을 위한 맞춤형 Skeleton UI
+- [x] Category 별 포스팅 조회 및 무한 스크롤
+- [x] Editer 연동 및 포스팅 CRUD
+- [x] Kakao 공유 API 기반 공유하기
 
-- Kakao Map이 API를 활용하여 자신이 선택한 장소들의 위치를 확인하며 여행 코스 기획 (국내 여행지)
-- Kakao Places API를 활용하여 사용자가 원하는 키워드로 장소 검색 (국내 여행지)
-- Google Place API를 활용하여 사용자가 원하는 <strong>키워드로 장소 검색</strong> (해외 여행지)
-- Google Map API를 활용하여 자신이 선택한 <strong>장소들의 위치를 확인하며 여행 코스 기획</strong> (해외 여행지)
+## 리팩토링
 
-### ✔ 게시글 작성 기능
+- [ ] UI 로직과 비즈니스 로직 분리
+- [ ] 추상화 레벨 통일성을 위해 컴포넌트 분리
+- [ ] React Query로 마이그레이션
+- [ ] 관심사가 비슷한 기능을 모아서 커스텀 훅 구현
+- [ ] 렌더링 최적화
 
-- react-quill를 이용해 <strong>Editor 연동 및 게시글 작성</strong> 기능 구현
-- category 별 게시글 검색 및 <strong>무한 스크롤</strong> 기능 구현
-- React 18 Suspense를 사용해 <strong>로딩 처리 및 Skeleton UI</strong> 구현
+## 추가 구현
 
-### ✔ 소셜 로그인 기능
-
-- Google Auth API를 활용하여 <strong>Google Login</strong> 기능 구현
-- Kakao Login 기능 구현
-
-## Future Works
-
----
-
-### ✨ 카카오톡 공유 기능
-
-### 여행 일정 계획 페이지 드래그 앤 드랍 기능
+- [ ] Google Direction API 기반 이동 시간 계산
+- [ ] Vue 네비게이션 가드 같은 라우터 가드 구현하기

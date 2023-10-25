@@ -43,12 +43,20 @@ const PostForm = () => {
     }));
   };
 
-  const handleClick = (postData: Post) => {
-    console.log(postData);
+  const handleClick = async (postData: Post) => {
+    try {
+      console.log(postData);
 
-    registPostAPI(postData);
-    alert("게시글을 등록했어요!");
-    navigate(-1);
+      const res = await registPostAPI(postData);
+      console.log("등록 후");
+
+      console.log(res);
+
+      alert("게시글을 등록했어요!");
+      navigate(-1);
+    } catch (error: unknown) {
+      console.log(error.message);
+    }
   };
 
   return (
@@ -90,7 +98,7 @@ const PostForm = () => {
           >
             {plans.map((plan) => (
               <option value={plan.plan_id} key={plan.plan_id}>
-                {plan.cities[0].city} 여행
+                {plan.title}
               </option>
             ))}
           </select>
