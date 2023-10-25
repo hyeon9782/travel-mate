@@ -6,15 +6,15 @@ import { Plan } from "../../types";
 type Props = {
   planData: Plan;
   setPlanData: any;
+  keyword: string;
 };
-const ResultList = ({ planData, setPlanData }: Props) => {
-  // const searchPlaces = [];
-
+const ResultList = ({ planData, setPlanData, keyword }: Props) => {
   const queryClient = useQueryClient();
 
-  // const kakaoSearchPlaces = queryClient.getQueryData(["search-places", true]);
-
-  const googleSearchPlaces = queryClient.getQueryData(["search-places", false]);
+  const googleSearchPlaces = queryClient.getQueryData([
+    "search-places",
+    keyword,
+  ]);
 
   return (
     <ResultListBlock>

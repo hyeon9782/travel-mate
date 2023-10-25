@@ -42,7 +42,11 @@ const SearchArea = ({ onNext, planData, setPlanData }: Props) => {
           <InputBox>
             <SearchInput onSubmit={handleSubmit} />
           </InputBox>
-          <ResultList planData={planData} setPlanData={setPlanData} />
+          <ResultList
+            planData={planData}
+            setPlanData={setPlanData}
+            keyword={keyword}
+          />
         </SearchBox>
       </SearchBlock>
       <BtnBox>
