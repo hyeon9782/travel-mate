@@ -71,7 +71,7 @@ const RenderMap = ({ planData }: Props) => {
     return () => {
       setCurrentSchedule(0);
     };
-  }, [currentDay, planData.selectedPlaces]);
+  }, [currentDay, planData]);
 
   useEffect(() => {
     if (map) {

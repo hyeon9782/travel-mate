@@ -58,7 +58,7 @@ const PlanArea = ({ planData, onSubmit, setPlanData }: Props) => {
   return (
     <PlanBlock>
       <MapBox>
-        {isDomestic ? <RenderKakaoMap /> : <RenderMap planData={planData} />}
+        <RenderMap planData={planData} />
       </MapBox>
       <ScheduleBlock>
         <PlacesTab handleClick={handleScheduleAdd} planData={planData} />

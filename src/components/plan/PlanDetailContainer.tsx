@@ -6,22 +6,38 @@ import Schedules from "../schedules/Schedules";
 import { planSelector } from "../../store/planSelector";
 import { useRecoilValue } from "recoil";
 import { useNavigate } from "react-router-dom";
+import ShareButton from "../../libs/kakao/ShareButton";
+import { useMemo } from "react";
 type Props = {
   plan_id: number;
 };
 const PlanDetailContainer = ({ plan_id }: Props) => {
   const navigate = useNavigate();
   const planData = useRecoilValue(planSelector(plan_id));
-  console.log(planData);
+
+  const url = import.meta.env.DEV
+    ? `http://localhost:5173/plan/${plan_id}`
+    : `https://travel-mate-eta.vercel.app/plan/${plan_id}`;
+
+  const cities = useMemo(
+    () => planData.cities.map((city) => city.city),
+    [planData.cities]
+  );
 
   return (
     <>
-      <PrevStep onPrev={() => navigate(-1)} />
+      <PlanHeader className="head">
+        <PrevStep onPrev={() => navigate(-1)} />
+        <ShareButton
+          title={planData.title}
+          description={cities.join(" ")}
+          imageUrl="public/travel-mate-logo.png"
+          buttonTitle="코스 구경하기"
+          url={url}
+        />
+      </PlanHeader>
       <ScheduleBlock>
         <MapBox>
-          {/* {planData.selectedPlaces.length > 0 && (
-            <RenderMap planData={planData} />
-          )} */}
           <RenderMap planData={planData} />
         </MapBox>
         <ScheduleBox>
@@ -32,6 +48,12 @@ const PlanDetailContainer = ({ plan_id }: Props) => {
     </>
   );
 };
+
+const PlanHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 const ScheduleBlock = styled.article`
   display: flex;

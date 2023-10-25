@@ -5,17 +5,20 @@ type Props = {
   description: string;
   imageUrl: string;
   buttonTitle: string;
+  url: string;
 };
 
 const { Kakao }: any = window;
 
 const KAKAO_API_KEY = import.meta.env.VITE_APP_KAKAO_API_KEY;
-const ShareButton = ({ title, description, imageUrl, buttonTitle }: Props) => {
+const ShareButton = ({
+  title,
+  description,
+  imageUrl,
+  buttonTitle,
+  url,
+}: Props) => {
   console.log("개발 환경이니? : " + import.meta.env.DEV);
-
-  const url = import.meta.env.DEV
-    ? window.location.href
-    : "https://travel-mate-eta.vercel.app/";
 
   console.log("url 입니다 : " + url);
 
