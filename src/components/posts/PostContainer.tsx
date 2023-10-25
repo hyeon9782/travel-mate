@@ -19,10 +19,7 @@ const PostContainer = ({ post_id }: Props) => {
       <PostTitle>{title}</PostTitle>
       <UserBlock>
         <UserBox user_name={user_name} size="big" />
-        <Button
-          text="일정보기"
-          onClick={() => navigate(`/plan/${plan_id}`, { state: { plan_id } })}
-        />
+        <Button text="일정보기" onClick={() => navigate(`/plan/${plan_id}`)} />
       </UserBlock>
       <PostContent dangerouslySetInnerHTML={{ __html: content }}></PostContent>
     </div>

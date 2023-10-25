@@ -38,10 +38,10 @@ const RenderMap = ({ planData }: Props) => {
 
   const [map, setMap] = useState(null);
 
-  const [markers, setMarkers] = useState([]);
-
   const onUnmount = useCallback((map) => {
     setMap(null);
+    setCurrentSchedule(0);
+    setCurrentDay(1);
   }, []);
 
   const [markerPositions, setMarkerPositions] = useState<any[]>(() =>
@@ -59,42 +59,12 @@ const RenderMap = ({ planData }: Props) => {
   );
 
   useEffect(() => {
-    if (markerPositions.length === 0) {
-      setCurrentDay(1);
-    }
     const newPositions = planData.selectedPlaces
       .filter((selectedPlace) => selectedPlace.day === currentDay)
       .map((schedule) => schedule.geometry.location);
 
     setMarkerPositions(newPositions);
-
-    return () => {
-      setCurrentSchedule(0);
-    };
   }, [currentDay, planData]);
-
-  useEffect(() => {
-    if (map) {
-      // 기존에 생성된 마커들을 지도에서 제거합니다.
-      markers.forEach((marker) => marker.setMap(null));
-      // 새로운 마커 객체들을 생성합니다.
-      const newMarkers = markerPositions.map((position, index) => {
-        return new window.google.maps.Marker({
-          position: position,
-          icon: {
-            url: `/images/marker/marker ${index + 1}.png`,
-            scaledSize: new window.google.maps.Size(
-              index === currentSchedule ? 60 : 50,
-              index === currentSchedule ? 60 : 50
-            ),
-          },
-          map: map,
-        });
-      });
-      // 새로운 마커 객체들을 상태 변수에 저장합니다.
-      setMarkers(newMarkers);
-    }
-  }, [currentSchedule, map]);
 
   const onLoad = useCallback(
     (map) => {
@@ -120,20 +90,17 @@ const RenderMap = ({ planData }: Props) => {
       onUnmount={onUnmount}
       center={center}
     >
-      {/* {markerPositions?.map((marker, index) => (
+      {markerPositions?.map((marker, index) => (
         <MarkerF
           key={index}
           position={marker}
           icon={{
             url: `/images/marker/marker ${index + 1}.png`,
             scale: 1,
-            scaledSize: new window.google.maps.Size(
-              index === currentSchedule ? 60 : 50,
-              index === currentSchedule ? 60 : 50
-            ),
+            scaledSize: new window.google.maps.Size(50, 50),
           }}
         />
-      ))} */}
+      ))}
       {markerPositions.length > 1 && (
         <PolylineF path={markerPositions} options={OPTIONS} />
       )}
